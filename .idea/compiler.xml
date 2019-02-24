@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Catalogue-API" />
+        <module name="Catalogue-Impl" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Catalogue" target="1.5" />
+      <module name="Catalogue-API" target="11" />
+      <module name="Catalogue-Impl" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
