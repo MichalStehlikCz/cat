@@ -10,6 +10,7 @@
     <modules>
         <module>api</module>
         <module>impl</module>
+        <module>dbloader</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,7 +35,7 @@
             <dependency>
                 <groupId>org.jooq.pro</groupId>
                 <artifactId>jooq</artifactId>
-                <version>3.11.7</version>
+                <version>3.11.9</version>
             </dependency>
             <dependency>
                 <groupId>com.oracle</groupId>
@@ -147,12 +148,12 @@
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
                 <artifactId>provysobject-api</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
                 <artifactId>provysobject-impl</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>1.0.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -223,9 +224,9 @@
                     <version>3.0.0-M1</version>
                 </plugin>
                 <plugin>
-                    <groupId>${jooqGroupId}</groupId>
+                    <groupId>org.jooq.pro</groupId>
                     <artifactId>jooq-codegen-maven</artifactId>
-                    <version>3.11.7</version>
+                    <version>3.11.9</version>
                 </plugin>
                 <plugin>
                     <groupId>io.swagger.core.v3</groupId>

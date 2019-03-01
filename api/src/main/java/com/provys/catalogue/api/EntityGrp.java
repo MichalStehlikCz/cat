@@ -3,11 +3,18 @@ package com.provys.catalogue.api;
 import com.provys.provysobject.ProvysNmObject;
 
 import javax.annotation.Nonnull;
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 public interface EntityGrp extends ProvysNmObject, Comparable<EntityGrp> {
+
+    /**
+     * @return Id of parent entity group (attribute PARENT_ID)
+     */
+    @Nonnull
+    Optional<BigInteger> getParentId();
 
     /**
      * @return parent entity group (entity group with Id PARENT_ID)

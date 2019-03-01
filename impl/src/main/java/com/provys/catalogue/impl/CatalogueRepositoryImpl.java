@@ -1,30 +1,35 @@
 package com.provys.catalogue.impl;
 
+import com.provys.catalogue.api.AttrManager;
 import com.provys.catalogue.api.CatalogueRepository;
-import com.provys.catalogue.api.Entity;
-import com.provys.catalogue.api.EntityGrpManager;
+import com.provys.catalogue.api.DomainManager;
 import com.provys.catalogue.api.EntityManager;
-import com.provys.provysobject.ProvysObject;
-import com.provys.provysobject.ProvysObjectManager;
-import com.provys.provysobject.impl.ProvysRepositoryImpl;
 
 import javax.annotation.Nonnull;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.Objects;
 
 @ApplicationScoped
-public class CatalogueRepositoryImpl extends ProvysRepositoryImpl implements CatalogueRepository {
+public class CatalogueRepositoryImpl implements CatalogueRepository {
 
     @Nonnull
     private final EntityGrpManagerImpl entityGrpManager;
     @Nonnull
     private final EntityManagerImpl entityManager;
+    @Nonnull
+    private final AttrManagerImpl attrManager;
+    @Nonnull
+    private final DomainManagerImpl domainManager;
 
-    @SuppressWarnings("CdiUnproxyableBeanTypesInspection")
+    @SuppressWarnings({"CdiUnproxyableBeanTypesInspection", "CdiInjectionPointsInspection"})
     @Inject
-    CatRepositoryImpl(EntityGrpLoader entityGrpLoader, EntityLoader entityLoader) {
-        this.entityGrpManager = new EntityGrpManagerImpl(this, Objects.requireNonNull(entityGrpLoader));
-        this.entityManager = new EntityManagerImpl(this, entityLoader, 20);
+    CatalogueRepositoryImpl(EntityGrpLoader entityGrpLoader, EntityLoader entityLoader, AttrLoader attrLoader,
+                            DomainLoader domainLoader) {
+        this.entityGrpManager = new EntityGrpManagerImpl(this, Objects.requireNonNull(entityGrpLoader), 10);
+        this.entityManager = new EntityManagerImpl(this, Objects.requireNonNull(entityLoader), 100);
+        this.attrManager = new AttrManagerImpl(this, Objects.requireNonNull(attrLoader), 1000);
+        this.domainManager = new DomainManagerImpl(this, Objects.requireNonNull(domainLoader), 20);
     }
 
     @Nonnull
@@ -35,15 +40,20 @@ public class CatalogueRepositoryImpl extends ProvysRepositoryImpl implements Cat
 
     @Nonnull
     @Override
-    public EntityManager getEntityManager() {
+    public EntityManagerImpl getEntityManager() {
         return entityManager;
     }
 
+    @Nonnull
     @Override
-    public <T extends ProvysObject> ProvysObjectManager<T> getManager(Class<T> forClass) {
-        if (forClass.equals(Entity.class)) {
-            return entityManager;
-        }
-        return null;
+    public AttrManagerImpl getAttrManager() {
+        return attrManager;
     }
+
+    @Nonnull
+    @Override
+    public DomainManagerImpl getDomainManager() {
+        return domainManager;
+    }
+
 }

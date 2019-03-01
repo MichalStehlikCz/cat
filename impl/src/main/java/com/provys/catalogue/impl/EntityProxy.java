@@ -1,12 +1,15 @@
 package com.provys.catalogue.impl;
 
 import com.provys.catalogue.api.Entity;
-import com.provys.provysobject.impl.ProvysNmObjectProxy;
+import com.provys.catalogue.api.EntityGrp;
+import com.provys.provysobject.impl.ProvysNmObjectProxyImpl;
 
 import javax.annotation.Nonnull;
 import java.math.BigInteger;
+import java.util.Optional;
 
-public class EntityProxy extends ProvysNmObjectProxy<EntityValue, Entity, EntityManagerImpl>
+public class EntityProxy
+        extends ProvysNmObjectProxyImpl<Entity, EntityValue, EntityProxy, EntityManagerImpl>
         implements Entity {
 
     public EntityProxy(EntityManagerImpl manager, BigInteger id) {
@@ -15,17 +18,93 @@ public class EntityProxy extends ProvysNmObjectProxy<EntityValue, Entity, Entity
 
     @Nonnull
     @Override
-    protected Entity self() {
+    public Entity selfAsObject() {
         return this;
     }
 
+    @Nonnull
     @Override
-    protected void loadValue() {
-
+    protected EntityProxy self() {
+        return this;
     }
 
     @Override
     public int compareTo(Entity o) {
         return 0;
+    }
+
+    @Nonnull
+    @Override
+    public String getName() {
+        return validateValueObject().getName();
+    }
+
+    @Override
+    public boolean isCustom() {
+        return validateValueObject().isCustom();
+    }
+
+    @Override
+    public boolean isUsed() {
+        return validateValueObject().isUsed();
+    }
+
+    @Override
+    public boolean isObjectClass() {
+        return validateValueObject().isObjectClass();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<String> getTable() {
+        return validateValueObject().getTable();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<BigInteger> getEntityGrpId() {
+        return validateValueObject().getEntityGrpId();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<EntityGrp> getEntityGrp() {
+        return validateValueObject().getEntityGrp();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<String> getNote() {
+        return validateValueObject().getNote();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<String> getCustomNote() {
+        return validateValueObject().getCustomNote();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<String> getStructureDoc() {
+        return validateValueObject().getStructureDoc();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<String> getUsageDoc() {
+        return validateValueObject().getUsageDoc();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<String> getBehaviourDoc() {
+        return validateValueObject().getBehaviourDoc();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<String> getImplDoc() {
+        return validateValueObject().getImplDoc();
     }
 }
