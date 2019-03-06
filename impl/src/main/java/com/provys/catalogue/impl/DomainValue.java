@@ -29,21 +29,21 @@ public class DomainValue extends ProvysNmObjectValue {
     private final String note;
     private final boolean allowed;
 
-    DomainValue(BigInteger id, String nameNm, String name, @Nullable String dataType, @Nullable Short dataLength,
-                       @Nullable Byte dataPrecision, boolean qVisible, boolean lVisible, @Nullable String validateCd,
-                       @Nullable String lFormatCd, boolean natOrder, @Nullable String note, boolean allowed) {
+    public DomainValue(BigInteger id, String nameNm, String name, @Nullable String dataType, @Nullable Short dataLength,
+                       @Nullable Byte dataPrecision, String qVisible, String lVisible, @Nullable String validateCd,
+                       @Nullable String lFormatCd, String natOrder, @Nullable String note, String allowed) {
         super(id, nameNm);
         this.name = name;
         this.dataType = dataType;
         this.dataLength = dataLength;
         this.dataPrecision = dataPrecision;
-        this.qVisible = qVisible;
-        this.lVisible = lVisible;
+        this.qVisible = qVisible.equals("Y");
+        this.lVisible = lVisible.equals("Y");
         this.validateCd = validateCd;
         this.lFormatCd = lFormatCd;
-        this.natOrder = natOrder;
+        this.natOrder = natOrder.equals("Y");
         this.note = note;
-        this.allowed = allowed;
+        this.allowed = allowed.equals("Y");
     }
 
     /**

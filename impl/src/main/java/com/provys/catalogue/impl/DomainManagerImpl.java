@@ -11,7 +11,7 @@ public class DomainManagerImpl extends ProvysNmObjectManagerImpl<CatalogueReposi
         DomainProxy, DomainManagerImpl, DomainLoader> implements DomainManager {
 
     DomainManagerImpl(CatalogueRepositoryImpl repository, DomainLoader loader, int initialCapacity) {
-        super(repository, loader, initialCapacity);
+        super(repository, loader, initialCapacity, 0);
     }
 
     @Nonnull

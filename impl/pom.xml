@@ -5,13 +5,12 @@
     <parent>
         <artifactId>Catalogue</artifactId>
         <groupId>com.provys.catalogue</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>catalogue-impl</artifactId>
     <name>Catalogue-Impl</name>
-    <version>1.0.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
@@ -32,7 +31,7 @@
         <dependency>
             <groupId>com.provys.catalogue</groupId>
             <artifactId>catalogue-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

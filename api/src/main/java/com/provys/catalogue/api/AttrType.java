@@ -9,14 +9,14 @@ import java.util.Optional;
  */
 public enum AttrType {
 
-    COLUMN('C'),
-    TEXT('T'),
-    FREE('F'),
-    FINANCE('I'),
-    SQL('Q'),
-    FORMULA('O');
+    COLUMN("C"),
+    TEXT("T"),
+    FREE("F"),
+    FINANCE("I"),
+    SQL("Q"),
+    FORMULA("O");
 
-    private static final HashMap<Character, AttrType> attrTypeByCode = new HashMap<>(10);
+    private static final HashMap<String, AttrType> attrTypeByCode = new HashMap<>(10);
 
     static {
         for (var attrType : values()) {
@@ -25,17 +25,17 @@ public enum AttrType {
     }
 
     @Nonnull
-    public static Optional<AttrType> getAttrTypeByCode(char code) {
+    public static Optional<AttrType> getAttrTypeByCode(String code) {
         return Optional.ofNullable(attrTypeByCode.get(code));
     }
 
-    private final char code;
+    private final String code;
 
-    AttrType(char code) {
+    AttrType(String code) {
         this.code = code;
     }
 
-    public char getCode() {
+    public String getCode() {
         return code;
     }
 

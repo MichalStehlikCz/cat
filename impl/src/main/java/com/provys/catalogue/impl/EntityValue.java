@@ -149,4 +149,43 @@ public class EntityValue extends ProvysNmObjectValue {
     Optional<String> getImplDoc() {
         return Optional.ofNullable(implDoc);
     }
+
+    @Override
+    @SuppressWarnings("squid:S1206") // Id is sufficient for hashCode
+    public boolean equals(@Nullable Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EntityValue)) return false;
+        if (!super.equals(o)) return false;
+        EntityValue that = (EntityValue) o;
+        return isCustom() == that.isCustom() &&
+                isUsed() == that.isUsed() &&
+                isObjectClass() == that.isObjectClass() &&
+                getName().equals(that.getName()) &&
+                Objects.equals(getTable(), that.getTable()) &&
+                Objects.equals(getEntityGrp(), that.getEntityGrp()) &&
+                Objects.equals(getNote(), that.getNote()) &&
+                Objects.equals(getCustomNote(), that.getCustomNote()) &&
+                Objects.equals(getStructureDoc(), that.getStructureDoc()) &&
+                Objects.equals(getUsageDoc(), that.getUsageDoc()) &&
+                Objects.equals(getBehaviourDoc(), that.getBehaviourDoc()) &&
+                Objects.equals(getImplDoc(), that.getImplDoc());
+    }
+
+    @Override
+    public String toString() {
+        return "EntityValue{" +
+                "name='" + name + '\'' +
+                ", custom=" + custom +
+                ", used=" + used +
+                ", objectClass=" + objectClass +
+                ", table='" + table + '\'' +
+                ", entityGrp=" + entityGrp +
+                ", note='" + note + '\'' +
+                ", customNote='" + customNote + '\'' +
+                ", structureDoc='" + structureDoc + '\'' +
+                ", usageDoc='" + usageDoc + '\'' +
+                ", behaviourDoc='" + behaviourDoc + '\'' +
+                ", implDoc='" + implDoc + '\'' +
+                '}';
+    }
 }
