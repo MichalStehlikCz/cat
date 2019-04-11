@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class KerEntityTb extends TableImpl<KerEntityTbRecord> {
 
-    private static final long serialVersionUID = 1618919509;
+    private static final long serialVersionUID = 1958976787;
 
     /**
      * The reference instance of <code>KER.KER_ENTITY_TB</code>
@@ -406,9 +406,9 @@ M - manually processed - import procedure doesn't exist, still these items are t
     public final TableField<KerEntityTbRecord, String> X_HASDELROWFLAGDEF = createField("X_HASDELROWFLAGDEF", org.jooq.impl.SQLDataType.CHAR(1), this, "Existence of flagdef for given entity with DELETEROW='Y', which is handled during object delete operation");
 
     /**
-     * The column <code>KER.KER_ENTITY_TB.INCOMPLETEKEY</code>. Entity has not completed natural key. The pseudo natural key will be generated.
+     * The column <code>KER.KER_ENTITY_TB.INCOMPLETEKEY</code>. Entity does not have natural key. The pseudo natural key will be generated
      */
-    public final TableField<KerEntityTbRecord, String> INCOMPLETEKEY = createField("INCOMPLETEKEY", org.jooq.impl.SQLDataType.CHAR(1).nullable(false).defaultValue(org.jooq.impl.DSL.field("'N'\n  ", org.jooq.impl.SQLDataType.CHAR)), this, "Entity has not completed natural key. The pseudo natural key will be generated.");
+    public final TableField<KerEntityTbRecord, String> INCOMPLETEKEY = createField("INCOMPLETEKEY", org.jooq.impl.SQLDataType.CHAR(1).nullable(false).defaultValue(org.jooq.impl.DSL.field("'N'\n  ", org.jooq.impl.SQLDataType.CHAR)), this, "Entity does not have natural key. The pseudo natural key will be generated");
 
     /**
      * Create a <code>KER.KER_ENTITY_TB</code> table reference

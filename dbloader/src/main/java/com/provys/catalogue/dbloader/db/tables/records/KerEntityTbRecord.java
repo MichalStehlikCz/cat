@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class KerEntityTbRecord extends UpdatableRecordImpl<KerEntityTbRecord> {
 
-    private static final long serialVersionUID = -1172529927;
+    private static final long serialVersionUID = -761058119;
 
     /**
      * Setter for <code>KER.KER_ENTITY_TB.ENTITY_ID</code>. UID
@@ -996,14 +996,14 @@ M - manually processed - import procedure doesn't exist, still these items are t
     }
 
     /**
-     * Setter for <code>KER.KER_ENTITY_TB.INCOMPLETEKEY</code>. Entity has not completed natural key. The pseudo natural key will be generated.
+     * Setter for <code>KER.KER_ENTITY_TB.INCOMPLETEKEY</code>. Entity does not have natural key. The pseudo natural key will be generated
      */
     public void setIncompletekey(String value) {
         set(67, value);
     }
 
     /**
-     * Getter for <code>KER.KER_ENTITY_TB.INCOMPLETEKEY</code>. Entity has not completed natural key. The pseudo natural key will be generated.
+     * Getter for <code>KER.KER_ENTITY_TB.INCOMPLETEKEY</code>. Entity does not have natural key. The pseudo natural key will be generated
      */
     public String getIncompletekey() {
         return (String) get(67);
