@@ -61,11 +61,13 @@ class AttrDbLoadRunner extends ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy
     protected AttrValue createValueObject(KerAttrTbRecord sourceObject) {
         return new AttrValue(sourceObject.getAttrId(),
                 getManager().getRepository().getEntityManager().getOrAddById(sourceObject.getEntityId()),
-                sourceObject.getNameNm(), sourceObject.getName(), sourceObject.getNote(),
+                sourceObject.getNameNm(), sourceObject.getName(), sourceObject.getAttrgrpId() == null ? null :
+                getManager().getRepository().getAttrGrpManager().getById(sourceObject.getAttrgrpId()),
+                sourceObject.getOrd(), sourceObject.getNote(),
                 AttrType.getAttrTypeByCode(sourceObject.getAttrtype()).orElseThrow(
                         () -> new InternalException(LOG,
                                 "Invalid AttrType read from database: " + sourceObject.getAttrtype())),
                 getManager().getRepository().getDomainManager().getById(sourceObject.getDomainId()),
-                sourceObject.getSubdomainNm(), sourceObject.getMandatory().equals("Y"));
+                sourceObject.getSubdomainNm(), sourceObject.getMandatory().equals("Y"), sourceObject.getDefvalue());
     }
 }

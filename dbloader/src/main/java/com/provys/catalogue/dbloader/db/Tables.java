@@ -5,6 +5,7 @@ package com.provys.catalogue.dbloader.db;
 
 
 import com.provys.catalogue.dbloader.db.tables.KerAttrTb;
+import com.provys.catalogue.dbloader.db.tables.KerAttrgrpTb;
 import com.provys.catalogue.dbloader.db.tables.KerDomainTb;
 import com.provys.catalogue.dbloader.db.tables.KerEntityTb;
 import com.provys.catalogue.dbloader.db.tables.KerEntitygrpTb;
@@ -25,6 +26,11 @@ import javax.annotation.Generated;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
+
+    /**
+     * The table <code>KER.KER_ATTRGRP_TB</code>.
+     */
+    public static final KerAttrgrpTb KER_ATTRGRP_TB = com.provys.catalogue.dbloader.db.tables.KerAttrgrpTb.KER_ATTRGRP_TB;
 
     /**
      * Attribute (catalogue)

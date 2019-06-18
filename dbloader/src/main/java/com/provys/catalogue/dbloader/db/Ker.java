@@ -5,6 +5,7 @@ package com.provys.catalogue.dbloader.db;
 
 
 import com.provys.catalogue.dbloader.db.tables.KerAttrTb;
+import com.provys.catalogue.dbloader.db.tables.KerAttrgrpTb;
 import com.provys.catalogue.dbloader.db.tables.KerDomainTb;
 import com.provys.catalogue.dbloader.db.tables.KerEntityTb;
 import com.provys.catalogue.dbloader.db.tables.KerEntitygrpTb;
@@ -34,12 +35,17 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Ker extends SchemaImpl {
 
-    private static final long serialVersionUID = -723022225;
+    private static final long serialVersionUID = 993826476;
 
     /**
      * The reference instance of <code>KER</code>
      */
     public static final Ker KER = new Ker();
+
+    /**
+     * The table <code>KER.KER_ATTRGRP_TB</code>.
+     */
+    public final KerAttrgrpTb KER_ATTRGRP_TB = com.provys.catalogue.dbloader.db.tables.KerAttrgrpTb.KER_ATTRGRP_TB;
 
     /**
      * Attribute (catalogue)
@@ -91,6 +97,7 @@ public class Ker extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
+            KerAttrgrpTb.KER_ATTRGRP_TB,
             KerAttrTb.KER_ATTR_TB,
             KerDomainTb.KER_DOMAIN_TB,
             KerEntitygrpTb.KER_ENTITYGRP_TB,

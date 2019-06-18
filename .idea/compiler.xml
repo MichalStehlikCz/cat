@@ -12,7 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Catalogue" target="1.5" />
+      <module name="Catalogue" target="11" />
       <module name="Catalogue-API" target="11" />
       <module name="Catalogue-DbLoader" target="11" />
       <module name="Catalogue-Impl" target="11" />

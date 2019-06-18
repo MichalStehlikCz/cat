@@ -1,18 +1,20 @@
 package com.provys.catalogue.impl;
 
+import com.provys.catalogue.api.Attr;
 import com.provys.catalogue.api.Entity;
 import com.provys.catalogue.api.EntityGrp;
 import com.provys.provysobject.impl.ProvysNmObjectProxyImpl;
 
 import javax.annotation.Nonnull;
 import java.math.BigInteger;
+import java.util.Objects;
 import java.util.Optional;
 
 public class EntityProxy
         extends ProvysNmObjectProxyImpl<Entity, EntityValue, EntityProxy, EntityManagerImpl>
         implements Entity {
 
-    public EntityProxy(EntityManagerImpl manager, BigInteger id) {
+    EntityProxy(EntityManagerImpl manager, BigInteger id) {
         super(manager, id);
     }
 
@@ -26,11 +28,6 @@ public class EntityProxy
     @Override
     protected EntityProxy self() {
         return this;
-    }
-
-    @Override
-    public int compareTo(Entity o) {
-        return 0;
     }
 
     @Nonnull
@@ -118,5 +115,13 @@ public class EntityProxy
     @Override
     public Optional<String> getImplDoc() {
         return validateValueObject().getImplDoc();
+    }
+
+    @Override
+    public int compareTo(Entity other) {
+        if (other == this) {
+            return 0;
+        }
+        return validateValueObject().compareTo(Objects.requireNonNull(other));
     }
 }

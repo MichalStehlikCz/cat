@@ -68,7 +68,7 @@ public class EntityGrpProxy
     @Nonnull
     @Override
     public Collection<Entity> getEntities() {
-        return null;
+        return getManager().getRepository().getEntityManager().getByEntityGrpId(getId());
     }
 
     @Nonnull

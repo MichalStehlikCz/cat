@@ -1,18 +1,16 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.Attr;
-import com.provys.catalogue.api.AttrType;
-import com.provys.catalogue.api.Domain;
-import com.provys.catalogue.api.Entity;
+import com.provys.catalogue.api.*;
 import com.provys.provysobject.impl.ProvysObjectProxyImpl;
 
 import javax.annotation.Nonnull;
 import java.math.BigInteger;
+import java.util.Objects;
 import java.util.Optional;
 
 public class AttrProxy extends ProvysObjectProxyImpl<Attr, AttrValue, AttrProxy, AttrManagerImpl> implements Attr {
 
-    public AttrProxy(AttrManagerImpl manager, BigInteger id) {
+    AttrProxy(AttrManagerImpl manager, BigInteger id) {
         super(manager, id);
     }
 
@@ -27,6 +25,7 @@ public class AttrProxy extends ProvysObjectProxyImpl<Attr, AttrValue, AttrProxy,
     public Attr selfAsObject() {
         return this;
     }
+
     @Nonnull
     @Override
     public BigInteger getEntityId() {
@@ -49,6 +48,23 @@ public class AttrProxy extends ProvysObjectProxyImpl<Attr, AttrValue, AttrProxy,
     @Override
     public String getName() {
         return validateValueObject().getName();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<BigInteger> getAttrGrpId() {
+        return validateValueObject().getAttrGrpId();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<AttrGrp> getAttrGrp() {
+        return validateValueObject().getAttrGrp();
+    }
+
+    @Override
+    public int getOrd() {
+        return validateValueObject().getOrd();
     }
 
     @Nonnull
@@ -78,5 +94,33 @@ public class AttrProxy extends ProvysObjectProxyImpl<Attr, AttrValue, AttrProxy,
     @Override
     public boolean getMandatory() {
         return validateValueObject().getMandatory();
+    }
+
+    @Override
+    @Nonnull
+    public Optional<String> getDefValue() {
+        return validateValueObject().getDefValue();
+    }
+
+    @Override
+    public int getOrdInEntity() {
+        // we have to select all attributes of given entity
+        var attrs = getManager().getByEntityId(getEntityId());
+        int result = 0;
+        // and calculate how many of them are before our attribute
+        for (var attr : attrs) {
+            if (attr.compareTo(this) < 0) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public int compareTo(Attr other) {
+        if (other == this) {
+            return 0;
+        }
+        return validateValueObject().compareTo(Objects.requireNonNull(other));
     }
 }

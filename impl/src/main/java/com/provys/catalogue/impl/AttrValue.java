@@ -1,8 +1,6 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.AttrType;
-import com.provys.catalogue.api.Domain;
-import com.provys.catalogue.api.Entity;
+import com.provys.catalogue.api.*;
 import com.provys.provysobject.impl.ProvysObjectValue;
 
 import javax.annotation.Nonnull;
@@ -20,6 +18,9 @@ public class AttrValue extends ProvysObjectValue {
     @Nonnull
     private final String name;
     @Nullable
+    private final AttrGrp attrGrp;
+    private final int ord;
+    @Nullable
     private final String note;
     @Nonnull
     private final AttrType attrType;
@@ -28,21 +29,30 @@ public class AttrValue extends ProvysObjectValue {
     @Nullable
     private final String subdomainNm;
     private final boolean mandatory;
+    @Nullable
+    private final String defValue;
 
-    public AttrValue(BigInteger id, Entity entity, String nameNm, String name, @Nullable String note, AttrType attrType,
-                     Domain domain, @Nullable String subdomainNm, boolean mandatory)
+    public AttrValue(BigInteger id, Entity entity, String nameNm, String name, @Nullable AttrGrp attrGrp, int ord,
+                     @Nullable String note, AttrType attrType, Domain domain, @Nullable String subdomainNm,
+                     boolean mandatory, @Nullable String defValue)
     {
         super(id);
-        this.entity = entity;
-        this.nameNm = nameNm;
-        this.name = name;
+        this.entity = Objects.requireNonNull(entity);
+        this.nameNm = Objects.requireNonNull(nameNm);
+        this.name = Objects.requireNonNull(name);
+        this.attrGrp = attrGrp;
+        this.ord = ord;
         this.note = note;
-        this.attrType = attrType;
-        this.domain = domain;
+        this.attrType = Objects.requireNonNull(attrType);
+        this.domain = Objects.requireNonNull(domain);
         this.subdomainNm = subdomainNm;
         this.mandatory = mandatory;
+        this.defValue = defValue;
     }
 
+    /**
+     * @return entity UID (attribute ENTITY_ID)
+     */
     @Nonnull
     BigInteger getEntityId() {
         return getEntity().getId();
@@ -70,6 +80,29 @@ public class AttrValue extends ProvysObjectValue {
     @Nonnull
     String getName() {
         return name;
+    }
+
+    /**
+     * @return attribute group UID (attribute ATTRGRP_ID)
+     */
+    @Nonnull
+    Optional<BigInteger> getAttrGrpId() {
+        return getAttrGrp().map(AttrGrp::getId);
+    }
+
+    /**
+     * @return attribute group (corresponding to ATTRGRP_ID value)
+     */
+    @Nonnull
+    Optional<AttrGrp> getAttrGrp() {
+        return Optional.ofNullable(attrGrp);
+    }
+
+    /**
+     * @return order of attribute (attribute ORD)
+     */
+    int getOrd() {
+        return ord;
     }
 
     /**
@@ -107,9 +140,48 @@ public class AttrValue extends ProvysObjectValue {
     /**
      * @return flag indicating if attribute is mandatory (attribute MANDATORY)
      */
-    @Nonnull
     boolean getMandatory() {
         return mandatory;
+    }
+
+    /**
+     * @return default value of attribute (attribute DEFVALUE)
+     */
+    @Nonnull
+    Optional<String> getDefValue() {
+        return Optional.ofNullable(defValue);
+    }
+
+    private int compareAttrGrp(Attr other) {
+        if (getAttrGrp().isEmpty()) {
+            if (other.getAttrGrp().isEmpty()) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+        if (other.getAttrGrp().isEmpty()) {
+            return -1;
+        }
+        return getAttrGrp().orElseThrow().compareTo(other.getAttrGrp().orElseThrow());
+    }
+
+    /**
+     * Compares attributes by their attribute group, if in the same attribute group, by their order and name
+     *
+     * @param other is attribute to be compared to
+     * @return -1 if ordering of this is before other, 0 if both objects are the same and 1 if this object is after
+     * the other
+     */
+    int compareTo(Attr other) {
+        int result = compareAttrGrp(other);
+        if (result == 0) {
+            result = Integer.compare(getOrd(), other.getOrd());
+            if (result == 0) {
+                result = getName().compareTo(other.getName());
+            }
+        }
+        return result;
     }
 
     @Override
@@ -122,10 +194,13 @@ public class AttrValue extends ProvysObjectValue {
         return getEntity().equals(attrValue.getEntity()) &&
                 getNameNm().equals(attrValue.getNameNm()) &&
                 getName().equals(attrValue.getName()) &&
+                Objects.equals(getAttrGrp(), attrValue.getAttrGrp()) &&
+                getOrd() == attrValue.getOrd() &&
                 Objects.equals(getNote(), attrValue.getNote()) &&
                 getAttrType() == attrValue.getAttrType() &&
                 getDomain().equals(attrValue.getDomain()) &&
                 Objects.equals(getSubdomainNm(), attrValue.getSubdomainNm()) &&
-                getMandatory() == attrValue.getMandatory();
+                getMandatory() == attrValue.getMandatory() &&
+                Objects.equals(getDefValue(), attrValue.getDefValue());
     }
 }

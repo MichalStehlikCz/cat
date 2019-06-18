@@ -73,7 +73,7 @@
                     <generator>
                         <database>
                             <name>org.jooq.meta.oracle.OracleDatabase</name>
-                            <includes>KER_ENTITYGRP_TB|KER_ENTITY_TB|KER_ATTR_TB|KER_DOMAIN_TB|KER_REL_TB</includes>
+                            <includes>KER_ENTITYGRP_TB|KER_ENTITY_TB|KER_ATTRGRP_TB|KER_ATTR_TB|KER_DOMAIN_TB|KER_REL_TB</includes>
                             <excludes />
                             <inputSchema>KER</inputSchema>
                         </database>

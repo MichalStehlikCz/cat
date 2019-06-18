@@ -1,9 +1,6 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.AttrManager;
-import com.provys.catalogue.api.CatalogueRepository;
-import com.provys.catalogue.api.DomainManager;
-import com.provys.catalogue.api.EntityManager;
+import com.provys.catalogue.api.*;
 
 import javax.annotation.Nonnull;
 import javax.enterprise.context.ApplicationScoped;
@@ -18,16 +15,19 @@ public class CatalogueRepositoryImpl implements CatalogueRepository {
     @Nonnull
     private final EntityManagerImpl entityManager;
     @Nonnull
+    private final AttrGrpManagerImpl attrGrpManager;
+    @Nonnull
     private final AttrManagerImpl attrManager;
     @Nonnull
     private final DomainManagerImpl domainManager;
 
     @SuppressWarnings({"CdiUnproxyableBeanTypesInspection", "CdiInjectionPointsInspection"})
     @Inject
-    CatalogueRepositoryImpl(EntityGrpLoader entityGrpLoader, EntityLoader entityLoader, AttrLoader attrLoader,
-                            DomainLoader domainLoader) {
+    CatalogueRepositoryImpl(EntityGrpLoader entityGrpLoader, EntityLoader entityLoader, AttrGrpLoader attrGrpLoader,
+                            AttrLoader attrLoader, DomainLoader domainLoader) {
         this.entityGrpManager = new EntityGrpManagerImpl(this, Objects.requireNonNull(entityGrpLoader), 10);
         this.entityManager = new EntityManagerImpl(this, Objects.requireNonNull(entityLoader), 100);
+        this.attrGrpManager = new AttrGrpManagerImpl(this, Objects.requireNonNull(attrGrpLoader), 10);
         this.attrManager = new AttrManagerImpl(this, Objects.requireNonNull(attrLoader), 1000);
         this.domainManager = new DomainManagerImpl(this, Objects.requireNonNull(domainLoader), 20);
     }
@@ -42,6 +42,12 @@ public class CatalogueRepositoryImpl implements CatalogueRepository {
     @Override
     public EntityManagerImpl getEntityManager() {
         return entityManager;
+    }
+
+    @Nonnull
+    @Override
+    public AttrGrpManager getAttrGrpManager() {
+        return attrGrpManager;
     }
 
     @Nonnull

@@ -80,10 +80,7 @@ public class EntityGrpValue extends ProvysNmObjectValue {
 
     /**
      * Compares entity groups by their order within the same parent and by their parents starting from root. Parent is
-     * considered before its children.
-     * Note that based on server constraints, ord should be unique within parent (or within entity groups without
-     * parent) and thus comparison equality should be equal to object equality, even though it is not enforced by
-     * this class and is left on database and loader properly loading data from database.
+     * considered before its children. If all is the same, order is determined by name of entity group.
      *
      * @param other is other entity group to be compared with
      * @return -1 if full ordering of this is before other, 0 if both objects are the same and 1 if this object is after
@@ -92,7 +89,11 @@ public class EntityGrpValue extends ProvysNmObjectValue {
     int compareTo(EntityGrp other) {
         if (other.getParent() == getParent()) {
             // most common comparison - comparing two children of the same parent
-            return Integer.compare(getOrd(), other.getOrd());
+            int result = Integer.compare(getOrd(), other.getOrd());
+            if (result == 0) {
+                result = getName().compareTo(other.getName());
+            }
+            return result;
         }
         // calculate full path from root and compare paths...
         List<Integer> myFullOrd = getFullOrd();
@@ -112,8 +113,8 @@ public class EntityGrpValue extends ProvysNmObjectValue {
             // start same but this is shorter -> this is before other (parent before child)
             return -1;
         }
-        // both objects are the same
-        return 0;
+        // both objects are the same based on ord
+        return getName().compareTo(other.getName());
     }
 
     @Override

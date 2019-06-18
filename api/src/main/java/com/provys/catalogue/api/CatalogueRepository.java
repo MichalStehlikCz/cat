@@ -13,6 +13,9 @@ public interface CatalogueRepository extends ProvysRepository {
     EntityManager getEntityManager();
 
     @Nonnull
+    AttrGrpManager getAttrGrpManager();
+
+    @Nonnull
     AttrManager getAttrManager();
 
     @Nonnull

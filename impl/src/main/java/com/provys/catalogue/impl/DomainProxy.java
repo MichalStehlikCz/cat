@@ -10,7 +10,7 @@ import java.util.Optional;
 public class DomainProxy extends ProvysNmObjectProxyImpl<Domain, DomainValue, DomainProxy, DomainManagerImpl>
         implements Domain {
 
-    protected DomainProxy(DomainManagerImpl manager, BigInteger id) {
+    DomainProxy(DomainManagerImpl manager, BigInteger id) {
         super(manager, id);
     }
 

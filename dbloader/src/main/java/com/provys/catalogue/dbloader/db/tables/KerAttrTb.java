@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class KerAttrTb extends TableImpl<KerAttrTbRecord> {
 
-    private static final long serialVersionUID = 1816737230;
+    private static final long serialVersionUID = 952827626;
 
     /**
      * The reference instance of <code>KER.KER_ATTR_TB</code>
@@ -462,11 +462,15 @@ Ordering is used for generate
      */
     @Override
     public List<ForeignKey<KerAttrTbRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<KerAttrTbRecord, ?>>asList(Keys.KER_ATTR_ENTITY_FK, Keys.KER_ATTR_DOMAIN_FK, Keys.KER_ATTR_ACCDOCOBJECTFORMUL_FK, Keys.KER_ATTR_OWNERFORMULA_FK, Keys.KER_ATTR_FROMOBJECTFORMULA_FK, Keys.KER_ATTR_TOOBJECTFORMULA_FK, Keys.KER_ATTR_TEXTSRC_FK, Keys.KER_ATTR_IMGSRC_FK);
+        return Arrays.<ForeignKey<KerAttrTbRecord, ?>>asList(Keys.KER_ATTR_ENTITY_FK, Keys.KER_ATTR_ATTRGRP_FK, Keys.KER_ATTR_DOMAIN_FK, Keys.KER_ATTR_ACCDOCOBJECTFORMUL_FK, Keys.KER_ATTR_OWNERFORMULA_FK, Keys.KER_ATTR_FROMOBJECTFORMULA_FK, Keys.KER_ATTR_TOOBJECTFORMULA_FK, Keys.KER_ATTR_TEXTSRC_FK, Keys.KER_ATTR_IMGSRC_FK);
     }
 
     public KerEntityTb kerEntityTb() {
         return new KerEntityTb(this, Keys.KER_ATTR_ENTITY_FK);
+    }
+
+    public KerAttrgrpTb kerAttrgrpTb() {
+        return new KerAttrgrpTb(this, Keys.KER_ATTR_ATTRGRP_FK);
     }
 
     public KerDomainTb kerDomainTb() {

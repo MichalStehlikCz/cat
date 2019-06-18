@@ -6,7 +6,7 @@ import javax.annotation.Nonnull;
 import java.math.BigInteger;
 import java.util.Optional;
 
-public interface Attr extends ProvysObject {
+public interface Attr extends ProvysObject, Comparable<Attr> {
 
     /**
      * @return entity UID (attribute ENTITY_ID)
@@ -31,6 +31,22 @@ public interface Attr extends ProvysObject {
      */
     @Nonnull
     String getName();
+
+    /**
+     * @return attribute group UID (attribute ATTRGRP_ID)
+     */
+    @Nonnull
+    Optional<BigInteger> getAttrGrpId();
+
+    /**
+     * @return attribute group (corresponding to ATTRGRP_ID value)
+     */
+    Optional<AttrGrp> getAttrGrp();
+
+    /**
+     * @return order of attribute (attribute ORD)
+     */
+    int getOrd();
 
     /**
      * @return note related to attribute (attribute NOTE)
@@ -60,4 +76,14 @@ public interface Attr extends ProvysObject {
      * @return mandatory flag of attribute
      */
     boolean getMandatory();
+
+    /**
+     * @return default value of attribute
+     */
+    Optional<String> getDefValue();
+
+    /**
+     * @return order of attribute in entity
+     */
+    int getOrdInEntity();
 }

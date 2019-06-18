@@ -171,6 +171,35 @@ public class EntityValue extends ProvysNmObjectValue {
         return Optional.ofNullable(implDoc);
     }
 
+    private int compareEntityGrp(Entity other) {
+        if (getEntityGrp().isEmpty()) {
+            if (other.getEntityGrp().isEmpty()) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+        if (other.getEntityGrp().isEmpty()) {
+            return -1;
+        }
+        return getEntityGrp().orElseThrow().compareTo(other.getEntityGrp().orElseThrow());
+    }
+
+    /**
+     * Compares entities by their entity group, if in same entity group, by their name
+     *
+     * @param other is other entity to be compared to
+     * @return -1 if ordering of this is before other, 0 if both objects are the same and 1 if this object is after
+     * the other
+     */
+    int compareTo(Entity other) {
+        int result = compareEntityGrp(other);
+        if (result == 0) {
+            result = getName().compareTo(other.getName());
+        }
+        return result;
+    }
+
     @Override
     @SuppressWarnings("squid:S1206") // Id is sufficient for hashCode
     public boolean equals(@Nullable Object o) {

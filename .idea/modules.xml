@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Catalogue.iml" filepath="$PROJECT_DIR$/Catalogue.iml" />
-      <module fileurl="file://$PROJECT_DIR$/api/Catalogue-API.iml" filepath="$PROJECT_DIR$/api/Catalogue-API.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dbloader/Catalogue-DbLoader.iml" filepath="$PROJECT_DIR$/dbloader/Catalogue-DbLoader.iml" />
-      <module fileurl="file://$PROJECT_DIR$/impl/Catalogue-Impl.iml" filepath="$PROJECT_DIR$/impl/Catalogue-Impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/catalogue-api.iml" filepath="$PROJECT_DIR$/api/catalogue-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dbloader/catalogue-dbloader.iml" filepath="$PROJECT_DIR$/dbloader/catalogue-dbloader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/impl/catalogue-impl.iml" filepath="$PROJECT_DIR$/impl/catalogue-impl.iml" />
     </modules>
   </component>
 </project>

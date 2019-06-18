@@ -5,11 +5,13 @@ package com.provys.catalogue.dbloader.db;
 
 
 import com.provys.catalogue.dbloader.db.tables.KerAttrTb;
+import com.provys.catalogue.dbloader.db.tables.KerAttrgrpTb;
 import com.provys.catalogue.dbloader.db.tables.KerDomainTb;
 import com.provys.catalogue.dbloader.db.tables.KerEntityTb;
 import com.provys.catalogue.dbloader.db.tables.KerEntitygrpTb;
 import com.provys.catalogue.dbloader.db.tables.KerRelTb;
 import com.provys.catalogue.dbloader.db.tables.records.KerAttrTbRecord;
+import com.provys.catalogue.dbloader.db.tables.records.KerAttrgrpTbRecord;
 import com.provys.catalogue.dbloader.db.tables.records.KerDomainTbRecord;
 import com.provys.catalogue.dbloader.db.tables.records.KerEntityTbRecord;
 import com.provys.catalogue.dbloader.db.tables.records.KerEntitygrpTbRecord;
@@ -45,6 +47,9 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<KerAttrgrpTbRecord> KER_ATTRGRP_PK = UniqueKeys0.KER_ATTRGRP_PK;
+    public static final UniqueKey<KerAttrgrpTbRecord> KER_ATTRGRP_ENTANDNAME_UK = UniqueKeys0.KER_ATTRGRP_ENTANDNAME_UK;
+    public static final UniqueKey<KerAttrgrpTbRecord> KER_ATTRGRP_ENTITYNM_UK = UniqueKeys0.KER_ATTRGRP_ENTITYNM_UK;
     public static final UniqueKey<KerAttrTbRecord> KER_ATTR_PK = UniqueKeys0.KER_ATTR_PK;
     public static final UniqueKey<KerAttrTbRecord> KER_ATTR_ENTANDNAME_UK = UniqueKeys0.KER_ATTR_ENTANDNAME_UK;
     public static final UniqueKey<KerAttrTbRecord> KER_ATTR_ENTANDNM_UK = UniqueKeys0.KER_ATTR_ENTANDNM_UK;
@@ -67,7 +72,9 @@ public class Keys {
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<KerAttrgrpTbRecord, KerEntityTbRecord> KER_ATTRGRP_ENTITY_FK = ForeignKeys0.KER_ATTRGRP_ENTITY_FK;
     public static final ForeignKey<KerAttrTbRecord, KerEntityTbRecord> KER_ATTR_ENTITY_FK = ForeignKeys0.KER_ATTR_ENTITY_FK;
+    public static final ForeignKey<KerAttrTbRecord, KerAttrgrpTbRecord> KER_ATTR_ATTRGRP_FK = ForeignKeys0.KER_ATTR_ATTRGRP_FK;
     public static final ForeignKey<KerAttrTbRecord, KerDomainTbRecord> KER_ATTR_DOMAIN_FK = ForeignKeys0.KER_ATTR_DOMAIN_FK;
     public static final ForeignKey<KerAttrTbRecord, KerAttrTbRecord> KER_ATTR_ACCDOCOBJECTFORMUL_FK = ForeignKeys0.KER_ATTR_ACCDOCOBJECTFORMUL_FK;
     public static final ForeignKey<KerAttrTbRecord, KerAttrTbRecord> KER_ATTR_OWNERFORMULA_FK = ForeignKeys0.KER_ATTR_OWNERFORMULA_FK;
@@ -87,6 +94,9 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     private static class UniqueKeys0 {
+        public static final UniqueKey<KerAttrgrpTbRecord> KER_ATTRGRP_PK = Internal.createUniqueKey(KerAttrgrpTb.KER_ATTRGRP_TB, "KER_ATTRGRP_PK", KerAttrgrpTb.KER_ATTRGRP_TB.ATTRGRP_ID);
+        public static final UniqueKey<KerAttrgrpTbRecord> KER_ATTRGRP_ENTANDNAME_UK = Internal.createUniqueKey(KerAttrgrpTb.KER_ATTRGRP_TB, "KER_ATTRGRP_ENTANDNAME_UK", KerAttrgrpTb.KER_ATTRGRP_TB.ENTITY_ID, KerAttrgrpTb.KER_ATTRGRP_TB.NAME);
+        public static final UniqueKey<KerAttrgrpTbRecord> KER_ATTRGRP_ENTITYNM_UK = Internal.createUniqueKey(KerAttrgrpTb.KER_ATTRGRP_TB, "KER_ATTRGRP_ENTITYNM_UK", KerAttrgrpTb.KER_ATTRGRP_TB.ENTITY_ID, KerAttrgrpTb.KER_ATTRGRP_TB.NAME_NM);
         public static final UniqueKey<KerAttrTbRecord> KER_ATTR_PK = Internal.createUniqueKey(KerAttrTb.KER_ATTR_TB, "KER_ATTR_PK", KerAttrTb.KER_ATTR_TB.ATTR_ID);
         public static final UniqueKey<KerAttrTbRecord> KER_ATTR_ENTANDNAME_UK = Internal.createUniqueKey(KerAttrTb.KER_ATTR_TB, "KER_ATTR_ENTANDNAME_UK", KerAttrTb.KER_ATTR_TB.ENTITY_ID, KerAttrTb.KER_ATTR_TB.NAME);
         public static final UniqueKey<KerAttrTbRecord> KER_ATTR_ENTANDNM_UK = Internal.createUniqueKey(KerAttrTb.KER_ATTR_TB, "KER_ATTR_ENTANDNM_UK", KerAttrTb.KER_ATTR_TB.ENTITY_ID, KerAttrTb.KER_ATTR_TB.NAME_NM);
@@ -107,7 +117,9 @@ public class Keys {
     }
 
     private static class ForeignKeys0 {
+        public static final ForeignKey<KerAttrgrpTbRecord, KerEntityTbRecord> KER_ATTRGRP_ENTITY_FK = Internal.createForeignKey(com.provys.catalogue.dbloader.db.Keys.KER_ENTITY_PK, KerAttrgrpTb.KER_ATTRGRP_TB, "KER_ATTRGRP_ENTITY_FK", KerAttrgrpTb.KER_ATTRGRP_TB.ENTITY_ID);
         public static final ForeignKey<KerAttrTbRecord, KerEntityTbRecord> KER_ATTR_ENTITY_FK = Internal.createForeignKey(com.provys.catalogue.dbloader.db.Keys.KER_ENTITY_PK, KerAttrTb.KER_ATTR_TB, "KER_ATTR_ENTITY_FK", KerAttrTb.KER_ATTR_TB.ENTITY_ID);
+        public static final ForeignKey<KerAttrTbRecord, KerAttrgrpTbRecord> KER_ATTR_ATTRGRP_FK = Internal.createForeignKey(com.provys.catalogue.dbloader.db.Keys.KER_ATTRGRP_PK, KerAttrTb.KER_ATTR_TB, "KER_ATTR_ATTRGRP_FK", KerAttrTb.KER_ATTR_TB.ATTRGRP_ID);
         public static final ForeignKey<KerAttrTbRecord, KerDomainTbRecord> KER_ATTR_DOMAIN_FK = Internal.createForeignKey(com.provys.catalogue.dbloader.db.Keys.KER_DOMAIN_PK, KerAttrTb.KER_ATTR_TB, "KER_ATTR_DOMAIN_FK", KerAttrTb.KER_ATTR_TB.DOMAIN_ID);
         public static final ForeignKey<KerAttrTbRecord, KerAttrTbRecord> KER_ATTR_ACCDOCOBJECTFORMUL_FK = Internal.createForeignKey(com.provys.catalogue.dbloader.db.Keys.KER_ATTR_PK, KerAttrTb.KER_ATTR_TB, "KER_ATTR_ACCDOCOBJECTFORMUL_FK", KerAttrTb.KER_ATTR_TB.ACCDOCOBJECTFORMULA_ID);
         public static final ForeignKey<KerAttrTbRecord, KerAttrTbRecord> KER_ATTR_OWNERFORMULA_FK = Internal.createForeignKey(com.provys.catalogue.dbloader.db.Keys.KER_ATTR_PK, KerAttrTb.KER_ATTR_TB, "KER_ATTR_OWNERFORMULA_FK", KerAttrTb.KER_ATTR_TB.OWNERFORMULA_ID);
