@@ -7,7 +7,7 @@ import com.provys.catalogue.impl.AttrManagerImpl;
 import com.provys.catalogue.impl.AttrProxy;
 import com.provys.catalogue.impl.AttrValue;
 import com.provys.common.exception.InternalException;
-import com.provys.provysdb.ProvysDBContext;
+import com.provys.provysdb.ProvysDbContext;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,11 +27,11 @@ class AttrDbLoadRunner extends ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy
     private static final Logger LOG = LogManager.getLogger(AttrDbLoadRunner.class);
 
     @Nonnull
-    private final ProvysDBContext dbContext;
+    private final ProvysDbContext dbContext;
     @Nullable
     private final Condition condition;
 
-    AttrDbLoadRunner(AttrManagerImpl manager, ProvysDBContext dbContext, @Nullable Condition condition) {
+    AttrDbLoadRunner(AttrManagerImpl manager, ProvysDbContext dbContext, @Nullable Condition condition) {
         super(manager);
         this.dbContext = Objects.requireNonNull(dbContext);
         this.condition = condition;

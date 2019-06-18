@@ -3,7 +3,7 @@ package com.provys.catalogue.dbloader;
 import com.provys.catalogue.dbloader.db.tables.records.KerEntitygrpTbRecord;
 import com.provys.catalogue.impl.EntityGrpLoaderBase;
 import com.provys.catalogue.impl.EntityGrpManagerImpl;
-import com.provys.provysdb.ProvysDBContext;
+import com.provys.provysdb.ProvysDbContext;
 
 import javax.annotation.Nonnull;
 import javax.enterprise.context.ApplicationScoped;
@@ -17,10 +17,10 @@ import static com.provys.catalogue.dbloader.db.Tables.KER_ENTITYGRP_TB;
 public class EntityGrpDbLoader extends EntityGrpLoaderBase<KerEntitygrpTbRecord> {
 
     @Nonnull
-    private final ProvysDBContext dbContext;
+    private final ProvysDbContext dbContext;
 
     @Inject
-    EntityGrpDbLoader(ProvysDBContext dbContext) {
+    EntityGrpDbLoader(ProvysDbContext dbContext) {
         this.dbContext = Objects.requireNonNull(dbContext);
     }
 

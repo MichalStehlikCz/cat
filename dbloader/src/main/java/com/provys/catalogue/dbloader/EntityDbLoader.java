@@ -3,7 +3,7 @@ package com.provys.catalogue.dbloader;
 import com.provys.catalogue.dbloader.db.tables.records.KerEntityTbRecord;
 import com.provys.catalogue.impl.EntityLoaderBase;
 import com.provys.catalogue.impl.EntityManagerImpl;
-import com.provys.provysdb.ProvysDBContext;
+import com.provys.provysdb.ProvysDbContext;
 
 import javax.annotation.Nonnull;
 import javax.enterprise.context.ApplicationScoped;
@@ -17,10 +17,10 @@ import static com.provys.catalogue.dbloader.db.Tables.KER_ENTITY_TB;
 public class EntityDbLoader extends EntityLoaderBase<KerEntityTbRecord> {
 
     @Nonnull
-    private final ProvysDBContext dbContext;
+    private final ProvysDbContext dbContext;
 
     @Inject
-    EntityDbLoader(ProvysDBContext dbContext) {
+    EntityDbLoader(ProvysDbContext dbContext) {
         this.dbContext = Objects.requireNonNull(dbContext);
     }
 

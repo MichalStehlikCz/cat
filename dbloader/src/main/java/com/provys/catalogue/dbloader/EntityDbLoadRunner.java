@@ -5,7 +5,7 @@ import com.provys.catalogue.dbloader.db.tables.records.KerEntityTbRecord;
 import com.provys.catalogue.impl.EntityManagerImpl;
 import com.provys.catalogue.impl.EntityProxy;
 import com.provys.catalogue.impl.EntityValue;
-import com.provys.provysdb.ProvysDBContext;
+import com.provys.provysdb.ProvysDbContext;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
 import org.jooq.Condition;
 import org.jooq.impl.DSL;
@@ -22,11 +22,11 @@ class EntityDbLoadRunner extends ProvysObjectLoadRunner<Entity, EntityValue, Ent
         KerEntityTbRecord> {
 
     @Nonnull
-    private final ProvysDBContext dbContext;
+    private final ProvysDbContext dbContext;
     @Nullable
     private final Condition condition;
 
-    EntityDbLoadRunner(EntityManagerImpl manager, ProvysDBContext dbContext, @Nullable Condition condition) {
+    EntityDbLoadRunner(EntityManagerImpl manager, ProvysDbContext dbContext, @Nullable Condition condition) {
         super(manager);
         this.dbContext = Objects.requireNonNull(dbContext);
         this.condition = condition;

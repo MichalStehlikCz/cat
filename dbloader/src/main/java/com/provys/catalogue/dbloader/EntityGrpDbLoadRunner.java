@@ -5,7 +5,7 @@ import com.provys.catalogue.dbloader.db.tables.records.KerEntitygrpTbRecord;
 import com.provys.catalogue.impl.EntityGrpManagerImpl;
 import com.provys.catalogue.impl.EntityGrpProxy;
 import com.provys.catalogue.impl.EntityGrpValue;
-import com.provys.provysdb.ProvysDBContext;
+import com.provys.provysdb.ProvysDbContext;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
 import org.jooq.Condition;
 import org.jooq.impl.DSL;
@@ -21,11 +21,11 @@ import static com.provys.catalogue.dbloader.db.Tables.KER_ENTITYGRP_TB;
 class EntityGrpDbLoadRunner extends ProvysObjectLoadRunner<EntityGrp, EntityGrpValue, EntityGrpProxy, EntityGrpManagerImpl, KerEntitygrpTbRecord> {
 
     @Nonnull
-    private final ProvysDBContext dbContext;
+    private final ProvysDbContext dbContext;
     @Nullable
     private final Condition condition;
 
-    EntityGrpDbLoadRunner(EntityGrpManagerImpl manager, ProvysDBContext dbContext, @Nullable Condition condition) {
+    EntityGrpDbLoadRunner(EntityGrpManagerImpl manager, ProvysDbContext dbContext, @Nullable Condition condition) {
         super(manager);
         this.dbContext = Objects.requireNonNull(dbContext);
         this.condition = condition;

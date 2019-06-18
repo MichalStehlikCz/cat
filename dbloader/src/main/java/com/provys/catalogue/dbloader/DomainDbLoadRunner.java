@@ -5,7 +5,7 @@ import com.provys.catalogue.dbloader.db.tables.records.KerDomainTbRecord;
 import com.provys.catalogue.impl.DomainManagerImpl;
 import com.provys.catalogue.impl.DomainProxy;
 import com.provys.catalogue.impl.DomainValue;
-import com.provys.provysdb.ProvysDBContext;
+import com.provys.provysdb.ProvysDbContext;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
 import org.jooq.Condition;
 import org.jooq.impl.DSL;
@@ -22,11 +22,11 @@ class DomainDbLoadRunner
         extends ProvysObjectLoadRunner<Domain, DomainValue, DomainProxy, DomainManagerImpl, KerDomainTbRecord> {
 
     @Nonnull
-    private final ProvysDBContext dbContext;
+    private final ProvysDbContext dbContext;
     @Nullable
     private final Condition condition;
 
-    DomainDbLoadRunner(DomainManagerImpl manager, ProvysDBContext dbContext, @Nullable Condition condition) {
+    DomainDbLoadRunner(DomainManagerImpl manager, ProvysDbContext dbContext, @Nullable Condition condition) {
         super(manager);
         this.dbContext = Objects.requireNonNull(dbContext);
         this.condition = condition;

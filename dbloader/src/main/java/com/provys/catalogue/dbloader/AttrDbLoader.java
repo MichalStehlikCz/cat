@@ -2,7 +2,7 @@ package com.provys.catalogue.dbloader;
 
 import com.provys.catalogue.dbloader.db.tables.records.KerAttrTbRecord;
 import com.provys.catalogue.impl.*;
-import com.provys.provysdb.ProvysDBContext;
+import com.provys.provysdb.ProvysDbContext;
 
 import javax.annotation.Nonnull;
 import javax.enterprise.context.ApplicationScoped;
@@ -16,10 +16,10 @@ import static com.provys.catalogue.dbloader.db.Tables.KER_ATTR_TB;
 public class AttrDbLoader extends AttrLoaderBase<KerAttrTbRecord> {
 
     @Nonnull
-    private final ProvysDBContext dbContext;
+    private final ProvysDbContext dbContext;
 
     @Inject
-    AttrDbLoader(ProvysDBContext dbContext) {
+    AttrDbLoader(ProvysDbContext dbContext) {
         this.dbContext = Objects.requireNonNull(dbContext);
     }
 

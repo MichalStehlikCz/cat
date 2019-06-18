@@ -3,7 +3,7 @@ package com.provys.catalogue.dbloader;
 import com.provys.catalogue.dbloader.db.tables.records.KerDomainTbRecord;
 import com.provys.catalogue.impl.DomainLoaderBase;
 import com.provys.catalogue.impl.DomainManagerImpl;
-import com.provys.provysdb.ProvysDBContext;
+import com.provys.provysdb.ProvysDbContext;
 
 import javax.annotation.Nonnull;
 import javax.enterprise.context.ApplicationScoped;
@@ -17,10 +17,10 @@ import static com.provys.catalogue.dbloader.db.Tables.KER_DOMAIN_TB;
 public class DomainDbLoader extends DomainLoaderBase<KerDomainTbRecord> {
 
     @Nonnull
-    private final ProvysDBContext dbContext;
+    private final ProvysDbContext dbContext;
 
     @Inject
-    DomainDbLoader(ProvysDBContext dbContext) {
+    DomainDbLoader(ProvysDbContext dbContext) {
         this.dbContext = Objects.requireNonNull(dbContext);
     }
 
