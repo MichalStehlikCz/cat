@@ -64,6 +64,8 @@ class AttrDbLoadRunner extends ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy
                 sourceObject.getNameNm(), sourceObject.getName(), sourceObject.getNote(),
                 AttrType.getAttrTypeByCode(sourceObject.getAttrtype()).orElseThrow(
                         () -> new InternalException(LOG,
-                                "Invalid AttrType read from database: " + sourceObject.getAttrtype())));
+                                "Invalid AttrType read from database: " + sourceObject.getAttrtype())),
+                getManager().getRepository().getDomainManager().getById(sourceObject.getDomainId()),
+                sourceObject.getSubdomainNm(), sourceObject.getMandatory().equals("Y"));
     }
 }

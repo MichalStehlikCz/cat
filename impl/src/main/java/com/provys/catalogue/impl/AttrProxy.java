@@ -2,6 +2,7 @@ package com.provys.catalogue.impl;
 
 import com.provys.catalogue.api.Attr;
 import com.provys.catalogue.api.AttrType;
+import com.provys.catalogue.api.Domain;
 import com.provys.catalogue.api.Entity;
 import com.provys.provysobject.impl.ProvysObjectProxyImpl;
 
@@ -62,4 +63,20 @@ public class AttrProxy extends ProvysObjectProxyImpl<Attr, AttrValue, AttrProxy,
         return validateValueObject().getAttrType();
     }
 
+    @Nonnull
+    @Override
+    public Domain getDomain() {
+        return validateValueObject().getDomain();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<String> getSubdomainNm() {
+        return validateValueObject().getSubdomainNm();
+    }
+
+    @Override
+    public boolean getMandatory() {
+        return validateValueObject().getMandatory();
+    }
 }

@@ -1,5 +1,6 @@
 package com.provys.catalogue.impl;
 
+import com.provys.catalogue.api.Entity;
 import com.provys.catalogue.api.EntityGrp;
 import com.provys.provysobject.impl.ProvysNmObjectValue;
 
@@ -19,6 +20,8 @@ public class EntityValue extends ProvysNmObjectValue {
     @Nullable
     private final String table;
     @Nullable
+    private final Entity ancestor;
+    @Nullable
     private final EntityGrp entityGrp;
     @Nullable
     private final String note;
@@ -34,15 +37,17 @@ public class EntityValue extends ProvysNmObjectValue {
     private final String implDoc;
 
     public EntityValue(BigInteger id, String nameNm, String name, boolean custom, boolean used,
-                       boolean objectClass, @Nullable String table, @Nullable EntityGrp entityGrp,
-                       @Nullable String note, @Nullable String customNote, @Nullable String structureDoc,
-                       @Nullable String usageDoc, @Nullable String behaviourDoc, @Nullable String implDoc) {
+                       boolean objectClass, @Nullable String table, @Nullable Entity ancestor,
+                       @Nullable EntityGrp entityGrp, @Nullable String note, @Nullable String customNote,
+                       @Nullable String structureDoc, @Nullable String usageDoc, @Nullable String behaviourDoc,
+                       @Nullable String implDoc) {
         super(id, nameNm);
         this.name = Objects.requireNonNull(name);
         this.custom = custom;
         this.used = used;
         this.objectClass = objectClass;
         this.table = table;
+        this.ancestor = ancestor;
         this.entityGrp = entityGrp;
         this.note = note;
         this.customNote = customNote;
@@ -84,6 +89,22 @@ public class EntityValue extends ProvysNmObjectValue {
     @Nonnull
     Optional<String> getTable() {
         return Optional.ofNullable(table);
+    }
+
+    /**
+     * @return id of entity this entity is specialisation of (attribute ANCESTOR_ID)
+     */
+    @Nonnull
+    Optional<BigInteger> getAncestorId() {
+        return getAncestor().map(Entity::getId);
+    }
+
+    /**
+     * @return entity that is ancestor (superclasss) of this entity (entity with Id ANCESTOR_ID)
+     */
+    @Nonnull
+    Optional<Entity> getAncestor() {
+        return Optional.ofNullable(ancestor);
     }
 
     /**
@@ -162,6 +183,7 @@ public class EntityValue extends ProvysNmObjectValue {
                 isObjectClass() == that.isObjectClass() &&
                 getName().equals(that.getName()) &&
                 Objects.equals(getTable(), that.getTable()) &&
+                Objects.equals(getAncestor(), that.getAncestor()) &&
                 Objects.equals(getEntityGrp(), that.getEntityGrp()) &&
                 Objects.equals(getNote(), that.getNote()) &&
                 Objects.equals(getCustomNote(), that.getCustomNote()) &&
@@ -179,6 +201,7 @@ public class EntityValue extends ProvysNmObjectValue {
                 ", used=" + used +
                 ", objectClass=" + objectClass +
                 ", table='" + table + '\'' +
+                ", ancestor=" + ancestor +
                 ", entityGrp=" + entityGrp +
                 ", note='" + note + '\'' +
                 ", customNote='" + customNote + '\'' +

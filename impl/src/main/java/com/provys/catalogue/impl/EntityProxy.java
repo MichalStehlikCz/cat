@@ -62,6 +62,18 @@ public class EntityProxy
 
     @Nonnull
     @Override
+    public Optional<BigInteger> getAncestorId() {
+        return validateValueObject().getAncestorId();
+    }
+
+    @Nonnull
+    @Override
+    public Optional<Entity> getAncestor() {
+        return validateValueObject().getAncestor();
+    }
+
+    @Nonnull
+    @Override
     public Optional<BigInteger> getEntityGrpId() {
         return validateValueObject().getEntityGrpId();
     }

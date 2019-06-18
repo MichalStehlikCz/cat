@@ -43,4 +43,21 @@ public interface Attr extends ProvysObject {
      */
     @Nonnull
     AttrType getAttrType();
+
+    /**
+     * @return domain of attribute
+     */
+    @Nonnull
+    Domain getDomain();
+
+    /**
+     * @return subdomain of attribute
+     */
+    @Nonnull
+    Optional<String> getSubdomainNm();
+
+    /**
+     * @return mandatory flag of attribute
+     */
+    boolean getMandatory();
 }

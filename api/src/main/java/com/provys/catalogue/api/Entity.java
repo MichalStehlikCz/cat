@@ -39,6 +39,18 @@ public interface Entity extends ProvysNmObject, Comparable<Entity> {
     Optional<String> getTable();
 
     /**
+     * @return id of entity that is ancestor (parent) of this entity (attribute ANCESTOR_ID)
+     */
+    @Nonnull
+    Optional<BigInteger> getAncestorId();
+
+    /**
+     * @return entity that is ancestor (superclass) of this entity (entity with Id ANCESTOR_ID)
+     */
+    @Nonnull
+    Optional<Entity> getAncestor();
+
+    /**
      * @return id of entity group this entity belongs to (attribute ENTITYGRP_ID)
      */
     @Nonnull

@@ -56,8 +56,9 @@ class EntityDbLoadRunner extends ProvysObjectLoadRunner<Entity, EntityValue, Ent
         return new EntityValue(sourceObject.getEntityId(), sourceObject.getNameNm(), sourceObject.getName(),
                 sourceObject.getIscustom().equals("Y"), sourceObject.getIsused().equals("Y"),
                 sourceObject.getObjectclass().equals("Y"), sourceObject.getTableNm(),
+                (sourceObject.getAncestorId() == null) ? null : getManager().getOrAddById(sourceObject.getAncestorId()),
                 (sourceObject.getEntitygrpId() == null) ? null :
-                        getManager().getRepository().getEntityGrpManager().getById(sourceObject.getEntitygrpId()),
+                        getManager().getRepository().getEntityGrpManager().getOrAddById(sourceObject.getEntitygrpId()),
                 sourceObject.getNote(), sourceObject.getCustomnote(), sourceObject.getStructuredoc(),
                 sourceObject.getUsagedoc(), sourceObject.getBehaviourdoc(), sourceObject.getImpldoc());
     }

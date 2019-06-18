@@ -1,6 +1,7 @@
 package com.provys.catalogue.impl;
 
 import com.provys.catalogue.api.AttrType;
+import com.provys.catalogue.api.Domain;
 import com.provys.catalogue.api.Entity;
 import com.provys.provysobject.impl.ProvysObjectValue;
 
@@ -22,8 +23,14 @@ public class AttrValue extends ProvysObjectValue {
     private final String note;
     @Nonnull
     private final AttrType attrType;
+    @Nonnull
+    private final Domain domain;
+    @Nullable
+    private final String subdomainNm;
+    private final boolean mandatory;
 
-    public AttrValue(BigInteger id, Entity entity, String nameNm, String name, @Nullable String note, AttrType attrType)
+    public AttrValue(BigInteger id, Entity entity, String nameNm, String name, @Nullable String note, AttrType attrType,
+                     Domain domain, @Nullable String subdomainNm, boolean mandatory)
     {
         super(id);
         this.entity = entity;
@@ -31,6 +38,9 @@ public class AttrValue extends ProvysObjectValue {
         this.name = name;
         this.note = note;
         this.attrType = attrType;
+        this.domain = domain;
+        this.subdomainNm = subdomainNm;
+        this.mandatory = mandatory;
     }
 
     @Nonnull
@@ -78,6 +88,30 @@ public class AttrValue extends ProvysObjectValue {
         return attrType;
     }
 
+    /**
+     * @return domain of attribute (domain referenced by attribute DOMAIN_ID)
+     */
+    @Nonnull
+    Domain getDomain() {
+        return domain;
+    }
+
+    /**
+     * @return subdomain of attribute (attribute SUBDOMAIN_NM)
+     */
+    @Nonnull
+    Optional<String> getSubdomainNm() {
+        return Optional.ofNullable(subdomainNm);
+    }
+
+    /**
+     * @return flag indicating if attribute is mandatory (attribute MANDATORY)
+     */
+    @Nonnull
+    boolean getMandatory() {
+        return mandatory;
+    }
+
     @Override
     @SuppressWarnings("squid:S1206") // using Id for hashing is sufficient
     public boolean equals(Object o) {
@@ -89,6 +123,9 @@ public class AttrValue extends ProvysObjectValue {
                 getNameNm().equals(attrValue.getNameNm()) &&
                 getName().equals(attrValue.getName()) &&
                 Objects.equals(getNote(), attrValue.getNote()) &&
-                getAttrType() == attrValue.getAttrType();
+                getAttrType() == attrValue.getAttrType() &&
+                getDomain().equals(attrValue.getDomain()) &&
+                Objects.equals(getSubdomainNm(), attrValue.getSubdomainNm()) &&
+                getMandatory() == attrValue.getMandatory();
     }
 }
