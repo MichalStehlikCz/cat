@@ -4,6 +4,7 @@ import com.provys.provysobject.ProvysObject;
 
 import javax.annotation.Nonnull;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Optional;
 
 public interface AttrGrp extends ProvysObject, Comparable<AttrGrp> {
@@ -43,4 +44,9 @@ public interface AttrGrp extends ProvysObject, Comparable<AttrGrp> {
     @Nonnull
     Optional<String> getNote();
 
+    /**
+     * @return list of groups attributes
+     */
+    @Nonnull
+    Collection<Attr> getAttrs();
 }

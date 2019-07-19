@@ -6,15 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="catalogue-api" />
         <module name="Catalogue-API" />
         <module name="Catalogue-DbLoader" />
+        <module name="catalogue-dbloader" />
         <module name="Catalogue-Impl" />
+        <module name="catalogue-impl" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Catalogue" target="11" />
+      <module name="Catalogue" target="1.5" />
       <module name="Catalogue-API" target="11" />
+      <module name="catalogue-api" target="11" />
       <module name="Catalogue-DbLoader" target="11" />
+      <module name="catalogue-dbloader" target="11" />
+      <module name="catalogue-impl" target="11" />
       <module name="Catalogue-Impl" target="11" />
     </bytecodeTargetLevel>
   </component>

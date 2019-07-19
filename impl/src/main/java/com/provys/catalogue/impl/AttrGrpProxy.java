@@ -1,12 +1,13 @@
 package com.provys.catalogue.impl;
 
+import com.provys.catalogue.api.Attr;
 import com.provys.catalogue.api.AttrGrp;
 import com.provys.catalogue.api.Entity;
 import com.provys.provysobject.impl.ProvysObjectProxyImpl;
 
 import javax.annotation.Nonnull;
 import java.math.BigInteger;
-import java.util.Comparator;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -62,6 +63,12 @@ public class AttrGrpProxy extends ProvysObjectProxyImpl<AttrGrp, AttrGrpValue, A
     @Override
     public Optional<String> getNote() {
         return validateValueObject().getNote();
+    }
+
+    @Override
+    @Nonnull
+    public Collection<Attr> getAttrs() {
+        return getManager().getRepository().getAttrManager().getByAttrGrpId(getId());
     }
 
     @Override

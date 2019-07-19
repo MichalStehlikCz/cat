@@ -37,4 +37,14 @@ public interface AttrManager extends ProvysObjectManager<Attr> {
      */
     @Nonnull
     Optional<Attr> getByEntityIdNameNmIfExists(BigInteger entityId, String nameNm);
+
+    /**
+     * Get collection of attributes belonging to specified attribute group.
+     *
+     * @param attrGrpId is Id of group attributes should belong to
+     * @return collection of attributes belonging to given attribute group
+     */
+    @Nonnull
+    Collection<Attr> getByAttrGrpId(BigInteger attrGrpId);
+
 }

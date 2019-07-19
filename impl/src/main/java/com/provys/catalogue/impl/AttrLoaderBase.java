@@ -25,4 +25,15 @@ public abstract class AttrLoaderBase<S> extends ProvysObjectLoaderImpl<Attr, Att
         LOG.info("Load ATTR by entity Id {}", entityId);
         return getLoadRunnerByEntityId(manager, entityId).run();
     }
+
+    @SuppressWarnings("WeakerAccess") // method overridden in loaders in other packages
+    @Nonnull
+    protected abstract ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy, AttrManagerImpl, S>
+    getLoadRunnerByAttrGrpId(AttrManagerImpl manager, BigInteger attrGrpId);
+
+    @Override
+    public Collection<AttrProxy> loadByAttrGrpId(AttrManagerImpl manager, BigInteger attrGrpId) {
+        LOG.info("Load ATTR by attribute group Id {}", attrGrpId);
+        return getLoadRunnerByAttrGrpId(manager, attrGrpId).run();
+    }
 }

@@ -55,7 +55,9 @@ class EntityDbLoadRunner extends ProvysObjectLoadRunner<Entity, EntityValue, Ent
     protected EntityValue createValueObject(KerEntityTbRecord sourceObject) {
         return new EntityValue(sourceObject.getEntityId(), sourceObject.getNameNm(), sourceObject.getName(),
                 sourceObject.getIscustom().equals("Y"), sourceObject.getIsused().equals("Y"),
-                sourceObject.getObjectclass().equals("Y"), sourceObject.getTableNm(),
+                sourceObject.getObjectclass().equals("Y"), sourceObject.getTableNm(), sourceObject.getViewNm(),
+                sourceObject.getPgpackageNm(), sourceObject.getCppackageNm(), sourceObject.getEppackageNm(),
+                sourceObject.getFppackageNm(),
                 (sourceObject.getAncestorId() == null) ? null : getManager().getOrAddById(sourceObject.getAncestorId()),
                 (sourceObject.getEntitygrpId() == null) ? null :
                         getManager().getRepository().getEntityGrpManager().getOrAddById(sourceObject.getEntitygrpId()),

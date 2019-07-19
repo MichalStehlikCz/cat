@@ -31,6 +31,12 @@ public class AttrDbLoader extends AttrLoaderBase<KerAttrTbRecord> {
 
     @Nonnull
     @Override
+    protected AttrDbLoadRunner getLoadRunnerByAttrGrpId(AttrManagerImpl attrManager, BigInteger attrGrpId) {
+        return new AttrDbLoadRunner(attrManager, dbContext, KER_ATTR_TB.ATTRGRP_ID.eq(attrGrpId));
+    }
+
+    @Nonnull
+    @Override
     protected AttrDbLoadRunner getLoadRunnerById(AttrManagerImpl attrManager, BigInteger id) {
         return new AttrDbLoadRunner(attrManager, dbContext, KER_ATTR_TB.ATTR_ID.eq(id));
     }

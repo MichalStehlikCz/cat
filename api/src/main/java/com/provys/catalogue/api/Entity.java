@@ -4,6 +4,7 @@ import com.provys.provysobject.ProvysNmObject;
 
 import javax.annotation.Nonnull;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -37,6 +38,36 @@ public interface Entity extends ProvysNmObject, Comparable<Entity> {
      */
     @Nonnull
     Optional<String> getTable();
+
+    /**
+     * @return view used to access objects of this type (attribute VIEW_NM)
+     */
+    @Nonnull
+    Optional<String> getView();
+
+    /**
+     * @return PG package used to manipulate objects of this type (attribute PGPACKAGE_NM)
+     */
+    @Nonnull
+    Optional<String> getPgPackage();
+
+    /**
+     * @return CP package used to manipulate objects of this type (attribute CPPACKAGE_NM)
+     */
+    @Nonnull
+    Optional<String> getCpPackage();
+
+    /**
+     * @return Ep package used to access objects of this type (attribute EPPACKAGE_NM)
+     */
+    @Nonnull
+    Optional<String> getEpPackage();
+
+    /**
+     * @return FP package used to access objects of this type (attribute FPPACKAGE_NM)
+     */
+    @Nonnull
+    Optional<String> getFpPackage();
 
     /**
      * @return id of entity that is ancestor (parent) of this entity (attribute ANCESTOR_ID)
@@ -97,4 +128,16 @@ public interface Entity extends ProvysNmObject, Comparable<Entity> {
      */
     @Nonnull
     Optional<String> getImplDoc();
+
+    /**
+     * @return list of entity attribute groups
+     */
+    @Nonnull
+    Collection<AttrGrp> getAttrGrps();
+
+    /**
+     * @return list of entity attributes
+     */
+    @Nonnull
+    Collection<Attr> getAttrs();
 }

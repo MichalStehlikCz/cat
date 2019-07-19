@@ -24,14 +24,18 @@ public class AttrManagerImpl extends ProvysObjectManagerImpl<CatalogueRepository
     private final IndexUnique<AttrValue, AttrProxy, IdNameNmPair> attrByEntityIdAndNameNm;
     @Nonnull
     private final IndexNonUnique<AttrValue, AttrProxy, BigInteger> attrByEntityId;
+    @Nonnull
+    private final IndexNonUnique<AttrValue, AttrProxy, BigInteger> attrByAttrGrpId;
 
     AttrManagerImpl(CatalogueRepositoryImpl repository, AttrLoader loader, int initialCapacity) {
-        super(repository, loader, initialCapacity, 2);
+        super(repository, loader, initialCapacity, 3);
         attrByEntityIdAndNameNm = new IndexUnique<>("attrByEntityIdAndNameNm",
                 val -> new IdNameNmPair(val.getEntityId(), val.getNameNm()), 100);
         addIndex(attrByEntityIdAndNameNm);
         attrByEntityId = new IndexNonUnique<>("attrByEntityId", AttrValue::getEntityId);
         addIndex(attrByEntityId);
+        attrByAttrGrpId = new IndexNonUnique<>("attrByAttrGrpId", attrId -> attrId.getAttrGrpId().orElse(null));
+        addIndex(attrByAttrGrpId);
     }
 
     @Nonnull
@@ -55,6 +59,19 @@ public class AttrManagerImpl extends ProvysObjectManagerImpl<CatalogueRepository
             getRepository().getEntityManager().getById(entityId);
             attrs = getLoader().loadByEntityId(this, entityId);
             attrByEntityId.set(entityId, attrs);
+        }
+        return Collections.unmodifiableCollection(attrs);
+    }
+
+    @Nonnull
+    @Override
+    public Collection<Attr> getByAttrGrpId(BigInteger attrGrpId) {
+        var attrs = attrByAttrGrpId.get(attrGrpId).orElse(null);
+        if (attrs == null) {
+            // check if Id is valid entity Id
+            getRepository().getAttrGrpManager().getById(attrGrpId);
+            attrs = getLoader().loadByAttrGrpId(this, attrGrpId);
+            attrByAttrGrpId.set(attrGrpId, attrs);
         }
         return Collections.unmodifiableCollection(attrs);
     }

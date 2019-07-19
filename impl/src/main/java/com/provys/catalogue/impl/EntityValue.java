@@ -20,6 +20,16 @@ public class EntityValue extends ProvysNmObjectValue {
     @Nullable
     private final String table;
     @Nullable
+    private final String view;
+    @Nullable
+    private final String pgPackage;
+    @Nullable
+    private final String cpPackage;
+    @Nullable
+    private final String epPackage;
+    @Nullable
+    private final String fpPackage;
+    @Nullable
     private final Entity ancestor;
     @Nullable
     private final EntityGrp entityGrp;
@@ -37,16 +47,22 @@ public class EntityValue extends ProvysNmObjectValue {
     private final String implDoc;
 
     public EntityValue(BigInteger id, String nameNm, String name, boolean custom, boolean used,
-                       boolean objectClass, @Nullable String table, @Nullable Entity ancestor,
-                       @Nullable EntityGrp entityGrp, @Nullable String note, @Nullable String customNote,
-                       @Nullable String structureDoc, @Nullable String usageDoc, @Nullable String behaviourDoc,
-                       @Nullable String implDoc) {
+                       boolean objectClass, @Nullable String table, @Nullable String view, @Nullable String pgPackage,
+                       @Nullable String cpPackage, @Nullable String epPackage, @Nullable String fpPackage,
+                       @Nullable Entity ancestor, @Nullable EntityGrp entityGrp, @Nullable String note,
+                       @Nullable String customNote, @Nullable String structureDoc, @Nullable String usageDoc,
+                       @Nullable String behaviourDoc, @Nullable String implDoc) {
         super(id, nameNm);
         this.name = Objects.requireNonNull(name);
         this.custom = custom;
         this.used = used;
         this.objectClass = objectClass;
         this.table = table;
+        this.view = view;
+        this.pgPackage = pgPackage;
+        this.cpPackage = cpPackage;
+        this.epPackage = epPackage;
+        this.fpPackage = fpPackage;
         this.ancestor = ancestor;
         this.entityGrp = entityGrp;
         this.note = note;
@@ -89,6 +105,46 @@ public class EntityValue extends ProvysNmObjectValue {
     @Nonnull
     Optional<String> getTable() {
         return Optional.ofNullable(table);
+    }
+
+    /**
+     * @return view used to access objects of this type (attribute VIEW_NM)
+     */
+    @Nonnull
+    Optional<String> getView() {
+        return Optional.ofNullable(view);
+    }
+
+    /**
+     * @return PG package used to manipulate objects of this type (attribute PGPACKAGE_NM)
+     */
+    @Nonnull
+    Optional<String> getPgPackage() {
+        return Optional.ofNullable(pgPackage);
+    }
+
+    /**
+     * @return CP package used to manipulate objects of this type (attribute CPPACKAGE_NM)
+     */
+    @Nonnull
+    Optional<String> getCpPackage() {
+        return Optional.ofNullable(cpPackage);
+    }
+
+    /**
+     * @return Ep package used to access objects of this type (attribute EPPACKAGE_NM)
+     */
+    @Nonnull
+    Optional<String> getEpPackage() {
+        return Optional.ofNullable(epPackage);
+    }
+
+    /**
+     * @return FP package used to access objects of this type (attribute FPPACKAGE_NM)
+     */
+    @Nonnull
+    Optional<String> getFpPackage() {
+        return Optional.ofNullable(fpPackage);
     }
 
     /**

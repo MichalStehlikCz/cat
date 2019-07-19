@@ -9,4 +9,5 @@ import java.util.Collection;
 public interface AttrLoader extends ProvysObjectLoader<Attr, AttrValue, AttrProxy, AttrManagerImpl> {
 
     Collection<AttrProxy> loadByEntityId(AttrManagerImpl manager, BigInteger entityId);
+    Collection<AttrProxy> loadByAttrGrpId(AttrManagerImpl manager, BigInteger attrGrpId);
 }

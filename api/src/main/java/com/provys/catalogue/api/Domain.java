@@ -4,7 +4,6 @@ import com.provys.provysobject.ProvysNmObject;
 
 import javax.annotation.Nonnull;
 import java.util.Optional;
-import java.util.OptionalInt;
 
 public interface Domain extends ProvysNmObject {
     /**
@@ -70,4 +69,10 @@ public interface Domain extends ProvysNmObject {
      * ALLOWED)
      */
     boolean isAllowed();
+
+    /**
+     * Return Java class this domain is mapped to in StehlaVys framework
+     */
+    @Nonnull
+    Class<?> getImplementingClass(boolean optional);
 }
