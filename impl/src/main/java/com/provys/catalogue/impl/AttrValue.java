@@ -6,6 +6,7 @@ import com.provys.provysobject.impl.ProvysObjectValue;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -17,6 +18,8 @@ public class AttrValue extends ProvysObjectValue {
     private final String nameNm;
     @Nonnull
     private final String name;
+    @Nullable
+    private final String properNameRoot;
     @Nullable
     private final AttrGrp attrGrp;
     private final int ord;
@@ -32,14 +35,15 @@ public class AttrValue extends ProvysObjectValue {
     @Nullable
     private final String defValue;
 
-    public AttrValue(BigInteger id, Entity entity, String nameNm, String name, @Nullable AttrGrp attrGrp, int ord,
-                     @Nullable String note, AttrType attrType, Domain domain, @Nullable String subdomainNm,
-                     boolean mandatory, @Nullable String defValue)
+    public AttrValue(BigInteger id, Entity entity, String nameNm, String name, @Nullable String properNameRoot,
+                     @Nullable AttrGrp attrGrp, int ord, @Nullable String note, AttrType attrType, Domain domain,
+                     @Nullable String subdomainNm, boolean mandatory, @Nullable String defValue)
     {
         super(id);
         this.entity = Objects.requireNonNull(entity);
         this.nameNm = Objects.requireNonNull(nameNm);
         this.name = Objects.requireNonNull(name);
+        this.properNameRoot = properNameRoot;
         this.attrGrp = attrGrp;
         this.ord = ord;
         this.note = note;
@@ -80,6 +84,47 @@ public class AttrValue extends ProvysObjectValue {
     @Nonnull
     String getName() {
         return name;
+    }
+
+    /**
+     * @return root of propername of attribute (attribute PROPERNAMEROOT)
+     */
+    @Nonnull
+    Optional<String> getProperNameRoot() {
+        return Optional.ofNullable(properNameRoot);
+    }
+
+    /**
+     * @return name of attribute for use in Java (camelcase, derived from propername)
+     */
+    @Nonnull
+    String getJavaName() {
+        String[] parts = nameNm.split("\\.");
+        int index = 0;
+        var builder = new StringBuilder();
+        if (parts[index].length() == 1) {
+            builder.append(parts[index].toLowerCase());
+            index++;
+        }
+        if (parts.length > index) {
+            if (parts[index].equalsIgnoreCase(properNameRoot)) {
+                builder.append(properNameRoot);
+            } else {
+                if (index == 0) {
+                    builder.append(parts[index].toLowerCase());
+                } else {
+                    builder.append(Character.toUpperCase(parts[index].charAt(0)))
+                            .append(parts[index].substring(1).toLowerCase());
+                }
+            }
+            index++;
+        }
+        while (parts.length > index) {
+            builder.append(Character.toUpperCase(parts[index].charAt(0)))
+                    .append(parts[index].substring(1).toLowerCase());
+            index++;
+        }
+        return builder.toString();
     }
 
     /**

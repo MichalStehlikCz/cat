@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class KerEntityTb extends TableImpl<KerEntityTbRecord> {
 
-    private static final long serialVersionUID = -1864435410;
+    private static final long serialVersionUID = -701205718;
 
     /**
      * The reference instance of <code>KER.KER_ENTITY_TB</code>
@@ -409,6 +409,11 @@ M - manually processed - import procedure doesn't exist, still these items are t
      * The column <code>KER.KER_ENTITY_TB.INCOMPLETEKEY</code>. Entity does not have natural key. The pseudo natural key will be generated
      */
     public final TableField<KerEntityTbRecord, String> INCOMPLETEKEY = createField("INCOMPLETEKEY", org.jooq.impl.SQLDataType.CHAR(1).nullable(false).defaultValue(org.jooq.impl.DSL.field("'N'\n  ", org.jooq.impl.SQLDataType.CHAR)), this, "Entity does not have natural key. The pseudo natural key will be generated");
+
+    /**
+     * The column <code>KER.KER_ENTITY_TB.PROPERNAME</code>.
+     */
+    public final TableField<KerEntityTbRecord, String> PROPERNAME = createField("PROPERNAME", org.jooq.impl.SQLDataType.VARCHAR(20), this, "");
 
     /**
      * Create a <code>KER.KER_ENTITY_TB</code> table reference

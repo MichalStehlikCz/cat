@@ -28,7 +28,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class KerAttrTbRecord extends UpdatableRecordImpl<KerAttrTbRecord> {
 
-    private static final long serialVersionUID = -153157787;
+    private static final long serialVersionUID = -54512380;
 
     /**
      * Setter for <code>KER.KER_ATTR_TB.ATTR_ID</code>.
@@ -797,28 +797,28 @@ Ordering is used for generate
     }
 
     /**
-     * Setter for <code>KER.KER_ATTR_TB.ISINTABLE</code>. Attribute is implemented in table of this Entity
+     * Setter for <code>KER.KER_ATTR_TB.ISINTABLE</code>. Attribute is stored in table belonging to this entity.
      */
     public void setIsintable(String value) {
         set(54, value);
     }
 
     /**
-     * Getter for <code>KER.KER_ATTR_TB.ISINTABLE</code>. Attribute is implemented in table of this Entity
+     * Getter for <code>KER.KER_ATTR_TB.ISINTABLE</code>. Attribute is stored in table belonging to this entity.
      */
     public String getIsintable() {
         return (String) get(54);
     }
 
     /**
-     * Setter for <code>KER.KER_ATTR_TB.ISOWN</code>. Attribute is not inherited
+     * Setter for <code>KER.KER_ATTR_TB.ISOWN</code>. Attribute is not inherited / its logic is defined on this level.
      */
     public void setIsown(String value) {
         set(55, value);
     }
 
     /**
-     * Getter for <code>KER.KER_ATTR_TB.ISOWN</code>. Attribute is not inherited
+     * Getter for <code>KER.KER_ATTR_TB.ISOWN</code>. Attribute is not inherited / its logic is defined on this level.
      */
     public String getIsown() {
         return (String) get(55);
@@ -964,6 +964,20 @@ Ordering is used for generate
         return (BigDecimal) get(65);
     }
 
+    /**
+     * Setter for <code>KER.KER_ATTR_TB.PROPERNAMEROOT</code>. Root of proper-case name of attribute, used in geenrator to construct names of parameters etc.
+     */
+    public void setPropernameroot(String value) {
+        set(66, value);
+    }
+
+    /**
+     * Getter for <code>KER.KER_ATTR_TB.PROPERNAMEROOT</code>. Root of proper-case name of attribute, used in geenrator to construct names of parameters etc.
+     */
+    public String getPropernameroot() {
+        return (String) get(66);
+    }
+
     // -------------------------------------------------------------------------
     // Primary key information
     // -------------------------------------------------------------------------
@@ -990,7 +1004,7 @@ Ordering is used for generate
     /**
      * Create a detached, initialised KerAttrTbRecord
      */
-    public KerAttrTbRecord(BigInteger attrId, BigInteger entityId, String nameNm, String name, String note, String attrtype, String iscustom, String isused, BigInteger attrgrpId, Integer ord, BigInteger domainId, String subdomainNm, String qvisible, Integer llength, String indexed, String upnameNm, String readonly, BigInteger getoptypeId, BigInteger setoptypeId, BigInteger resetoptypeId, String confirmother, BigInteger setotheroptypeId, String multivalue, String logallowed, String loglevel, String dicttype, String dictdel1, String dictdel2, String tbcodeCd, String accountruleNm, BigInteger accdocobjectformulaId, BigInteger ownerformulaId, BigInteger fromobjectformulaId, BigInteger toobjectformulaId, String approxrecord, String valueaccountNm, String valueamounttype, String defowner, BigInteger textsrcId, String documentation, Integer bitmapord, String xIsflagdepbind, String xIsflagdefattr, String mandatory, String copied, String defvalue, String ordered, String ordgroup, String gencopy, String genmove, String gendelete, String hierarchical, String multicreate, String validated, String isintable, String isown, Integer keyord, BigInteger optypetypeRf, BigInteger imgsrcId, Integer imgwidth, Integer imgheight, BigInteger fileserverId, String genmigr, String evalcvalue, BigDecimal optloblimit, BigDecimal manloblimit) {
+    public KerAttrTbRecord(BigInteger attrId, BigInteger entityId, String nameNm, String name, String note, String attrtype, String iscustom, String isused, BigInteger attrgrpId, Integer ord, BigInteger domainId, String subdomainNm, String qvisible, Integer llength, String indexed, String upnameNm, String readonly, BigInteger getoptypeId, BigInteger setoptypeId, BigInteger resetoptypeId, String confirmother, BigInteger setotheroptypeId, String multivalue, String logallowed, String loglevel, String dicttype, String dictdel1, String dictdel2, String tbcodeCd, String accountruleNm, BigInteger accdocobjectformulaId, BigInteger ownerformulaId, BigInteger fromobjectformulaId, BigInteger toobjectformulaId, String approxrecord, String valueaccountNm, String valueamounttype, String defowner, BigInteger textsrcId, String documentation, Integer bitmapord, String xIsflagdepbind, String xIsflagdefattr, String mandatory, String copied, String defvalue, String ordered, String ordgroup, String gencopy, String genmove, String gendelete, String hierarchical, String multicreate, String validated, String isintable, String isown, Integer keyord, BigInteger optypetypeRf, BigInteger imgsrcId, Integer imgwidth, Integer imgheight, BigInteger fileserverId, String genmigr, String evalcvalue, BigDecimal optloblimit, BigDecimal manloblimit, String propernameroot) {
         super(KerAttrTb.KER_ATTR_TB);
 
         set(0, attrId);
@@ -1059,5 +1073,6 @@ Ordering is used for generate
         set(63, evalcvalue);
         set(64, optloblimit);
         set(65, manloblimit);
+        set(66, propernameroot);
     }
 }

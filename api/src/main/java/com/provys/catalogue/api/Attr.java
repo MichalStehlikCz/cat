@@ -33,6 +33,18 @@ public interface Attr extends ProvysObject, Comparable<Attr> {
     String getName();
 
     /**
+     * @return root of propername of attribute (attribute PROPERNAMEROOT)
+     */
+    @Nonnull
+    Optional<String> getProperNameRoot();
+
+    /**
+     * @return name of attribute for use in Java (camelcase, derived from propername)
+     */
+    @Nonnull
+    String getJavaName();
+
+    /**
      * @return attribute group UID (attribute ATTRGRP_ID)
      */
     @Nonnull

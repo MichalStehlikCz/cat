@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class KerAttrTb extends TableImpl<KerAttrTbRecord> {
 
-    private static final long serialVersionUID = 952827626;
+    private static final long serialVersionUID = 1188756489;
 
     /**
      * The reference instance of <code>KER.KER_ATTR_TB</code>
@@ -333,14 +333,14 @@ Ordering is used for generate
     public final TableField<KerAttrTbRecord, String> VALIDATED = createField("VALIDATED", org.jooq.impl.SQLDataType.CHAR(1).nullable(false).defaultValue(org.jooq.impl.DSL.field("'N' ", org.jooq.impl.SQLDataType.CHAR)), this, "Specifies if validation is supported for given attribute. Is used by client to determine if editation in validate edit should be allowed when this attribute is used as format, or if seelction through LOV is required.");
 
     /**
-     * The column <code>KER.KER_ATTR_TB.ISINTABLE</code>. Attribute is implemented in table of this Entity
+     * The column <code>KER.KER_ATTR_TB.ISINTABLE</code>. Attribute is stored in table belonging to this entity.
      */
-    public final TableField<KerAttrTbRecord, String> ISINTABLE = createField("ISINTABLE", org.jooq.impl.SQLDataType.CHAR(1).nullable(false).defaultValue(org.jooq.impl.DSL.field("'N' ", org.jooq.impl.SQLDataType.CHAR)), this, "Attribute is implemented in table of this Entity");
+    public final TableField<KerAttrTbRecord, String> ISINTABLE = createField("ISINTABLE", org.jooq.impl.SQLDataType.CHAR(1).nullable(false).defaultValue(org.jooq.impl.DSL.field("'N' ", org.jooq.impl.SQLDataType.CHAR)), this, "Attribute is stored in table belonging to this entity.");
 
     /**
-     * The column <code>KER.KER_ATTR_TB.ISOWN</code>. Attribute is not inherited
+     * The column <code>KER.KER_ATTR_TB.ISOWN</code>. Attribute is not inherited / its logic is defined on this level.
      */
-    public final TableField<KerAttrTbRecord, String> ISOWN = createField("ISOWN", org.jooq.impl.SQLDataType.CHAR(1).nullable(false).defaultValue(org.jooq.impl.DSL.field("'N' ", org.jooq.impl.SQLDataType.CHAR)), this, "Attribute is not inherited");
+    public final TableField<KerAttrTbRecord, String> ISOWN = createField("ISOWN", org.jooq.impl.SQLDataType.CHAR(1).nullable(false).defaultValue(org.jooq.impl.DSL.field("'N' ", org.jooq.impl.SQLDataType.CHAR)), this, "Attribute is not inherited / its logic is defined on this level.");
 
     /**
      * The column <code>KER.KER_ATTR_TB.KEYORD</code>. Order of given attribute in key of given entity
@@ -391,6 +391,11 @@ Ordering is used for generate
      * The column <code>KER.KER_ATTR_TB.MANLOBLIMIT</code>. Mandatory limit for length of lob free atribute. It show error. The limit is in bytes.
      */
     public final TableField<KerAttrTbRecord, BigDecimal> MANLOBLIMIT = createField("MANLOBLIMIT", org.jooq.impl.SQLDataType.NUMERIC, this, "Mandatory limit for length of lob free atribute. It show error. The limit is in bytes.");
+
+    /**
+     * The column <code>KER.KER_ATTR_TB.PROPERNAMEROOT</code>. Root of proper-case name of attribute, used in geenrator to construct names of parameters etc.
+     */
+    public final TableField<KerAttrTbRecord, String> PROPERNAMEROOT = createField("PROPERNAMEROOT", org.jooq.impl.SQLDataType.VARCHAR(100), this, "Root of proper-case name of attribute, used in geenrator to construct names of parameters etc.");
 
     /**
      * Create a <code>KER.KER_ATTR_TB</code> table reference

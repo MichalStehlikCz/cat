@@ -27,7 +27,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class KerEntityTbRecord extends UpdatableRecordImpl<KerEntityTbRecord> {
 
-    private static final long serialVersionUID = 1240440134;
+    private static final long serialVersionUID = -1206412067;
 
     /**
      * Setter for <code>KER.KER_ENTITY_TB.ENTITY_ID</code>. UID
@@ -1009,6 +1009,20 @@ M - manually processed - import procedure doesn't exist, still these items are t
         return (String) get(67);
     }
 
+    /**
+     * Setter for <code>KER.KER_ENTITY_TB.PROPERNAME</code>.
+     */
+    public void setPropername(String value) {
+        set(68, value);
+    }
+
+    /**
+     * Getter for <code>KER.KER_ENTITY_TB.PROPERNAME</code>.
+     */
+    public String getPropername() {
+        return (String) get(68);
+    }
+
     // -------------------------------------------------------------------------
     // Primary key information
     // -------------------------------------------------------------------------
@@ -1035,7 +1049,7 @@ M - manually processed - import procedure doesn't exist, still these items are t
     /**
      * Create a detached, initialised KerEntityTbRecord
      */
-    public KerEntityTbRecord(BigInteger entityId, String nameNm, String name, String xUpname, String iscustom, String isused, String objectclass, String tableNm, String viewNm, String keyNm, String texttableNm, String textviewNm, String textkeyNm, String textall, String getrightcustom, BigInteger getoptypeId, BigInteger getrightrestrId, Integer keepdeleted, Long xNotifyattr0, Long xNotifyattr1, Long xNotifyattr2, Long xNotifyattr3, Long xFlagdefinterest0, Long xFlagdefinterest1, Long xFlagdefinterest2, Long xFlagdefinterest3, Long xDelnotifyattr0, Long xDelnotifyattr1, Long xDelnotifyattr2, Long xDelnotifyattr3, Long xCopiedattr0, Long xCopiedattr1, Long xCopiedattr2, Long xCopiedattr3, String xHasliability, BigInteger ancestorId, String mastertype, BigInteger masterId, String pgpackageNm, String eppackageNm, String cppackageNm, String fppackageNm, BigInteger entitygrpId, String note, String customnote, String structuredoc, String usagedoc, String behaviourdoc, String impldoc, String shortdesc, String longdesc, Long xNotifyattr4, Long xFlagdefinterest4, Long xDelnotifyattr4, Long xCopiedattr4, String userlocktype, String confobj, String basepath, String importtype, String useconfobj, String xUseconfobj, String confobjall, Long xNotifyattr5, Long xFlagdefinterest5, Long xDelnotifyattr5, Long xCopiedattr5, String xHasdelrowflagdef, String incompletekey) {
+    public KerEntityTbRecord(BigInteger entityId, String nameNm, String name, String xUpname, String iscustom, String isused, String objectclass, String tableNm, String viewNm, String keyNm, String texttableNm, String textviewNm, String textkeyNm, String textall, String getrightcustom, BigInteger getoptypeId, BigInteger getrightrestrId, Integer keepdeleted, Long xNotifyattr0, Long xNotifyattr1, Long xNotifyattr2, Long xNotifyattr3, Long xFlagdefinterest0, Long xFlagdefinterest1, Long xFlagdefinterest2, Long xFlagdefinterest3, Long xDelnotifyattr0, Long xDelnotifyattr1, Long xDelnotifyattr2, Long xDelnotifyattr3, Long xCopiedattr0, Long xCopiedattr1, Long xCopiedattr2, Long xCopiedattr3, String xHasliability, BigInteger ancestorId, String mastertype, BigInteger masterId, String pgpackageNm, String eppackageNm, String cppackageNm, String fppackageNm, BigInteger entitygrpId, String note, String customnote, String structuredoc, String usagedoc, String behaviourdoc, String impldoc, String shortdesc, String longdesc, Long xNotifyattr4, Long xFlagdefinterest4, Long xDelnotifyattr4, Long xCopiedattr4, String userlocktype, String confobj, String basepath, String importtype, String useconfobj, String xUseconfobj, String confobjall, Long xNotifyattr5, Long xFlagdefinterest5, Long xDelnotifyattr5, Long xCopiedattr5, String xHasdelrowflagdef, String incompletekey, String propername) {
         super(KerEntityTb.KER_ENTITY_TB);
 
         set(0, entityId);
@@ -1106,5 +1120,6 @@ M - manually processed - import procedure doesn't exist, still these items are t
         set(65, xCopiedattr5);
         set(66, xHasdelrowflagdef);
         set(67, incompletekey);
+        set(68, propername);
     }
 }

@@ -61,8 +61,9 @@ class AttrDbLoadRunner extends ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy
     protected AttrValue createValueObject(KerAttrTbRecord sourceObject) {
         return new AttrValue(sourceObject.getAttrId(),
                 getManager().getRepository().getEntityManager().getOrAddById(sourceObject.getEntityId()),
-                sourceObject.getNameNm(), sourceObject.getName(), sourceObject.getAttrgrpId() == null ? null :
-                getManager().getRepository().getAttrGrpManager().getById(sourceObject.getAttrgrpId()),
+                sourceObject.getNameNm(), sourceObject.getName(), sourceObject.getPropernameroot(),
+                sourceObject.getAttrgrpId() == null ? null :
+                        getManager().getRepository().getAttrGrpManager().getById(sourceObject.getAttrgrpId()),
                 sourceObject.getOrd(), sourceObject.getNote(),
                 AttrType.getAttrTypeByCode(sourceObject.getAttrtype()).orElseThrow(
                         () -> new InternalException(LOG,

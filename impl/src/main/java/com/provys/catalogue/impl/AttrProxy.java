@@ -52,6 +52,18 @@ public class AttrProxy extends ProvysObjectProxyImpl<Attr, AttrValue, AttrProxy,
 
     @Nonnull
     @Override
+    public Optional<String> getProperNameRoot() {
+        return validateValueObject().getProperNameRoot();
+    }
+
+    @Nonnull
+    @Override
+    public String getJavaName() {
+        return validateValueObject().getJavaName();
+    }
+
+    @Nonnull
+    @Override
     public Optional<BigInteger> getAttrGrpId() {
         return validateValueObject().getAttrGrpId();
     }
