@@ -43,7 +43,7 @@ class AttrDbLoadRunner extends ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy
     protected List<KerAttrTbRecord> select() {
         List<KerAttrTbRecord> result;
         try (var dsl = dbContext.createDSL()) {
-            result = dsl.selectFrom(KER_ATTR_TB).
+            result = dsl.select(KER_ATTR_TB.ATTR_ID, KER_ATTR_TB.ENTITY_ID).from(KER_ATTR_TB).
                     where(condition == null ? DSL.noCondition() : condition).
                     fetch().into(KerAttrTbRecord.class);
         }

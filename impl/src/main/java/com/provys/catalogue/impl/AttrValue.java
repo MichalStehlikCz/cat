@@ -99,7 +99,7 @@ public class AttrValue extends ProvysObjectValue {
      */
     @Nonnull
     String getJavaName() {
-        String[] parts = nameNm.split("\\.");
+        String[] parts = nameNm.split("_");
         int index = 0;
         var builder = new StringBuilder();
         if (parts[index].length() == 1) {

@@ -4,10 +4,11 @@ import com.provys.catalogue.api.Domain;
 import com.provys.catalogue.dbloader.db.tables.records.KerDomainTbRecord;
 import com.provys.catalogue.impl.DomainManagerImpl;
 import com.provys.catalogue.impl.DomainProxy;
-import com.provys.catalogue.impl.DomainValue;
+import com.provys.catalogue.impl.gen.DomainValue;
 import com.provys.provysdb.ProvysDbContext;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
 import org.jooq.Condition;
+import org.jooq.Field;
 import org.jooq.impl.DSL;
 
 import javax.annotation.Nonnull;
@@ -37,8 +38,9 @@ class DomainDbLoadRunner
     protected List<KerDomainTbRecord> select() {
         List<KerDomainTbRecord> result;
         try (var dsl = dbContext.createDSL()) {
-            result = dsl.selectFrom(KER_DOMAIN_TB).
-                    where(condition == null ? DSL.noCondition() : condition).
+            result = dsl.select(KER_DOMAIN_TB.DOMAIN_ID)
+                    .from(KER_DOMAIN_TB)
+                    .where(condition == null ? DSL.noCondition() : condition).
                     fetch().into(KerDomainTbRecord.class);
         }
         return result;
