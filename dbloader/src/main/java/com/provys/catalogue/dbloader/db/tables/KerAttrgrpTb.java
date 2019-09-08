@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class KerAttrgrpTb extends TableImpl<KerAttrgrpTbRecord> {
 
-    private static final long serialVersionUID = 207114079;
+    private static final long serialVersionUID = -1618336959;
 
     /**
      * The reference instance of <code>KER.KER_ATTRGRP_TB</code>
@@ -137,7 +137,7 @@ public class KerAttrgrpTb extends TableImpl<KerAttrgrpTbRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.KER_ATTRGRP_ENTITY_IX, Indexes.KER_ATTRGRP_ENTITYNM_IX, Indexes.KER_ATTRGRP_PK);
+        return Arrays.<Index>asList(Indexes.KER_ATTRGRP_ENTITYNM_IX, Indexes.KER_ATTRGRP_ENTITY_IX, Indexes.KER_ATTRGRP_PK);
     }
 
     /**

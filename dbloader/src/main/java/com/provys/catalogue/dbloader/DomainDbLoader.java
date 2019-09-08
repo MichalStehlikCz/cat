@@ -2,7 +2,7 @@ package com.provys.catalogue.dbloader;
 
 import com.provys.catalogue.impl.DomainLoaderBase;
 import com.provys.catalogue.impl.DomainManagerImpl;
-import com.provys.provysdb.ProvysDbContext;
+import com.provys.provysdb.dbcontext.ProvysDbContext;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Override;

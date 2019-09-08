@@ -7,7 +7,7 @@ import com.provys.catalogue.impl.AttrManagerImpl;
 import com.provys.catalogue.impl.AttrProxy;
 import com.provys.catalogue.impl.AttrValue;
 import com.provys.common.exception.InternalException;
-import com.provys.provysdb.ProvysDbContext;
+import com.provys.provysdb.dbcontext.ProvysDbContext;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

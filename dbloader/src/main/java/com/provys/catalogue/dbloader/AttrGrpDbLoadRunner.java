@@ -3,7 +3,7 @@ package com.provys.catalogue.dbloader;
 import com.provys.catalogue.api.AttrGrp;
 import com.provys.catalogue.dbloader.db.tables.records.KerAttrgrpTbRecord;
 import com.provys.catalogue.impl.*;
-import com.provys.provysdb.ProvysDbContext;
+import com.provys.provysdb.dbcontext.ProvysDbContext;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

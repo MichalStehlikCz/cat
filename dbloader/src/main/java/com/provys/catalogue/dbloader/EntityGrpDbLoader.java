@@ -3,7 +3,7 @@ package com.provys.catalogue.dbloader;
 import com.provys.catalogue.dbloader.db.tables.records.KerEntitygrpTbRecord;
 import com.provys.catalogue.impl.EntityGrpLoaderBase;
 import com.provys.catalogue.impl.EntityGrpManagerImpl;
-import com.provys.provysdb.ProvysDbContext;
+import com.provys.provysdb.dbcontext.ProvysDbContext;
 
 import javax.annotation.Nonnull;
 import javax.enterprise.context.ApplicationScoped;

@@ -4,7 +4,7 @@ import com.provys.catalogue.api.Domain;
 import com.provys.catalogue.impl.DomainManagerImpl;
 import com.provys.catalogue.impl.DomainProxy;
 import com.provys.catalogue.impl.gen.DomainValue;
-import com.provys.provysdb.ProvysDbContext;
+import com.provys.provysdb.dbcontext.ProvysDbContext;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
 import java.lang.Boolean;
 import java.lang.Integer;

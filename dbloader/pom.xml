@@ -40,8 +40,8 @@
             <artifactId>javax.annotation-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.provys</groupId>
-            <artifactId>provysdb</artifactId>
+            <groupId>com.provys.provysdb</groupId>
+            <artifactId>dbcontext</artifactId>
         </dependency>
     </dependencies>
     <build>

@@ -5,7 +5,7 @@ import com.provys.catalogue.dbloader.db.tables.records.KerEntityTbRecord;
 import com.provys.catalogue.impl.EntityManagerImpl;
 import com.provys.catalogue.impl.EntityProxy;
 import com.provys.catalogue.impl.EntityValue;
-import com.provys.provysdb.ProvysDbContext;
+import com.provys.provysdb.dbcontext.ProvysDbContext;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
 import org.jooq.Condition;
 import org.jooq.impl.DSL;

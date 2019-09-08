@@ -35,8 +35,8 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
-    public static final Index KER_ATTRGRP_ENTITY_IX = Indexes0.KER_ATTRGRP_ENTITY_IX;
     public static final Index KER_ATTRGRP_ENTITYNM_IX = Indexes0.KER_ATTRGRP_ENTITYNM_IX;
+    public static final Index KER_ATTRGRP_ENTITY_IX = Indexes0.KER_ATTRGRP_ENTITY_IX;
     public static final Index KER_ATTRGRP_PK = Indexes0.KER_ATTRGRP_PK;
     public static final Index KER_ATTR_ACCDOCOBJECTFORMUL_IX = Indexes0.KER_ATTR_ACCDOCOBJECTFORMUL_IX;
     public static final Index KER_ATTR_ATTRGRP_IX = Indexes0.KER_ATTR_ATTRGRP_IX;
@@ -87,8 +87,8 @@ public class Indexes {
     // -------------------------------------------------------------------------
 
     private static class Indexes0 {
-        public static Index KER_ATTRGRP_ENTITY_IX = Internal.createIndex("KER_ATTRGRP_ENTITY_IX", KerAttrgrpTb.KER_ATTRGRP_TB, new OrderField[] { KerAttrgrpTb.KER_ATTRGRP_TB.ENTITY_ID, KerAttrgrpTb.KER_ATTRGRP_TB.NAME }, true);
         public static Index KER_ATTRGRP_ENTITYNM_IX = Internal.createIndex("KER_ATTRGRP_ENTITYNM_IX", KerAttrgrpTb.KER_ATTRGRP_TB, new OrderField[] { KerAttrgrpTb.KER_ATTRGRP_TB.ENTITY_ID, KerAttrgrpTb.KER_ATTRGRP_TB.NAME_NM }, true);
+        public static Index KER_ATTRGRP_ENTITY_IX = Internal.createIndex("KER_ATTRGRP_ENTITY_IX", KerAttrgrpTb.KER_ATTRGRP_TB, new OrderField[] { KerAttrgrpTb.KER_ATTRGRP_TB.ENTITY_ID, KerAttrgrpTb.KER_ATTRGRP_TB.NAME }, true);
         public static Index KER_ATTRGRP_PK = Internal.createIndex("KER_ATTRGRP_PK", KerAttrgrpTb.KER_ATTRGRP_TB, new OrderField[] { KerAttrgrpTb.KER_ATTRGRP_TB.ATTRGRP_ID }, true);
         public static Index KER_ATTR_ACCDOCOBJECTFORMUL_IX = Internal.createIndex("KER_ATTR_ACCDOCOBJECTFORMUL_IX", KerAttrTb.KER_ATTR_TB, new OrderField[] { KerAttrTb.KER_ATTR_TB.ACCDOCOBJECTFORMULA_ID }, false);
         public static Index KER_ATTR_ATTRGRP_IX = Internal.createIndex("KER_ATTR_ATTRGRP_IX", KerAttrTb.KER_ATTR_TB, new OrderField[] { KerAttrTb.KER_ATTR_TB.ATTRGRP_ID }, false);
