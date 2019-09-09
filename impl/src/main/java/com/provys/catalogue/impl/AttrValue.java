@@ -40,15 +40,15 @@ public class AttrValue extends ProvysObjectValue {
                      @Nullable String subdomainNm, boolean mandatory, @Nullable String defValue)
     {
         super(id);
-        this.entity = Objects.requireNonNull(entity);
-        this.nameNm = Objects.requireNonNull(nameNm);
-        this.name = Objects.requireNonNull(name);
+        this.entity = Objects.requireNonNull(entity, "entity misssing");
+        this.nameNm = Objects.requireNonNull(nameNm, "nameNm missing");
+        this.name = Objects.requireNonNull(name, "name missing");
         this.properNameRoot = properNameRoot;
         this.attrGrp = attrGrp;
         this.ord = ord;
         this.note = note;
-        this.attrType = Objects.requireNonNull(attrType);
-        this.domain = Objects.requireNonNull(domain);
+        this.attrType = Objects.requireNonNull(attrType, "attrType missing");
+        this.domain = Objects.requireNonNull(domain, "domain missing");
         this.subdomainNm = subdomainNm;
         this.mandatory = mandatory;
         this.defValue = defValue;

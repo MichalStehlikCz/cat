@@ -9,6 +9,7 @@
         <module>api</module>
         <module>impl</module>
         <module>dbloader</module>
+        <module>restapi</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -50,6 +51,12 @@
                 <version>18.3.0</version>
             </dependency>
             <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>8.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
                 <groupId>javax.inject</groupId>
                 <artifactId>javax.inject</artifactId>
                 <version>1</version>
@@ -66,6 +73,11 @@
                 <artifactId>cdi-api</artifactId>
                 <version>2.0.SP1</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>2.0.6</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.weld.se</groupId>

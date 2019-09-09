@@ -1,0 +1,308 @@
+openapi: 3.0.1
+info:
+  title: Provys Catalogue repository Api
+  description: Provides methods for accessing entities and other objects from provys
+    metadata catalogue
+  version: "1.0"
+servers:
+- url: /api
+  variables: {}
+paths:
+  /attr/{entityNm}/{nameNm}:
+    get:
+      summary: Get Attribute by Internal Name
+      description: Retrieve attribute using internal name
+      operationId: getAttrByNameNm
+      parameters:
+      - name: entityNm
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: nameNm
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Attribute
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Attr'
+  /attr/{attrId}:
+    get:
+      summary: Get Attribute
+      description: Retrieve atribute using Id
+      operationId: getAttrById
+      parameters:
+      - name: attrId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Attribute
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Attr'
+  /domain/{domainId}:
+    get:
+      summary: Get Domain
+      description: Retrieve domain using Id
+      operationId: getDomainById
+      parameters:
+      - name: domainId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Domain
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Domain'
+  /domain/{domainNm}:
+    get:
+      summary: Get Domain by Internal Name
+      description: Retrieve domain using internal name
+      operationId: getDomainByNameNm
+      parameters:
+      - name: domainNm
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Domain
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Domain'
+  /entity/{entityNm}:
+    get:
+      summary: Get Entity by Internal Name
+      description: Retrieve entity using internal name
+      operationId: getEntityByNameNm
+      parameters:
+      - name: entityNm
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Entity
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Entity'
+  /entity/{entityId}:
+    get:
+      summary: Get Entity
+      description: Retrieve entity using Id
+      operationId: getEntityByNameNm_1
+      parameters:
+      - name: entityId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Entity
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Entity'
+components:
+  schemas:
+    Attr:
+      type: object
+      properties:
+        name:
+          type: string
+        entity:
+          $ref: '#/components/schemas/Entity'
+        javaName:
+          type: string
+        domain:
+          $ref: '#/components/schemas/Domain'
+        defValue:
+          type: string
+        ordInEntity:
+          type: integer
+          format: int32
+        attrType:
+          type: string
+          enum:
+          - COLUMN
+          - TEXT
+          - FREE
+          - FINANCE
+          - SQL
+          - FORMULA
+        properNameRoot:
+          type: string
+        entityId:
+          type: integer
+        nameNm:
+          type: string
+        attrGrpId:
+          type: integer
+        mandatory:
+          type: boolean
+        attrGrp:
+          $ref: '#/components/schemas/AttrGrp'
+        subdomainNm:
+          type: string
+        note:
+          type: string
+        ord:
+          type: integer
+          format: int32
+        id:
+          type: integer
+    AttrGrp:
+      type: object
+      properties:
+        name:
+          type: string
+        entity:
+          $ref: '#/components/schemas/Entity'
+        attrs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attr'
+        entityId:
+          type: integer
+        nameNm:
+          type: string
+        note:
+          type: string
+        ord:
+          type: integer
+          format: int32
+        id:
+          type: integer
+    Domain:
+      type: object
+      properties:
+        name:
+          type: string
+        note:
+          type: string
+        dataPrecision:
+          type: integer
+          format: int32
+        dataTypeNm:
+          type: string
+        allowed:
+          type: boolean
+        natOrder:
+          type: boolean
+        validateCd:
+          type: string
+        lvisible:
+          type: boolean
+        lformatCd:
+          type: string
+        qvisible:
+          type: boolean
+        dataLength:
+          type: integer
+          format: int32
+        nameNm:
+          type: string
+        id:
+          type: integer
+    Entity:
+      type: object
+      properties:
+        name:
+          type: string
+        table:
+          type: string
+        ancestor:
+          $ref: '#/components/schemas/Entity'
+        attrs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attr'
+        note:
+          type: string
+        custom:
+          type: boolean
+        used:
+          type: boolean
+        objectClass:
+          type: boolean
+        view:
+          type: string
+        pgPackage:
+          type: string
+        cpPackage:
+          type: string
+        attrGrps:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttrGrp'
+        entityGrp:
+          $ref: '#/components/schemas/EntityGrp'
+        epPackage:
+          type: string
+        fpPackage:
+          type: string
+        ancestorId:
+          type: integer
+        customNote:
+          type: string
+        structureDoc:
+          type: string
+        entityGrpId:
+          type: integer
+        implDoc:
+          type: string
+        behaviourDoc:
+          type: string
+        usageDoc:
+          type: string
+        nameNm:
+          type: string
+        id:
+          type: integer
+    EntityGrp:
+      type: object
+      properties:
+        name:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityGrp'
+        note:
+          type: string
+        ord:
+          type: integer
+          format: int32
+        parentId:
+          type: integer
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+        fullOrd:
+          type: array
+          items:
+            type: integer
+            format: int32
+        nameNm:
+          type: string
+        id:
+          type: integer
