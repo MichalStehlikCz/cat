@@ -9,6 +9,8 @@ import java.util.Optional;
 
 public interface AttrManager extends ProvysObjectManager<Attr> {
 
+    String TABLE_ALIAS = "alattr";
+
     /**
      * Get collection of attributes belonging to specified entity.
      *

@@ -32,16 +32,16 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jooq.pro</groupId>
-            <artifactId>jooq</artifactId>
-        </dependency>
-        <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.provys.provysdb</groupId>
-            <artifactId>dbcontext</artifactId>
+            <artifactId>dbcontext-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.provys.provysdb</groupId>
+            <artifactId>sqlbuilder-api</artifactId>
         </dependency>
     </dependencies>
     <build>
