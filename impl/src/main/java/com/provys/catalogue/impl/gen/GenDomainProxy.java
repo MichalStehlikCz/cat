@@ -1,7 +1,7 @@
 package com.provys.catalogue.impl.gen;
 
 import com.provys.catalogue.api.Domain;
-import com.provys.catalogue.api.gen.GenDomain;
+import com.provys.catalogue.api.DomainBase;
 import com.provys.catalogue.impl.DomainManagerImpl;
 import com.provys.catalogue.impl.DomainProxy;
 import com.provys.provysobject.impl.ProvysNmObjectProxyImpl;
@@ -12,7 +12,7 @@ import java.math.BigInteger;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 
-public abstract class GenDomainProxy extends ProvysNmObjectProxyImpl<Domain, DomainValue, DomainProxy, DomainManagerImpl> implements GenDomain {
+public abstract class GenDomainProxy extends ProvysNmObjectProxyImpl<Domain, DomainValue, DomainProxy, DomainManagerImpl> implements DomainBase {
     public GenDomainProxy(DomainManagerImpl manager, BigInteger id) {
         super(manager, id);
     }

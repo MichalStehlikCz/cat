@@ -1,8 +1,9 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.dbloader.db.tables.records.KerAttrTbRecord;
+import com.provys.catalogue.api.AttrMeta;
 import com.provys.catalogue.impl.*;
-import com.provys.provysdb.dbcontext.ProvysDbContext;
+import com.provys.provysdb.dbsqlbuilder.DbSql;
+import com.provys.provysdb.dbsqlbuilder.SqlAdmin;
 
 import javax.annotation.Nonnull;
 import javax.enterprise.context.ApplicationScoped;
@@ -10,40 +11,40 @@ import javax.inject.Inject;
 import java.math.BigInteger;
 import java.util.Objects;
 
-import static com.provys.catalogue.dbloader.db.Tables.KER_ATTR_TB;
-
 @ApplicationScoped
-public class AttrDbLoader extends AttrLoaderBase<KerAttrTbRecord> {
+public class AttrDbLoader extends AttrLoaderBase {
 
     @Nonnull
-    private final ProvysDbContext dbContext;
+    private final DbSql dbSql;
 
     @Inject
-    AttrDbLoader(ProvysDbContext dbContext) {
-        this.dbContext = Objects.requireNonNull(dbContext);
+    AttrDbLoader(SqlAdmin dbSql) {
+        this.dbSql = Objects.requireNonNull(dbSql);
     }
 
     @Nonnull
     @Override
     protected AttrDbLoadRunner getLoadRunnerByEntityId(AttrManagerImpl attrManager, BigInteger entityId) {
-        return new AttrDbLoadRunner(attrManager, dbContext, KER_ATTR_TB.ENTITY_ID.eq(entityId));
+        return new AttrDbLoadRunner(attrManager, dbSql,
+                dbSql.eq(AttrMeta.ENTITY_ID, dbSql.bind("entity_id", entityId)));
     }
 
     @Nonnull
     @Override
     protected AttrDbLoadRunner getLoadRunnerByAttrGrpId(AttrManagerImpl attrManager, BigInteger attrGrpId) {
-        return new AttrDbLoadRunner(attrManager, dbContext, KER_ATTR_TB.ATTRGRP_ID.eq(attrGrpId));
+        return new AttrDbLoadRunner(attrManager, dbSql,
+                dbSql.eq(AttrMeta.ATTRGRP_ID, dbSql.bind("attrgrp_id", attrGrpId)));
     }
 
     @Nonnull
     @Override
     protected AttrDbLoadRunner getLoadRunnerById(AttrManagerImpl attrManager, BigInteger id) {
-        return new AttrDbLoadRunner(attrManager, dbContext, KER_ATTR_TB.ATTR_ID.eq(id));
+        return new AttrDbLoadRunner(attrManager, dbSql, dbSql.eq(AttrMeta.ATTR_ID, dbSql.bind("attr_id", id)));
     }
 
     @Nonnull
     @Override
     protected AttrDbLoadRunner getLoadRunnerAll(AttrManagerImpl attrManager) {
-        return new AttrDbLoadRunner(attrManager, dbContext, null);
+        return new AttrDbLoadRunner(attrManager, dbSql, null);
     }
 }

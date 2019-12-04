@@ -1,10 +1,8 @@
 package com.provys.catalogue.api;
 
-import com.provys.catalogue.api.gen.GenDomain;
-
 import javax.annotation.Nonnull;
 
-public interface Domain extends GenDomain {
+public interface Domain extends DomainBase {
     /**
      * Return Java class this domain is mapped to in Provys framework
      */

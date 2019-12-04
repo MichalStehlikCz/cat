@@ -1,4 +1,4 @@
-package com.provys.catalogue.api.gen;
+package com.provys.catalogue.api;
 
 import com.provys.provysobject.ProvysNmObject;
 import java.lang.Integer;
@@ -6,7 +6,7 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 
-public interface GenDomain extends ProvysNmObject {
+public interface DomainBase extends ProvysNmObject {
     /**
      * @return Name (attribute NAME)
      */

@@ -10,14 +10,14 @@ import javax.annotation.Nonnull;
 import java.math.BigInteger;
 import java.util.Collection;
 
-public abstract class EntityGrpLoaderBase<S>
-        extends ProvysNmObjectLoaderImpl<EntityGrp, EntityGrpValue, EntityGrpProxy, EntityGrpManagerImpl, S>
+public abstract class EntityGrpLoaderBase
+        extends ProvysNmObjectLoaderImpl<EntityGrp, EntityGrpValue, EntityGrpProxy, EntityGrpManagerImpl>
         implements EntityGrpLoader {
 
     private static final Logger LOG = LogManager.getLogger(EntityGrpLoaderBase.class);
 
     @Nonnull
-    protected abstract ProvysObjectLoadRunner<EntityGrp, EntityGrpValue, EntityGrpProxy, EntityGrpManagerImpl, S>
+    protected abstract ProvysObjectLoadRunner<EntityGrp, EntityGrpValue, EntityGrpProxy, EntityGrpManagerImpl>
     getLoadRunnerByParentId(EntityGrpManagerImpl manager, BigInteger parentId);
 
     @Nonnull

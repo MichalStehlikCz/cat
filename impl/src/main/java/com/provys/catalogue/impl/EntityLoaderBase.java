@@ -10,15 +10,15 @@ import javax.annotation.Nonnull;
 import java.math.BigInteger;
 import java.util.Collection;
 
-public abstract class EntityLoaderBase<S>
-        extends ProvysNmObjectLoaderImpl<Entity, EntityValue, EntityProxy, EntityManagerImpl, S>
+public abstract class EntityLoaderBase
+        extends ProvysNmObjectLoaderImpl<Entity, EntityValue, EntityProxy, EntityManagerImpl>
         implements EntityLoader {
 
     private static final Logger LOG = LogManager.getLogger(EntityLoaderBase.class);
 
     @SuppressWarnings("WeakerAccess") // method overridden in loaders in other packages
     @Nonnull
-    protected abstract ProvysObjectLoadRunner<Entity, EntityValue, EntityProxy, EntityManagerImpl, S>
+    protected abstract ProvysObjectLoadRunner<Entity, EntityValue, EntityProxy, EntityManagerImpl>
     getLoadRunnerByEntityGrpId(EntityManagerImpl manager, BigInteger parentId);
 
     @Nonnull

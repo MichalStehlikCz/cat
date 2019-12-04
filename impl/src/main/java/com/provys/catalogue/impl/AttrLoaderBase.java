@@ -10,14 +10,14 @@ import javax.annotation.Nonnull;
 import java.math.BigInteger;
 import java.util.Collection;
 
-public abstract class AttrLoaderBase<S> extends ProvysObjectLoaderImpl<Attr, AttrValue, AttrProxy, AttrManagerImpl, S>
+public abstract class AttrLoaderBase extends ProvysObjectLoaderImpl<Attr, AttrValue, AttrProxy, AttrManagerImpl>
         implements AttrLoader  {
 
     private static final Logger LOG = LogManager.getLogger(AttrLoaderBase.class);
 
     @SuppressWarnings("WeakerAccess") // method overridden in loaders in other packages
     @Nonnull
-    protected abstract ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy, AttrManagerImpl, S>
+    protected abstract ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy, AttrManagerImpl>
     getLoadRunnerByEntityId(AttrManagerImpl manager, BigInteger entityId);
 
     @Override
@@ -28,7 +28,7 @@ public abstract class AttrLoaderBase<S> extends ProvysObjectLoaderImpl<Attr, Att
 
     @SuppressWarnings("WeakerAccess") // method overridden in loaders in other packages
     @Nonnull
-    protected abstract ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy, AttrManagerImpl, S>
+    protected abstract ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy, AttrManagerImpl>
     getLoadRunnerByAttrGrpId(AttrManagerImpl manager, BigInteger attrGrpId);
 
     @Override

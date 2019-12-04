@@ -1,14 +1,13 @@
 package com.provys.catalogue.dbloader;
 
 import com.provys.catalogue.api.AttrGrp;
-import com.provys.catalogue.dbloader.db.tables.records.KerAttrgrpTbRecord;
+import com.provys.catalogue.api.AttrGrpMeta;
 import com.provys.catalogue.impl.*;
-import com.provys.provysdb.dbcontext.ProvysDbContext;
+import com.provys.provysdb.dbcontext.DbResultSet;
+import com.provys.provysdb.dbcontext.DbRowMapper;
+import com.provys.provysdb.dbsqlbuilder.DbSql;
+import com.provys.provysdb.sqlbuilder.Condition;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.jooq.Condition;
-import org.jooq.impl.DSL;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -16,47 +15,46 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 
-import static com.provys.catalogue.dbloader.db.Tables.KER_ATTRGRP_TB;
-
-class AttrGrpDbLoadRunner extends ProvysObjectLoadRunner<AttrGrp, AttrGrpValue, AttrGrpProxy, AttrGrpManagerImpl,
-        KerAttrgrpTbRecord> {
-
-    private static final Logger LOG = LogManager.getLogger(AttrDbLoadRunner.class);
+class AttrGrpDbLoadRunner extends ProvysObjectLoadRunner<AttrGrp, AttrGrpValue, AttrGrpProxy, AttrGrpManagerImpl> {
 
     @Nonnull
-    private final ProvysDbContext dbContext;
+    private final DbSql dbSql;
     @Nullable
     private final Condition condition;
 
-    AttrGrpDbLoadRunner(AttrGrpManagerImpl manager, ProvysDbContext dbContext, @Nullable Condition condition) {
+    AttrGrpDbLoadRunner(AttrGrpManagerImpl manager, DbSql dbSql, @Nullable Condition condition) {
         super(manager);
-        this.dbContext = Objects.requireNonNull(dbContext);
+        this.dbSql = Objects.requireNonNull(dbSql);
         this.condition = condition;
     }
 
-    @Nonnull
-    @Override
-    protected List<KerAttrgrpTbRecord> select() {
-        List<KerAttrgrpTbRecord> result;
-        try (var dsl = dbContext.createDSL()) {
-            result = dsl.selectFrom(KER_ATTRGRP_TB).
-                    where(condition == null ? DSL.noCondition() : condition).
-                    fetch().into(KerAttrgrpTbRecord.class);
+    private class AttrGrpDbMapper implements DbRowMapper<AttrGrpValue> {
+        @Override
+        public AttrGrpValue map(DbResultSet dbResultSet, long l) {
+            return new AttrGrpValue(
+                    dbResultSet.getNonnullDtUid(1),
+                    getManager().getRepository().getEntityManager().getOrAddById(dbResultSet.getNonnullDtUid(2)),
+                    dbResultSet.getNonnullString(3),
+                    dbResultSet.getNonnullString(4),
+                    dbResultSet.getNonnullInteger(5),
+                    dbResultSet.getNullableString(6)
+            );
         }
-        return result;
     }
 
     @Nonnull
     @Override
-    protected BigInteger getId(KerAttrgrpTbRecord sourceObject) {
-        return sourceObject.getAttrgrpId();
-    }
-
-    @Nonnull
-    @Override
-    protected AttrGrpValue createValueObject(KerAttrgrpTbRecord sourceObject) {
-        return new AttrGrpValue(sourceObject.getAttrgrpId(),
-                getManager().getRepository().getEntityManager().getOrAddById(sourceObject.getEntityId()),
-                sourceObject.getNameNm(), sourceObject.getName(), sourceObject.getOrd(), sourceObject.getNote());
+    protected List<AttrGrpValue> select() {
+        return dbSql.select()
+                .from(dbSql.name("ker_attrgrp_tb"), AttrGrpMeta.TABLE_ALIAS)
+                .column("attrgrp_id", BigInteger.class)
+                .column("entity_id", BigInteger.class)
+                .column("name_nm", String.class)
+                .column("name", String.class)
+                .column("ord", Integer.class)
+                .column("note", String.class)
+                .where(condition)
+                .prepare()
+                .fetch(new AttrGrpDbMapper());
     }
 }

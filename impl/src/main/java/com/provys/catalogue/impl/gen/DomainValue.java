@@ -1,6 +1,6 @@
 package com.provys.catalogue.impl.gen;
 
-import com.provys.catalogue.api.gen.GenDomain;
+import com.provys.catalogue.api.DomainBase;
 import com.provys.provysobject.impl.ProvysNmObjectValue;
 import java.lang.Integer;
 import java.lang.Object;
@@ -13,7 +13,7 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class DomainValue extends ProvysNmObjectValue implements GenDomain {
+public class DomainValue extends ProvysNmObjectValue implements DomainBase {
     @Nonnull
     private final String name;
 

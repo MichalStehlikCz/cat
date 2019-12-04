@@ -1,63 +1,80 @@
 package com.provys.catalogue.dbloader;
 
 import com.provys.catalogue.api.Domain;
+import com.provys.catalogue.api.DomainManager;
+import com.provys.catalogue.api.DomainMeta;
 import com.provys.catalogue.impl.DomainManagerImpl;
 import com.provys.catalogue.impl.DomainProxy;
 import com.provys.catalogue.impl.gen.DomainValue;
-import com.provys.provysdb.dbcontext.ProvysDbContext;
+import com.provys.provysdb.dbcontext.DbResultSet;
+import com.provys.provysdb.dbcontext.DbRowMapper;
+import com.provys.provysdb.dbsqlbuilder.DbSql;
+import com.provys.provysdb.sqlbuilder.Condition;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
-import java.lang.Boolean;
-import java.lang.Integer;
-import java.lang.Override;
-import java.lang.String;
+
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import org.jooq.Condition;
-import org.jooq.Record13;
-import org.jooq.impl.DSL;
 
-class DomainDbLoadRunner extends ProvysObjectLoadRunner<Domain, DomainValue, DomainProxy, DomainManagerImpl, Record13<BigInteger, String, String, String, Integer, Integer, String, Boolean, Boolean, Boolean, String, String, Boolean>> {
+class DomainDbLoadRunner extends ProvysObjectLoadRunner<Domain, DomainValue, DomainProxy, DomainManagerImpl> {
+
+    private static final DomainDbMapper MAPPER = new DomainDbMapper();
+
     @Nonnull
-    private final ProvysDbContext dbContext;
+    private final DbSql dbSql;
 
     @Nullable
     private final Condition condition;
 
-    DomainDbLoadRunner(DomainManagerImpl manager, ProvysDbContext dbContext,
-                       @Nullable Condition condition) {
+    DomainDbLoadRunner(DomainManagerImpl manager, DbSql dbSql, @Nullable Condition condition) {
         super(manager);
-        this.dbContext = Objects.requireNonNull(dbContext);
+        this.dbSql = Objects.requireNonNull(dbSql);
         this.condition = condition;
     }
 
-    @Nonnull
-    @Override
-    protected List<Record13<BigInteger, String, String, String, Integer, Integer, String, Boolean, Boolean, Boolean, String, String, Boolean>> select(
-    ) {
-        List<Record13<BigInteger, String, String, String, Integer, Integer, String, Boolean, Boolean, Boolean, String, String, Boolean>> result;
-        try (var dsl = dbContext.createDSL()) {
-            result = dsl.select(DSL.field("DOMAIN_ID", BigInteger.class), DSL.field("NAME_NM", String.class), DSL.field("NAME", String.class), DSL.field("DATATYPE_NM", String.class), DSL.field("DATALENGTH", Integer.class), DSL.field("DATAPRECISION", Integer.class), DSL.field("NOTE", String.class), DSL.field("ALLOWED", Boolean.class), DSL.field("QVISIBLE", Boolean.class), DSL.field("LVISIBLE", Boolean.class), DSL.field("VALIDATE_CD", String.class), DSL.field("LFORMAT_CD", String.class), DSL.field("NATORDER", Boolean.class))
-                    .from(DSL.table("KER_DOMAIN_TB"))
-                    .where(condition == null ? DSL.noCondition() : condition)
-                    .fetch();
+    private static class DomainDbMapper implements DbRowMapper<DomainValue> {
+
+        @Override
+        public DomainValue map(DbResultSet dbResultSet, long l) {
+            return new DomainValue(
+                    dbResultSet.getNonnullDtUid(1),
+                    dbResultSet.getNonnullString(2),
+                    dbResultSet.getNonnullString(3),
+                    dbResultSet.getNullableString(4),
+                    dbResultSet.getNullableInteger(5),
+                    dbResultSet.getNullableInteger(6),
+                    dbResultSet.getNullableString(7),
+                    dbResultSet.getNonnullBoolean(8),
+                    dbResultSet.getNonnullBoolean(9),
+                    dbResultSet.getNonnullBoolean(10),
+                    dbResultSet.getNullableString(11),
+                    dbResultSet.getNullableString(12),
+                    dbResultSet.getNonnullBoolean(13)
+            );
         }
-        return result;
     }
 
     @Nonnull
     @Override
-    protected BigInteger getId(
-            Record13<BigInteger, String, String, String, Integer, Integer, String, Boolean, Boolean, Boolean, String, String, Boolean> sourceObject) {
-        return sourceObject.get("DOMAIN_ID", BigInteger.class);
-    }
-
-    @Nonnull
-    @Override
-    protected DomainValue createValueObject(
-            Record13<BigInteger, String, String, String, Integer, Integer, String, Boolean, Boolean, Boolean, String, String, Boolean> sourceObject) {
-        return new DomainValue(getId(sourceObject), sourceObject.get("NAME_NM", String.class), sourceObject.get("NAME", String.class), sourceObject.get("DATATYPE_NM", String.class), sourceObject.get("DATALENGTH", Integer.class), sourceObject.get("DATAPRECISION", Integer.class), sourceObject.get("NOTE", String.class), sourceObject.get("ALLOWED", Boolean.class), sourceObject.get("QVISIBLE", Boolean.class), sourceObject.get("LVISIBLE", Boolean.class), sourceObject.get("VALIDATE_CD", String.class), sourceObject.get("LFORMAT_CD", String.class), sourceObject.get("NATORDER", Boolean.class));
+    protected List<DomainValue> select() {
+        return dbSql.select()
+                .from(dbSql.name("ker_domain_tb"), DomainMeta.TABLE_ALIAS)
+                .column("domain_id", BigInteger.class)
+                .column("name_nm", String.class)
+                .column("name", String.class)
+                .column("datatype_nm", String.class)
+                .column("datalength", Integer.class)
+                .column("dataprecision", Integer.class)
+                .column("allowed", Boolean.class)
+                .column("qvisible", Boolean.class)
+                .column("lvisible", Boolean.class)
+                .column("validate_cd", String.class)
+                .column("lformat_cd", String.class)
+                .column("natorder", Boolean.class)
+                .where(condition)
+                .prepare()
+                .fetch(MAPPER);
     }
 }

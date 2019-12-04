@@ -18,6 +18,23 @@
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.11.2" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.11.2" />
           <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:3.0.2" />
+          <element id="library" level="project" name="Maven: com.provys.provysdb:dbcontext:1.3.6" />
+          <element id="library" level="project" name="Maven: org.eclipse.microprofile.config:microprofile-config-api:1.3" />
+          <element id="library" level="project" name="Maven: org.osgi:org.osgi.annotation.versioning:1.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:ojdbc10:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:oraclepki:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:osdt_cert:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:osdt_core:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:simplefan:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:ons:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:ucp:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.provys.common:common-exception:1.0.19" />
+          <element id="library" level="project" name="Maven: com.provys.common:common-datatype:1.0.19" />
+          <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.4.0-b180830.0359" />
+          <element id="library" level="project" name="Maven: javax.activation:javax.activation-api:1.2.0" />
+          <element id="library" level="project" name="Maven: javax.json.bind:javax.json.bind-api:1.0" />
+          <element id="library" level="project" name="Maven: com.provys.provysdb:dbcontext-api:1.3.6" />
+          <element id="library" level="project" name="Maven: com.provys.provysdb:sqlbuilder:1.3.6" />
           <element id="archive" name="catalogue-api-1.0.6-SNAPSHOT.jar">
             <element id="module-output" name="catalogue-api" />
           </element>
@@ -25,17 +42,11 @@
           <element id="archive" name="catalogue-impl-1.0.6-SNAPSHOT.jar">
             <element id="module-output" name="catalogue-impl" />
           </element>
-          <element id="library" level="project" name="Maven: com.provys.common:common-exception:1.0.19" />
           <element id="library" level="project" name="Maven: com.provys.provysobject:provysobject-impl:1.1.0" />
           <element id="archive" name="catalogue-dbloader-1.0.6-SNAPSHOT.jar">
             <element id="module-output" name="catalogue-dbloader" />
           </element>
-          <element id="library" level="project" name="Maven: com.provys.provysdb:dbcontext-api:1.3.1" />
-          <element id="library" level="project" name="Maven: com.provys.provysdb:sqlbuilder-api:1.3.1" />
-          <element id="library" level="project" name="Maven: com.provys.common:common-datatype:1.0.19" />
-          <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.4.0-b180830.0359" />
-          <element id="library" level="project" name="Maven: javax.activation:javax.activation-api:1.2.0" />
-          <element id="library" level="project" name="Maven: javax.json.bind:javax.json.bind-api:1.0" />
+          <element id="library" level="project" name="Maven: com.provys.provysdb:dbsqlbuilder:1.3.6" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -1,14 +1,14 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.api.Entity;
-import com.provys.catalogue.dbloader.db.tables.records.KerEntityTbRecord;
+import com.provys.catalogue.api.*;
 import com.provys.catalogue.impl.EntityManagerImpl;
 import com.provys.catalogue.impl.EntityProxy;
 import com.provys.catalogue.impl.EntityValue;
-import com.provys.provysdb.dbcontext.ProvysDbContext;
+import com.provys.provysdb.dbcontext.DbResultSet;
+import com.provys.provysdb.dbcontext.DbRowMapper;
+import com.provys.provysdb.dbsqlbuilder.DbSql;
+import com.provys.provysdb.sqlbuilder.Condition;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
-import org.jooq.Condition;
-import org.jooq.impl.DSL;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -16,52 +16,79 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 
-import static com.provys.catalogue.dbloader.db.Tables.KER_ENTITY_TB;
-
-class EntityDbLoadRunner extends ProvysObjectLoadRunner<Entity, EntityValue, EntityProxy, EntityManagerImpl,
-        KerEntityTbRecord> {
+class EntityDbLoadRunner extends ProvysObjectLoadRunner<Entity, EntityValue, EntityProxy, EntityManagerImpl> {
 
     @Nonnull
-    private final ProvysDbContext dbContext;
+    private final DbSql dbSql;
     @Nullable
     private final Condition condition;
 
-    EntityDbLoadRunner(EntityManagerImpl manager, ProvysDbContext dbContext, @Nullable Condition condition) {
+    EntityDbLoadRunner(EntityManagerImpl manager, DbSql dbSql, @Nullable Condition condition) {
         super(manager);
-        this.dbContext = Objects.requireNonNull(dbContext);
+        this.dbSql = Objects.requireNonNull(dbSql);
         this.condition = condition;
     }
 
-    @Nonnull
-    @Override
-    protected List<KerEntityTbRecord> select() {
-        List<KerEntityTbRecord> result;
-        try (var dsl = dbContext.createDSL()) {
-            result = dsl.selectFrom(KER_ENTITY_TB).
-                    where(condition == null ? DSL.noCondition() : condition).
-                    fetch().into(KerEntityTbRecord.class);
+    private class EntityDbMapper implements DbRowMapper<EntityValue> {
+
+        @Override
+        public EntityValue map(DbResultSet dbResultSet, long l) {
+            return new EntityValue(
+                    dbResultSet.getNonnullDtUid(1),
+                    dbResultSet.getNonnullString(3),
+                    dbResultSet.getNonnullString(4),
+                    dbResultSet.getNonnullBoolean(5),
+                    dbResultSet.getNonnullBoolean(6),
+                    dbResultSet.getNonnullBoolean(7),
+                    dbResultSet.getNullableString(8),
+                    dbResultSet.getNullableString(9),
+                    dbResultSet.getNullableString(10),
+                    dbResultSet.getNullableString(11),
+                    dbResultSet.getNullableString(12),
+                    dbResultSet.getNullableString(13),
+                    dbResultSet.getOptionalDtUid(14)
+                            .map(ancestorId -> getManager().getOrAddById(ancestorId))
+                            .orElse(null),
+                    dbResultSet.getOptionalDtUid(15)
+                            .map(entityGrpId -> getManager().getRepository().getEntityGrpManager().getOrAddById(entityGrpId))
+                            .orElse(null),
+                    dbResultSet.getNullableString(16),
+                    dbResultSet.getNullableString(17),
+                    dbResultSet.getNullableString(18),
+                    dbResultSet.getNullableString(19),
+                    dbResultSet.getNullableString(20),
+                    dbResultSet.getNullableString(21)
+            );
         }
-        return result;
     }
 
     @Nonnull
     @Override
-    protected BigInteger getId(KerEntityTbRecord sourceObject) {
-        return sourceObject.getEntityId();
-    }
-
-    @Nonnull
-    @Override
-    protected EntityValue createValueObject(KerEntityTbRecord sourceObject) {
-        return new EntityValue(sourceObject.getEntityId(), sourceObject.getNameNm(), sourceObject.getName(),
-                sourceObject.getIscustom().equals("Y"), sourceObject.getIsused().equals("Y"),
-                sourceObject.getObjectclass().equals("Y"), sourceObject.getTableNm(), sourceObject.getViewNm(),
-                sourceObject.getPgpackageNm(), sourceObject.getCppackageNm(), sourceObject.getEppackageNm(),
-                sourceObject.getFppackageNm(),
-                (sourceObject.getAncestorId() == null) ? null : getManager().getOrAddById(sourceObject.getAncestorId()),
-                (sourceObject.getEntitygrpId() == null) ? null :
-                        getManager().getRepository().getEntityGrpManager().getOrAddById(sourceObject.getEntitygrpId()),
-                sourceObject.getNote(), sourceObject.getCustomnote(), sourceObject.getStructuredoc(),
-                sourceObject.getUsagedoc(), sourceObject.getBehaviourdoc(), sourceObject.getImpldoc());
+    protected List<EntityValue> select() {
+        return dbSql.select()
+                .from(dbSql.name("ker_entity_tb"), EntityMeta.TABLE_ALIAS)
+                .column("entity_id", BigInteger.class)
+                .column("name_nm", String.class)
+                .column("name", String.class)
+                .column("iscustom", Boolean.class)
+                .column("isused", Boolean.class)
+                .column("objectclass", Boolean.class)
+                .column("table_nm", String.class)
+                .column("view_nm", String.class)
+                .column("pgpackage_nm", String.class)
+                .column("cppackage_nm", String.class)
+                .column("eppackage_nm", String.class)
+                .column("fppackage_nm", String.class)
+                .column("ancestor_id", BigInteger.class)
+                .column("entitygrp_id", BigInteger.class)
+                .column("note", String.class)
+                .column("customnote", String.class)
+                .column("structuredoc", String.class)
+                .column("usagedoc", String.class)
+                .column("behaviourdoc", String.class)
+                .column("impldoc", String.class)
+                .where(condition)
+                .prepare()
+                .fetch(new EntityDbMapper());
     }
 }

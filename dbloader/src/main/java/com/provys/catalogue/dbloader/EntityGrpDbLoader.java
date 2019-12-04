@@ -1,9 +1,10 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.dbloader.db.tables.records.KerEntitygrpTbRecord;
+import com.provys.catalogue.api.EntityGrpMeta;
 import com.provys.catalogue.impl.EntityGrpLoaderBase;
 import com.provys.catalogue.impl.EntityGrpManagerImpl;
-import com.provys.provysdb.dbcontext.ProvysDbContext;
+import com.provys.provysdb.dbsqlbuilder.DbSql;
+import com.provys.provysdb.dbsqlbuilder.SqlAdmin;
 
 import javax.annotation.Nonnull;
 import javax.enterprise.context.ApplicationScoped;
@@ -11,41 +12,41 @@ import javax.inject.Inject;
 import java.math.BigInteger;
 import java.util.Objects;
 
-import static com.provys.catalogue.dbloader.db.Tables.KER_ENTITYGRP_TB;
-
 @ApplicationScoped
-public class EntityGrpDbLoader extends EntityGrpLoaderBase<KerEntitygrpTbRecord> {
+public class EntityGrpDbLoader extends EntityGrpLoaderBase {
 
     @Nonnull
-    private final ProvysDbContext dbContext;
+    private final DbSql dbSql;
 
     @Inject
-    EntityGrpDbLoader(ProvysDbContext dbContext) {
-        this.dbContext = Objects.requireNonNull(dbContext);
+    EntityGrpDbLoader(SqlAdmin dbSql) {
+        this.dbSql = Objects.requireNonNull(dbSql);
     }
 
     @Nonnull
     @Override
     protected EntityGrpDbLoadRunner getLoadRunnerByParentId(EntityGrpManagerImpl manager, BigInteger parentId) {
-        return new EntityGrpDbLoadRunner(manager, dbContext, KER_ENTITYGRP_TB.PARENT_ID.eq(parentId));
+        return new EntityGrpDbLoadRunner(manager, dbSql,
+                dbSql.eq(EntityGrpMeta.PARENT_ID, dbSql.bind("parent_id", parentId)));
     }
 
     @Nonnull
     @Override
     protected EntityGrpDbLoadRunner getLoadRunnerByNameNm(EntityGrpManagerImpl manager, String nameNm) {
-        return new EntityGrpDbLoadRunner(manager, dbContext, KER_ENTITYGRP_TB.NAME_NM.eq(nameNm));
+        return new EntityGrpDbLoadRunner(manager, dbSql,
+                dbSql.eq(EntityGrpMeta.NAME_NM, dbSql.bind("name_nm", nameNm)));
     }
 
     @Nonnull
     @Override
     protected EntityGrpDbLoadRunner getLoadRunnerById(EntityGrpManagerImpl manager, BigInteger id) {
-        return new EntityGrpDbLoadRunner(manager, dbContext, KER_ENTITYGRP_TB.ENTITYGRP_ID.eq(id));
+        return new EntityGrpDbLoadRunner(manager, dbSql,
+                dbSql.eq(EntityGrpMeta.ENTITYGRP_ID, dbSql.bind("entitygrp_id", id)));
     }
 
     @Nonnull
     @Override
     protected EntityGrpDbLoadRunner getLoadRunnerAll(EntityGrpManagerImpl manager) {
-        return new EntityGrpDbLoadRunner(manager, dbContext, null);
+        return new EntityGrpDbLoadRunner(manager, dbSql, null);
     }
-
 }

@@ -1,14 +1,15 @@
 package com.provys.catalogue.dbloader;
 
 import com.provys.catalogue.api.EntityGrp;
-import com.provys.catalogue.dbloader.db.tables.records.KerEntitygrpTbRecord;
+import com.provys.catalogue.api.EntityGrpMeta;
 import com.provys.catalogue.impl.EntityGrpManagerImpl;
 import com.provys.catalogue.impl.EntityGrpProxy;
 import com.provys.catalogue.impl.EntityGrpValue;
-import com.provys.provysdb.dbcontext.ProvysDbContext;
+import com.provys.provysdb.dbcontext.DbResultSet;
+import com.provys.provysdb.dbcontext.DbRowMapper;
+import com.provys.provysdb.dbsqlbuilder.DbSql;
+import com.provys.provysdb.sqlbuilder.Condition;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
-import org.jooq.Condition;
-import org.jooq.impl.DSL;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -16,44 +17,48 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 
-import static com.provys.catalogue.dbloader.db.Tables.KER_ENTITYGRP_TB;
-
-class EntityGrpDbLoadRunner extends ProvysObjectLoadRunner<EntityGrp, EntityGrpValue, EntityGrpProxy, EntityGrpManagerImpl, KerEntitygrpTbRecord> {
+class EntityGrpDbLoadRunner extends ProvysObjectLoadRunner<EntityGrp, EntityGrpValue, EntityGrpProxy, EntityGrpManagerImpl> {
 
     @Nonnull
-    private final ProvysDbContext dbContext;
+    private final DbSql dbSql;
     @Nullable
     private final Condition condition;
 
-    EntityGrpDbLoadRunner(EntityGrpManagerImpl manager, ProvysDbContext dbContext, @Nullable Condition condition) {
+    EntityGrpDbLoadRunner(EntityGrpManagerImpl manager, DbSql dbSql, @Nullable Condition condition) {
         super(manager);
-        this.dbContext = Objects.requireNonNull(dbContext);
+        this.dbSql = Objects.requireNonNull(dbSql);
         this.condition = condition;
     }
 
-    @Nonnull
-    @Override
-    protected List<KerEntitygrpTbRecord> select() {
-        List<KerEntitygrpTbRecord> result;
-        try (var dsl = dbContext.createDSL()) {
-            result = dsl.selectFrom(KER_ENTITYGRP_TB).
-                    where(condition == null ? DSL.noCondition() : condition).
-                    fetch().into(KerEntitygrpTbRecord.class);
+    private class EntityGrpDbMapper implements DbRowMapper<EntityGrpValue> {
+
+        @Override
+        public EntityGrpValue map(DbResultSet dbResultSet, long l) {
+            return new EntityGrpValue(
+                    dbResultSet.getNonnullDtUid(1),
+                    dbResultSet.getNonnullString(2),
+                    dbResultSet.getOptionalDtUid(3)
+                            .map(parentId -> getManager().getOrAddById(parentId))
+                            .orElse(null),
+                    dbResultSet.getNonnullString(4),
+                    dbResultSet.getNullableString(5),
+                    dbResultSet.getNonnullInteger(6)
+            );
         }
-        return result;
     }
-
     @Nonnull
     @Override
-    protected BigInteger getId(KerEntitygrpTbRecord sourceObject) {
-        return sourceObject.getEntitygrpId();
-    }
-
-    @Nonnull
-    @Override
-    protected EntityGrpValue createValueObject(KerEntitygrpTbRecord sourceObject) {
-        return new EntityGrpValue(sourceObject.getEntitygrpId(), sourceObject.getNameNm(),
-                (sourceObject.getParentId() == null) ? null : getManager().getOrAddById(sourceObject.getParentId()),
-                sourceObject.getName(), sourceObject.getNote(), sourceObject.getOrd());
+    protected List<EntityGrpValue> select() {
+        return dbSql.select()
+                .from(dbSql.name("ker_entitygrp_tb"), EntityGrpMeta.TABLE_ALIAS)
+                .column("entitygrp_id", BigInteger.class)
+                .column("name_nm", String.class)
+                .column("parent_id", BigInteger.class)
+                .column("name", String.class)
+                .column("note", String.class)
+                .column("ord", Integer.class)
+                .where(condition)
+                .prepare()
+                .fetch(new EntityGrpDbMapper());
     }
 }
