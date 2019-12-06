@@ -16,7 +16,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import java.math.BigInteger;
 
-@ApplicationScoped
 @Path("/attr")
 public class AttrEndpoint {
 

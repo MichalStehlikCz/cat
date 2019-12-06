@@ -13,7 +13,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.math.BigInteger;
 
-@ApplicationScoped
 @Path("/entity")
 public class EntityEndpoint {
 

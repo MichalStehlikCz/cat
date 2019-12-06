@@ -5,9 +5,27 @@ info:
     metadata catalogue
   version: "1.0"
 servers:
-- url: /api
+- url: /catalogue/api
   variables: {}
 paths:
+  /attr/{attrId}:
+    get:
+      summary: Get Attribute
+      description: Retrieve atribute using Id
+      operationId: getAttrById
+      parameters:
+      - name: attrId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Attribute
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Attr'
   /attr/{entityNm}/{nameNm}:
     get:
       summary: Get Attribute by Internal Name
@@ -31,24 +49,6 @@ paths:
             text/plain:
               schema:
                 $ref: '#/components/schemas/Attr'
-  /attr/{attrId}:
-    get:
-      summary: Get Attribute
-      description: Retrieve atribute using Id
-      operationId: getAttrById
-      parameters:
-      - name: attrId
-        in: path
-        required: true
-        schema:
-          type: integer
-      responses:
-        default:
-          description: Attribute
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Attr'
   /domain/{domainId}:
     get:
       summary: Get Domain
@@ -60,6 +60,18 @@ paths:
         required: true
         schema:
           type: integer
+      responses:
+        default:
+          description: Domain
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Domain'
+  /domain:
+    get:
+      summary: Get All Domains
+      description: Retrieve all domains
+      operationId: getAllDomains
       responses:
         default:
           description: Domain
@@ -132,17 +144,10 @@ components:
           $ref: '#/components/schemas/Entity'
         javaName:
           type: string
-        attrGrp:
-          $ref: '#/components/schemas/AttrGrp'
-        nameNm:
-          type: string
         domain:
           $ref: '#/components/schemas/Domain'
-        attrGrpId:
-          type: integer
-        ord:
-          type: integer
-          format: int32
+        attrGrp:
+          $ref: '#/components/schemas/AttrGrp'
         attrType:
           type: string
           enum:
@@ -152,20 +157,27 @@ components:
           - FINANCE
           - SQL
           - FORMULA
-        properNameRoot:
+        mandatory:
+          type: boolean
+        attrGrpId:
+          type: integer
+        note:
           type: string
-        defValue:
-          type: string
+        ord:
+          type: integer
+          format: int32
         ordInEntity:
           type: integer
           format: int32
-        mandatory:
-          type: boolean
-        entityId:
-          type: integer
+        nameNm:
+          type: string
         subdomainNm:
           type: string
-        note:
+        entityId:
+          type: integer
+        properNameRoot:
+          type: string
+        defValue:
           type: string
         id:
           type: integer
@@ -174,21 +186,21 @@ components:
       properties:
         name:
           type: string
+        entity:
+          $ref: '#/components/schemas/Entity'
         attrs:
           type: array
           items:
             $ref: '#/components/schemas/Attr'
-        entity:
-          $ref: '#/components/schemas/Entity'
-        nameNm:
+        note:
           type: string
         ord:
           type: integer
           format: int32
+        nameNm:
+          type: string
         entityId:
           type: integer
-        note:
-          type: string
         id:
           type: integer
     Domain:
@@ -196,26 +208,26 @@ components:
       properties:
         name:
           type: string
-        lformatCd:
-          type: string
-        natOrder:
-          type: boolean
-        allowed:
-          type: boolean
-        dataTypeNm:
-          type: string
         dataLength:
           type: integer
           format: int32
         dataPrecision:
           type: integer
           format: int32
-        qvisible:
-          type: boolean
+        lformatCd:
+          type: string
         lvisible:
           type: boolean
         validateCd:
           type: string
+        dataTypeNm:
+          type: string
+        qvisible:
+          type: boolean
+        natOrder:
+          type: boolean
+        allowed:
+          type: boolean
         note:
           type: string
         nameNm:
@@ -231,46 +243,46 @@ components:
           type: string
         ancestor:
           $ref: '#/components/schemas/Entity'
-        implDoc:
-          type: string
-        fpPackage:
-          type: string
-        used:
-          type: boolean
-        ancestorId:
-          type: integer
-        behaviourDoc:
+        customNote:
           type: string
         objectClass:
           type: boolean
+        pgPackage:
+          type: string
         cpPackage:
+          type: string
+        entityGrpId:
+          type: integer
+        implDoc:
+          type: string
+        attrs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attr'
+        entityGrp:
+          $ref: '#/components/schemas/EntityGrp'
+        view:
+          type: string
+        epPackage:
+          type: string
+        structureDoc:
+          type: string
+        ancestorId:
+          type: integer
+        used:
+          type: boolean
+        usageDoc:
           type: string
         custom:
           type: boolean
-        usageDoc:
+        fpPackage:
+          type: string
+        behaviourDoc:
           type: string
         attrGrps:
           type: array
           items:
             $ref: '#/components/schemas/AttrGrp'
-        epPackage:
-          type: string
-        entityGrp:
-          $ref: '#/components/schemas/EntityGrp'
-        attrs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attr'
-        entityGrpId:
-          type: integer
-        view:
-          type: string
-        pgPackage:
-          type: string
-        customNote:
-          type: string
-        structureDoc:
-          type: string
         note:
           type: string
         nameNm:
@@ -286,22 +298,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EntityGrp'
-        fullOrd:
-          type: array
-          items:
-            type: integer
-            format: int32
         entities:
           type: array
           items:
             $ref: '#/components/schemas/Entity'
         parentId:
           type: integer
+        fullOrd:
+          type: array
+          items:
+            type: integer
+            format: int32
+        note:
+          type: string
         ord:
           type: integer
           format: int32
-        note:
-          type: string
         nameNm:
           type: string
         id:
