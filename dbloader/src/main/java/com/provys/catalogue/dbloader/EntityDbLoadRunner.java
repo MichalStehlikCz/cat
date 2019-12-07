@@ -35,29 +35,29 @@ class EntityDbLoadRunner extends ProvysObjectLoadRunner<Entity, EntityValue, Ent
         public EntityValue map(DbResultSet dbResultSet, long l) {
             return new EntityValue(
                     dbResultSet.getNonnullDtUid(1),
+                    dbResultSet.getNonnullString(2),
                     dbResultSet.getNonnullString(3),
-                    dbResultSet.getNonnullString(4),
+                    dbResultSet.getNonnullBoolean(4),
                     dbResultSet.getNonnullBoolean(5),
                     dbResultSet.getNonnullBoolean(6),
-                    dbResultSet.getNonnullBoolean(7),
+                    dbResultSet.getNullableString(7),
                     dbResultSet.getNullableString(8),
                     dbResultSet.getNullableString(9),
                     dbResultSet.getNullableString(10),
                     dbResultSet.getNullableString(11),
                     dbResultSet.getNullableString(12),
-                    dbResultSet.getNullableString(13),
-                    dbResultSet.getOptionalDtUid(14)
+                    dbResultSet.getOptionalDtUid(13)
                             .map(ancestorId -> getManager().getOrAddById(ancestorId))
                             .orElse(null),
-                    dbResultSet.getOptionalDtUid(15)
+                    dbResultSet.getOptionalDtUid(14)
                             .map(entityGrpId -> getManager().getRepository().getEntityGrpManager().getOrAddById(entityGrpId))
                             .orElse(null),
+                    dbResultSet.getNullableString(15),
                     dbResultSet.getNullableString(16),
                     dbResultSet.getNullableString(17),
                     dbResultSet.getNullableString(18),
                     dbResultSet.getNullableString(19),
-                    dbResultSet.getNullableString(20),
-                    dbResultSet.getNullableString(21)
+                    dbResultSet.getNullableString(20)
             );
         }
     }

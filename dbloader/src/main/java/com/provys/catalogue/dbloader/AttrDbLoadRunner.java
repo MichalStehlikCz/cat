@@ -46,7 +46,7 @@ class AttrDbLoadRunner extends ProvysObjectLoadRunner<Attr, AttrValue, AttrProxy
                             .orElse(null),
                     dbResultSet.getNonnullInteger(7),
                     dbResultSet.getNullableString(8),
-                    AttrType.valueOf(dbResultSet.getNonnullString(9)),
+                    AttrType.ofCode(dbResultSet.getNonnullString(9)),
                     getManager().getRepository().getDomainManager().getOrAddById(dbResultSet.getNonnullDtUid(10)),
                     dbResultSet.getNullableString(11),
                     dbResultSet.getNonnullBoolean(12),
