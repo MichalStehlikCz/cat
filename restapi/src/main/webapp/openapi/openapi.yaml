@@ -28,7 +28,7 @@ paths:
         default:
           description: Attribute
           content:
-            text/plain:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Attr'
   /attr/{attrId}:
@@ -46,27 +46,9 @@ paths:
         default:
           description: Attribute
           content:
-            text/plain:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Attr'
-  /domain/{domainNm}:
-    get:
-      summary: Get Domain by Internal Name
-      description: Retrieve domain using internal name
-      operationId: getDomainByNameNm
-      parameters:
-      - name: domainNm
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        default:
-          description: Domain
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Domain'
   /domain/{domainId}:
     get:
       summary: Get Domain
@@ -82,7 +64,7 @@ paths:
         default:
           description: Domain
           content:
-            text/plain:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Domain'
   /domain:
@@ -94,7 +76,25 @@ paths:
         default:
           description: Domain
           content:
-            text/plain:
+            application.json:
+              schema:
+                type: string
+  /domain/{domainNm}:
+    get:
+      summary: Get Domain by Internal Name
+      description: Retrieve domain using internal name
+      operationId: getDomainByNameNm
+      parameters:
+      - name: domainNm
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Domain
+          content:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Domain'
   /entity/{entityNm}:
@@ -112,7 +112,7 @@ paths:
         default:
           description: Entity
           content:
-            text/plain:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Entity'
   /entity/{entityId}:
@@ -130,7 +130,7 @@ paths:
         default:
           description: Entity
           content:
-            text/plain:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Entity'
 components:
@@ -142,19 +142,20 @@ components:
           type: string
         entity:
           $ref: '#/components/schemas/Entity'
-        javaName:
-          type: string
-        attrGrp:
-          $ref: '#/components/schemas/AttrGrp'
-        subdomainNm:
-          type: string
+        mandatory:
+          type: boolean
         note:
           type: string
-        domain:
-          $ref: '#/components/schemas/Domain'
-        ordInEntity:
+        nameNm:
+          type: string
+        properNameRoot:
+          type: string
+        subdomainNm:
+          type: string
+        entityId:
           type: integer
-          format: int32
+        attrGrp:
+          $ref: '#/components/schemas/AttrGrp'
         attrType:
           type: string
           enum:
@@ -164,21 +165,20 @@ components:
           - FINANCE
           - SQL
           - FORMULA
-        entityId:
+        domain:
+          $ref: '#/components/schemas/Domain'
+        ordInEntity:
           type: integer
-        nameNm:
-          type: string
+          format: int32
         attrGrpId:
           type: integer
+        defValue:
+          type: string
         ord:
           type: integer
           format: int32
-        defValue:
+        javaName:
           type: string
-        properNameRoot:
-          type: string
-        mandatory:
-          type: boolean
         id:
           type: integer
     AttrGrp:
@@ -190,10 +190,10 @@ components:
           $ref: '#/components/schemas/Entity'
         note:
           type: string
-        entityId:
-          type: integer
         nameNm:
           type: string
+        entityId:
+          type: integer
         ord:
           type: integer
           format: int32
@@ -210,26 +210,26 @@ components:
           type: string
         note:
           type: string
-        dataTypeNm:
-          type: string
         dataLength:
           type: integer
           format: int32
+        validateCd:
+          type: string
+        dataTypeNm:
+          type: string
+        lvisible:
+          type: boolean
+        natOrder:
+          type: boolean
         dataPrecision:
           type: integer
           format: int32
         allowed:
           type: boolean
-        validateCd:
-          type: string
-        natOrder:
+        qvisible:
           type: boolean
         lformatCd:
           type: string
-        lvisible:
-          type: boolean
-        qvisible:
-          type: boolean
         nameNm:
           type: string
         id:
@@ -245,46 +245,46 @@ components:
           $ref: '#/components/schemas/Entity'
         note:
           type: string
+        used:
+          type: boolean
+        behaviourDoc:
+          type: string
         custom:
           type: boolean
-        view:
-          type: string
         cpPackage:
           type: string
-        structureDoc:
+        epPackage:
           type: string
-        customNote:
+        view:
           type: string
-        usageDoc:
+        fpPackage:
           type: string
         ancestorId:
           type: integer
         entityGrpId:
           type: integer
+        entityGrp:
+          $ref: '#/components/schemas/EntityGrp'
+        customNote:
+          type: string
+        usageDoc:
+          type: string
         implDoc:
           type: string
+        attrGrps:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttrGrp'
         pgPackage:
           type: string
         attrs:
           type: array
           items:
             $ref: '#/components/schemas/Attr'
-        used:
-          type: boolean
-        epPackage:
-          type: string
-        attrGrps:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttrGrp'
-        behaviourDoc:
-          type: string
         objectClass:
           type: boolean
-        fpPackage:
+        structureDoc:
           type: string
-        entityGrp:
-          $ref: '#/components/schemas/EntityGrp'
         nameNm:
           type: string
         id:

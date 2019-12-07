@@ -7,15 +7,19 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.math.BigInteger;
+import java.util.List;
 
 @Path("/domain")
+@ApplicationScoped
 public class DomainEndpoint {
 
     @Inject
@@ -23,7 +27,7 @@ public class DomainEndpoint {
 
     @GET
     @Path("/{domainNm : [a-zA-Z][a-zA-Z_0-9]*}")
-    @Produces("text/plain")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Operation(
             summary = "Get Domain by Internal Name",
             description = "Retrieve domain using internal name",
@@ -31,7 +35,7 @@ public class DomainEndpoint {
                     @ApiResponse(
                             description = "Domain",
                             content = @Content(
-                                    mediaType = "text/plain",
+                                    mediaType = "application/json",
                                     schema = @Schema(
                                             implementation = Domain.class,
                                             maxLength = 30
@@ -42,7 +46,7 @@ public class DomainEndpoint {
 
     @GET
     @Path("/{domainId : [0-9]*}")
-    @Produces("text/plain")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Operation(
             summary = "Get Domain",
             description = "Retrieve domain using Id",
@@ -50,7 +54,7 @@ public class DomainEndpoint {
                     @ApiResponse(
                             description = "Domain",
                             content = @Content(
-                                    mediaType = "text/plain",
+                                    mediaType = "application/json",
                                     schema = @Schema(
                                             implementation = Domain.class,
                                             maxLength = 30
@@ -61,7 +65,7 @@ public class DomainEndpoint {
 
     @GET
     @Path("/")
-    @Produces("text/plain")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Operation(
             summary = "Get All Domains",
             description = "Retrieve all domains",
@@ -69,9 +73,9 @@ public class DomainEndpoint {
                     @ApiResponse(
                             description = "Domain",
                             content = @Content(
-                                    mediaType = "text/plain",
+                                    mediaType = "application.json",
                                     schema = @Schema(
-                                            implementation = Domain.class,
+                                            implementation = List.class,
                                             maxLength = 30
                                     )))})
     public Response getAllDomains() {

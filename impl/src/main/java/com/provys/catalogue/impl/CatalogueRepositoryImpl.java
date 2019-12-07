@@ -10,16 +10,20 @@ import java.util.Objects;
 @ApplicationScoped
 public class CatalogueRepositoryImpl implements CatalogueRepository {
 
-    @Nonnull
     private final EntityGrpManagerImpl entityGrpManager;
-    @Nonnull
     private final EntityManagerImpl entityManager;
-    @Nonnull
     private final AttrGrpManagerImpl attrGrpManager;
-    @Nonnull
     private final AttrManagerImpl attrManager;
-    @Nonnull
     private final DomainManagerImpl domainManager;
+
+    @SuppressWarnings("unused") // needed by some CDI implementations
+    protected CatalogueRepositoryImpl() {
+        entityGrpManager = null;
+        entityManager = null;
+        attrGrpManager = null;
+        attrManager = null;
+        domainManager = null;
+    }
 
     @SuppressWarnings("CdiInjectionPointsInspection")
     @Inject
@@ -35,31 +39,36 @@ public class CatalogueRepositoryImpl implements CatalogueRepository {
     @Nonnull
     @Override
     public EntityGrpManagerImpl getEntityGrpManager() {
-        return entityGrpManager;
+        return Objects.requireNonNull(entityGrpManager,
+                "Catalogue repository not properly initialized - entityGrpManager is null");
     }
 
     @Nonnull
     @Override
     public EntityManagerImpl getEntityManager() {
-        return entityManager;
+        return Objects.requireNonNull(entityManager,
+                "Catalogue repository not properly initialized - entityManager is null");
     }
 
     @Nonnull
     @Override
     public AttrGrpManager getAttrGrpManager() {
-        return attrGrpManager;
+        return Objects.requireNonNull(attrGrpManager,
+                "Catalogue repository not properly initialized - attrGrpManager is null");
     }
 
     @Nonnull
     @Override
     public AttrManagerImpl getAttrManager() {
-        return attrManager;
+        return Objects.requireNonNull(attrManager,
+                "Catalogue repository not properly initialized - attrManager is null");
     }
 
     @Nonnull
     @Override
     public DomainManagerImpl getDomainManager() {
-        return domainManager;
+        return Objects.requireNonNull(domainManager,
+                "Catalogue repository not properly initialized - domainManager is null");
     }
 
 }

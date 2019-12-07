@@ -7,12 +7,15 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.math.BigInteger;
 
 @Path("/entity")
+@ApplicationScoped
 public class EntityEndpoint {
 
     @Inject
@@ -20,7 +23,7 @@ public class EntityEndpoint {
 
     @GET
     @Path("/{entityNm : [a-zA-Z][a-zA-Z_0-9]*}")
-    @Produces("text/plain")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Operation(
             summary = "Get Entity by Internal Name",
             description = "Retrieve entity using internal name",
@@ -28,7 +31,7 @@ public class EntityEndpoint {
                     @ApiResponse(
                             description = "Entity",
                             content = @Content(
-                                    mediaType = "text/plain",
+                                    mediaType = "application/json",
                                     schema = @Schema(
                                             implementation = Entity.class,
                                             maxLength = 30
@@ -39,7 +42,7 @@ public class EntityEndpoint {
 
     @GET
     @Path("/{entityId : [0-9]*}")
-    @Produces("text/plain")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Operation(
             summary = "Get Entity",
             description = "Retrieve entity using Id",
@@ -47,7 +50,7 @@ public class EntityEndpoint {
                     @ApiResponse(
                             description = "Entity",
                             content = @Content(
-                                    mediaType = "text/plain",
+                                    mediaType = "application/json",
                                     schema = @Schema(
                                             implementation = Entity.class,
                                             maxLength = 30

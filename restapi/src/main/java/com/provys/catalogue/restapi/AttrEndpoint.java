@@ -7,15 +7,18 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.math.BigInteger;
 
 @Path("/attr")
+@ApplicationScoped
 public class AttrEndpoint {
 
     @Inject
@@ -23,7 +26,7 @@ public class AttrEndpoint {
 
     @GET
     @Path("/{entityNm : [a-zA-Z][a-zA-Z_0-9]*}/{nameNm : [a-zA-Z][a-zA-Z_0-9]*}")
-    @Produces("text/plain")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Operation(
             summary = "Get Attribute by Internal Name",
             description = "Retrieve attribute using internal name",
@@ -31,7 +34,7 @@ public class AttrEndpoint {
                     @ApiResponse(
                             description = "Attribute",
                             content = @Content(
-                                    mediaType = "text/plain",
+                                    mediaType = "application/json",
                                     schema = @Schema(
                                             implementation = Attr.class,
                                             maxLength = 30
@@ -43,7 +46,7 @@ public class AttrEndpoint {
 
     @GET
     @Path("/{attrId : [0-9]*}")
-    @Produces("text/plain")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Operation(
             summary = "Get Attribute",
             description = "Retrieve atribute using Id",
@@ -51,7 +54,7 @@ public class AttrEndpoint {
                     @ApiResponse(
                             description = "Attribute",
                             content = @Content(
-                                    mediaType = "text/plain",
+                                    mediaType = "application/json",
                                     schema = @Schema(
                                             implementation = Attr.class,
                                             maxLength = 30
