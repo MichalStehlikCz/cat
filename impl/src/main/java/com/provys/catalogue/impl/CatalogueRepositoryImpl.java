@@ -21,7 +21,7 @@ public class CatalogueRepositoryImpl implements CatalogueRepository {
     @Nonnull
     private final DomainManagerImpl domainManager;
 
-    @SuppressWarnings({"CdiUnproxyableBeanTypesInspection", "CdiInjectionPointsInspection"})
+    @SuppressWarnings("CdiInjectionPointsInspection")
     @Inject
     CatalogueRepositoryImpl(EntityGrpLoader entityGrpLoader, EntityLoader entityLoader, AttrGrpLoader attrGrpLoader,
                             AttrLoader attrLoader, DomainLoader domainLoader) {

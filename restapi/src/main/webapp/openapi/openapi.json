@@ -10,33 +10,6 @@
     "variables" : { }
   } ],
   "paths" : {
-    "/attr/{attrId}" : {
-      "get" : {
-        "summary" : "Get Attribute",
-        "description" : "Retrieve atribute using Id",
-        "operationId" : "getAttrById",
-        "parameters" : [ {
-          "name" : "attrId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "integer"
-          }
-        } ],
-        "responses" : {
-          "default" : {
-            "description" : "Attribute",
-            "content" : {
-              "text/plain" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Attr"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/attr/{entityNm}/{nameNm}" : {
       "get" : {
         "summary" : "Get Attribute by Internal Name",
@@ -64,6 +37,60 @@
               "text/plain" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Attr"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/attr/{attrId}" : {
+      "get" : {
+        "summary" : "Get Attribute",
+        "description" : "Retrieve atribute using Id",
+        "operationId" : "getAttrById",
+        "parameters" : [ {
+          "name" : "attrId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "Attribute",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Attr"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/domain/{domainNm}" : {
+      "get" : {
+        "summary" : "Get Domain by Internal Name",
+        "description" : "Retrieve domain using internal name",
+        "operationId" : "getDomainByNameNm",
+        "parameters" : [ {
+          "name" : "domainNm",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "Domain",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Domain"
                 }
               }
             }
@@ -103,33 +130,6 @@
         "summary" : "Get All Domains",
         "description" : "Retrieve all domains",
         "operationId" : "getAllDomains",
-        "responses" : {
-          "default" : {
-            "description" : "Domain",
-            "content" : {
-              "text/plain" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Domain"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/domain/{domainNm}" : {
-      "get" : {
-        "summary" : "Get Domain by Internal Name",
-        "description" : "Retrieve domain using internal name",
-        "operationId" : "getDomainByNameNm",
-        "parameters" : [ {
-          "name" : "domainNm",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
         "responses" : {
           "default" : {
             "description" : "Domain",
@@ -213,47 +213,47 @@
           "javaName" : {
             "type" : "string"
           },
-          "domain" : {
-            "$ref" : "#/components/schemas/Domain"
-          },
           "attrGrp" : {
             "$ref" : "#/components/schemas/AttrGrp"
           },
-          "attrType" : {
-            "type" : "string",
-            "enum" : [ "COLUMN", "TEXT", "FREE", "FINANCE", "SQL", "FORMULA" ]
-          },
-          "mandatory" : {
-            "type" : "boolean"
-          },
-          "attrGrpId" : {
-            "type" : "integer"
+          "subdomainNm" : {
+            "type" : "string"
           },
           "note" : {
             "type" : "string"
           },
-          "ord" : {
-            "type" : "integer",
-            "format" : "int32"
+          "domain" : {
+            "$ref" : "#/components/schemas/Domain"
           },
           "ordInEntity" : {
             "type" : "integer",
             "format" : "int32"
           },
-          "nameNm" : {
-            "type" : "string"
-          },
-          "subdomainNm" : {
-            "type" : "string"
+          "attrType" : {
+            "type" : "string",
+            "enum" : [ "COLUMN", "TEXT", "FREE", "FINANCE", "SQL", "FORMULA" ]
           },
           "entityId" : {
             "type" : "integer"
           },
-          "properNameRoot" : {
+          "nameNm" : {
             "type" : "string"
+          },
+          "attrGrpId" : {
+            "type" : "integer"
+          },
+          "ord" : {
+            "type" : "integer",
+            "format" : "int32"
           },
           "defValue" : {
             "type" : "string"
+          },
+          "properNameRoot" : {
+            "type" : "string"
+          },
+          "mandatory" : {
+            "type" : "boolean"
           },
           "id" : {
             "type" : "integer"
@@ -269,24 +269,24 @@
           "entity" : {
             "$ref" : "#/components/schemas/Entity"
           },
-          "attrs" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Attr"
-            }
-          },
           "note" : {
+            "type" : "string"
+          },
+          "entityId" : {
+            "type" : "integer"
+          },
+          "nameNm" : {
             "type" : "string"
           },
           "ord" : {
             "type" : "integer",
             "format" : "int32"
           },
-          "nameNm" : {
-            "type" : "string"
-          },
-          "entityId" : {
-            "type" : "integer"
+          "attrs" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Attr"
+            }
           },
           "id" : {
             "type" : "integer"
@@ -299,6 +299,12 @@
           "name" : {
             "type" : "string"
           },
+          "note" : {
+            "type" : "string"
+          },
+          "dataTypeNm" : {
+            "type" : "string"
+          },
           "dataLength" : {
             "type" : "integer",
             "format" : "int32"
@@ -307,29 +313,23 @@
             "type" : "integer",
             "format" : "int32"
           },
+          "allowed" : {
+            "type" : "boolean"
+          },
+          "validateCd" : {
+            "type" : "string"
+          },
+          "natOrder" : {
+            "type" : "boolean"
+          },
           "lformatCd" : {
             "type" : "string"
           },
           "lvisible" : {
             "type" : "boolean"
           },
-          "validateCd" : {
-            "type" : "string"
-          },
-          "dataTypeNm" : {
-            "type" : "string"
-          },
           "qvisible" : {
             "type" : "boolean"
-          },
-          "natOrder" : {
-            "type" : "boolean"
-          },
-          "allowed" : {
-            "type" : "boolean"
-          },
-          "note" : {
-            "type" : "string"
           },
           "nameNm" : {
             "type" : "string"
@@ -351,22 +351,37 @@
           "ancestor" : {
             "$ref" : "#/components/schemas/Entity"
           },
-          "customNote" : {
+          "note" : {
             "type" : "string"
           },
-          "objectClass" : {
+          "custom" : {
             "type" : "boolean"
           },
-          "pgPackage" : {
+          "view" : {
             "type" : "string"
           },
           "cpPackage" : {
             "type" : "string"
           },
+          "structureDoc" : {
+            "type" : "string"
+          },
+          "customNote" : {
+            "type" : "string"
+          },
+          "usageDoc" : {
+            "type" : "string"
+          },
+          "ancestorId" : {
+            "type" : "integer"
+          },
           "entityGrpId" : {
             "type" : "integer"
           },
           "implDoc" : {
+            "type" : "string"
+          },
+          "pgPackage" : {
             "type" : "string"
           },
           "attrs" : {
@@ -375,34 +390,10 @@
               "$ref" : "#/components/schemas/Attr"
             }
           },
-          "entityGrp" : {
-            "$ref" : "#/components/schemas/EntityGrp"
-          },
-          "view" : {
-            "type" : "string"
-          },
-          "epPackage" : {
-            "type" : "string"
-          },
-          "structureDoc" : {
-            "type" : "string"
-          },
-          "ancestorId" : {
-            "type" : "integer"
-          },
           "used" : {
             "type" : "boolean"
           },
-          "usageDoc" : {
-            "type" : "string"
-          },
-          "custom" : {
-            "type" : "boolean"
-          },
-          "fpPackage" : {
-            "type" : "string"
-          },
-          "behaviourDoc" : {
+          "epPackage" : {
             "type" : "string"
           },
           "attrGrps" : {
@@ -411,8 +402,17 @@
               "$ref" : "#/components/schemas/AttrGrp"
             }
           },
-          "note" : {
+          "behaviourDoc" : {
             "type" : "string"
+          },
+          "objectClass" : {
+            "type" : "boolean"
+          },
+          "fpPackage" : {
+            "type" : "string"
+          },
+          "entityGrp" : {
+            "$ref" : "#/components/schemas/EntityGrp"
           },
           "nameNm" : {
             "type" : "string"
@@ -434,6 +434,13 @@
               "$ref" : "#/components/schemas/EntityGrp"
             }
           },
+          "note" : {
+            "type" : "string"
+          },
+          "ord" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
           "entities" : {
             "type" : "array",
             "items" : {
@@ -449,13 +456,6 @@
               "type" : "integer",
               "format" : "int32"
             }
-          },
-          "note" : {
-            "type" : "string"
-          },
-          "ord" : {
-            "type" : "integer",
-            "format" : "int32"
           },
           "nameNm" : {
             "type" : "string"

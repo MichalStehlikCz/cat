@@ -18,7 +18,6 @@ import java.math.BigInteger;
 @Path("/domain")
 public class DomainEndpoint {
 
-    @SuppressWarnings("CdiUnproxyableBeanTypesInspection")
     @Inject
     CatalogueRepository catalogueRepository;
 
