@@ -71,11 +71,13 @@
                                 <argument>build</argument>
                                 <argument>-t</argument>
                                 <argument>${project.groupId}/${project.build.finalName}</argument>
+                                <argument>-f</argument>
+                                <argument>${docker_file}</argument>
                                 <argument>.</argument>
                             </arguments>
                         </configuration>
                     </execution>
-                    <execution>
+                    <execution><!-- used in normal docker mode - run container and expose it on port 8086 -->
                         <id>rundocker</id>
                         <phase>${docker_run_phase}</phase>
                         <goals>
@@ -88,6 +90,23 @@
                                 <argument>${project.groupId}</argument>
                                 <argument>${project.build.finalName}</argument>
                                 <argument>8086</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution><!-- used in wildfly admin profile, expose also admin port on container -->
+                        <id>rundockeradmin</id>
+                        <phase>${docker_runadmin_phase}</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>runadmin</executable>
+                            <workingDirectory>${project.basedir}</workingDirectory>
+                            <arguments>
+                                <argument>${project.groupId}</argument>
+                                <argument>${project.build.finalName}</argument>
+                                <argument>8086</argument>
+                                <argument>9996</argument>
                             </arguments>
                         </configuration>
                     </execution>

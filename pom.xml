@@ -43,16 +43,38 @@
             <properties>
                 <docker_package_phase>none</docker_package_phase>
                 <docker_run_phase>none</docker_run_phase>
+                <docker_runadmin_phase>none</docker_runadmin_phase>
+                <docker_file>none</docker_file>
             </properties>
         </profile>
         <profile>
-            <id>docker</id>
+            <id>docker-wildfly</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <docker_package_phase>package</docker_package_phase>
                 <docker_run_phase>pre-integration-test</docker_run_phase>
+                <docker_runadmin_phase>none</docker_runadmin_phase>
+                <docker_file>Dockerfile.wildfly</docker_file>
+            </properties>
+        </profile>
+        <profile>
+            <id>docker-wildflyadmin</id>
+            <properties>
+                <docker_package_phase>package</docker_package_phase>
+                <docker_run_phase>none</docker_run_phase>
+                <docker_runadmin_phase>pre-integration-test</docker_runadmin_phase>
+                <docker_file>Dockerfile.wildflyadmin</docker_file>
+            </properties>
+        </profile>
+        <profile>
+            <id>docker-payaramicro</id>
+            <properties>
+                <docker_package_phase>package</docker_package_phase>
+                <docker_run_phase>pre-integration-test</docker_run_phase>
+                <docker_runadmin_phase>none</docker_runadmin_phase>
+                <docker_file>Dockerfile.payaramicro</docker_file>
             </properties>
         </profile>
     </profiles>
@@ -146,22 +168,22 @@
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbcontext-api</artifactId>
-                <version>1.3.7</version>
+                <version>1.3.9</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbcontext</artifactId>
-                <version>1.3.7</version>
+                <version>1.3.9</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>sqlbuilder</artifactId>
-                <version>1.3.7</version>
+                <version>1.3.9</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbsqlbuilder</artifactId>
-                <version>1.3.7</version>
+                <version>1.3.9</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
