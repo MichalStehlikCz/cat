@@ -67,6 +67,7 @@ class DomainDbLoadRunner extends ProvysObjectLoadRunner<Domain, DomainValue, Dom
                 .column("datatype_nm", String.class)
                 .column("datalength", Integer.class)
                 .column("dataprecision", Integer.class)
+                .column("note", String.class)
                 .column("allowed", Boolean.class)
                 .column("qvisible", Boolean.class)
                 .column("lvisible", Boolean.class)
