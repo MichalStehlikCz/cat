@@ -11,6 +11,7 @@ import java.lang.String;
 import java.math.BigInteger;
 import java.util.Optional;
 import javax.annotation.Nonnull;
+import javax.json.bind.annotation.JsonbProperty;
 
 public abstract class GenDomainProxy extends ProvysNmObjectProxyImpl<Domain, DomainValue, DomainProxy, DomainManagerImpl> implements DomainBase {
     public GenDomainProxy(DomainManagerImpl manager, BigInteger id) {
@@ -19,12 +20,14 @@ public abstract class GenDomainProxy extends ProvysNmObjectProxyImpl<Domain, Dom
 
     @Nonnull
     @Override
+    @JsonbProperty("NAME")
     public String getName() {
         return validateValueObject().getName();
     }
 
     @Nonnull
     @Override
+    @JsonbProperty("DATATYPE_NM")
     public Optional<String> getDataTypeNm() {
         return validateValueObject().getDataTypeNm();
     }

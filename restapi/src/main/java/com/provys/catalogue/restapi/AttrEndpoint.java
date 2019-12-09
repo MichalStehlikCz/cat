@@ -34,7 +34,7 @@ public class AttrEndpoint {
                     @ApiResponse(
                             description = "Attribute",
                             content = @Content(
-                                    mediaType = "application/json",
+                                    mediaType = "application/xml",
                                     schema = @Schema(
                                             implementation = Attr.class,
                                             maxLength = 30
@@ -54,7 +54,7 @@ public class AttrEndpoint {
                     @ApiResponse(
                             description = "Attribute",
                             content = @Content(
-                                    mediaType = "application/json",
+                                    mediaType = "application/xml",
                                     schema = @Schema(
                                             implementation = Attr.class,
                                             maxLength = 30

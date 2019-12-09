@@ -12,6 +12,7 @@ import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.json.bind.annotation.JsonbProperty;
 
 public class DomainValue extends ProvysNmObjectValue implements DomainBase {
     @Nonnull
@@ -63,12 +64,14 @@ public class DomainValue extends ProvysNmObjectValue implements DomainBase {
 
     @Nonnull
     @Override
+    @JsonbProperty("NAME")
     public String getName() {
         return name;
     }
 
     @Nonnull
     @Override
+    @JsonbProperty("DATATYPE_NM")
     public Optional<String> getDataTypeNm() {
         return Optional.ofNullable(dataTypeNm);
     }

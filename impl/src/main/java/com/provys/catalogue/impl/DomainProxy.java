@@ -13,7 +13,7 @@ import javax.annotation.Nonnull;
 
 public class DomainProxy extends GenDomainProxy implements Domain {
 
-    private static Logger LOG = LogManager.getLogger(DomainProxy.class);
+    private static final Logger LOG = LogManager.getLogger(DomainProxy.class);
 
     DomainProxy(DomainManagerImpl manager, BigInteger id) {
         super(manager, id);

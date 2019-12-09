@@ -28,7 +28,7 @@ paths:
         default:
           description: Attribute
           content:
-            application/json:
+            application/xml:
               schema:
                 $ref: '#/components/schemas/Attr'
   /attr/{attrId}:
@@ -46,20 +46,20 @@ paths:
         default:
           description: Attribute
           content:
-            application/json:
+            application/xml:
               schema:
                 $ref: '#/components/schemas/Attr'
-  /domain/{domainId}:
+  /domain/{domainNm}:
     get:
-      summary: Get Domain
-      description: Retrieve domain using Id
-      operationId: getDomainById
+      summary: Get Domain by Internal Name
+      description: Retrieve domain using internal name
+      operationId: getDomainByNameNm
       parameters:
-      - name: domainId
+      - name: domainNm
         in: path
         required: true
         schema:
-          type: integer
+          type: string
       responses:
         default:
           description: Domain
@@ -78,18 +78,20 @@ paths:
           content:
             application.json:
               schema:
-                type: string
-  /domain/{domainNm}:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DomainProxy'
+  /domain/{domainId}:
     get:
-      summary: Get Domain by Internal Name
-      description: Retrieve domain using internal name
-      operationId: getDomainByNameNm
+      summary: Get Domain
+      description: Retrieve domain using Id
+      operationId: getDomainById
       parameters:
-      - name: domainNm
+      - name: domainId
         in: path
         required: true
         schema:
-          type: string
+          type: integer
       responses:
         default:
           description: Domain
@@ -142,20 +144,16 @@ components:
           type: string
         entity:
           $ref: '#/components/schemas/Entity'
-        mandatory:
-          type: boolean
-        note:
-          type: string
         nameNm:
           type: string
-        properNameRoot:
-          type: string
-        subdomainNm:
-          type: string
-        entityId:
-          type: integer
         attrGrp:
           $ref: '#/components/schemas/AttrGrp'
+        attrGrpId:
+          type: integer
+        entityId:
+          type: integer
+        subdomainNm:
+          type: string
         attrType:
           type: string
           enum:
@@ -165,18 +163,22 @@ components:
           - FINANCE
           - SQL
           - FORMULA
-        domain:
-          $ref: '#/components/schemas/Domain'
         ordInEntity:
           type: integer
           format: int32
-        attrGrpId:
-          type: integer
-        defValue:
+        mandatory:
+          type: boolean
+        domain:
+          $ref: '#/components/schemas/Domain'
+        note:
           type: string
         ord:
           type: integer
           format: int32
+        properNameRoot:
+          type: string
+        defValue:
+          type: string
         javaName:
           type: string
         id:
@@ -188,12 +190,12 @@ components:
           type: string
         entity:
           $ref: '#/components/schemas/Entity'
-        note:
-          type: string
         nameNm:
           type: string
         entityId:
           type: integer
+        note:
+          type: string
         ord:
           type: integer
           format: int32
@@ -213,23 +215,23 @@ components:
         dataLength:
           type: integer
           format: int32
-        validateCd:
-          type: string
-        dataTypeNm:
-          type: string
-        lvisible:
-          type: boolean
-        natOrder:
-          type: boolean
-        dataPrecision:
-          type: integer
-          format: int32
         allowed:
           type: boolean
         qvisible:
           type: boolean
+        lvisible:
+          type: boolean
+        validateCd:
+          type: string
+        dataPrecision:
+          type: integer
+          format: int32
+        dataTypeNm:
+          type: string
         lformatCd:
           type: string
+        natOrder:
+          type: boolean
         nameNm:
           type: string
         id:
@@ -245,46 +247,46 @@ components:
           $ref: '#/components/schemas/Entity'
         note:
           type: string
+        epPackage:
+          type: string
+        customNote:
+          type: string
+        entityGrpId:
+          type: integer
         used:
           type: boolean
-        behaviourDoc:
+        implDoc:
           type: string
         custom:
           type: boolean
-        cpPackage:
-          type: string
-        epPackage:
-          type: string
-        view:
+        pgPackage:
           type: string
         fpPackage:
           type: string
-        ancestorId:
-          type: integer
-        entityGrpId:
-          type: integer
         entityGrp:
           $ref: '#/components/schemas/EntityGrp'
-        customNote:
+        objectClass:
+          type: boolean
+        behaviourDoc:
           type: string
         usageDoc:
           type: string
-        implDoc:
+        cpPackage:
           type: string
-        attrGrps:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttrGrp'
-        pgPackage:
+        structureDoc:
+          type: string
+        view:
           type: string
         attrs:
           type: array
           items:
             $ref: '#/components/schemas/Attr'
-        objectClass:
-          type: boolean
-        structureDoc:
-          type: string
+        ancestorId:
+          type: integer
+        attrGrps:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttrGrp'
         nameNm:
           type: string
         id:
@@ -303,10 +305,6 @@ components:
         ord:
           type: integer
           format: int32
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Entity'
         parentId:
           type: integer
         fullOrd:
@@ -314,7 +312,83 @@ components:
           items:
             type: integer
             format: int32
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
         nameNm:
           type: string
         id:
           type: integer
+    DomainProxy:
+      type: object
+      properties:
+        id:
+          type: integer
+        lastUsed:
+          type: integer
+          format: int64
+        valueObject:
+          $ref: '#/components/schemas/DomainValue'
+        deleted:
+          type: boolean
+        name:
+          type: string
+        note:
+          type: string
+        dataLength:
+          type: integer
+          format: int32
+        allowed:
+          type: boolean
+        qvisible:
+          type: boolean
+        lvisible:
+          type: boolean
+        validateCd:
+          type: string
+        dataPrecision:
+          type: integer
+          format: int32
+        dataTypeNm:
+          type: string
+        lformatCd:
+          type: string
+        natOrder:
+          type: boolean
+        nameNm:
+          type: string
+          xml:
+            name: NAME_NM
+    DomainValue:
+      type: object
+      properties:
+        id:
+          type: integer
+        nameNm:
+          type: string
+        name:
+          type: string
+        dataTypeNm:
+          type: string
+        dataLength:
+          type: integer
+          format: int32
+        dataPrecision:
+          type: integer
+          format: int32
+        note:
+          type: string
+        allowed:
+          type: boolean
+        validateCd:
+          type: string
+        natOrder:
+          type: boolean
+        qvisible:
+          type: boolean
+        lvisible:
+          type: boolean
+        lformatCd:
+          type: string
+      writeOnly: true

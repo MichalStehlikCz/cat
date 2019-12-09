@@ -2,7 +2,9 @@ package com.provys.catalogue.restapi;
 
 import com.provys.catalogue.api.CatalogueRepository;
 import com.provys.catalogue.api.Domain;
+import com.provys.catalogue.impl.DomainProxy;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -74,9 +76,8 @@ public class DomainEndpoint {
                             description = "Domain",
                             content = @Content(
                                     mediaType = "application.json",
-                                    schema = @Schema(
-                                            implementation = List.class,
-                                            maxLength = 30
+                                    array = @ArraySchema(
+                                            schema = @Schema(implementation = DomainProxy.class)
                                     )))})
     public Response getAllDomains() {
         return Response.ok(catalogueRepository.getDomainManager().getAll()).build();

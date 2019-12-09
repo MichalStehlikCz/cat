@@ -5,6 +5,8 @@ import com.provys.provysobject.impl.ProvysObjectValue;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Objects;
@@ -58,6 +60,7 @@ public class AttrValue extends ProvysObjectValue {
      * @return entity UID (attribute ENTITY_ID)
      */
     @Nonnull
+    @JsonbProperty("ENTITY_ID")
     BigInteger getEntityId() {
         return getEntity().getId();
     }
@@ -66,6 +69,7 @@ public class AttrValue extends ProvysObjectValue {
      * @return entity (corresponding to ENTITY_ID value)
      */
     @Nonnull
+    @JsonbTransient
     Entity getEntity() {
         return entity;
     }
@@ -98,6 +102,7 @@ public class AttrValue extends ProvysObjectValue {
      * @return name of attribute for use in Java (camelcase, derived from propername)
      */
     @Nonnull
+    @JsonbTransient
     String getJavaName() {
         String[] parts = nameNm.split("_");
         int index = 0;
@@ -139,6 +144,7 @@ public class AttrValue extends ProvysObjectValue {
      * @return attribute group (corresponding to ATTRGRP_ID value)
      */
     @Nonnull
+    @JsonbTransient
     Optional<AttrGrp> getAttrGrp() {
         return Optional.ofNullable(attrGrp);
     }
