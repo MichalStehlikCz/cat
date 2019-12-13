@@ -97,6 +97,21 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>2.4.0-b180830.0438</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.json</artifactId>
+                <version>1.1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse</groupId>
+                <artifactId>yasson</artifactId>
+                <version>1.0.5</version>
+            </dependency>
+            <dependency>
                 <groupId>jakarta.inject</groupId>
                 <artifactId>jakarta.inject-api</artifactId>
                 <version>1.0</version>
@@ -188,12 +203,12 @@
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
                 <artifactId>provysobject-api</artifactId>
-                <version>1.1.2</version>
+                <version>1.1.11</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
                 <artifactId>provysobject-impl</artifactId>
-                <version>1.1.2</version>
+                <version>1.1.11</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,6 +1,5 @@
-package com.provys.catalogue.impl.gen;
+package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.DomainBase;
 import com.provys.provysobject.impl.ProvysNmObjectValue;
 import java.lang.Integer;
 import java.lang.Object;
@@ -12,9 +11,17 @@ import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.json.bind.annotation.JsonbProperty;
+import javax.annotation.processing.Generated;
+import javax.json.bind.annotation.JsonbTypeAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-public class DomainValue extends ProvysNmObjectValue implements DomainBase {
+@Generated(
+        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
+        date = "2019-12-12T15:20:26.681583500"
+)
+@JsonbTypeAdapter(JsonbDomainValueAdapter.class)
+@XmlJavaTypeAdapter(XmlDomainValueAdapter.class)
+public class DomainValue extends ProvysNmObjectValue {
     @Nonnull
     private final String name;
 
@@ -63,72 +70,59 @@ public class DomainValue extends ProvysNmObjectValue implements DomainBase {
     }
 
     @Nonnull
-    @Override
-    @JsonbProperty("NAME")
     public String getName() {
         return name;
     }
 
     @Nonnull
-    @Override
-    @JsonbProperty("DATATYPE_NM")
     public Optional<String> getDataTypeNm() {
         return Optional.ofNullable(dataTypeNm);
     }
 
     @Nonnull
-    @Override
     public Optional<Integer> getDataLength() {
         return Optional.ofNullable(dataLength);
     }
 
     @Nonnull
-    @Override
     public Optional<Integer> getDataPrecision() {
         return Optional.ofNullable(dataPrecision);
     }
 
     @Nonnull
-    @Override
     public Optional<String> getNote() {
         return Optional.ofNullable(note);
     }
 
-    @Override
     public boolean isAllowed() {
         return allowed;
     }
 
-    @Override
-    public boolean isQVisible() {
+    public boolean isqVisible() {
         return qVisible;
     }
 
-    @Override
-    public boolean isLVisible() {
+    public boolean islVisible() {
         return lVisible;
     }
 
     @Nonnull
-    @Override
     public Optional<String> getValidateCd() {
         return Optional.ofNullable(validateCd);
     }
 
     @Nonnull
-    @Override
-    public Optional<String> getLFormatCd() {
+    public Optional<String> getlFormatCd() {
         return Optional.ofNullable(lFormatCd);
     }
 
-    @Override
     public boolean isNatOrder() {
         return natOrder;
     }
 
     @Override
     @SuppressWarnings("squid:S1206")
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) return true;
         if (!(o instanceof DomainValue)) return false;
         if (!super.equals(o)) return false;

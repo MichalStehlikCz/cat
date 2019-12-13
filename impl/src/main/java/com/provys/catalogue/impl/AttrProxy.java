@@ -1,6 +1,7 @@
 package com.provys.catalogue.impl;
 
 import com.provys.catalogue.api.*;
+import com.provys.common.exception.InternalException;
 import com.provys.provysobject.impl.ProvysObjectProxyImpl;
 
 import javax.annotation.Nonnull;
@@ -25,7 +26,6 @@ public class AttrProxy extends ProvysObjectProxyImpl<Attr, AttrValue, AttrProxy,
      * @return nothing, it is never called
      */
     @SuppressWarnings("unused")
-    @Nullable
     private static AttrProxy jaxbCreate() {
         return null;
     }

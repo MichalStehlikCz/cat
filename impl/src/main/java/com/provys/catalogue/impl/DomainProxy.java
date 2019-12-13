@@ -1,22 +1,45 @@
 package com.provys.catalogue.impl;
 
 import com.provys.catalogue.api.Domain;
-import com.provys.catalogue.impl.gen.GenDomainProxy;
+import java.lang.Override;
+import java.lang.SuppressWarnings;
+import java.math.BigInteger;
+import javax.annotation.Nonnull;
+import javax.json.bind.annotation.JsonbTypeAdapter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+import com.provys.common.datatype.DtDate;
+import com.provys.common.datatype.DtDateTime;
 import com.provys.common.exception.InternalException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import javax.annotation.Nonnull;
-
+@SuppressWarnings("ValidExternallyBoundObject")
+@JsonbTypeAdapter(JsonbDomainProxyAdapter.class)
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(
+        name = "",
+        factoryClass = DomainProxy.class,
+        factoryMethod = "jaxbFakeCreate"
+)
+@XmlRootElement(
+        name = "DOMAIN"
+)
 public class DomainProxy extends GenDomainProxy implements Domain {
-
     private static final Logger LOG = LogManager.getLogger(DomainProxy.class);
 
     DomainProxy(DomainManagerImpl manager, BigInteger id) {
         super(manager, id);
+    }
+
+    /**
+     * Formally needed to allow jaxb marshalling@return nothing, it is never called */
+    @SuppressWarnings("unused")
+    private static DomainProxy jaxbFakeCreate() {
+        throw new InternalException(LOG, "Proxy cannot be unmarshalled from XML");
     }
 
     @Nonnull
@@ -40,9 +63,9 @@ public class DomainProxy extends GenDomainProxy implements Domain {
             case "BOOLEAN":
                 return optional ? Boolean.class : boolean.class;
             case "DATE":
-                return LocalDate.class;
+                return DtDate.class;
             case "DATETIME":
-                return LocalDateTime.class;
+                return DtDateTime.class;
             case "CHAR":
                 return optional ? Character.class : char.class;
             case "INTEGER":

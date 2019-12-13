@@ -5,8 +5,13 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nonnull;
+import javax.annotation.processing.Generated;
 
-public interface DomainBase extends ProvysNmObject {
+@Generated(
+        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
+        date = "2019-12-12T15:21:45.449572"
+)
+interface GenDomain extends ProvysNmObject {
     /**
      * @return Name (attribute NAME)
      */
@@ -45,12 +50,12 @@ public interface DomainBase extends ProvysNmObject {
     /**
      * @return Usable in query (attribute QVISIBLE)
      */
-    boolean isQVisible();
+    boolean isqVisible();
 
     /**
      * @return Usable in lists (attribute LVISIBLE)
      */
-    boolean isLVisible();
+    boolean islVisible();
 
     /**
      * @return Validation (attribute VALIDATE_CD)
@@ -62,7 +67,7 @@ public interface DomainBase extends ProvysNmObject {
      * @return List format (attribute LFORMAT_CD)
      */
     @Nonnull
-    Optional<String> getLFormatCd();
+    Optional<String> getlFormatCd();
 
     /**
      * @return Native ordering (attribute NATORDER)

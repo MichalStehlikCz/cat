@@ -49,24 +49,6 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Attr'
-  /domain/{domainNm}:
-    get:
-      summary: Get Domain by Internal Name
-      description: Retrieve domain using internal name
-      operationId: getDomainByNameNm
-      parameters:
-      - name: domainNm
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        default:
-          description: Domain
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Domain'
   /domain:
     get:
       summary: Get All Domains
@@ -92,6 +74,24 @@ paths:
         required: true
         schema:
           type: integer
+      responses:
+        default:
+          description: Domain
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+  /domain/{domainNm}:
+    get:
+      summary: Get Domain by Internal Name
+      description: Retrieve domain using internal name
+      operationId: getDomainByNameNm
+      parameters:
+      - name: domainNm
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         default:
           description: Domain
@@ -140,20 +140,14 @@ components:
     Attr:
       type: object
       properties:
-        name:
-          type: string
         entity:
           $ref: '#/components/schemas/Entity'
-        nameNm:
+        javaName:
           type: string
-        attrGrp:
-          $ref: '#/components/schemas/AttrGrp'
-        attrGrpId:
-          type: integer
-        entityId:
-          type: integer
         subdomainNm:
           type: string
+        attrGrpId:
+          type: integer
         attrType:
           type: string
           enum:
@@ -166,72 +160,78 @@ components:
         ordInEntity:
           type: integer
           format: int32
-        mandatory:
-          type: boolean
+        defValue:
+          type: string
+        nameNm:
+          type: string
         domain:
           $ref: '#/components/schemas/Domain'
+        mandatory:
+          type: boolean
         note:
+          type: string
+        properNameRoot:
           type: string
         ord:
           type: integer
           format: int32
-        properNameRoot:
-          type: string
-        defValue:
-          type: string
-        javaName:
+        entityId:
+          type: integer
+        attrGrp:
+          $ref: '#/components/schemas/AttrGrp'
+        name:
           type: string
         id:
           type: integer
     AttrGrp:
       type: object
       properties:
-        name:
-          type: string
         entity:
           $ref: '#/components/schemas/Entity'
         nameNm:
           type: string
-        entityId:
-          type: integer
         note:
           type: string
         ord:
           type: integer
           format: int32
+        entityId:
+          type: integer
         attrs:
           type: array
           items:
             $ref: '#/components/schemas/Attr'
+        name:
+          type: string
         id:
           type: integer
     Domain:
       type: object
       properties:
-        name:
-          type: string
         note:
           type: string
-        dataLength:
-          type: integer
-          format: int32
-        allowed:
-          type: boolean
-        qvisible:
-          type: boolean
-        lvisible:
-          type: boolean
         validateCd:
-          type: string
-        dataPrecision:
-          type: integer
-          format: int32
-        dataTypeNm:
-          type: string
-        lformatCd:
           type: string
         natOrder:
           type: boolean
+        allowed:
+          type: boolean
+        dataLength:
+          type: integer
+          format: int32
+        lvisible:
+          type: boolean
+        dataTypeNm:
+          type: string
+        qvisible:
+          type: boolean
+        dataPrecision:
+          type: integer
+          format: int32
+        lformatCd:
+          type: string
+        name:
+          type: string
         nameNm:
           type: string
         id:
@@ -239,54 +239,54 @@ components:
     Entity:
       type: object
       properties:
-        name:
-          type: string
-        table:
-          type: string
         ancestor:
           $ref: '#/components/schemas/Entity'
         note:
           type: string
-        epPackage:
-          type: string
-        customNote:
-          type: string
-        entityGrpId:
-          type: integer
-        used:
-          type: boolean
-        implDoc:
-          type: string
-        custom:
-          type: boolean
-        pgPackage:
-          type: string
-        fpPackage:
-          type: string
         entityGrp:
           $ref: '#/components/schemas/EntityGrp'
-        objectClass:
-          type: boolean
-        behaviourDoc:
-          type: string
-        usageDoc:
-          type: string
-        cpPackage:
-          type: string
-        structureDoc:
-          type: string
-        view:
-          type: string
-        attrs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attr'
-        ancestorId:
-          type: integer
         attrGrps:
           type: array
           items:
             $ref: '#/components/schemas/AttrGrp'
+        attrs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attr'
+        structureDoc:
+          type: string
+        objectClass:
+          type: boolean
+        usageDoc:
+          type: string
+        view:
+          type: string
+        used:
+          type: boolean
+        pgPackage:
+          type: string
+        cpPackage:
+          type: string
+        epPackage:
+          type: string
+        behaviourDoc:
+          type: string
+        customNote:
+          type: string
+        fpPackage:
+          type: string
+        implDoc:
+          type: string
+        custom:
+          type: boolean
+        ancestorId:
+          type: integer
+        entityGrpId:
+          type: integer
+        name:
+          type: string
+        table:
+          type: string
         nameNm:
           type: string
         id:
@@ -294,8 +294,6 @@ components:
     EntityGrp:
       type: object
       properties:
-        name:
-          type: string
         children:
           type: array
           items:
@@ -305,17 +303,19 @@ components:
         ord:
           type: integer
           format: int32
-        parentId:
-          type: integer
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
         fullOrd:
           type: array
           items:
             type: integer
             format: int32
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Entity'
+        parentId:
+          type: integer
+        name:
+          type: string
         nameNm:
           type: string
         id:
@@ -332,30 +332,30 @@ components:
           $ref: '#/components/schemas/DomainValue'
         deleted:
           type: boolean
-        name:
-          type: string
         note:
           type: string
-        dataLength:
-          type: integer
-          format: int32
-        allowed:
-          type: boolean
-        qvisible:
-          type: boolean
-        lvisible:
-          type: boolean
         validateCd:
-          type: string
-        dataPrecision:
-          type: integer
-          format: int32
-        dataTypeNm:
-          type: string
-        lformatCd:
           type: string
         natOrder:
           type: boolean
+        allowed:
+          type: boolean
+        dataLength:
+          type: integer
+          format: int32
+        lvisible:
+          type: boolean
+        dataTypeNm:
+          type: string
+        qvisible:
+          type: boolean
+        dataPrecision:
+          type: integer
+          format: int32
+        lformatCd:
+          type: string
+        name:
+          type: string
         nameNm:
           type: string
           xml:
@@ -385,9 +385,9 @@ components:
           type: string
         natOrder:
           type: boolean
-        qvisible:
-          type: boolean
         lvisible:
+          type: boolean
+        qvisible:
           type: boolean
         lformatCd:
           type: string

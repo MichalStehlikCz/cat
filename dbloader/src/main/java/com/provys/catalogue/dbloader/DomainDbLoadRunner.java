@@ -1,11 +1,10 @@
 package com.provys.catalogue.dbloader;
 
 import com.provys.catalogue.api.Domain;
-import com.provys.catalogue.api.DomainManager;
 import com.provys.catalogue.api.DomainMeta;
 import com.provys.catalogue.impl.DomainManagerImpl;
 import com.provys.catalogue.impl.DomainProxy;
-import com.provys.catalogue.impl.gen.DomainValue;
+import com.provys.catalogue.impl.DomainValue;
 import com.provys.provysdb.dbcontext.DbResultSet;
 import com.provys.provysdb.dbcontext.DbRowMapper;
 import com.provys.provysdb.dbsqlbuilder.DbSql;
