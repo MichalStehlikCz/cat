@@ -15,9 +15,9 @@ import java.math.BigInteger;
 
 import static org.assertj.core.api.Assertions.*;
 
-class DomainValueBuilderTest {
+class GenDomainValueBuilderTest {
 
-    private static final DomainValueBuilder SAMPLE_BUILDER = new DomainValueBuilder()
+    private static final GenDomainValueBuilder SAMPLE_BUILDER = new GenDomainValueBuilder()
             .setId(BigInteger.valueOf(10000000599L))
             .setNameNm("NUMBER")
             .setAllowed(true)
@@ -55,7 +55,7 @@ class DomainValueBuilderTest {
     void fromJsonTest() {
         //noinspection CatchMayIgnoreException
         try (Jsonb jsonb = JsonbBuilder.create()) {
-            assertThat(jsonb.fromJson(SAMPLE_JSON, DomainValueBuilder.class)
+            assertThat(jsonb.fromJson(SAMPLE_JSON, GenDomainValueBuilder.class)
             ).isEqualTo(SAMPLE_BUILDER);
         } catch (Exception e) {
             //noinspection ResultOfMethodCallIgnored
@@ -66,7 +66,7 @@ class DomainValueBuilderTest {
     @Test
     void marshalTest() {
         try {
-            var context = JAXBContext.newInstance(DomainValueBuilder.class);
+            var context = JAXBContext.newInstance(GenDomainValueBuilder.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, false);
             var resultWriter = new StringWriter();
@@ -82,10 +82,10 @@ class DomainValueBuilderTest {
     @Test
     void unmarshalTest() {
         try {
-            var context = JAXBContext.newInstance(DomainValueBuilder.class);
+            var context = JAXBContext.newInstance(GenDomainValueBuilder.class);
             Unmarshaller u = context.createUnmarshaller();
             var reader = new StringReader(SAMPLE_XML);
-            assertThat((DomainValueBuilder) u.unmarshal(reader)).isEqualTo(SAMPLE_BUILDER);
+            assertThat((GenDomainValueBuilder) u.unmarshal(reader)).isEqualTo(SAMPLE_BUILDER);
         } catch (JAXBException e) {
             //noinspection ResultOfMethodCallIgnored
             Fail.fail("JAXBException thrown during test", e);

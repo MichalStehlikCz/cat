@@ -7,7 +7,7 @@ import com.provys.provysobject.impl.ProvysNmObjectManagerImpl;
 import javax.annotation.Nonnull;
 import java.math.BigInteger;
 
-public class DomainManagerImpl extends ProvysNmObjectManagerImpl<CatalogueRepositoryImpl, Domain, DomainValue,
+public class DomainManagerImpl extends ProvysNmObjectManagerImpl<CatalogueRepositoryImpl, Domain, GenDomainValue,
         DomainProxy, DomainManagerImpl, DomainLoader> implements DomainManager {
 
     DomainManagerImpl(CatalogueRepositoryImpl repository, DomainLoader loader, int initialCapacity) {

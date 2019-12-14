@@ -18,6 +18,7 @@ import java.math.BigInteger;
 @ApplicationScoped
 public class EntityEndpoint {
 
+    @SuppressWarnings("CdiUnproxyableBeanTypesInspection")
     @Inject
     CatalogueRepository catalogueRepository;
 

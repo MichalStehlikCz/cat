@@ -33,8 +33,8 @@ import org.apache.logging.log4j.Logger;
 )
 @XmlAccessorType(XmlAccessType.NONE)
 @SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
-public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBuilder, DomainValue> {
-    private static final Logger LOG = LogManager.getLogger(DomainValueBuilder.class);
+public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainValueBuilder, GenDomainValue> {
+    private static final Logger LOG = LogManager.getLogger(GenDomainValueBuilder.class);
 
     @JsonbProperty("NAME")
     @XmlElement(
@@ -135,10 +135,10 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
 
     private boolean updNatOrder = false;
 
-    public DomainValueBuilder() {
+    public GenDomainValueBuilder() {
     }
 
-    public DomainValueBuilder(DomainValue value) {
+    public GenDomainValueBuilder(GenDomainValue value) {
         super(value);
         setName(value.getName());
         setDataTypeNm(value.getDataTypeNm().orElse(null));
@@ -153,7 +153,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         setNatOrder(value.isNatOrder());
     }
 
-    public DomainValueBuilder(DomainValueBuilder value) {
+    public GenDomainValueBuilder(GenDomainValueBuilder value) {
         super(value);
         this.name = value.name;
         this.updName = value.updName;
@@ -192,7 +192,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
     @JsonbProperty("DOMAIN_ID")
     @Override
     @Nonnull
-    public DomainValueBuilder setId(BigInteger id) {
+    public GenDomainValueBuilder setId(BigInteger id) {
         return super.setId(id);
     }
 
@@ -209,7 +209,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
     @JsonbProperty("NAME_NM")
     @Override
     @Nonnull
-    public DomainValueBuilder setNameNm(String nameNm) {
+    public GenDomainValueBuilder setNameNm(String nameNm) {
         return super.setNameNm(nameNm);
     }
 
@@ -218,7 +218,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return name;
     }
 
-    public DomainValueBuilder setName(String name) {
+    public GenDomainValueBuilder setName(String name) {
         this.name = Objects.requireNonNull(name);
         this.updName = true;
         return self();
@@ -244,7 +244,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return dataTypeNm;
     }
 
-    public DomainValueBuilder setDataTypeNm(@Nullable String dataTypeNm) {
+    public GenDomainValueBuilder setDataTypeNm(@Nullable String dataTypeNm) {
         this.dataTypeNm = dataTypeNm;
         this.updDataTypeNm = true;
         return self();
@@ -267,7 +267,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return dataLength;
     }
 
-    public DomainValueBuilder setDataLength(@Nullable Integer dataLength) {
+    public GenDomainValueBuilder setDataLength(@Nullable Integer dataLength) {
         this.dataLength = dataLength;
         this.updDataLength = true;
         return self();
@@ -290,7 +290,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return dataPrecision;
     }
 
-    public DomainValueBuilder setDataPrecision(@Nullable Integer dataPrecision) {
+    public GenDomainValueBuilder setDataPrecision(@Nullable Integer dataPrecision) {
         this.dataPrecision = dataPrecision;
         this.updDataPrecision = true;
         return self();
@@ -313,7 +313,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return note;
     }
 
-    public DomainValueBuilder setNote(@Nullable String note) {
+    public GenDomainValueBuilder setNote(@Nullable String note) {
         this.note = note;
         this.updNote = true;
         return self();
@@ -336,7 +336,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return allowed;
     }
 
-    public DomainValueBuilder setAllowed(Boolean allowed) {
+    public GenDomainValueBuilder setAllowed(Boolean allowed) {
         this.allowed = Objects.requireNonNull(allowed);
         this.updAllowed = true;
         return self();
@@ -362,7 +362,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return qVisible;
     }
 
-    public DomainValueBuilder setqVisible(Boolean qVisible) {
+    public GenDomainValueBuilder setqVisible(Boolean qVisible) {
         this.qVisible = Objects.requireNonNull(qVisible);
         this.updQVisible = true;
         return self();
@@ -388,7 +388,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return lVisible;
     }
 
-    public DomainValueBuilder setlVisible(Boolean lVisible) {
+    public GenDomainValueBuilder setlVisible(Boolean lVisible) {
         this.lVisible = Objects.requireNonNull(lVisible);
         this.updLVisible = true;
         return self();
@@ -414,7 +414,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return validateCd;
     }
 
-    public DomainValueBuilder setValidateCd(@Nullable String validateCd) {
+    public GenDomainValueBuilder setValidateCd(@Nullable String validateCd) {
         this.validateCd = validateCd;
         this.updValidateCd = true;
         return self();
@@ -437,7 +437,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return lFormatCd;
     }
 
-    public DomainValueBuilder setlFormatCd(@Nullable String lFormatCd) {
+    public GenDomainValueBuilder setlFormatCd(@Nullable String lFormatCd) {
         this.lFormatCd = lFormatCd;
         this.updLFormatCd = true;
         return self();
@@ -460,7 +460,7 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
         return natOrder;
     }
 
-    public DomainValueBuilder setNatOrder(Boolean natOrder) {
+    public GenDomainValueBuilder setNatOrder(Boolean natOrder) {
         this.natOrder = Objects.requireNonNull(natOrder);
         this.updNatOrder = true;
         return self();
@@ -483,20 +483,20 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
 
     @Override
     @Nonnull
-    public DomainValueBuilder self() {
+    public GenDomainValueBuilder self() {
         return this;
     }
 
     @Override
     @Nonnull
-    public DomainValueBuilder copy() {
-        return new DomainValueBuilder(this);
+    public GenDomainValueBuilder copy() {
+        return new GenDomainValueBuilder(this);
     }
 
     @Override
     @Nonnull
-    public DomainValue build() {
-        return new DomainValue(Objects.requireNonNull(getId(), "DOMAIN_ID must be specified for build")
+    public GenDomainValue build() {
+        return new GenDomainValue(Objects.requireNonNull(getId(), "DOMAIN_ID must be specified for build")
                 , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
                 , Objects.requireNonNull(getName(), "NAME must be specified for build")
                 , getDataTypeNm()
@@ -516,9 +516,9 @@ public class DomainValueBuilder extends ProvysNmObjectValueBuilder<DomainValueBu
     @SuppressWarnings("squid:S1206")
     public boolean equals(@Nullable Object o) {
         if (this == o) return true;
-        if (!(o instanceof DomainValueBuilder)) return false;
+        if (!(o instanceof GenDomainValueBuilder)) return false;
         if (!super.equals(o)) return false;
-        DomainValueBuilder that = (DomainValueBuilder) o;
+        GenDomainValueBuilder that = (GenDomainValueBuilder) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(dataTypeNm, that.dataTypeNm) &&
                 Objects.equals(dataLength, that.dataLength) &&

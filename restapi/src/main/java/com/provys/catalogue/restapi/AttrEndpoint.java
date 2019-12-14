@@ -21,6 +21,7 @@ import java.math.BigInteger;
 @ApplicationScoped
 public class AttrEndpoint {
 
+    @SuppressWarnings("CdiUnproxyableBeanTypesInspection")
     @Inject
     CatalogueRepository catalogueRepository;
 

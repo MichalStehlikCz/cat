@@ -17,11 +17,12 @@ import javax.xml.bind.annotation.XmlElement;
         date = "2019-12-12T18:20:33.025333800"
 )
 @XmlAccessorType(XmlAccessType.NONE)
-abstract class GenDomainProxy extends ProvysNmObjectProxyImpl<Domain, DomainValue, DomainProxy, DomainManagerImpl> {
+abstract class GenDomainProxy extends ProvysNmObjectProxyImpl<Domain, GenDomainValue, DomainProxy, DomainManagerImpl> {
     GenDomainProxy(DomainManagerImpl manager, BigInteger id) {
         super(manager, id);
     }
 
+    @Nonnull
     @XmlElement(
             name = "DOMAIN_ID"
     )

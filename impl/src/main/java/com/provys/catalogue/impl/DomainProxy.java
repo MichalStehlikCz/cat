@@ -1,29 +1,27 @@
 package com.provys.catalogue.impl;
 
 import com.provys.catalogue.api.Domain;
+import com.provys.common.datatype.DtDate;
+import com.provys.common.datatype.DtDateTime;
+import com.provys.common.exception.InternalException;
 import java.lang.Override;
 import java.lang.SuppressWarnings;
 import java.math.BigInteger;
 import javax.annotation.Nonnull;
-import javax.json.bind.annotation.JsonbTypeAdapter;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import com.provys.common.datatype.DtDate;
-import com.provys.common.datatype.DtDateTime;
-import com.provys.common.exception.InternalException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @SuppressWarnings("ValidExternallyBoundObject")
-@JsonbTypeAdapter(JsonbDomainProxyAdapter.class)
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(
         name = "",
         factoryClass = DomainProxy.class,
-        factoryMethod = "jaxbFakeCreate"
+        factoryMethod = "jaxbFakeCreate",
+        propOrder = {"id", "nameNm", "name", "dataTypeNm", "dataLength", "dataPrecision", "note", "allowed", "qVisible", "lVisible", "validateCd", "lFormatCd", "natOrder"}
 )
 @XmlRootElement(
         name = "DOMAIN"

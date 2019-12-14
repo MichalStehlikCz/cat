@@ -4,7 +4,7 @@ import com.provys.catalogue.api.Domain;
 import com.provys.catalogue.api.DomainMeta;
 import com.provys.catalogue.impl.DomainManagerImpl;
 import com.provys.catalogue.impl.DomainProxy;
-import com.provys.catalogue.impl.DomainValue;
+import com.provys.catalogue.impl.GenDomainValue;
 import com.provys.provysdb.dbcontext.DbResultSet;
 import com.provys.provysdb.dbcontext.DbRowMapper;
 import com.provys.provysdb.dbsqlbuilder.DbSql;
@@ -17,7 +17,7 @@ import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-class DomainDbLoadRunner extends ProvysObjectLoadRunner<Domain, DomainValue, DomainProxy, DomainManagerImpl> {
+class DomainDbLoadRunner extends ProvysObjectLoadRunner<Domain, GenDomainValue, DomainProxy, DomainManagerImpl> {
 
     private static final DomainDbMapper MAPPER = new DomainDbMapper();
 
@@ -33,11 +33,11 @@ class DomainDbLoadRunner extends ProvysObjectLoadRunner<Domain, DomainValue, Dom
         this.condition = condition;
     }
 
-    private static class DomainDbMapper implements DbRowMapper<DomainValue> {
+    private static class DomainDbMapper implements DbRowMapper<GenDomainValue> {
 
         @Override
-        public DomainValue map(DbResultSet dbResultSet, long l) {
-            return new DomainValue(
+        public GenDomainValue map(DbResultSet dbResultSet, long l) {
+            return new GenDomainValue(
                     dbResultSet.getNonnullDtUid(1),
                     dbResultSet.getNonnullString(2),
                     dbResultSet.getNonnullString(3),
@@ -57,7 +57,7 @@ class DomainDbLoadRunner extends ProvysObjectLoadRunner<Domain, DomainValue, Dom
 
     @Nonnull
     @Override
-    protected List<DomainValue> select() {
+    protected List<GenDomainValue> select() {
         return dbSql.select()
                 .from(dbSql.name("ker_domain_tb"), DomainMeta.TABLE_ALIAS)
                 .column("domain_id", BigInteger.class)

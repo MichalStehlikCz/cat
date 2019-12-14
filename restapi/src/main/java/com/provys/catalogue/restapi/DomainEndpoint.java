@@ -18,12 +18,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.math.BigInteger;
-import java.util.List;
 
 @Path("/domain")
 @ApplicationScoped
 public class DomainEndpoint {
 
+    @SuppressWarnings("CdiUnproxyableBeanTypesInspection")
     @Inject
     CatalogueRepository catalogueRepository;
 

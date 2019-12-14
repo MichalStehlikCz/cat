@@ -5,6 +5,6 @@
    http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
     <context-param>
         <param-name>resteasy.preferJacksonOverJsonB</param-name>
-        <param-value>false</param-value>
+        <param-value>true</param-value>
     </context-param>
 </web-app>

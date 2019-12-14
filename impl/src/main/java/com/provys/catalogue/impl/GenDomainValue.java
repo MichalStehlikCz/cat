@@ -1,5 +1,7 @@
 package com.provys.catalogue.impl;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.provys.provysobject.impl.ProvysNmObjectValue;
 import java.lang.Integer;
 import java.lang.Object;
@@ -12,49 +14,98 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.processing.Generated;
-import javax.json.bind.annotation.JsonbTypeAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2019-12-12T15:20:26.681583500"
+        date = "2019-12-14T12:08:38.534335800"
 )
-@JsonbTypeAdapter(JsonbDomainValueAdapter.class)
-@XmlJavaTypeAdapter(XmlDomainValueAdapter.class)
-public class DomainValue extends ProvysNmObjectValue {
+@SuppressWarnings("ValidExternallyBoundObject")
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(
+        propOrder = {"id", "nameNm", "name", "dataTypeNm", "dataLength", "dataPrecision", "note", "allowed", "qVisible", "lVisible", "validateCd", "lFormatCd", "natOrder"}
+)
+@XmlRootElement(
+        name = "DOMAIN"
+)
+public class GenDomainValue extends ProvysNmObjectValue {
+    @XmlElement(
+            name = "NAME"
+    )
     @Nonnull
     private final String name;
 
+    @XmlElement(
+            name = "DATATYPE_NM"
+    )
     @Nullable
     private final String dataTypeNm;
 
+    @XmlElement(
+            name = "DATALENGTH"
+    )
     @Nullable
     private final Integer dataLength;
 
+    @XmlElement(
+            name = "DATAPRECISION"
+    )
     @Nullable
     private final Integer dataPrecision;
 
+    @XmlElement(
+            name = "NOTE"
+    )
     @Nullable
     private final String note;
 
+    @XmlElement(
+            name = "ALLOWED"
+    )
     private final boolean allowed;
 
+    @XmlElement(
+            name = "QVISIBLE"
+    )
     private final boolean qVisible;
 
+    @XmlElement(
+            name = "LVISIBLE"
+    )
     private final boolean lVisible;
 
+    @XmlElement(
+            name = "VALIDATE_CD"
+    )
     @Nullable
     private final String validateCd;
 
+    @XmlElement(
+            name = "LFORMAT_CD"
+    )
     @Nullable
     private final String lFormatCd;
 
+    @XmlElement(
+            name = "NATORDER"
+    )
     private final boolean natOrder;
 
-    public DomainValue(BigInteger id, String nameNm, String name, @Nullable String dataTypeNm,
-                       @Nullable Integer dataLength, @Nullable Integer dataPrecision, @Nullable String note,
-                       boolean allowed, boolean qVisible, boolean lVisible, @Nullable String validateCd,
-                       @Nullable String lFormatCd, boolean natOrder) {
+    @JsonCreator
+    public GenDomainValue(@JsonProperty("DOMAIN_ID") BigInteger id,
+                          @JsonProperty("NAME_NM") String nameNm, @JsonProperty("NAME") String name,
+                          @JsonProperty("DATATYPE_NM") @Nullable String dataTypeNm,
+                          @JsonProperty("DATALENGTH") @Nullable Integer dataLength,
+                          @JsonProperty("DATAPRECISION") @Nullable Integer dataPrecision,
+                          @JsonProperty("NOTE") @Nullable String note, @JsonProperty("ALLOWED") boolean allowed,
+                          @JsonProperty("QVISIBLE") boolean qVisible, @JsonProperty("LVISIBLE") boolean lVisible,
+                          @JsonProperty("VALIDATE_CD") @Nullable String validateCd,
+                          @JsonProperty("LFORMAT_CD") @Nullable String lFormatCd,
+                          @JsonProperty("NATORDER") boolean natOrder) {
         super(id, nameNm);
         this.name = Objects.requireNonNull(name);
         this.dataTypeNm = dataTypeNm;
@@ -67,6 +118,13 @@ public class DomainValue extends ProvysNmObjectValue {
         this.validateCd = validateCd;
         this.lFormatCd = lFormatCd;
         this.natOrder = natOrder;
+    }
+
+    @XmlElement(
+            name = "DOMAIN_ID"
+    )
+    public BigInteger getId() {
+        return super.getId();
     }
 
     @Nonnull
@@ -124,9 +182,9 @@ public class DomainValue extends ProvysNmObjectValue {
     @SuppressWarnings("squid:S1206")
     public boolean equals(@Nullable Object o) {
         if (this == o) return true;
-        if (!(o instanceof DomainValue)) return false;
+        if (!(o instanceof GenDomainValue)) return false;
         if (!super.equals(o)) return false;
-        DomainValue that = (DomainValue) o;
+        GenDomainValue that = (GenDomainValue) o;
         return getNameNm().equals(that.getNameNm()) &&
                 name.equals(that.name) &&
                 Objects.equals(dataTypeNm, that.dataTypeNm) &&

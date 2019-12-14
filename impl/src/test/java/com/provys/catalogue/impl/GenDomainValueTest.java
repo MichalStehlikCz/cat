@@ -16,16 +16,15 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class DomainProxyTest {
+@SuppressWarnings("squid:S1192") // no problem with duplicate String values
+class GenDomainValueTest {
 
-    private static final DomainProxy SAMPLE_PROXY;
+    private static final GenDomainValue SAMPLE_VALUE;
     static {
-        var manager = mock(DomainManagerImpl.class);
-        SAMPLE_PROXY = new DomainProxy(manager, BigInteger.valueOf(10000000599L));
-        var value = new GenDomainValueBuilder()
+        SAMPLE_VALUE = new GenDomainValueBuilder()
                 .setId(BigInteger.valueOf(10000000599L))
                 .setNameNm("NUMBER")
                 .setAllowed(true)
@@ -39,7 +38,6 @@ class DomainProxyTest {
                 .setqVisible(true)
                 .setValidateCd("STD::NUMBER")
                 .build();
-        SAMPLE_PROXY.setValueObject(value);
     }
     private static final String SAMPLE_JSON = "{\"DOMAIN_ID\":10000000599,\"NAME_NM\":\"NUMBER\"," +
             "\"NAME\":\"NUMBER\",\"DATATYPE_NM\":\"NUMBER\",\"DATALENGTH\":38,\"NOTE\":\"Numbers\"," +
@@ -60,14 +58,17 @@ class DomainProxyTest {
                         new JaxbAnnotationIntrospector(TypeFactory.defaultInstance())))
                 .registerModules(new Jdk8Module(), new JavaTimeModule())
                 .setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
-        assertThat(mapper.writeValueAsString(SAMPLE_PROXY)).isEqualTo(SAMPLE_JSON);
+        assertThat(mapper.writeValueAsString(SAMPLE_VALUE)).isEqualTo(SAMPLE_JSON);
     }
 
     @Test
-    void fromJsonTest() {
+    void fromJsonTest() throws JsonProcessingException {
         var mapper = new ObjectMapper();
-        assertThatThrownBy(() -> mapper.readValue(SAMPLE_JSON, DomainProxy.class))
-                .isInstanceOf(JsonProcessingException.class);
+        mapper.setAnnotationIntrospector(
+                AnnotationIntrospector.pair(new JacksonAnnotationIntrospector(),
+                        new JaxbAnnotationIntrospector(TypeFactory.defaultInstance())));
+        mapper.registerModules(new Jdk8Module(), new JavaTimeModule());
+        assertThat(mapper.readValue(SAMPLE_JSON, GenDomainValue.class)).isEqualTo(SAMPLE_VALUE);
     }
 
     @Test
@@ -79,15 +80,18 @@ class DomainProxyTest {
                 .setProperty(WstxOutputProperties.P_USE_DOUBLE_QUOTES_IN_XML_DECL, true);
         mapper.setAnnotationIntrospector(
                 AnnotationIntrospector.pair(new JacksonAnnotationIntrospector(),
-                new JaxbAnnotationIntrospector(TypeFactory.defaultInstance())));
+                        new JaxbAnnotationIntrospector(TypeFactory.defaultInstance())));
         mapper.registerModules(new Jdk8Module(), new JavaTimeModule());
-        assertThat(mapper.writeValueAsString(SAMPLE_PROXY)).isEqualTo(SAMPLE_XML);
+        assertThat(mapper.writeValueAsString(SAMPLE_VALUE)).isEqualTo(SAMPLE_XML);
     }
 
     @Test
-    void fromXmlTest() {
+    void fromXmlTest() throws JsonProcessingException {
         var mapper = new XmlMapper();
-        assertThatThrownBy(() -> mapper.readValue(SAMPLE_XML, DomainProxy.class))
-                .isInstanceOf(JsonProcessingException.class);
+        mapper.setAnnotationIntrospector(
+                AnnotationIntrospector.pair(new JacksonAnnotationIntrospector(),
+                        new JaxbAnnotationIntrospector(TypeFactory.defaultInstance())));
+        mapper.registerModules(new Jdk8Module(), new JavaTimeModule());
+        assertThat(mapper.readValue(SAMPLE_XML, GenDomainValue.class)).isEqualTo(SAMPLE_VALUE);
     }
 }
