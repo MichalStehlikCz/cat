@@ -1,5 +1,7 @@
-FROM jboss/wildfly:18.0.1.Final
-RUN /opt/jboss/wildfly/bin/add-user.sh admin heslo1.rohlik --silent
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
-EXPOSE 8080 9990
-COPY ./target/catalogue.war /opt/jboss/wildfly/standalone/deployments/
+FROM adoptopenjdk:11-jre-hotspot
+RUN mkdir /opt/app
+COPY ./target/catalogue-hollow-thorntail.jar /opt/app
+COPY ./target/catalogue.war /opt/app/
+EXPOSE 8080
+ENTRYPOINT exec java -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true $JAVA_OPTS -jar /opt/app/catalogue-hollow-thorntail.jar /opt/app/catalogue.war
+

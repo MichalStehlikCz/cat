@@ -29,6 +29,10 @@
             <name>GitHub OWNER Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/MichalStehlikCz/Maven</url>
         </repository>
+        <repository>
+            <id>redhat</id>
+            <url>https://maven.repository.redhat.com/ga/</url>
+        </repository>
     </repositories>
     <distributionManagement>
         <repository>
@@ -48,38 +52,25 @@
             </properties>
         </profile>
         <profile>
-            <id>docker-wildfly</id>
+            <id>docker</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <docker_package_phase>package</docker_package_phase>
                 <docker_run_phase>pre-integration-test</docker_run_phase>
-                <docker_runadmin_phase>none</docker_runadmin_phase>
-                <docker_file>Dockerfile.wildfly</docker_file>
-            </properties>
-        </profile>
-        <profile>
-            <id>docker-wildflyadmin</id>
-            <properties>
-                <docker_package_phase>package</docker_package_phase>
-                <docker_run_phase>none</docker_run_phase>
-                <docker_runadmin_phase>pre-integration-test</docker_runadmin_phase>
-                <docker_file>Dockerfile.wildflyadmin</docker_file>
-            </properties>
-        </profile>
-        <profile>
-            <id>docker-payaramicro</id>
-            <properties>
-                <docker_package_phase>package</docker_package_phase>
-                <docker_run_phase>pre-integration-test</docker_run_phase>
-                <docker_runadmin_phase>none</docker_runadmin_phase>
-                <docker_file>Dockerfile.payaramicro</docker_file>
             </properties>
         </profile>
     </profiles>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.thorntail</groupId>
+                <artifactId>bom-all</artifactId>
+                <version>2.6.0.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
@@ -102,34 +93,39 @@
                 <version>4.3.0.Final</version>
             </dependency>
             <dependency>
+                <groupId>com.fasterxml.jackson.jaxrs</groupId>
+                <artifactId>jackson-jaxrs-xml-provider</artifactId>
+                <version>2.9.10</version>
+            </dependency>
+            <dependency>
                 <groupId>com.fasterxml.jackson.dataformat</groupId>
                 <artifactId>jackson-dataformat-xml</artifactId>
-                <version>2.10.0.pr2</version>
+                <version>2.9.10</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.woodstox</groupId>
                 <artifactId>woodstox-core</artifactId>
-                <version>6.0.1</version>
+                <version>6.0.3</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
-                <version>2.10.0.pr3</version>
+                <version>2.9.10</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>2.10.0.pr3</version>
+                <version>2.9.10.1</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.datatype</groupId>
                 <artifactId>jackson-datatype-jdk8</artifactId>
-                <version>2.10.0.pr2</version>
+                <version>2.9.10</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.datatype</groupId>
                 <artifactId>jackson-datatype-jsr310</artifactId>
-                <version>2.10.0.pr2</version>
+                <version>2.9.10</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.inject</groupId>
@@ -198,7 +194,17 @@
             <dependency>
                 <groupId>com.provys.common</groupId>
                 <artifactId>common-exception</artifactId>
-                <version>1.0.20</version>
+                <version>1.0.22</version>
+            </dependency>
+            <dependency>
+                <groupId>com.provys.common</groupId>
+                <artifactId>common-jackson</artifactId>
+                <version>1.0.22</version>
+            </dependency>
+            <dependency>
+                <groupId>com.provys.common</groupId>
+                <artifactId>common-ws</artifactId>
+                <version>1.0.22</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
@@ -223,12 +229,12 @@
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
                 <artifactId>provysobject-api</artifactId>
-                <version>1.1.12</version>
+                <version>1.1.14</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
                 <artifactId>provysobject-impl</artifactId>
-                <version>1.1.12</version>
+                <version>1.1.14</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

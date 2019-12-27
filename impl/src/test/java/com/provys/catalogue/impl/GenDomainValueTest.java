@@ -14,6 +14,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.math.BigInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -62,7 +63,7 @@ class GenDomainValueTest {
     }
 
     @Test
-    void fromJsonTest() throws JsonProcessingException {
+    void fromJsonTest() throws IOException {
         var mapper = new ObjectMapper();
         mapper.setAnnotationIntrospector(
                 AnnotationIntrospector.pair(new JacksonAnnotationIntrospector(),
@@ -86,7 +87,7 @@ class GenDomainValueTest {
     }
 
     @Test
-    void fromXmlTest() throws JsonProcessingException {
+    void fromXmlTest() throws IOException {
         var mapper = new XmlMapper();
         mapper.setAnnotationIntrospector(
                 AnnotationIntrospector.pair(new JacksonAnnotationIntrospector(),

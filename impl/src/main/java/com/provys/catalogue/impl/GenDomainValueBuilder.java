@@ -1,5 +1,6 @@
 package com.provys.catalogue.impl;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.provys.common.exception.InternalException;
 import com.provys.provysobject.impl.ProvysNmObjectValueBuilder;
 import java.lang.Boolean;
@@ -13,9 +14,6 @@ import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.processing.Generated;
-import javax.json.bind.annotation.JsonbProperty;
-import javax.json.bind.annotation.JsonbPropertyOrder;
-import javax.json.bind.annotation.JsonbTransient;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,111 +23,69 @@ import org.apache.logging.log4j.Logger;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2019-12-12T18:05:32.509850"
+        date = "2019-12-21T10:43:33.879029"
 )
-@JsonbPropertyOrder({"id", "nameNm", "name", "dataTypeNm", "dataLength", "dataPrecision", "note", "allowed", "qVisible", "lVisible", "validateCd", "lFormatCd", "natOrder"})
 @XmlRootElement(
         name = "DOMAIN"
 )
 @XmlAccessorType(XmlAccessType.NONE)
+@JsonSerialize(
+        using = GenDomainValueBuilderSerializer.class
+)
 @SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
 public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainValueBuilder, GenDomainValue> {
     private static final Logger LOG = LogManager.getLogger(GenDomainValueBuilder.class);
 
-    @JsonbProperty("NAME")
-    @XmlElement(
-            name = "NAME"
-    )
     @Nullable
     private String name;
 
     private boolean updName = false;
 
-    @JsonbProperty("DATATYPE_NM")
-    @XmlElement(
-            name = "DATATYPE_NM"
-    )
     @Nullable
     private String dataTypeNm;
 
     private boolean updDataTypeNm = false;
 
-    @JsonbProperty("DATALENGTH")
-    @XmlElement(
-            name = "DATALENGTH"
-    )
     @Nullable
     private Integer dataLength;
 
     private boolean updDataLength = false;
 
-    @JsonbProperty("DATAPRECISION")
-    @XmlElement(
-            name = "DATAPRECISION"
-    )
     @Nullable
     private Integer dataPrecision;
 
     private boolean updDataPrecision = false;
 
-    @JsonbProperty("NOTE")
-    @XmlElement(
-            name = "NOTE"
-    )
     @Nullable
     private String note;
 
     private boolean updNote = false;
 
-    @JsonbProperty("ALLOWED")
-    @XmlElement(
-            name = "ALLOWED"
-    )
     @Nullable
     private Boolean allowed;
 
     private boolean updAllowed = false;
 
-    @JsonbProperty("QVISIBLE")
-    @XmlElement(
-            name = "QVISIBLE"
-    )
     @Nullable
     private Boolean qVisible;
 
     private boolean updQVisible = false;
 
-    @JsonbProperty("LVISIBLE")
-    @XmlElement(
-            name = "LVISIBLE"
-    )
     @Nullable
     private Boolean lVisible;
 
     private boolean updLVisible = false;
 
-    @JsonbProperty("VALIDATE_CD")
-    @XmlElement(
-            name = "VALIDATE_CD"
-    )
     @Nullable
     private String validateCd;
 
     private boolean updValidateCd = false;
 
-    @JsonbProperty("LFORMAT_CD")
-    @XmlElement(
-            name = "LFORMAT_CD"
-    )
     @Nullable
     private String lFormatCd;
 
     private boolean updLFormatCd = false;
 
-    @JsonbProperty("NATORDER")
-    @XmlElement(
-            name = "NATORDER"
-    )
     @Nullable
     private Boolean natOrder;
 
@@ -179,7 +135,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         this.updNatOrder = value.updNatOrder;
     }
 
-    @JsonbProperty("DOMAIN_ID")
     @XmlElement(
             name = "DOMAIN_ID"
     )
@@ -189,30 +144,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return super.getId();
     }
 
-    @JsonbProperty("DOMAIN_ID")
-    @Override
-    @Nonnull
-    public GenDomainValueBuilder setId(BigInteger id) {
-        return super.setId(id);
-    }
-
-    @JsonbProperty("NAME_NM")
     @XmlElement(
-            name = "NAME_NM"
+            name = "NAME"
     )
-    @Override
-    @Nullable
-    public String getNameNm() {
-        return super.getNameNm();
-    }
-
-    @JsonbProperty("NAME_NM")
-    @Override
-    @Nonnull
-    public GenDomainValueBuilder setNameNm(String nameNm) {
-        return super.setNameNm(nameNm);
-    }
-
     @Nullable
     public String getName() {
         return name;
@@ -224,7 +158,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdName() {
         return updName;
     }
@@ -239,6 +172,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         }
     }
 
+    @XmlElement(
+            name = "DATATYPE_NM"
+    )
     @Nullable
     public String getDataTypeNm() {
         return dataTypeNm;
@@ -250,7 +186,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdDataTypeNm() {
         return updDataTypeNm;
     }
@@ -262,6 +197,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         }
     }
 
+    @XmlElement(
+            name = "DATALENGTH"
+    )
     @Nullable
     public Integer getDataLength() {
         return dataLength;
@@ -273,7 +211,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdDataLength() {
         return updDataLength;
     }
@@ -285,6 +222,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         }
     }
 
+    @XmlElement(
+            name = "DATAPRECISION"
+    )
     @Nullable
     public Integer getDataPrecision() {
         return dataPrecision;
@@ -296,7 +236,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdDataPrecision() {
         return updDataPrecision;
     }
@@ -308,6 +247,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         }
     }
 
+    @XmlElement(
+            name = "NOTE"
+    )
     @Nullable
     public String getNote() {
         return note;
@@ -319,7 +261,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdNote() {
         return updNote;
     }
@@ -331,6 +272,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         }
     }
 
+    @XmlElement(
+            name = "ALLOWED"
+    )
     @Nullable
     public Boolean isAllowed() {
         return allowed;
@@ -342,7 +286,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdAllowed() {
         return updAllowed;
     }
@@ -357,6 +300,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         }
     }
 
+    @XmlElement(
+            name = "QVISIBLE"
+    )
     @Nullable
     public Boolean isqVisible() {
         return qVisible;
@@ -368,7 +314,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdQVisible() {
         return updQVisible;
     }
@@ -383,6 +328,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         }
     }
 
+    @XmlElement(
+            name = "LVISIBLE"
+    )
     @Nullable
     public Boolean islVisible() {
         return lVisible;
@@ -394,7 +342,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdLVisible() {
         return updLVisible;
     }
@@ -409,6 +356,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         }
     }
 
+    @XmlElement(
+            name = "VALIDATE_CD"
+    )
     @Nullable
     public String getValidateCd() {
         return validateCd;
@@ -420,7 +370,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdValidateCd() {
         return updValidateCd;
     }
@@ -432,6 +381,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         }
     }
 
+    @XmlElement(
+            name = "LFORMAT_CD"
+    )
     @Nullable
     public String getlFormatCd() {
         return lFormatCd;
@@ -443,7 +395,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdLFormatCd() {
         return updLFormatCd;
     }
@@ -455,6 +406,9 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         }
     }
 
+    @XmlElement(
+            name = "NATORDER"
+    )
     @Nullable
     public Boolean isNatOrder() {
         return natOrder;
@@ -466,7 +420,6 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         return self();
     }
 
-    @JsonbTransient
     public boolean isUpdNatOrder() {
         return updNatOrder;
     }
@@ -520,16 +473,27 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
         if (!super.equals(o)) return false;
         GenDomainValueBuilder that = (GenDomainValueBuilder) o;
         return Objects.equals(name, that.name) &&
+                (updName == that.updName) &&
                 Objects.equals(dataTypeNm, that.dataTypeNm) &&
+                (updDataTypeNm == that.updDataTypeNm) &&
                 Objects.equals(dataLength, that.dataLength) &&
+                (updDataLength == that.updDataLength) &&
                 Objects.equals(dataPrecision, that.dataPrecision) &&
+                (updDataPrecision == that.updDataPrecision) &&
                 Objects.equals(note, that.note) &&
+                (updNote == that.updNote) &&
                 Objects.equals(allowed, that.allowed) &&
+                (updAllowed == that.updAllowed) &&
                 Objects.equals(qVisible, that.qVisible) &&
+                (updQVisible == that.updQVisible) &&
                 Objects.equals(lVisible, that.lVisible) &&
+                (updLVisible == that.updLVisible) &&
                 Objects.equals(validateCd, that.validateCd) &&
+                (updValidateCd == that.updValidateCd) &&
                 Objects.equals(lFormatCd, that.lFormatCd) &&
-                Objects.equals(natOrder, that.natOrder);
+                (updLFormatCd == that.updLFormatCd) &&
+                Objects.equals(natOrder, that.natOrder) &&
+                (updNatOrder == that.updNatOrder);
     }
 
     @Override

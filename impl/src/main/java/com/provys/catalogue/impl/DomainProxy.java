@@ -1,5 +1,6 @@
 package com.provys.catalogue.impl;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.provys.catalogue.api.Domain;
 import com.provys.common.datatype.DtDate;
 import com.provys.common.datatype.DtDateTime;
@@ -8,20 +9,12 @@ import java.lang.Override;
 import java.lang.SuppressWarnings;
 import java.math.BigInteger;
 import javax.annotation.Nonnull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@SuppressWarnings("ValidExternallyBoundObject")
-@XmlAccessorType(XmlAccessType.NONE)
-@XmlType(
-        name = "",
-        factoryClass = DomainProxy.class,
-        factoryMethod = "jaxbFakeCreate",
-        propOrder = {"id", "nameNm", "name", "dataTypeNm", "dataLength", "dataPrecision", "note", "allowed", "qVisible", "lVisible", "validateCd", "lFormatCd", "natOrder"}
+@JsonSerialize(
+        converter = GenDomainProxySerializationConverter.class
 )
 @XmlRootElement(
         name = "DOMAIN"
@@ -31,13 +24,6 @@ public class DomainProxy extends GenDomainProxy implements Domain {
 
     DomainProxy(DomainManagerImpl manager, BigInteger id) {
         super(manager, id);
-    }
-
-    /**
-     * Formally needed to allow jaxb marshalling@return nothing, it is never called */
-    @SuppressWarnings("unused")
-    private static DomainProxy jaxbFakeCreate() {
-        throw new InternalException(LOG, "Proxy cannot be unmarshalled from XML");
     }
 
     @Nonnull
