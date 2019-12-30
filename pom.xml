@@ -194,17 +194,22 @@
             <dependency>
                 <groupId>com.provys.common</groupId>
                 <artifactId>common-exception</artifactId>
-                <version>1.0.22</version>
+                <version>1.0.25</version>
+            </dependency>
+            <dependency>
+                <groupId>com.provys.common</groupId>
+                <artifactId>common-datatype</artifactId>
+                <version>1.0.25</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.common</groupId>
                 <artifactId>common-jackson</artifactId>
-                <version>1.0.22</version>
+                <version>1.0.25</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.common</groupId>
                 <artifactId>common-ws</artifactId>
-                <version>1.0.22</version>
+                <version>1.0.25</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
