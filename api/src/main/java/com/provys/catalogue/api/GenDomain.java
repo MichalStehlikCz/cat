@@ -6,25 +6,21 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
-import javax.json.bind.annotation.JsonbProperty;
-import javax.xml.bind.annotation.XmlElement;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2019-12-12T15:21:45.449572"
+        date = "2019-12-30T12:43:23.683976200"
 )
 interface GenDomain extends ProvysNmObject {
     /**
      * @return Name (attribute NAME)
      */
-    @XmlElement(name = "NAME")
     @Nonnull
     String getName();
 
     /**
      * @return Data type (attribute DATATYPE_NM)
      */
-    @JsonbProperty("DATATYPE_NM")
     @Nonnull
     Optional<String> getDataTypeNm();
 

@@ -2,13 +2,13 @@ package com.provys.catalogue.impl;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectValue;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.math.BigInteger;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nonnull;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2019-12-14T12:08:38.534335800"
+        date = "2019-12-30T12:45:40.268936300"
 )
 @SuppressWarnings("ValidExternallyBoundObject")
 @XmlAccessorType(XmlAccessType.NONE)
@@ -96,9 +96,8 @@ public class GenDomainValue extends ProvysNmObjectValue {
     private final boolean natOrder;
 
     @JsonCreator
-    public GenDomainValue(@JsonProperty("DOMAIN_ID") BigInteger id,
-                          @JsonProperty("NAME_NM") String nameNm, @JsonProperty("NAME") String name,
-                          @JsonProperty("DATATYPE_NM") @Nullable String dataTypeNm,
+    public GenDomainValue(@JsonProperty("DOMAIN_ID") DtUid id, @JsonProperty("NAME_NM") String nameNm,
+                          @JsonProperty("NAME") String name, @JsonProperty("DATATYPE_NM") @Nullable String dataTypeNm,
                           @JsonProperty("DATALENGTH") @Nullable Integer dataLength,
                           @JsonProperty("DATAPRECISION") @Nullable Integer dataPrecision,
                           @JsonProperty("NOTE") @Nullable String note, @JsonProperty("ALLOWED") boolean allowed,
@@ -123,7 +122,7 @@ public class GenDomainValue extends ProvysNmObjectValue {
     @XmlElement(
             name = "DOMAIN_ID"
     )
-    public BigInteger getId() {
+    public DtUid getId() {
         return super.getId();
     }
 

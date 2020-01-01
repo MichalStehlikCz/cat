@@ -1,6 +1,7 @@
 package com.provys.catalogue.impl;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.provys.common.datatype.DtUid;
 import com.provys.common.exception.InternalException;
 import com.provys.provysobject.impl.ProvysNmObjectValueBuilder;
 import java.lang.Boolean;
@@ -9,7 +10,6 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.math.BigInteger;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -23,7 +23,7 @@ import org.apache.logging.log4j.Logger;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2019-12-21T10:43:33.879029"
+        date = "2019-12-30T12:49:03.295723600"
 )
 @XmlRootElement(
         name = "DOMAIN"
@@ -140,7 +140,7 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
     )
     @Override
     @Nullable
-    public BigInteger getId() {
+    public DtUid getId() {
         return super.getId();
     }
 

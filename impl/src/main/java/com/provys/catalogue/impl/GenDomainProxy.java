@@ -1,20 +1,20 @@
 package com.provys.catalogue.impl;
 
 import com.provys.catalogue.api.Domain;
+import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectProxyImpl;
 import java.lang.Integer;
 import java.lang.String;
-import java.math.BigInteger;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2019-12-21T11:08:42.822393"
+        date = "2019-12-30T12:48:33.174654400"
 )
 abstract class GenDomainProxy extends ProvysNmObjectProxyImpl<Domain, GenDomainValue, DomainProxy, DomainManagerImpl> {
-    GenDomainProxy(DomainManagerImpl manager, BigInteger id) {
+    GenDomainProxy(DomainManagerImpl manager, DtUid id) {
         super(manager, id);
     }
 
