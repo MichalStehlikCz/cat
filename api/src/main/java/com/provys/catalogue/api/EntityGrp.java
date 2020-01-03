@@ -1,43 +1,10 @@
 package com.provys.catalogue.api;
 
-import com.provys.provysobject.ProvysNmObject;
-
 import javax.annotation.Nonnull;
-import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
-public interface EntityGrp extends ProvysNmObject, Comparable<EntityGrp> {
-
-    /**
-     * @return Id of parent entity group (attribute PARENT_ID)
-     */
-    @Nonnull
-    Optional<BigInteger> getParentId();
-
-    /**
-     * @return parent entity group (entity group with Id PARENT_ID)
-     */
-    @Nonnull
-    Optional<EntityGrp> getParent();
-
-    /**
-     * @return name (attribute NAME)
-     */
-    @Nonnull
-    String getName();
-
-    /**
-     * @return note (attribute NOTE)
-     */
-    @Nonnull
-    Optional<String> getNote();
-
-    /**
-     * @return order (attribute ORD)
-     */
-    int getOrd();
+public interface EntityGrp extends GenEntityGrp, Comparable<EntityGrp> {
 
     /**
      * @return child entity groups (PARENT_ID points to this entity group, read-only collection)

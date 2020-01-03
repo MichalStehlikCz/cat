@@ -2,20 +2,19 @@ package com.provys.catalogue.restapi;
 
 import com.provys.catalogue.api.CatalogueRepository;
 import com.provys.catalogue.api.Entity;
+import com.provys.common.datatype.DtUid;
 import io.swagger.v3.oas.annotations.Operation;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.math.BigInteger;
 
 @Path("/entity")
 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @ApplicationScoped
 public class EntityEndpoint {
 
-    @SuppressWarnings("CdiUnproxyableBeanTypesInspection")
     @Inject
     CatalogueRepository catalogueRepository;
 
@@ -34,7 +33,7 @@ public class EntityEndpoint {
     @Operation(
             summary = "Get Entity",
             description = "Retrieve entity using Id")
-    public Entity getEntityByNameNm(@PathParam("entityId") BigInteger id) {
+    public Entity getEntityByNameNm(@PathParam("entityId") DtUid id) {
         return catalogueRepository.getEntityManager().getById(id);
     }
 }

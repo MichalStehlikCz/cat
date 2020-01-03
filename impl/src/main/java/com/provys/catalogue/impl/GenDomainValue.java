@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2019-12-30T12:45:40.268936300"
+        date = "2020-01-03T20:18:36.907153600"
 )
 @SuppressWarnings("ValidExternallyBoundObject")
 @XmlAccessorType(XmlAccessType.NONE)
@@ -122,6 +122,8 @@ public class GenDomainValue extends ProvysNmObjectValue {
     @XmlElement(
             name = "DOMAIN_ID"
     )
+    @Nonnull
+    @Override
     public DtUid getId() {
         return super.getId();
     }

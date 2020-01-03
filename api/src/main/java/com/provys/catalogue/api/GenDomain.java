@@ -9,7 +9,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2019-12-30T12:43:23.683976200"
+        date = "2020-01-03T17:26:29.820997800"
 )
 interface GenDomain extends ProvysNmObject {
     /**

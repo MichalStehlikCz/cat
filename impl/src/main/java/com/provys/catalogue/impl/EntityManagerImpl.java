@@ -2,6 +2,7 @@ package com.provys.catalogue.impl;
 
 import com.provys.catalogue.api.Entity;
 import com.provys.catalogue.api.EntityManager;
+import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectManagerImpl;
 import com.provys.provysobject.index.IndexNonUnique;
 
@@ -9,11 +10,11 @@ import javax.annotation.Nonnull;
 import java.math.BigInteger;
 import java.util.*;
 
-public class EntityManagerImpl extends ProvysNmObjectManagerImpl<CatalogueRepositoryImpl, Entity, EntityValue,
+public class EntityManagerImpl extends ProvysNmObjectManagerImpl<CatalogueRepositoryImpl, Entity, GenEntityValue,
         EntityProxy, EntityManagerImpl, EntityLoader> implements EntityManager {
 
     @Nonnull
-    private final IndexNonUnique<EntityValue, EntityProxy, BigInteger> entityByEntityGrpId;
+    private final IndexNonUnique<GenEntityValue, EntityProxy, DtUid> entityByEntityGrpId;
 
     EntityManagerImpl(CatalogueRepositoryImpl repository, EntityLoader loader, int initialCapacity) {
         super(repository, loader, initialCapacity, 1);
@@ -36,7 +37,7 @@ public class EntityManagerImpl extends ProvysNmObjectManagerImpl<CatalogueReposi
 
     @Nonnull
     @Override
-    public Collection<Entity> getByEntityGrpId(BigInteger entityGrpId) {
+    public Collection<Entity> getByEntityGrpId(DtUid entityGrpId) {
         var entities = entityByEntityGrpId.get(entityGrpId).orElse(null);
         if (entities == null) {
             // check if Id is valid entity group Id
@@ -49,7 +50,7 @@ public class EntityManagerImpl extends ProvysNmObjectManagerImpl<CatalogueReposi
 
     @Nonnull
     @Override
-    protected EntityProxy getNewProxy(BigInteger id) {
+    protected EntityProxy getNewProxy(DtUid id) {
         return new EntityProxy(this, id);
     }
 }

@@ -1,9 +1,9 @@
 package com.provys.catalogue.api;
 
+import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.ProvysObjectManager;
 
 import javax.annotation.Nonnull;
-import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -16,7 +16,7 @@ public interface AttrGrpManager extends ProvysObjectManager<AttrGrp> {
      * @return collection of attribute groups belonging to given entity
      */
     @Nonnull
-    Collection<AttrGrp> getByEntityId(BigInteger entityId);
+    Collection<AttrGrp> getByEntityId(DtUid entityId);
 
     /**
      * Retrieve attribute group for entity and internal name. Throw an exception if not found.
@@ -26,7 +26,7 @@ public interface AttrGrpManager extends ProvysObjectManager<AttrGrp> {
      * @return attribute group of given entity with specified internal name
      */
     @Nonnull
-    AttrGrp getByEntityIdNameNm(BigInteger entityId, String nameNm);
+    AttrGrp getByEntityIdNameNm(DtUid entityId, String nameNm);
 
     /**
      * Retrieve attribute group for entity and internal name if it exists.
@@ -37,5 +37,5 @@ public interface AttrGrpManager extends ProvysObjectManager<AttrGrp> {
      * exists
      */
     @Nonnull
-    Optional<AttrGrp> getByEntityIdNameNmIfExists(BigInteger entityId, String nameNm);
+    Optional<AttrGrp> getByEntityIdNameNmIfExists(DtUid entityId, String nameNm);
 }
