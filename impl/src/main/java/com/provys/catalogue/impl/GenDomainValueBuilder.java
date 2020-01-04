@@ -23,7 +23,7 @@ import org.apache.logging.log4j.Logger;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2019-12-30T12:49:03.295723600"
+        date = "2020-01-04T08:40:50.228919600"
 )
 @XmlRootElement(
         name = "DOMAIN"

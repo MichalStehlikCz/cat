@@ -1,6 +1,7 @@
 package com.provys.catalogue.impl;
 
 import com.ctc.wstx.api.WstxOutputProperties;
+import com.ctc.wstx.util.PrefixedName;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.AnnotationIntrospector;
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
+import com.provys.common.datatype.DtUid;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
@@ -22,11 +24,12 @@ import static org.mockito.Mockito.*;
 class DomainProxyTest {
 
     private static final DomainProxy SAMPLE_PROXY;
+
     static {
         var manager = mock(DomainManagerImpl.class);
-        SAMPLE_PROXY = new DomainProxy(manager, BigInteger.valueOf(10000000599L));
+        SAMPLE_PROXY = new DomainProxy(manager, DtUid.valueOf("10000000599"));
         var value = new GenDomainValueBuilder()
-                .setId(BigInteger.valueOf(10000000599L))
+                .setId(DtUid.valueOf("10000000599"))
                 .setNameNm("NUMBER")
                 .setAllowed(true)
                 .setDataLength(38)

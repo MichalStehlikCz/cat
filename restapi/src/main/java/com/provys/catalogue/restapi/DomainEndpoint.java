@@ -2,6 +2,7 @@ package com.provys.catalogue.restapi;
 
 import com.provys.catalogue.api.CatalogueRepository;
 import com.provys.catalogue.api.Domain;
+import com.provys.common.datatype.DtUid;
 import io.swagger.v3.oas.annotations.Operation;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -37,7 +38,7 @@ public class DomainEndpoint {
     @Operation(
             summary = "Get Domain",
             description = "Retrieve domain using Id")
-    public Domain getDomainById(@PathParam("domainId") BigInteger id) {
+    public Domain getDomainById(@PathParam("domainId") DtUid id) {
         return catalogueRepository.getDomainManager().getById(id);
     }
 

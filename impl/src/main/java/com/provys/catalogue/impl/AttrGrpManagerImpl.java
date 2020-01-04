@@ -2,6 +2,7 @@ package com.provys.catalogue.impl;
 
 import com.provys.catalogue.api.AttrGrp;
 import com.provys.catalogue.api.AttrGrpManager;
+import com.provys.common.datatype.DtUid;
 import com.provys.common.exception.RegularException;
 import com.provys.provysobject.impl.ProvysObjectManagerImpl;
 import com.provys.provysobject.index.IdNameNmPair;
@@ -14,23 +15,23 @@ import javax.annotation.Nonnull;
 import java.math.BigInteger;
 import java.util.*;
 
-public class AttrGrpManagerImpl extends ProvysObjectManagerImpl<CatalogueRepositoryImpl, AttrGrp, AttrGrpValue,
+public class AttrGrpManagerImpl extends ProvysObjectManagerImpl<CatalogueRepositoryImpl, AttrGrp, GenAttrGrpValue,
         AttrGrpProxy, AttrGrpManagerImpl, AttrGrpLoader> implements AttrGrpManager {
 
     @Nonnull
     private static final Logger LOG = LogManager.getLogger(AttrManagerImpl.class);
 
     @Nonnull
-    private final IndexUnique<AttrGrpValue, AttrGrpProxy, IdNameNmPair> attrGrpByEntityIdAndNameNm;
+    private final IndexUnique<GenAttrGrpValue, AttrGrpProxy, IdNameNmPair> attrGrpByEntityIdAndNameNm;
     @Nonnull
-    private final IndexNonUnique<AttrGrpValue, AttrGrpProxy, BigInteger> attrGrpByEntityId;
+    private final IndexNonUnique<GenAttrGrpValue, AttrGrpProxy, DtUid> attrGrpByEntityId;
 
     AttrGrpManagerImpl(CatalogueRepositoryImpl repository, AttrGrpLoader loader, int initialCapacity) {
         super(repository, loader, initialCapacity, 2);
         attrGrpByEntityIdAndNameNm = new IndexUnique<>("attrGrpByEntityIdAndNameNm",
                 val -> new IdNameNmPair(val.getEntityId(), val.getNameNm()), 100);
         addIndex(attrGrpByEntityIdAndNameNm);
-        attrGrpByEntityId = new IndexNonUnique<>("attrGrpByEntityId", AttrGrpValue::getEntityId);
+        attrGrpByEntityId = new IndexNonUnique<>("attrGrpByEntityId", GenAttrGrpValue::getEntityId);
         addIndex(attrGrpByEntityId);
     }
 
@@ -48,7 +49,7 @@ public class AttrGrpManagerImpl extends ProvysObjectManagerImpl<CatalogueReposit
 
     @Nonnull
     @Override
-    public Collection<AttrGrp> getByEntityId(BigInteger entityId) {
+    public Collection<AttrGrp> getByEntityId(DtUid entityId) {
         var attrGrps = attrGrpByEntityId.get(entityId).orElse(null);
         if (attrGrps == null) {
             // check if Id is valid entity Id
@@ -61,7 +62,7 @@ public class AttrGrpManagerImpl extends ProvysObjectManagerImpl<CatalogueReposit
 
     @Nonnull
     @Override
-    public AttrGrp getByEntityIdNameNm(BigInteger entityId, String nameNm) {
+    public AttrGrp getByEntityIdNameNm(DtUid entityId, String nameNm) {
         return getByEntityIdNameNmIfExists(entityId, nameNm).orElseThrow(() -> new RegularException(LOG,
                 "JAVA_ATTRGRPMANAGER_ATTRGRP_NOT_FOUND_BY_ENTITY_AND_NM",
                 "ATTRGRP was not found by supplied entity " + entityId + " and internal name " + nameNm,
@@ -70,7 +71,7 @@ public class AttrGrpManagerImpl extends ProvysObjectManagerImpl<CatalogueReposit
 
     @Nonnull
     @Override
-    public Optional<AttrGrp> getByEntityIdNameNmIfExists(BigInteger entityId, String nameNm) {
+    public Optional<AttrGrp> getByEntityIdNameNmIfExists(DtUid entityId, String nameNm) {
         var attrGrp = attrGrpByEntityIdAndNameNm.get(new IdNameNmPair(entityId, nameNm)).map(AttrGrpProxy::selfAsObject);
         if (attrGrp.isEmpty()) {
             // load attributes of given entity if they are not loaded (usually if we need one, we will need others as
@@ -84,7 +85,7 @@ public class AttrGrpManagerImpl extends ProvysObjectManagerImpl<CatalogueReposit
 
     @Nonnull
     @Override
-    protected AttrGrpProxy getNewProxy(BigInteger attrGrpId) {
+    protected AttrGrpProxy getNewProxy(DtUid attrGrpId) {
         return new AttrGrpProxy(this, attrGrpId);
     }
 

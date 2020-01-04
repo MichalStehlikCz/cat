@@ -10,33 +10,6 @@
     "variables" : { }
   } ],
   "paths" : {
-    "/attr/{attrId}" : {
-      "get" : {
-        "summary" : "Get Attribute",
-        "description" : "Retrieve atribute using Id",
-        "operationId" : "getAttrById",
-        "parameters" : [ {
-          "name" : "attrId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "integer"
-          }
-        } ],
-        "responses" : {
-          "default" : {
-            "description" : "Attribute",
-            "content" : {
-              "application/xml" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Attr"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/attr/{entityNm}/{nameNm}" : {
       "get" : {
         "summary" : "Get Attribute by Internal Name",
@@ -59,8 +32,13 @@
         } ],
         "responses" : {
           "default" : {
-            "description" : "Attribute",
+            "description" : "default response",
             "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Attr"
+                }
+              },
               "application/xml" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Attr"
@@ -71,25 +49,33 @@
         }
       }
     },
-    "/domain/{domainId}" : {
+    "/attr/{attrId}" : {
       "get" : {
-        "summary" : "Get Domain",
-        "description" : "Retrieve domain using Id",
-        "operationId" : "getDomainById",
+        "summary" : "Get Attribute",
+        "description" : "Retrieve atribute using Id",
+        "operationId" : "getAttrById",
         "parameters" : [ {
-          "name" : "domainId",
+          "name" : "attrId",
           "in" : "path",
           "required" : true,
           "schema" : {
-            "type" : "integer"
+            "$ref" : "#/components/schemas/DtUid"
           }
         } ],
         "responses" : {
           "default" : {
             "description" : "default response",
             "content" : {
-              "application/json" : { },
-              "application/xml" : { }
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Attr"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Attr"
+                }
+              }
             }
           }
         }
@@ -136,8 +122,54 @@
           "default" : {
             "description" : "default response",
             "content" : {
-              "application/json" : { },
-              "application/xml" : { }
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Domain"
+                  }
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Domain"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/domain/{domainId}" : {
+      "get" : {
+        "summary" : "Get Domain",
+        "description" : "Retrieve domain using Id",
+        "operationId" : "getDomainById",
+        "parameters" : [ {
+          "name" : "domainId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/DtUid"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Domain"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Domain"
+                }
+              }
             }
           }
         }
@@ -158,9 +190,14 @@
         } ],
         "responses" : {
           "default" : {
-            "description" : "Entity",
+            "description" : "default response",
             "content" : {
               "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Entity"
+                }
+              },
+              "application/xml" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Entity"
                 }
@@ -180,14 +217,19 @@
           "in" : "path",
           "required" : true,
           "schema" : {
-            "type" : "integer"
+            "$ref" : "#/components/schemas/DtUid"
           }
         } ],
         "responses" : {
           "default" : {
-            "description" : "Entity",
+            "description" : "default response",
             "content" : {
               "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Entity"
+                }
+              },
+              "application/xml" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Entity"
                 }
@@ -203,33 +245,66 @@
       "Attr" : {
         "type" : "object",
         "properties" : {
-          "name" : {
-            "type" : "string"
-          },
-          "entity" : {
-            "$ref" : "#/components/schemas/Entity"
-          },
-          "attrGrpId" : {
-            "type" : "integer"
-          },
-          "domain" : {
-            "$ref" : "#/components/schemas/Domain"
-          },
-          "subdomainNm" : {
-            "type" : "string"
-          },
-          "mandatory" : {
-            "type" : "boolean"
-          },
           "ordInEntity" : {
             "type" : "integer",
             "format" : "int32"
           },
+          "name" : {
+            "type" : "string"
+          },
+          "readOnly" : {
+            "type" : "boolean"
+          },
+          "ordered" : {
+            "type" : "boolean"
+          },
+          "entity" : {
+            "$ref" : "#/components/schemas/Entity"
+          },
+          "setOtherOpTypeId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "fromObjectFormula" : {
+            "$ref" : "#/components/schemas/Attr"
+          },
+          "accDocObjectFormulaId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "fromObjectFormulaId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "accDocObjectFormula" : {
+            "$ref" : "#/components/schemas/Attr"
+          },
+          "toObjectFormulaId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "mandatory" : {
+            "type" : "boolean"
+          },
+          "hierarchical" : {
+            "type" : "boolean"
+          },
+          "isqVisible" : {
+            "type" : "boolean"
+          },
           "nameNm" : {
             "type" : "string"
           },
-          "note" : {
+          "textSrc" : {
+            "$ref" : "#/components/schemas/Attr"
+          },
+          "subdomainNm" : {
             "type" : "string"
+          },
+          "indexed" : {
+            "type" : "boolean"
+          },
+          "logAllowed" : {
+            "type" : "boolean"
+          },
+          "resetOpTypeId" : {
+            "$ref" : "#/components/schemas/DtUid"
           },
           "properNameRoot" : {
             "type" : "string"
@@ -237,31 +312,190 @@
           "attrGrp" : {
             "$ref" : "#/components/schemas/AttrGrp"
           },
-          "entityId" : {
-            "type" : "integer"
+          "multiCreate" : {
+            "type" : "boolean"
           },
-          "ord" : {
-            "type" : "integer",
-            "format" : "int32"
+          "isOwn" : {
+            "type" : "boolean"
+          },
+          "getOpTypeId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "setOpTypeId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "dictType" : {
+            "type" : "string"
+          },
+          "isInTable" : {
+            "type" : "boolean"
+          },
+          "genMove" : {
+            "type" : "boolean"
+          },
+          "getlLength" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "upNameNm" : {
+            "type" : "string"
+          },
+          "domain" : {
+            "$ref" : "#/components/schemas/Domain"
+          },
+          "entityId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "attrGrpId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "logLevel" : {
+            "type" : "string"
+          },
+          "note" : {
+            "type" : "string"
           },
           "attrType" : {
-            "type" : "string",
-            "enum" : [ "COLUMN", "TEXT", "FREE", "FINANCE", "SQL", "FORMULA" ]
+            "type" : "string"
+          },
+          "isCustom" : {
+            "type" : "boolean"
+          },
+          "isUsed" : {
+            "type" : "boolean"
+          },
+          "ord" : {
+            "type" : "number",
+            "format" : "double"
           },
           "defValue" : {
             "type" : "string"
           },
-          "javaName" : {
+          "textSrcId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "validated" : {
+            "type" : "boolean"
+          },
+          "multivalue" : {
+            "type" : "boolean"
+          },
+          "ordGroup" : {
             "type" : "string"
           },
+          "dictDel1" : {
+            "type" : "string"
+          },
+          "domainId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "tbCodeCd" : {
+            "type" : "string"
+          },
+          "ownerFormula" : {
+            "$ref" : "#/components/schemas/Attr"
+          },
+          "toObjectFormula" : {
+            "$ref" : "#/components/schemas/Attr"
+          },
+          "confirmOther" : {
+            "type" : "boolean"
+          },
+          "approxRecord" : {
+            "type" : "boolean"
+          },
+          "genCopy" : {
+            "type" : "boolean"
+          },
+          "dictDel2" : {
+            "type" : "string"
+          },
+          "valueAccountNm" : {
+            "type" : "string"
+          },
+          "accountRuleNm" : {
+            "type" : "string"
+          },
+          "ownerFormulaId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "genDelete" : {
+            "type" : "boolean"
+          },
+          "fileServerId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "imgHeight" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxIsFlagDepBind" : {
+            "type" : "string"
+          },
+          "imgSrcId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "keyOrd" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "manLobLimit" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "copied" : {
+            "type" : "string"
+          },
+          "opTypeTypeRf" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "evalCValue" : {
+            "type" : "boolean"
+          },
+          "optLobLimit" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "documentation" : {
+            "type" : "string"
+          },
+          "bitmapOrd" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "valueAmountType" : {
+            "type" : "string"
+          },
+          "isxIsFlagDefAttr" : {
+            "type" : "boolean"
+          },
+          "imgWidth" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "defOwner" : {
+            "type" : "boolean"
+          },
+          "imgSrc" : {
+            "$ref" : "#/components/schemas/Attr"
+          },
+          "genMigr" : {
+            "type" : "boolean"
+          },
           "id" : {
-            "type" : "integer"
+            "$ref" : "#/components/schemas/DtUid"
           }
         }
       },
       "AttrGrp" : {
         "type" : "object",
         "properties" : {
+          "attrs" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Attr"
+            }
+          },
           "name" : {
             "type" : "string"
           },
@@ -271,24 +505,21 @@
           "nameNm" : {
             "type" : "string"
           },
+          "entityId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
           "note" : {
             "type" : "string"
           },
-          "entityId" : {
-            "type" : "integer"
+          "isCustom" : {
+            "type" : "boolean"
           },
           "ord" : {
             "type" : "integer",
             "format" : "int32"
           },
-          "attrs" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Attr"
-            }
-          },
           "id" : {
-            "type" : "integer"
+            "$ref" : "#/components/schemas/DtUid"
           }
         }
       },
@@ -296,15 +527,16 @@
         "type" : "object",
         "properties" : {
           "name" : {
-            "type" : "string",
-            "xml" : {
-              "name" : "NAME"
-            }
-          },
-          "note" : {
             "type" : "string"
           },
+          "dataLength" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
           "validateCd" : {
+            "type" : "string"
+          },
+          "getlFormatCd" : {
             "type" : "string"
           },
           "natOrder" : {
@@ -313,97 +545,53 @@
           "allowed" : {
             "type" : "boolean"
           },
-          "isqVisible" : {
-            "type" : "boolean"
-          },
-          "getlFormatCd" : {
-            "type" : "string"
-          },
           "islVisible" : {
             "type" : "boolean"
+          },
+          "dataTypeNm" : {
+            "type" : "string"
           },
           "dataPrecision" : {
             "type" : "integer",
             "format" : "int32"
           },
-          "dataTypeNm" : {
-            "type" : "string"
+          "isqVisible" : {
+            "type" : "boolean"
           },
-          "dataLength" : {
-            "type" : "integer",
-            "format" : "int32"
+          "note" : {
+            "type" : "string"
           },
           "nameNm" : {
             "type" : "string"
           },
           "id" : {
+            "$ref" : "#/components/schemas/DtUid"
+          }
+        }
+      },
+      "DtUid" : {
+        "type" : "object",
+        "properties" : {
+          "value" : {
             "type" : "integer"
+          },
+          "multiline" : {
+            "type" : "boolean"
+          },
+          "priv" : {
+            "type" : "boolean"
+          },
+          "me" : {
+            "type" : "boolean"
+          },
+          "regular" : {
+            "type" : "boolean"
           }
         }
       },
       "Entity" : {
         "type" : "object",
         "properties" : {
-          "name" : {
-            "type" : "string"
-          },
-          "table" : {
-            "type" : "string"
-          },
-          "ancestor" : {
-            "$ref" : "#/components/schemas/Entity"
-          },
-          "note" : {
-            "type" : "string"
-          },
-          "custom" : {
-            "type" : "boolean"
-          },
-          "used" : {
-            "type" : "boolean"
-          },
-          "objectClass" : {
-            "type" : "boolean"
-          },
-          "pgPackage" : {
-            "type" : "string"
-          },
-          "ancestorId" : {
-            "type" : "integer"
-          },
-          "epPackage" : {
-            "type" : "string"
-          },
-          "entityGrp" : {
-            "$ref" : "#/components/schemas/EntityGrp"
-          },
-          "structureDoc" : {
-            "type" : "string"
-          },
-          "usageDoc" : {
-            "type" : "string"
-          },
-          "cpPackage" : {
-            "type" : "string"
-          },
-          "customNote" : {
-            "type" : "string"
-          },
-          "view" : {
-            "type" : "string"
-          },
-          "fpPackage" : {
-            "type" : "string"
-          },
-          "entityGrpId" : {
-            "type" : "integer"
-          },
-          "behaviourDoc" : {
-            "type" : "string"
-          },
-          "implDoc" : {
-            "type" : "string"
-          },
           "attrGrps" : {
             "type" : "array",
             "items" : {
@@ -416,25 +604,267 @@
               "$ref" : "#/components/schemas/Attr"
             }
           },
+          "name" : {
+            "type" : "string"
+          },
+          "ancestor" : {
+            "$ref" : "#/components/schemas/Entity"
+          },
+          "getxFlagDefInterest0" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxFlagDefInterest1" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxFlagDefInterest2" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxFlagDefInterest3" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxFlagDefInterest4" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxFlagDefInterest5" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "isxHasDelRowFlagDef" : {
+            "type" : "boolean"
+          },
+          "textTableNm" : {
+            "type" : "string"
+          },
+          "textKeyNm" : {
+            "type" : "string"
+          },
+          "textAll" : {
+            "type" : "boolean"
+          },
+          "pgPackageNm" : {
+            "type" : "string"
+          },
+          "confObj" : {
+            "type" : "string"
+          },
+          "viewNm" : {
+            "type" : "string"
+          },
+          "keyNm" : {
+            "type" : "string"
+          },
+          "properName" : {
+            "type" : "string"
+          },
+          "textViewNm" : {
+            "type" : "string"
+          },
+          "epPackageNm" : {
+            "type" : "string"
+          },
+          "userLockType" : {
+            "type" : "string"
+          },
+          "objectClass" : {
+            "type" : "boolean"
+          },
+          "tableNm" : {
+            "type" : "string"
+          },
+          "masterId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "masterType" : {
+            "type" : "string"
+          },
+          "cpPackageNm" : {
+            "type" : "string"
+          },
+          "importType" : {
+            "type" : "string"
+          },
+          "fpPackageNm" : {
+            "type" : "string"
+          },
+          "basePath" : {
+            "type" : "string"
+          },
+          "incompleteKey" : {
+            "type" : "boolean"
+          },
+          "entityGrp" : {
+            "$ref" : "#/components/schemas/EntityGrp"
+          },
+          "ancestorId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "confObjAll" : {
+            "type" : "boolean"
+          },
+          "entityGrpId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "customNote" : {
+            "type" : "string"
+          },
+          "usageDoc" : {
+            "type" : "string"
+          },
+          "behaviourDoc" : {
+            "type" : "string"
+          },
+          "implDoc" : {
+            "type" : "string"
+          },
+          "getRightCustom" : {
+            "type" : "boolean"
+          },
+          "getRightRestrId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "structureDoc" : {
+            "type" : "string"
+          },
+          "longDesc" : {
+            "type" : "string"
+          },
+          "getxCopiedAttr2" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "useConfObj" : {
+            "type" : "boolean"
+          },
+          "getxDelNotifyAttr1" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxDelNotifyAttr3" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxNotifyAttr2" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxDelNotifyAttr4" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxCopiedAttr3" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxCopiedAttr5" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxDelNotifyAttr0" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxNotifyAttr3" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxNotifyAttr4" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxDelNotifyAttr2" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxNotifyAttr5" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxCopiedAttr1" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "isxHasLiability" : {
+            "type" : "boolean"
+          },
+          "getxUseConfObj" : {
+            "type" : "boolean"
+          },
+          "getxNotifyAttr0" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxNotifyAttr1" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getxDelNotifyAttr5" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "shortDesc" : {
+            "type" : "string"
+          },
+          "getxCopiedAttr0" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "keepDeleted" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "getxCopiedAttr4" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "getOpTypeId" : {
+            "$ref" : "#/components/schemas/DtUid"
+          },
+          "note" : {
+            "type" : "string"
+          },
+          "isCustom" : {
+            "type" : "boolean"
+          },
+          "isUsed" : {
+            "type" : "boolean"
+          },
           "nameNm" : {
             "type" : "string"
           },
           "id" : {
-            "type" : "integer"
+            "$ref" : "#/components/schemas/DtUid"
           }
         }
       },
       "EntityGrp" : {
         "type" : "object",
         "properties" : {
-          "name" : {
-            "type" : "string"
-          },
           "children" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/EntityGrp"
             }
+          },
+          "entities" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Entity"
+            }
+          },
+          "fullOrd" : {
+            "type" : "array",
+            "items" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          },
+          "name" : {
+            "type" : "string"
           },
           "note" : {
             "type" : "string"
@@ -444,26 +874,13 @@
             "format" : "int32"
           },
           "parentId" : {
-            "type" : "integer"
-          },
-          "fullOrd" : {
-            "type" : "array",
-            "items" : {
-              "type" : "integer",
-              "format" : "int32"
-            }
-          },
-          "entities" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Entity"
-            }
+            "$ref" : "#/components/schemas/DtUid"
           },
           "nameNm" : {
             "type" : "string"
           },
           "id" : {
-            "type" : "integer"
+            "$ref" : "#/components/schemas/DtUid"
           }
         }
       }

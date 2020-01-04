@@ -2,7 +2,6 @@ package com.provys.catalogue.dbloader;
 
 import com.provys.catalogue.api.EntityGrpMeta;
 import com.provys.catalogue.api.EntityGrp;
-import com.provys.catalogue.api.EntityGrpMeta;
 import com.provys.catalogue.impl.EntityGrpManagerImpl;
 import com.provys.catalogue.impl.EntityGrpProxy;
 import com.provys.catalogue.impl.GenEntityGrpValue;
@@ -18,8 +17,8 @@ import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-class EntitygrpDbLoadRunner extends ProvysObjectLoadRunner<EntityGrp, GenEntityGrpValue, EntityGrpProxy, EntityGrpManagerImpl> {
-    private static final EntitygrpDbMapper MAPPER = new EntitygrpDbMapper();
+class EntityGrpDbLoadRunner extends ProvysObjectLoadRunner<EntityGrp, GenEntityGrpValue, EntityGrpProxy, EntityGrpManagerImpl> {
+    private static final EntityGrpDbMapper MAPPER = new EntityGrpDbMapper();
 
     @Nonnull
     private final DbSql dbSql;
@@ -27,7 +26,7 @@ class EntitygrpDbLoadRunner extends ProvysObjectLoadRunner<EntityGrp, GenEntityG
     @Nullable
     private final Condition condition;
 
-    EntitygrpDbLoadRunner(EntityGrpManagerImpl manager, DbSql dbSql, @Nullable Condition condition) {
+    EntityGrpDbLoadRunner(EntityGrpManagerImpl manager, DbSql dbSql, @Nullable Condition condition) {
         super(manager);
         this.dbSql = Objects.requireNonNull(dbSql);
         this.condition = condition;
@@ -49,7 +48,7 @@ class EntitygrpDbLoadRunner extends ProvysObjectLoadRunner<EntityGrp, GenEntityG
                 .fetch(MAPPER);
     }
 
-    private static class EntitygrpDbMapper implements DbRowMapper<GenEntityGrpValue> {
+    private static class EntityGrpDbMapper implements DbRowMapper<GenEntityGrpValue> {
         public GenEntityGrpValue map(DbResultSet dbResultSet, long line) {
             return new GenEntityGrpValueBuilder()
                     .setId(dbResultSet.getNonnullDtUid(1))

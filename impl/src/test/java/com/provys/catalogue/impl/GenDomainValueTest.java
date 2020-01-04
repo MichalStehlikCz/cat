@@ -12,6 +12,7 @@ import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
+import com.provys.common.datatype.DtUid;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -26,7 +27,7 @@ class GenDomainValueTest {
     private static final GenDomainValue SAMPLE_VALUE;
     static {
         SAMPLE_VALUE = new GenDomainValueBuilder()
-                .setId(BigInteger.valueOf(10000000599L))
+                .setId(DtUid.valueOf("10000000599"))
                 .setNameNm("NUMBER")
                 .setAllowed(true)
                 .setDataLength(38)

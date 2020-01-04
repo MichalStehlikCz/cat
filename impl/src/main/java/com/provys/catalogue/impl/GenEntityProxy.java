@@ -14,7 +14,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T18:20:13.614383700"
+        date = "2020-01-04T08:41:47.302105"
 )
 abstract class GenEntityProxy extends ProvysNmObjectProxyImpl<Entity, GenEntityValue, EntityProxy, EntityManagerImpl> {
     GenEntityProxy(EntityManagerImpl manager, DtUid id) {

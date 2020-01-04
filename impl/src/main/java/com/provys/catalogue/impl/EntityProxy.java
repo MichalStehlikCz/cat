@@ -7,7 +7,6 @@ import com.provys.catalogue.api.Entity;
 import com.provys.common.datatype.DtUid;
 import java.lang.Override;
 import java.util.Collection;
-import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -18,7 +17,6 @@ import javax.xml.bind.annotation.XmlRootElement;
         name = "ENTITY"
 )
 public class EntityProxy extends GenEntityProxy implements Entity {
-
     EntityProxy(EntityManagerImpl manager, DtUid id) {
         super(manager, id);
     }

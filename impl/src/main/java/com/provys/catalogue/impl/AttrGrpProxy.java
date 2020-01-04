@@ -1,20 +1,22 @@
 package com.provys.catalogue.impl;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.provys.catalogue.api.Attr;
 import com.provys.catalogue.api.AttrGrp;
-import com.provys.catalogue.api.Entity;
-import com.provys.provysobject.impl.ProvysObjectProxyImpl;
-
-import javax.annotation.Nonnull;
-import java.math.BigInteger;
+import com.provys.common.datatype.DtUid;
+import java.lang.Override;
 import java.util.Collection;
-import java.util.Objects;
-import java.util.Optional;
+import javax.annotation.Nonnull;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class AttrGrpProxy extends ProvysObjectProxyImpl<AttrGrp, AttrGrpValue, AttrGrpProxy, AttrGrpManagerImpl>
-        implements AttrGrp {
-
-    AttrGrpProxy(AttrGrpManagerImpl manager, BigInteger id) {
+@JsonSerialize(
+        converter = GenAttrGrpProxySerializationConverter.class
+)
+@XmlRootElement(
+        name = "ATTRGRP"
+)
+public class AttrGrpProxy extends GenAttrGrpProxy implements AttrGrp {
+    AttrGrpProxy(AttrGrpManagerImpl manager, DtUid id) {
         super(manager, id);
     }
 
@@ -30,52 +32,31 @@ public class AttrGrpProxy extends ProvysObjectProxyImpl<AttrGrp, AttrGrpValue, A
         return this;
     }
 
-    @Nonnull
-    @Override
-    public BigInteger getEntityId() {
-        return validateValueObject().getEntityId();
-    }
-
-    @Nonnull
-    @Override
-    public Entity getEntity() {
-        return validateValueObject().getEntity();
-    }
-
-    @Nonnull
-    @Override
-    public String getNameNm() {
-        return validateValueObject().getNameNm();
-    }
-
-    @Nonnull
-    @Override
-    public String getName() {
-        return validateValueObject().getName();
-    }
-
-    @Override
-    public int getOrd() {
-        return validateValueObject().getOrd();
-    }
-
-    @Nonnull
-    @Override
-    public Optional<String> getNote() {
-        return validateValueObject().getNote();
-    }
-
     @Override
     @Nonnull
     public Collection<Attr> getAttrs() {
         return getManager().getRepository().getAttrManager().getByAttrGrpId(getId());
     }
 
+    /**
+     * Compares attribute groups by their entities, then by ord and if all is the same, by name within same entity
+     *
+     * @param other other attribute group
+     * @return -1 if ordering of this is before other, 0 if both objects are the same and 1 if this object is after
+     * the other
+     */
     @Override
     public int compareTo(AttrGrp other) {
         if (this == other) {
             return 0;
         }
-        return validateValueObject().compareTo(Objects.requireNonNull(other));
+        int result = getEntity().compareTo(other.getEntity());
+        if (result == 0) {
+            result = Integer.compare(getOrd(), other.getOrd());
+            if (result == 0) {
+                result = getName().compareTo(other.getName());
+            }
+        }
+        return result;
     }
 }

@@ -1,36 +1,21 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.*;
-import com.provys.common.exception.InternalException;
-import com.provys.provysobject.impl.ProvysObjectProxyImpl;
-
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.provys.catalogue.api.Attr;
+import com.provys.common.datatype.DtUid;
+import java.lang.Override;
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import java.math.BigInteger;
-import java.util.Objects;
-import java.util.Optional;
 
-@SuppressWarnings("ValidExternallyBoundObject")
-@XmlType(name = "", factoryClass = AttrProxy.class, factoryMethod = "jaxbCreate")
-@XmlRootElement(name = "ATTR")
-public class AttrProxy extends ProvysObjectProxyImpl<Attr, AttrValue, AttrProxy, AttrManagerImpl> implements Attr {
-
-    /**
-     * Formally needed to allow jaxb marshalling
-     *
-     * @return nothing, it is never called
-     */
-    @SuppressWarnings("unused")
-    private static AttrProxy jaxbCreate() {
-        return null;
-    }
-
-    AttrProxy(AttrManagerImpl manager, BigInteger id) {
+@JsonSerialize(
+        converter = GenAttrProxySerializationConverter.class
+)
+@XmlRootElement(
+        name = "ATTR"
+)
+public class AttrProxy extends GenAttrProxy implements Attr {
+    AttrProxy(AttrManagerImpl manager, DtUid id) {
         super(manager, id);
     }
 
@@ -46,108 +31,41 @@ public class AttrProxy extends ProvysObjectProxyImpl<Attr, AttrValue, AttrProxy,
         return this;
     }
 
+    /**
+     * @return name of attribute for use in Java (camelcase, derived from propername)
+     */
     @Nonnull
-    @Override
-    @JsonbProperty("ATTR_ID")
-    @XmlElement(name = "ATTR_ID")
-    public BigInteger getId() {
-        return super.getId();
-    }
-
-    @Nonnull
-    @Override
-    public BigInteger getEntityId() {
-        return validateValueObject().getEntityId();
-    }
-
-    @Nonnull
-    @Override
-    @JsonbTransient
-    public Entity getEntity() {
-        return validateValueObject().getEntity();
-    }
-
-    @Nonnull
-    @Override
-    public String getNameNm() {
-        return validateValueObject().getNameNm();
-    }
-
-    @Nonnull
-    @Override
-    public String getName() {
-        return validateValueObject().getName();
-    }
-
-    @Nonnull
-    @Override
-    public Optional<String> getProperNameRoot() {
-        return validateValueObject().getProperNameRoot();
-    }
-
-    @Nonnull
-    @Override
-    @JsonbTransient
     public String getJavaName() {
-        return validateValueObject().getJavaName();
-    }
-
-    @Nonnull
-    @Override
-    public Optional<BigInteger> getAttrGrpId() {
-        return validateValueObject().getAttrGrpId();
-    }
-
-    @Nonnull
-    @Override
-    @JsonbTransient
-    public Optional<AttrGrp> getAttrGrp() {
-        return validateValueObject().getAttrGrp();
-    }
-
-    @Override
-    public int getOrd() {
-        return validateValueObject().getOrd();
-    }
-
-    @Nonnull
-    @Override
-    public Optional<String> getNote() {
-        return validateValueObject().getNote();
-    }
-
-    @Nonnull
-    @Override
-    public AttrType getAttrType() {
-        return validateValueObject().getAttrType();
-    }
-
-    @Nonnull
-    @Override
-    @JsonbTransient
-    public Domain getDomain() {
-        return validateValueObject().getDomain();
-    }
-
-    @Nonnull
-    @Override
-    public Optional<String> getSubdomainNm() {
-        return validateValueObject().getSubdomainNm();
+        final String[] parts = getNameNm().split("_");
+        final var properNameRoot = getProperNameRoot().orElse(null);
+        int index = 0;
+        var builder = new StringBuilder();
+        if (parts[index].length() == 1) {
+            builder.append(parts[index].toLowerCase());
+            index++;
+        }
+        if (parts.length > index) {
+            if (parts[index].equalsIgnoreCase(properNameRoot)) {
+                builder.append(properNameRoot);
+            } else {
+                if (index == 0) {
+                    builder.append(parts[index].toLowerCase());
+                } else {
+                    builder.append(Character.toUpperCase(parts[index].charAt(0)))
+                            .append(parts[index].substring(1).toLowerCase());
+                }
+            }
+            index++;
+        }
+        while (parts.length > index) {
+            builder.append(Character.toUpperCase(parts[index].charAt(0)))
+                    .append(parts[index].substring(1).toLowerCase());
+            index++;
+        }
+        return builder.toString();
     }
 
     @Override
-    public boolean getMandatory() {
-        return validateValueObject().getMandatory();
-    }
-
-    @Override
-    @Nonnull
-    public Optional<String> getDefValue() {
-        return validateValueObject().getDefValue();
-    }
-
-    @Override
-    @JsonbTransient
     public int getOrdInEntity() {
         // we have to select all attributes of given entity
         var attrs = getManager().getByEntityId(getEntityId());
@@ -161,11 +79,39 @@ public class AttrProxy extends ProvysObjectProxyImpl<Attr, AttrValue, AttrProxy,
         return result;
     }
 
+    private int compareAttrGrp(Attr other) {
+        if (getAttrGrp().isEmpty()) {
+            if (other.getAttrGrp().isEmpty()) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+        if (other.getAttrGrp().isEmpty()) {
+            return -1;
+        }
+        return getAttrGrp().orElseThrow().compareTo(other.getAttrGrp().orElseThrow());
+    }
+
+    /**
+     * Compares attributes by their attribute group, if in the same attribute group, by their order and name
+     *
+     * @param other is attribute to be compared to
+     * @return -1 if ordering of this is before other, 0 if both objects are the same and 1 if this object is after
+     * the other
+     */
     @Override
     public int compareTo(Attr other) {
         if (other == this) {
             return 0;
         }
-        return validateValueObject().compareTo(Objects.requireNonNull(other));
+        int result = compareAttrGrp(other);
+        if (result == 0) {
+            result = Double.compare(getOrd(), other.getOrd());
+            if (result == 0) {
+                result = getName().compareTo(other.getName());
+            }
+        }
+        return result;
     }
 }

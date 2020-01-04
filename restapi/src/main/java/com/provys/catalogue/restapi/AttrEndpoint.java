@@ -2,6 +2,7 @@ package com.provys.catalogue.restapi;
 
 import com.provys.catalogue.api.Attr;
 import com.provys.catalogue.api.CatalogueRepository;
+import com.provys.common.datatype.DtUid;
 import io.swagger.v3.oas.annotations.Operation;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -37,7 +38,7 @@ public class AttrEndpoint {
     @Operation(
             summary = "Get Attribute",
             description = "Retrieve atribute using Id")
-    public Attr getAttrById(@PathParam("attrId") BigInteger id) {
+    public Attr getAttrById(@PathParam("attrId") DtUid id) {
         return catalogueRepository.getAttrManager().getById(id);
     }
 }

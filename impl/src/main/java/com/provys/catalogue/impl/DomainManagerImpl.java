@@ -2,6 +2,7 @@ package com.provys.catalogue.impl;
 
 import com.provys.catalogue.api.Domain;
 import com.provys.catalogue.api.DomainManager;
+import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectManagerImpl;
 
 import javax.annotation.Nonnull;
@@ -22,7 +23,7 @@ public class DomainManagerImpl extends ProvysNmObjectManagerImpl<CatalogueReposi
 
     @Nonnull
     @Override
-    protected DomainProxy getNewProxy(BigInteger id) {
+    protected DomainProxy getNewProxy(DtUid id) {
         return new DomainProxy(this, id);
     }
 

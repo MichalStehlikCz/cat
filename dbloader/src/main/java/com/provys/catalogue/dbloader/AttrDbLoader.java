@@ -1,21 +1,20 @@
 package com.provys.catalogue.dbloader;
 
 import com.provys.catalogue.api.AttrMeta;
-import com.provys.catalogue.impl.*;
-import com.provys.provysdb.dbsqlbuilder.DbSql;
+import com.provys.catalogue.impl.AttrLoaderBase;
+import com.provys.catalogue.impl.AttrManagerImpl;
+import com.provys.common.datatype.DtUid;
 import com.provys.provysdb.dbsqlbuilder.SqlAdmin;
-
+import java.lang.Override;
+import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import java.math.BigInteger;
-import java.util.Objects;
 
 @ApplicationScoped
 public class AttrDbLoader extends AttrLoaderBase {
-
     @Nonnull
-    private final DbSql dbSql;
+    private final SqlAdmin dbSql;
 
     @Inject
     AttrDbLoader(SqlAdmin dbSql) {
@@ -24,27 +23,27 @@ public class AttrDbLoader extends AttrLoaderBase {
 
     @Nonnull
     @Override
-    protected AttrDbLoadRunner getLoadRunnerByEntityId(AttrManagerImpl attrManager, BigInteger entityId) {
+    protected AttrDbLoadRunner getLoadRunnerById(AttrManagerImpl manager, DtUid id) {
+        return new AttrDbLoadRunner(manager, dbSql, dbSql.eq(AttrMeta.COL_ATTR_ID, dbSql.bind("attr_id", id)));
+    }
+
+    @Nonnull
+    @Override
+    protected AttrDbLoadRunner getLoadRunnerAll(AttrManagerImpl manager) {
+        return new AttrDbLoadRunner(manager, dbSql, null);
+    }
+
+    @Nonnull
+    @Override
+    protected AttrDbLoadRunner getLoadRunnerByEntityId(AttrManagerImpl manager, DtUid entityId) {
+        return new AttrDbLoadRunner(manager, dbSql,
+                dbSql.eq(AttrMeta.COL_ENTITY_ID, dbSql.bind("entity_id", entityId)));
+    }
+
+    @Nonnull
+    @Override
+    protected AttrDbLoadRunner getLoadRunnerByAttrGrpId(AttrManagerImpl attrManager, DtUid attrGrpId) {
         return new AttrDbLoadRunner(attrManager, dbSql,
-                dbSql.eq(AttrMeta.ENTITY_ID, dbSql.bind("entity_id", entityId)));
-    }
-
-    @Nonnull
-    @Override
-    protected AttrDbLoadRunner getLoadRunnerByAttrGrpId(AttrManagerImpl attrManager, BigInteger attrGrpId) {
-        return new AttrDbLoadRunner(attrManager, dbSql,
-                dbSql.eq(AttrMeta.ATTRGRP_ID, dbSql.bind("attrgrp_id", attrGrpId)));
-    }
-
-    @Nonnull
-    @Override
-    protected AttrDbLoadRunner getLoadRunnerById(AttrManagerImpl attrManager, BigInteger id) {
-        return new AttrDbLoadRunner(attrManager, dbSql, dbSql.eq(AttrMeta.ATTR_ID, dbSql.bind("attr_id", id)));
-    }
-
-    @Nonnull
-    @Override
-    protected AttrDbLoadRunner getLoadRunnerAll(AttrManagerImpl attrManager) {
-        return new AttrDbLoadRunner(attrManager, dbSql, null);
+                dbSql.eq(AttrMeta.COL_ATTRGRP_ID, dbSql.bind("attrgrp_id", attrGrpId)));
     }
 }

@@ -6,13 +6,12 @@ import com.provys.common.datatype.DtDate;
 import com.provys.common.datatype.DtDateTime;
 import com.provys.common.datatype.DtUid;
 import com.provys.common.exception.InternalException;
-import java.lang.Override;
-import java.lang.SuppressWarnings;
-import java.math.BigInteger;
-import javax.annotation.Nonnull;
-import javax.xml.bind.annotation.XmlRootElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.lang.Override;
+import javax.annotation.Nonnull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @JsonSerialize(
         converter = GenDomainProxySerializationConverter.class
@@ -21,9 +20,10 @@ import org.apache.logging.log4j.Logger;
         name = "DOMAIN"
 )
 public class DomainProxy extends GenDomainProxy implements Domain {
-    private static final Logger LOG = LogManager.getLogger(DomainProxy.class);
 
-    DomainProxy(DomainManagerImpl manager, BigInteger id) {
+    private static final Logger LOG = LogManager.getLogger();
+
+    DomainProxy(DomainManagerImpl manager, DtUid id) {
         super(manager, id);
     }
 
