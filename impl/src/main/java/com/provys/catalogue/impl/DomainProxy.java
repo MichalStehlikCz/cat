@@ -6,8 +6,6 @@ import com.provys.common.datatype.DtDate;
 import com.provys.common.datatype.DtDateTime;
 import com.provys.common.datatype.DtUid;
 import com.provys.common.exception.InternalException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.lang.Override;
 import javax.annotation.Nonnull;
@@ -20,8 +18,6 @@ import javax.xml.bind.annotation.XmlRootElement;
         name = "DOMAIN"
 )
 public class DomainProxy extends GenDomainProxy implements Domain {
-
-    private static final Logger LOG = LogManager.getLogger();
 
     DomainProxy(DomainManagerImpl manager, DtUid id) {
         super(manager, id);
@@ -60,7 +56,7 @@ public class DomainProxy extends GenDomainProxy implements Domain {
                 return DtUid.class;
             default:
                 switch (getDataTypeNm().orElseThrow(
-                        () -> new InternalException(LOG, "Implementing class not found for domain " + getNameNm()))) {
+                        () -> new InternalException("Implementing class not found for domain " + getNameNm()))) {
                     case "CLOB":
                     case "VARCHAR2":
                     case "NVARCHAR2":
@@ -69,7 +65,7 @@ public class DomainProxy extends GenDomainProxy implements Domain {
                     case "NUMBER":
                         return optional ? Double.class : double.class;
                     default:
-                        throw new InternalException(LOG, "Implementing class not found for domain " + getNameNm());
+                        throw new InternalException("Implementing class not found for domain " + getNameNm());
                 }
         }
     }

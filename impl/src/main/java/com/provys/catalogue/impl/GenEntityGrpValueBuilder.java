@@ -17,12 +17,10 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-04T08:34:24.278852800"
+        date = "2020-01-14T15:10:29.171722"
 )
 @XmlRootElement(
         name = "ENTITYGRP"
@@ -33,8 +31,6 @@ import org.apache.logging.log4j.Logger;
 )
 @SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
 public class GenEntityGrpValueBuilder extends ProvysNmObjectValueBuilder<GenEntityGrpValueBuilder, GenEntityGrpValue> {
-    private static final Logger LOG = LogManager.getLogger(GenEntityGrpValueBuilder.class);
-
     @Nullable
     private DtUid parentId;
 
@@ -132,7 +128,7 @@ public class GenEntityGrpValueBuilder extends ProvysNmObjectValueBuilder<GenEnti
 
     public void setUpdName(boolean updName) {
         if (!this.updName && updName) {
-            throw new InternalException(LOG, "Cannot directly set update flag updName; set value instead");
+            throw new InternalException("Cannot directly set update flag updName; set value instead");
         }
         this.updName = updName;
         if (!updName) {
@@ -185,7 +181,7 @@ public class GenEntityGrpValueBuilder extends ProvysNmObjectValueBuilder<GenEnti
 
     public void setUpdOrd(boolean updOrd) {
         if (!this.updOrd && updOrd) {
-            throw new InternalException(LOG, "Cannot directly set update flag updOrd; set value instead");
+            throw new InternalException("Cannot directly set update flag updOrd; set value instead");
         }
         this.updOrd = updOrd;
         if (!updOrd) {

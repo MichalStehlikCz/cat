@@ -40,7 +40,7 @@
         </dependency>
         <dependency>
             <groupId>com.provys.provysdb</groupId>
-            <artifactId>dbsqlbuilder</artifactId>
+            <artifactId>dbsqlbuilder-jakarta</artifactId>
         </dependency>
         <dependency>
             <groupId>com.provys.catalogue</groupId>

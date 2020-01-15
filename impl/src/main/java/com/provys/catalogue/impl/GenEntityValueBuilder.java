@@ -20,12 +20,10 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T17:56:47.931046900"
+        date = "2020-01-14T15:05:54.674284"
 )
 @XmlRootElement(
         name = "ENTITY"
@@ -36,8 +34,6 @@ import org.apache.logging.log4j.Logger;
 )
 @SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
 public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityValueBuilder, GenEntityValue> {
-    private static final Logger LOG = LogManager.getLogger(GenEntityValueBuilder.class);
-
     @Nullable
     private String name;
 
@@ -606,7 +602,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdName(boolean updName) {
         if (!this.updName && updName) {
-            throw new InternalException(LOG, "Cannot directly set update flag updName; set value instead");
+            throw new InternalException("Cannot directly set update flag updName; set value instead");
         }
         this.updName = updName;
         if (!updName) {
@@ -634,7 +630,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdObjectClass(boolean updObjectClass) {
         if (!this.updObjectClass && updObjectClass) {
-            throw new InternalException(LOG, "Cannot directly set update flag updObjectClass; set value instead");
+            throw new InternalException("Cannot directly set update flag updObjectClass; set value instead");
         }
         this.updObjectClass = updObjectClass;
         if (!updObjectClass) {
@@ -662,7 +658,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdIsCustom(boolean updIsCustom) {
         if (!this.updIsCustom && updIsCustom) {
-            throw new InternalException(LOG, "Cannot directly set update flag updIsCustom; set value instead");
+            throw new InternalException("Cannot directly set update flag updIsCustom; set value instead");
         }
         this.updIsCustom = updIsCustom;
         if (!updIsCustom) {
@@ -1015,7 +1011,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdMasterType(boolean updMasterType) {
         if (!this.updMasterType && updMasterType) {
-            throw new InternalException(LOG, "Cannot directly set update flag updMasterType; set value instead");
+            throw new InternalException("Cannot directly set update flag updMasterType; set value instead");
         }
         this.updMasterType = updMasterType;
         if (!updMasterType) {
@@ -1143,7 +1139,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdIncompleteKey(boolean updIncompleteKey) {
         if (!this.updIncompleteKey && updIncompleteKey) {
-            throw new InternalException(LOG, "Cannot directly set update flag updIncompleteKey; set value instead");
+            throw new InternalException("Cannot directly set update flag updIncompleteKey; set value instead");
         }
         this.updIncompleteKey = updIncompleteKey;
         if (!updIncompleteKey) {
@@ -1396,7 +1392,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdIsUsed(boolean updIsUsed) {
         if (!this.updIsUsed && updIsUsed) {
-            throw new InternalException(LOG, "Cannot directly set update flag updIsUsed; set value instead");
+            throw new InternalException("Cannot directly set update flag updIsUsed; set value instead");
         }
         this.updIsUsed = updIsUsed;
         if (!updIsUsed) {
@@ -1424,7 +1420,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdGetRightCustom(boolean updGetRightCustom) {
         if (!this.updGetRightCustom && updGetRightCustom) {
-            throw new InternalException(LOG, "Cannot directly set update flag updGetRightCustom; set value instead");
+            throw new InternalException("Cannot directly set update flag updGetRightCustom; set value instead");
         }
         this.updGetRightCustom = updGetRightCustom;
         if (!updGetRightCustom) {
@@ -1577,7 +1573,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXCopiedAttr0(boolean updXCopiedAttr0) {
         if (!this.updXCopiedAttr0 && updXCopiedAttr0) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXCopiedAttr0; set value instead");
+            throw new InternalException("Cannot directly set update flag updXCopiedAttr0; set value instead");
         }
         this.updXCopiedAttr0 = updXCopiedAttr0;
         if (!updXCopiedAttr0) {
@@ -1605,7 +1601,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXCopiedAttr1(boolean updXCopiedAttr1) {
         if (!this.updXCopiedAttr1 && updXCopiedAttr1) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXCopiedAttr1; set value instead");
+            throw new InternalException("Cannot directly set update flag updXCopiedAttr1; set value instead");
         }
         this.updXCopiedAttr1 = updXCopiedAttr1;
         if (!updXCopiedAttr1) {
@@ -1633,7 +1629,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXCopiedAttr2(boolean updXCopiedAttr2) {
         if (!this.updXCopiedAttr2 && updXCopiedAttr2) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXCopiedAttr2; set value instead");
+            throw new InternalException("Cannot directly set update flag updXCopiedAttr2; set value instead");
         }
         this.updXCopiedAttr2 = updXCopiedAttr2;
         if (!updXCopiedAttr2) {
@@ -1661,7 +1657,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXCopiedAttr3(boolean updXCopiedAttr3) {
         if (!this.updXCopiedAttr3 && updXCopiedAttr3) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXCopiedAttr3; set value instead");
+            throw new InternalException("Cannot directly set update flag updXCopiedAttr3; set value instead");
         }
         this.updXCopiedAttr3 = updXCopiedAttr3;
         if (!updXCopiedAttr3) {
@@ -1689,7 +1685,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXCopiedAttr4(boolean updXCopiedAttr4) {
         if (!this.updXCopiedAttr4 && updXCopiedAttr4) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXCopiedAttr4; set value instead");
+            throw new InternalException("Cannot directly set update flag updXCopiedAttr4; set value instead");
         }
         this.updXCopiedAttr4 = updXCopiedAttr4;
         if (!updXCopiedAttr4) {
@@ -1717,7 +1713,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXCopiedAttr5(boolean updXCopiedAttr5) {
         if (!this.updXCopiedAttr5 && updXCopiedAttr5) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXCopiedAttr5; set value instead");
+            throw new InternalException("Cannot directly set update flag updXCopiedAttr5; set value instead");
         }
         this.updXCopiedAttr5 = updXCopiedAttr5;
         if (!updXCopiedAttr5) {
@@ -1745,7 +1741,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXHasLiability(boolean updXHasLiability) {
         if (!this.updXHasLiability && updXHasLiability) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXHasLiability; set value instead");
+            throw new InternalException("Cannot directly set update flag updXHasLiability; set value instead");
         }
         this.updXHasLiability = updXHasLiability;
         if (!updXHasLiability) {
@@ -1823,7 +1819,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXNotifyAttr0(boolean updXNotifyAttr0) {
         if (!this.updXNotifyAttr0 && updXNotifyAttr0) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXNotifyAttr0; set value instead");
+            throw new InternalException("Cannot directly set update flag updXNotifyAttr0; set value instead");
         }
         this.updXNotifyAttr0 = updXNotifyAttr0;
         if (!updXNotifyAttr0) {
@@ -1851,7 +1847,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXNotifyAttr1(boolean updXNotifyAttr1) {
         if (!this.updXNotifyAttr1 && updXNotifyAttr1) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXNotifyAttr1; set value instead");
+            throw new InternalException("Cannot directly set update flag updXNotifyAttr1; set value instead");
         }
         this.updXNotifyAttr1 = updXNotifyAttr1;
         if (!updXNotifyAttr1) {
@@ -1879,7 +1875,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXNotifyAttr2(boolean updXNotifyAttr2) {
         if (!this.updXNotifyAttr2 && updXNotifyAttr2) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXNotifyAttr2; set value instead");
+            throw new InternalException("Cannot directly set update flag updXNotifyAttr2; set value instead");
         }
         this.updXNotifyAttr2 = updXNotifyAttr2;
         if (!updXNotifyAttr2) {
@@ -1907,7 +1903,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXNotifyAttr3(boolean updXNotifyAttr3) {
         if (!this.updXNotifyAttr3 && updXNotifyAttr3) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXNotifyAttr3; set value instead");
+            throw new InternalException("Cannot directly set update flag updXNotifyAttr3; set value instead");
         }
         this.updXNotifyAttr3 = updXNotifyAttr3;
         if (!updXNotifyAttr3) {
@@ -1935,7 +1931,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXNotifyAttr4(boolean updXNotifyAttr4) {
         if (!this.updXNotifyAttr4 && updXNotifyAttr4) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXNotifyAttr4; set value instead");
+            throw new InternalException("Cannot directly set update flag updXNotifyAttr4; set value instead");
         }
         this.updXNotifyAttr4 = updXNotifyAttr4;
         if (!updXNotifyAttr4) {
@@ -1963,7 +1959,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXNotifyAttr5(boolean updXNotifyAttr5) {
         if (!this.updXNotifyAttr5 && updXNotifyAttr5) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXNotifyAttr5; set value instead");
+            throw new InternalException("Cannot directly set update flag updXNotifyAttr5; set value instead");
         }
         this.updXNotifyAttr5 = updXNotifyAttr5;
         if (!updXNotifyAttr5) {
@@ -1991,7 +1987,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXFlagDefInterest0(boolean updXFlagDefInterest0) {
         if (!this.updXFlagDefInterest0 && updXFlagDefInterest0) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXFlagDefInterest0; set value instead");
+            throw new InternalException("Cannot directly set update flag updXFlagDefInterest0; set value instead");
         }
         this.updXFlagDefInterest0 = updXFlagDefInterest0;
         if (!updXFlagDefInterest0) {
@@ -2019,7 +2015,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXFlagDefInterest1(boolean updXFlagDefInterest1) {
         if (!this.updXFlagDefInterest1 && updXFlagDefInterest1) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXFlagDefInterest1; set value instead");
+            throw new InternalException("Cannot directly set update flag updXFlagDefInterest1; set value instead");
         }
         this.updXFlagDefInterest1 = updXFlagDefInterest1;
         if (!updXFlagDefInterest1) {
@@ -2047,7 +2043,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXFlagDefInterest2(boolean updXFlagDefInterest2) {
         if (!this.updXFlagDefInterest2 && updXFlagDefInterest2) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXFlagDefInterest2; set value instead");
+            throw new InternalException("Cannot directly set update flag updXFlagDefInterest2; set value instead");
         }
         this.updXFlagDefInterest2 = updXFlagDefInterest2;
         if (!updXFlagDefInterest2) {
@@ -2075,7 +2071,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXFlagDefInterest3(boolean updXFlagDefInterest3) {
         if (!this.updXFlagDefInterest3 && updXFlagDefInterest3) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXFlagDefInterest3; set value instead");
+            throw new InternalException("Cannot directly set update flag updXFlagDefInterest3; set value instead");
         }
         this.updXFlagDefInterest3 = updXFlagDefInterest3;
         if (!updXFlagDefInterest3) {
@@ -2103,7 +2099,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXFlagDefInterest4(boolean updXFlagDefInterest4) {
         if (!this.updXFlagDefInterest4 && updXFlagDefInterest4) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXFlagDefInterest4; set value instead");
+            throw new InternalException("Cannot directly set update flag updXFlagDefInterest4; set value instead");
         }
         this.updXFlagDefInterest4 = updXFlagDefInterest4;
         if (!updXFlagDefInterest4) {
@@ -2131,7 +2127,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXFlagDefInterest5(boolean updXFlagDefInterest5) {
         if (!this.updXFlagDefInterest5 && updXFlagDefInterest5) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXFlagDefInterest5; set value instead");
+            throw new InternalException("Cannot directly set update flag updXFlagDefInterest5; set value instead");
         }
         this.updXFlagDefInterest5 = updXFlagDefInterest5;
         if (!updXFlagDefInterest5) {
@@ -2159,7 +2155,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXDelNotifyAttr0(boolean updXDelNotifyAttr0) {
         if (!this.updXDelNotifyAttr0 && updXDelNotifyAttr0) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXDelNotifyAttr0; set value instead");
+            throw new InternalException("Cannot directly set update flag updXDelNotifyAttr0; set value instead");
         }
         this.updXDelNotifyAttr0 = updXDelNotifyAttr0;
         if (!updXDelNotifyAttr0) {
@@ -2187,7 +2183,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXDelNotifyAttr1(boolean updXDelNotifyAttr1) {
         if (!this.updXDelNotifyAttr1 && updXDelNotifyAttr1) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXDelNotifyAttr1; set value instead");
+            throw new InternalException("Cannot directly set update flag updXDelNotifyAttr1; set value instead");
         }
         this.updXDelNotifyAttr1 = updXDelNotifyAttr1;
         if (!updXDelNotifyAttr1) {
@@ -2215,7 +2211,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXDelNotifyAttr2(boolean updXDelNotifyAttr2) {
         if (!this.updXDelNotifyAttr2 && updXDelNotifyAttr2) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXDelNotifyAttr2; set value instead");
+            throw new InternalException("Cannot directly set update flag updXDelNotifyAttr2; set value instead");
         }
         this.updXDelNotifyAttr2 = updXDelNotifyAttr2;
         if (!updXDelNotifyAttr2) {
@@ -2243,7 +2239,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXDelNotifyAttr3(boolean updXDelNotifyAttr3) {
         if (!this.updXDelNotifyAttr3 && updXDelNotifyAttr3) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXDelNotifyAttr3; set value instead");
+            throw new InternalException("Cannot directly set update flag updXDelNotifyAttr3; set value instead");
         }
         this.updXDelNotifyAttr3 = updXDelNotifyAttr3;
         if (!updXDelNotifyAttr3) {
@@ -2271,7 +2267,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXDelNotifyAttr4(boolean updXDelNotifyAttr4) {
         if (!this.updXDelNotifyAttr4 && updXDelNotifyAttr4) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXDelNotifyAttr4; set value instead");
+            throw new InternalException("Cannot directly set update flag updXDelNotifyAttr4; set value instead");
         }
         this.updXDelNotifyAttr4 = updXDelNotifyAttr4;
         if (!updXDelNotifyAttr4) {
@@ -2299,7 +2295,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXDelNotifyAttr5(boolean updXDelNotifyAttr5) {
         if (!this.updXDelNotifyAttr5 && updXDelNotifyAttr5) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXDelNotifyAttr5; set value instead");
+            throw new InternalException("Cannot directly set update flag updXDelNotifyAttr5; set value instead");
         }
         this.updXDelNotifyAttr5 = updXDelNotifyAttr5;
         if (!updXDelNotifyAttr5) {
@@ -2327,7 +2323,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
 
     public void setUpdXHasDelRowFlagDef(boolean updXHasDelRowFlagDef) {
         if (!this.updXHasDelRowFlagDef && updXHasDelRowFlagDef) {
-            throw new InternalException(LOG, "Cannot directly set update flag updXHasDelRowFlagDef; set value instead");
+            throw new InternalException("Cannot directly set update flag updXHasDelRowFlagDef; set value instead");
         }
         this.updXHasDelRowFlagDef = updXHasDelRowFlagDef;
         if (!updXHasDelRowFlagDef) {

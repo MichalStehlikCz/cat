@@ -8,18 +8,12 @@ import com.provys.provysobject.impl.ProvysObjectManagerImpl;
 import com.provys.provysobject.index.IdNameNmPair;
 import com.provys.provysobject.index.IndexNonUnique;
 import com.provys.provysobject.index.IndexUnique;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
-import java.math.BigInteger;
 import java.util.*;
 
 public class AttrGrpManagerImpl extends ProvysObjectManagerImpl<CatalogueRepositoryImpl, AttrGrp, GenAttrGrpValue,
         AttrGrpProxy, AttrGrpManagerImpl, AttrGrpLoader> implements AttrGrpManager {
-
-    @Nonnull
-    private static final Logger LOG = LogManager.getLogger(AttrManagerImpl.class);
 
     @Nonnull
     private final IndexUnique<GenAttrGrpValue, AttrGrpProxy, IdNameNmPair> attrGrpByEntityIdAndNameNm;
@@ -63,7 +57,7 @@ public class AttrGrpManagerImpl extends ProvysObjectManagerImpl<CatalogueReposit
     @Nonnull
     @Override
     public AttrGrp getByEntityIdNameNm(DtUid entityId, String nameNm) {
-        return getByEntityIdNameNmIfExists(entityId, nameNm).orElseThrow(() -> new RegularException(LOG,
+        return getByEntityIdNameNmIfExists(entityId, nameNm).orElseThrow(() -> new RegularException(
                 "JAVA_ATTRGRPMANAGER_ATTRGRP_NOT_FOUND_BY_ENTITY_AND_NM",
                 "ATTRGRP was not found by supplied entity " + entityId + " and internal name " + nameNm,
                 Map.of("ENTITY_ID", entityId.toString(), "NAME_NM", nameNm)));

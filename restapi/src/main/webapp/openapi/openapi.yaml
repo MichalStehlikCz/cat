@@ -76,25 +76,6 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Domain'
-  /domain:
-    get:
-      summary: Get All Domains
-      description: Retrieve all domains
-      operationId: getAllDomains
-      responses:
-        default:
-          description: default response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Domain'
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Domain'
   /domain/{domainId}:
     get:
       summary: Get Domain
@@ -116,6 +97,25 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Domain'
+  /domain:
+    get:
+      summary: Get All Domains
+      description: Retrieve all domains
+      operationId: getAllDomains
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Domain'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Domain'
   /entity/{entityNm}:
     get:
       summary: Get Entity by Internal Name
@@ -172,158 +172,158 @@ components:
           type: boolean
         ordered:
           type: boolean
-        entity:
-          $ref: '#/components/schemas/Entity'
-        setOtherOpTypeId:
-          $ref: '#/components/schemas/DtUid'
-        fromObjectFormula:
-          $ref: '#/components/schemas/Attr'
-        accDocObjectFormulaId:
-          $ref: '#/components/schemas/DtUid'
-        fromObjectFormulaId:
-          $ref: '#/components/schemas/DtUid'
-        accDocObjectFormula:
-          $ref: '#/components/schemas/Attr'
-        toObjectFormulaId:
-          $ref: '#/components/schemas/DtUid'
-        mandatory:
-          type: boolean
-        hierarchical:
-          type: boolean
-        isqVisible:
-          type: boolean
-        nameNm:
-          type: string
-        textSrc:
-          $ref: '#/components/schemas/Attr'
-        subdomainNm:
-          type: string
-        indexed:
-          type: boolean
-        logAllowed:
-          type: boolean
-        resetOpTypeId:
-          $ref: '#/components/schemas/DtUid'
-        properNameRoot:
-          type: string
-        attrGrp:
-          $ref: '#/components/schemas/AttrGrp'
-        multiCreate:
-          type: boolean
-        isOwn:
-          type: boolean
-        getOpTypeId:
-          $ref: '#/components/schemas/DtUid'
-        setOpTypeId:
-          $ref: '#/components/schemas/DtUid'
-        dictType:
-          type: string
-        isInTable:
-          type: boolean
-        genMove:
-          type: boolean
-        getlLength:
-          type: number
-          format: double
-        upNameNm:
-          type: string
-        domain:
-          $ref: '#/components/schemas/Domain'
-        entityId:
-          $ref: '#/components/schemas/DtUid'
-        attrGrpId:
-          $ref: '#/components/schemas/DtUid'
-        logLevel:
-          type: string
-        note:
-          type: string
-        attrType:
-          type: string
-        isCustom:
-          type: boolean
-        isUsed:
-          type: boolean
-        ord:
-          type: number
-          format: double
-        defValue:
-          type: string
-        textSrcId:
-          $ref: '#/components/schemas/DtUid'
-        validated:
-          type: boolean
-        multivalue:
-          type: boolean
-        ordGroup:
-          type: string
-        dictDel1:
-          type: string
-        domainId:
-          $ref: '#/components/schemas/DtUid'
-        tbCodeCd:
-          type: string
-        ownerFormula:
-          $ref: '#/components/schemas/Attr'
-        toObjectFormula:
-          $ref: '#/components/schemas/Attr'
-        confirmOther:
-          type: boolean
-        approxRecord:
-          type: boolean
-        genCopy:
-          type: boolean
-        dictDel2:
-          type: string
-        valueAccountNm:
-          type: string
-        accountRuleNm:
-          type: string
-        ownerFormulaId:
-          $ref: '#/components/schemas/DtUid'
-        genDelete:
-          type: boolean
-        fileServerId:
-          $ref: '#/components/schemas/DtUid'
         imgHeight:
           type: number
           format: double
-        getxIsFlagDepBind:
-          type: string
-        imgSrcId:
-          $ref: '#/components/schemas/DtUid'
-        keyOrd:
-          type: number
-          format: double
-        manLobLimit:
-          type: number
-          format: double
-        copied:
-          type: string
-        opTypeTypeRf:
-          $ref: '#/components/schemas/DtUid'
-        evalCValue:
-          type: boolean
         optLobLimit:
-          type: number
-          format: double
-        documentation:
-          type: string
-        bitmapOrd:
-          type: integer
-          format: int32
-        valueAmountType:
-          type: string
-        isxIsFlagDefAttr:
-          type: boolean
-        imgWidth:
           type: number
           format: double
         defOwner:
           type: boolean
         imgSrc:
           $ref: '#/components/schemas/Attr'
+        fileServerId:
+          $ref: '#/components/schemas/DtUid'
+        copied:
+          type: string
+        keyOrd:
+          type: number
+          format: double
+        bitmapOrd:
+          type: integer
+          format: int32
+        imgWidth:
+          type: number
+          format: double
+        manLobLimit:
+          type: number
+          format: double
+        evalCValue:
+          type: boolean
+        imgSrcId:
+          $ref: '#/components/schemas/DtUid'
+        getxIsFlagDepBind:
+          type: string
+        valueAmountType:
+          type: string
+        isxIsFlagDefAttr:
+          type: boolean
+        opTypeTypeRf:
+          $ref: '#/components/schemas/DtUid'
+        documentation:
+          type: string
         genMigr:
           type: boolean
+        dictDel1:
+          type: string
+        dictDel2:
+          type: string
+        tbCodeCd:
+          type: string
+        textSrcId:
+          $ref: '#/components/schemas/DtUid'
+        nameNm:
+          type: string
+        defValue:
+          type: string
+        isCustom:
+          type: boolean
+        isUsed:
+          type: boolean
+        isOwn:
+          type: boolean
+        ownerFormula:
+          $ref: '#/components/schemas/Attr'
+        ownerFormulaId:
+          $ref: '#/components/schemas/DtUid'
+        toObjectFormula:
+          $ref: '#/components/schemas/Attr'
+        approxRecord:
+          type: boolean
+        valueAccountNm:
+          type: string
+        accountRuleNm:
+          type: string
+        attrGrpId:
+          $ref: '#/components/schemas/DtUid'
+        indexed:
+          type: boolean
+        properNameRoot:
+          type: string
+        genMove:
+          type: boolean
+        textSrc:
+          $ref: '#/components/schemas/Attr'
+        domainId:
+          $ref: '#/components/schemas/DtUid'
+        attrType:
+          type: string
+        genCopy:
+          type: boolean
+        entityId:
+          $ref: '#/components/schemas/DtUid'
+        attrGrp:
+          $ref: '#/components/schemas/AttrGrp'
+        genDelete:
+          type: boolean
+        note:
+          type: string
+        multiCreate:
+          type: boolean
+        isInTable:
+          type: boolean
+        isqVisible:
+          type: boolean
+        getlLength:
+          type: number
+          format: double
+        domain:
+          $ref: '#/components/schemas/Domain'
+        upNameNm:
+          type: string
+        getOpTypeId:
+          $ref: '#/components/schemas/DtUid'
+        subdomainNm:
+          type: string
+        ord:
+          type: number
+          format: double
+        hierarchical:
+          type: boolean
+        validated:
+          type: boolean
+        setOpTypeId:
+          $ref: '#/components/schemas/DtUid'
+        resetOpTypeId:
+          $ref: '#/components/schemas/DtUid'
+        multivalue:
+          type: boolean
+        ordGroup:
+          type: string
+        logAllowed:
+          type: boolean
+        logLevel:
+          type: string
+        confirmOther:
+          type: boolean
+        dictType:
+          type: string
+        mandatory:
+          type: boolean
+        entity:
+          $ref: '#/components/schemas/Entity'
+        setOtherOpTypeId:
+          $ref: '#/components/schemas/DtUid'
+        accDocObjectFormulaId:
+          $ref: '#/components/schemas/DtUid'
+        fromObjectFormula:
+          $ref: '#/components/schemas/Attr'
+        toObjectFormulaId:
+          $ref: '#/components/schemas/DtUid'
+        accDocObjectFormula:
+          $ref: '#/components/schemas/Attr'
+        fromObjectFormulaId:
+          $ref: '#/components/schemas/DtUid'
         id:
           $ref: '#/components/schemas/DtUid'
     AttrGrp:
@@ -335,19 +335,19 @@ components:
             $ref: '#/components/schemas/Attr'
         name:
           type: string
-        entity:
-          $ref: '#/components/schemas/Entity'
         nameNm:
           type: string
+        isCustom:
+          type: boolean
         entityId:
           $ref: '#/components/schemas/DtUid'
         note:
           type: string
-        isCustom:
-          type: boolean
         ord:
           type: integer
           format: int32
+        entity:
+          $ref: '#/components/schemas/Entity'
         id:
           $ref: '#/components/schemas/DtUid'
     Domain:
@@ -355,27 +355,27 @@ components:
       properties:
         name:
           type: string
-        dataLength:
-          type: integer
-          format: int32
-        validateCd:
+        note:
           type: string
-        getlFormatCd:
-          type: string
+        isqVisible:
+          type: boolean
         natOrder:
           type: boolean
         allowed:
           type: boolean
-        islVisible:
-          type: boolean
         dataTypeNm:
           type: string
+        islVisible:
+          type: boolean
         dataPrecision:
           type: integer
           format: int32
-        isqVisible:
-          type: boolean
-        note:
+        getlFormatCd:
+          type: string
+        dataLength:
+          type: integer
+          format: int32
+        validateCd:
           type: string
         nameNm:
           type: string
@@ -386,13 +386,13 @@ components:
       properties:
         value:
           type: integer
-        multiline:
+        regular:
           type: boolean
         priv:
           type: boolean
         me:
           type: boolean
-        regular:
+        multiline:
           type: boolean
     Entity:
       type: object
@@ -409,13 +409,141 @@ components:
           type: string
         ancestor:
           $ref: '#/components/schemas/Entity'
-        getxFlagDefInterest0:
+        isCustom:
+          type: boolean
+        isUsed:
+          type: boolean
+        note:
+          type: string
+        getOpTypeId:
+          $ref: '#/components/schemas/DtUid'
+        tableNm:
+          type: string
+        importType:
+          type: string
+        usageDoc:
+          type: string
+        cpPackageNm:
+          type: string
+        objectClass:
+          type: boolean
+        properName:
+          type: string
+        textTableNm:
+          type: string
+        pgPackageNm:
+          type: string
+        confObj:
+          type: string
+        basePath:
+          type: string
+        textViewNm:
+          type: string
+        incompleteKey:
+          type: boolean
+        textKeyNm:
+          type: string
+        textAll:
+          type: boolean
+        keyNm:
+          type: string
+        masterId:
+          $ref: '#/components/schemas/DtUid'
+        epPackageNm:
+          type: string
+        ancestorId:
+          $ref: '#/components/schemas/DtUid'
+        customNote:
+          type: string
+        structureDoc:
+          type: string
+        fpPackageNm:
+          type: string
+        entityGrp:
+          $ref: '#/components/schemas/EntityGrp'
+        entityGrpId:
+          $ref: '#/components/schemas/DtUid'
+        userLockType:
+          type: string
+        viewNm:
+          type: string
+        confObjAll:
+          type: boolean
+        masterType:
+          type: string
+        getxCopiedAttr3:
           type: number
           format: double
-        getxFlagDefInterest1:
+        implDoc:
+          type: string
+        getxDelNotifyAttr5:
           type: number
           format: double
-        getxFlagDefInterest2:
+        getxNotifyAttr3:
+          type: number
+          format: double
+        getxCopiedAttr1:
+          type: number
+          format: double
+        getxCopiedAttr5:
+          type: number
+          format: double
+        isxHasLiability:
+          type: boolean
+        getxNotifyAttr0:
+          type: number
+          format: double
+        getxUseConfObj:
+          type: boolean
+        getxNotifyAttr4:
+          type: number
+          format: double
+        behaviourDoc:
+          type: string
+        getxCopiedAttr0:
+          type: number
+          format: double
+        getxDelNotifyAttr2:
+          type: number
+          format: double
+        getxDelNotifyAttr0:
+          type: number
+          format: double
+        useConfObj:
+          type: boolean
+        getxNotifyAttr5:
+          type: number
+          format: double
+        shortDesc:
+          type: string
+        getRightCustom:
+          type: boolean
+        keepDeleted:
+          type: integer
+          format: int32
+        getxNotifyAttr2:
+          type: number
+          format: double
+        getxDelNotifyAttr1:
+          type: number
+          format: double
+        getxDelNotifyAttr4:
+          type: number
+          format: double
+        getxNotifyAttr1:
+          type: number
+          format: double
+        getxDelNotifyAttr3:
+          type: number
+          format: double
+        getRightRestrId:
+          $ref: '#/components/schemas/DtUid'
+        longDesc:
+          type: string
+        getxCopiedAttr2:
+          type: number
+          format: double
+        getxCopiedAttr4:
           type: number
           format: double
         getxFlagDefInterest3:
@@ -424,147 +552,19 @@ components:
         getxFlagDefInterest4:
           type: number
           format: double
+        getxFlagDefInterest1:
+          type: number
+          format: double
+        getxFlagDefInterest0:
+          type: number
+          format: double
+        getxFlagDefInterest2:
+          type: number
+          format: double
         getxFlagDefInterest5:
           type: number
           format: double
         isxHasDelRowFlagDef:
-          type: boolean
-        textTableNm:
-          type: string
-        textKeyNm:
-          type: string
-        textAll:
-          type: boolean
-        pgPackageNm:
-          type: string
-        confObj:
-          type: string
-        viewNm:
-          type: string
-        keyNm:
-          type: string
-        properName:
-          type: string
-        textViewNm:
-          type: string
-        epPackageNm:
-          type: string
-        userLockType:
-          type: string
-        objectClass:
-          type: boolean
-        tableNm:
-          type: string
-        masterId:
-          $ref: '#/components/schemas/DtUid'
-        masterType:
-          type: string
-        cpPackageNm:
-          type: string
-        importType:
-          type: string
-        fpPackageNm:
-          type: string
-        basePath:
-          type: string
-        incompleteKey:
-          type: boolean
-        entityGrp:
-          $ref: '#/components/schemas/EntityGrp'
-        ancestorId:
-          $ref: '#/components/schemas/DtUid'
-        confObjAll:
-          type: boolean
-        entityGrpId:
-          $ref: '#/components/schemas/DtUid'
-        customNote:
-          type: string
-        usageDoc:
-          type: string
-        behaviourDoc:
-          type: string
-        implDoc:
-          type: string
-        getRightCustom:
-          type: boolean
-        getRightRestrId:
-          $ref: '#/components/schemas/DtUid'
-        structureDoc:
-          type: string
-        longDesc:
-          type: string
-        getxCopiedAttr2:
-          type: number
-          format: double
-        useConfObj:
-          type: boolean
-        getxDelNotifyAttr1:
-          type: number
-          format: double
-        getxDelNotifyAttr3:
-          type: number
-          format: double
-        getxNotifyAttr2:
-          type: number
-          format: double
-        getxDelNotifyAttr4:
-          type: number
-          format: double
-        getxCopiedAttr3:
-          type: number
-          format: double
-        getxCopiedAttr5:
-          type: number
-          format: double
-        getxDelNotifyAttr0:
-          type: number
-          format: double
-        getxNotifyAttr3:
-          type: number
-          format: double
-        getxNotifyAttr4:
-          type: number
-          format: double
-        getxDelNotifyAttr2:
-          type: number
-          format: double
-        getxNotifyAttr5:
-          type: number
-          format: double
-        getxCopiedAttr1:
-          type: number
-          format: double
-        isxHasLiability:
-          type: boolean
-        getxUseConfObj:
-          type: boolean
-        getxNotifyAttr0:
-          type: number
-          format: double
-        getxNotifyAttr1:
-          type: number
-          format: double
-        getxDelNotifyAttr5:
-          type: number
-          format: double
-        shortDesc:
-          type: string
-        getxCopiedAttr0:
-          type: number
-          format: double
-        keepDeleted:
-          type: integer
-          format: int32
-        getxCopiedAttr4:
-          type: number
-          format: double
-        getOpTypeId:
-          $ref: '#/components/schemas/DtUid'
-        note:
-          type: string
-        isCustom:
-          type: boolean
-        isUsed:
           type: boolean
         nameNm:
           type: string
@@ -577,15 +577,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EntityGrp'
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Entity'
         fullOrd:
           type: array
           items:
             type: integer
             format: int32
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
         name:
           type: string
         note:

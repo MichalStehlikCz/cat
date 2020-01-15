@@ -1,8 +1,6 @@
 package com.provys.catalogue.api;
 
 import com.provys.common.exception.InternalException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
 import java.util.HashMap;
@@ -20,7 +18,6 @@ public enum AttrType {
     SQL("Q"),
     FORMULA("O");
 
-    private static final Logger LOG = LogManager.getLogger(AttrType.class);
     private static final HashMap<String, AttrType> attrTypeByCode = new HashMap<>(10);
 
     static {
@@ -38,7 +35,7 @@ public enum AttrType {
     public static AttrType ofCode(String code) {
         var result = attrTypeByCode.get(code);
         if (result == null) {
-            throw new InternalException(LOG, "Invalid attribute type code " + code);
+            throw new InternalException("Invalid attribute type code " + code);
         }
         return result;
     }

@@ -8,18 +8,12 @@ import com.provys.provysobject.impl.ProvysObjectManagerImpl;
 import com.provys.provysobject.index.IdNameNmPair;
 import com.provys.provysobject.index.IndexNonUnique;
 import com.provys.provysobject.index.IndexUnique;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
-import java.math.BigInteger;
 import java.util.*;
 
 public class AttrManagerImpl extends ProvysObjectManagerImpl<CatalogueRepositoryImpl, Attr, GenAttrValue, AttrProxy,
         AttrManagerImpl, AttrLoader> implements AttrManager {
-
-    @Nonnull
-    private static final Logger LOG = LogManager.getLogger(AttrManagerImpl.class);
 
     @Nonnull
     private final IndexUnique<GenAttrValue, AttrProxy, IdNameNmPair> attrByEntityIdAndNameNm;
@@ -80,7 +74,7 @@ public class AttrManagerImpl extends ProvysObjectManagerImpl<CatalogueRepository
     @Nonnull
     @Override
     public Attr getByEntityIdNameNm(DtUid entityId, String nameNm) {
-        return getByEntityIdNameNmIfExists(entityId, nameNm).orElseThrow(() -> new RegularException(LOG,
+        return getByEntityIdNameNmIfExists(entityId, nameNm).orElseThrow(() -> new RegularException(
                 "JAVA_ATTRMANAGER_ATTR_NOT_FOUND_BY_ENTITY_AND_NM",
                 "ATTR was not found by supplied entity " + entityId + " and internal name " + nameNm,
                 Map.of("ENTITY_ID", entityId.toString(), "NAME_NM", nameNm)));

@@ -18,12 +18,10 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-04T08:38:02.018720300"
+        date = "2020-01-14T15:07:35.170595"
 )
 @XmlRootElement(
         name = "ATTRGRP"
@@ -34,8 +32,6 @@ import org.apache.logging.log4j.Logger;
 )
 @SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
 public class GenAttrGrpValueBuilder extends ProvysObjectValueBuilder<GenAttrGrpValueBuilder, GenAttrGrpValue> {
-    private static final Logger LOG = LogManager.getLogger(GenAttrGrpValueBuilder.class);
-
     @Nullable
     private DtUid entityId;
 
@@ -124,7 +120,7 @@ public class GenAttrGrpValueBuilder extends ProvysObjectValueBuilder<GenAttrGrpV
 
     public void setUpdEntityId(boolean updEntityId) {
         if (!this.updEntityId && updEntityId) {
-            throw new InternalException(LOG, "Cannot directly set update flag updEntityId; set value instead");
+            throw new InternalException("Cannot directly set update flag updEntityId; set value instead");
         }
         this.updEntityId = updEntityId;
         if (!updEntityId) {
@@ -152,7 +148,7 @@ public class GenAttrGrpValueBuilder extends ProvysObjectValueBuilder<GenAttrGrpV
 
     public void setUpdNameNm(boolean updNameNm) {
         if (!this.updNameNm && updNameNm) {
-            throw new InternalException(LOG, "Cannot directly set update flag updNameNm; set value instead");
+            throw new InternalException("Cannot directly set update flag updNameNm; set value instead");
         }
         this.updNameNm = updNameNm;
         if (!updNameNm) {
@@ -180,7 +176,7 @@ public class GenAttrGrpValueBuilder extends ProvysObjectValueBuilder<GenAttrGrpV
 
     public void setUpdName(boolean updName) {
         if (!this.updName && updName) {
-            throw new InternalException(LOG, "Cannot directly set update flag updName; set value instead");
+            throw new InternalException("Cannot directly set update flag updName; set value instead");
         }
         this.updName = updName;
         if (!updName) {
@@ -208,7 +204,7 @@ public class GenAttrGrpValueBuilder extends ProvysObjectValueBuilder<GenAttrGrpV
 
     public void setUpdIsCustom(boolean updIsCustom) {
         if (!this.updIsCustom && updIsCustom) {
-            throw new InternalException(LOG, "Cannot directly set update flag updIsCustom; set value instead");
+            throw new InternalException("Cannot directly set update flag updIsCustom; set value instead");
         }
         this.updIsCustom = updIsCustom;
         if (!updIsCustom) {
@@ -236,7 +232,7 @@ public class GenAttrGrpValueBuilder extends ProvysObjectValueBuilder<GenAttrGrpV
 
     public void setUpdOrd(boolean updOrd) {
         if (!this.updOrd && updOrd) {
-            throw new InternalException(LOG, "Cannot directly set update flag updOrd; set value instead");
+            throw new InternalException("Cannot directly set update flag updOrd; set value instead");
         }
         this.updOrd = updOrd;
         if (!updOrd) {

@@ -18,8 +18,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
@@ -34,7 +32,6 @@ import org.apache.logging.log4j.Logger;
 )
 @SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
 public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainValueBuilder, GenDomainValue> {
-    private static final Logger LOG = LogManager.getLogger(GenDomainValueBuilder.class);
 
     @Nullable
     private String name;
@@ -164,7 +161,7 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
 
     public void setUpdName(boolean updName) {
         if (!this.updName && updName) {
-            throw new InternalException(LOG, "Cannot directly set update flag updName; set value instead");
+            throw new InternalException("Cannot directly set update flag updName; set value instead");
         }
         this.updName = updName;
         if (!updName) {
@@ -292,7 +289,7 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
 
     public void setUpdAllowed(boolean updAllowed) {
         if (!this.updAllowed && updAllowed) {
-            throw new InternalException(LOG, "Cannot directly set update flag updAllowed; set value instead");
+            throw new InternalException("Cannot directly set update flag updAllowed; set value instead");
         }
         this.updAllowed = updAllowed;
         if (!updAllowed) {
@@ -320,7 +317,7 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
 
     public void setUpdQVisible(boolean updQVisible) {
         if (!this.updQVisible && updQVisible) {
-            throw new InternalException(LOG, "Cannot directly set update flag updQVisible; set value instead");
+            throw new InternalException("Cannot directly set update flag updQVisible; set value instead");
         }
         this.updQVisible = updQVisible;
         if (!updQVisible) {
@@ -348,7 +345,7 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
 
     public void setUpdLVisible(boolean updLVisible) {
         if (!this.updLVisible && updLVisible) {
-            throw new InternalException(LOG, "Cannot directly set update flag updLVisible; set value instead");
+            throw new InternalException("Cannot directly set update flag updLVisible; set value instead");
         }
         this.updLVisible = updLVisible;
         if (!updLVisible) {
@@ -426,7 +423,7 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
 
     public void setUpdNatOrder(boolean updNatOrder) {
         if (!this.updNatOrder && updNatOrder) {
-            throw new InternalException(LOG, "Cannot directly set update flag updNatOrder; set value instead");
+            throw new InternalException("Cannot directly set update flag updNatOrder; set value instead");
         }
         this.updNatOrder = updNatOrder;
         if (!updNatOrder) {
