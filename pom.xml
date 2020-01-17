@@ -10,6 +10,10 @@
         <module>impl</module>
         <module>dbloader</module>
         <module>restapi</module>
+        <module>spring</module>
+        <module>jakarta</module>
+        <module>dbloader-jakarta</module>
+        <module>dbloader-spring</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,126 +69,24 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>io.thorntail</groupId>
-                <artifactId>bom-all</artifactId>
-                <version>2.6.0.Final</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-api</artifactId>
-                <version>2.12.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>2.12.1</version>
-            </dependency>
-            <dependency>
                 <groupId>jakarta.platform</groupId>
                 <artifactId>jakarta.jakartaee-api</artifactId>
                 <version>8.0.0</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-jackson2-provider</artifactId>
-                <version>4.3.0.Final</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.jaxrs</groupId>
-                <artifactId>jackson-jaxrs-xml-provider</artifactId>
-                <version>2.9.10</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.dataformat</groupId>
-                <artifactId>jackson-dataformat-xml</artifactId>
-                <version>2.9.10</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.woodstox</groupId>
-                <artifactId>woodstox-core</artifactId>
-                <version>6.0.3</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>2.9.10</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>2.9.10.1</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.datatype</groupId>
-                <artifactId>jackson-datatype-jdk8</artifactId>
-                <version>2.9.10</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.datatype</groupId>
-                <artifactId>jackson-datatype-jsr310</artifactId>
-                <version>2.9.10</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.inject</groupId>
                 <artifactId>jakarta.inject-api</artifactId>
                 <version>1.0</version>
-                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>jakarta.annotation</groupId>
                 <artifactId>jakarta.annotation-api</artifactId>
                 <version>1.3.5</version>
-                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>jakarta.enterprise</groupId>
                 <artifactId>jakarta.enterprise.cdi-api</artifactId>
                 <version>2.0.2</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-annotations</artifactId>
-                <version>2.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>5.6.0-M1</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-params</artifactId>
-                <version>5.6.0-M1</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>5.6.0-M1</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>3.14.0</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>3.2.0</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-junit-jupiter</artifactId>
-                <version>3.2.0</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
@@ -192,54 +94,101 @@
                 <version>3.0.2</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.2.2.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.woodstox</groupId>
+                <artifactId>woodstox-core</artifactId>
+                <version>6.0.3</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+            <dependency>
                 <groupId>com.provys.common</groupId>
                 <artifactId>common-exception</artifactId>
-                <version>1.1.0</version>
+                <version>1.2.2</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.common</groupId>
                 <artifactId>common-datatype</artifactId>
-                <version>1.1.0</version>
+                <version>1.2.2</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.common</groupId>
                 <artifactId>common-jackson</artifactId>
-                <version>1.1.0</version>
+                <version>1.2.2</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.common</groupId>
-                <artifactId>common-ws</artifactId>
-                <version>1.1.0</version>
+                <artifactId>common-spring</artifactId>
+                <version>1.2.2</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbcontext-api</artifactId>
-                <version>1.4.4</version>
+                <version>1.5.0</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbcontext</artifactId>
-                <version>1.4.4</version>
+                <version>1.5.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.provys.provysdb</groupId>
+                <artifactId>dbcontext-spring</artifactId>
+                <version>1.5.0</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>sqlbuilder</artifactId>
-                <version>1.4.4</version>
+                <version>1.5.0</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbsqlbuilder</artifactId>
-                <version>1.4.4</version>
+                <version>1.5.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.provys.provysdb</groupId>
+                <artifactId>dbsqlbuilder-jakarta</artifactId>
+                <version>1.5.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.provys.provysdb</groupId>
+                <artifactId>dbsqlbuilder-spring</artifactId>
+                <version>1.5.0</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
                 <artifactId>provysobject-api</artifactId>
-                <version>1.2.1</version>
+                <version>1.2.2</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
                 <artifactId>provysobject-impl</artifactId>
-                <version>1.2.1</version>
+                <version>1.2.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -377,6 +326,18 @@
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.2.2.RELEASE</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>

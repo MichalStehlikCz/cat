@@ -9,16 +9,12 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
 import javax.annotation.Nonnull;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
-@ApplicationScoped
 public class EntityDbLoader extends EntityLoaderBase {
     @Nonnull
     private final SqlAdmin dbSql;
 
-    @Inject
-    EntityDbLoader(SqlAdmin dbSql) {
+    public EntityDbLoader(SqlAdmin dbSql) {
         this.dbSql = Objects.requireNonNull(dbSql);
     }
 
