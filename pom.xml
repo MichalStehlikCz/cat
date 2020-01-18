@@ -51,8 +51,6 @@
             <properties>
                 <docker_package_phase>none</docker_package_phase>
                 <docker_run_phase>none</docker_run_phase>
-                <docker_runadmin_phase>none</docker_runadmin_phase>
-                <docker_file>none</docker_file>
             </properties>
         </profile>
         <profile>
