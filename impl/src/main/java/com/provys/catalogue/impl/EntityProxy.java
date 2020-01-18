@@ -33,6 +33,27 @@ public class EntityProxy extends GenEntityProxy implements Entity {
         return this;
     }
 
+    /**
+     * Calculate proper name from internal name. Used when proper name is not specified for entity
+     *
+     * @return calculated proper name
+     */
+    @Nonnull
+    private String calcProperName() {
+        var nameNm = getNameNm();
+        return nameNm.charAt(0) + nameNm.substring(1).toLowerCase();
+    }
+
+    /**
+     * @return effective proper name for this entity; either proper name if one is specified or internal name with first
+     * letter upper-case and the rest lower-case
+     */
+    @Nonnull
+    @Override
+    public String getcProperName() {
+        return getProperName().orElseGet(this::calcProperName);
+    }
+
     @Nonnull
     @Override
     public Collection<AttrGrp> getAttrGrps() {

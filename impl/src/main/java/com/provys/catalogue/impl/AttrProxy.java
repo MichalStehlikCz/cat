@@ -31,11 +31,27 @@ public class AttrProxy extends GenAttrProxy implements Attr {
         return this;
     }
 
+    @Override
+    public int getOrdInEntity() {
+        // we have to select all attributes of given entity
+        var attrs = getManager().getByEntityId(getEntityId());
+        int result = 0;
+        // and calculate how many of them are before our attribute
+        for (var attr : attrs) {
+            if (attr.compareTo(this) < 0) {
+                result++;
+            }
+        }
+        return result;
+    }
+
     /**
-     * @return name of attribute for use in Java (camelcase, derived from propername)
+     * @return proper name of attribute - either constructed from properNameRoot or just by upper-casing first letter
+     * and lower-casing the rest
      */
     @Nonnull
-    public String getJavaName() {
+    @Override
+    public String getcProperName() {
         final String[] parts = getNameNm().split("_");
         final var properNameRoot = getProperNameRoot().orElse(null);
         int index = 0;
@@ -65,18 +81,49 @@ public class AttrProxy extends GenAttrProxy implements Attr {
         return builder.toString();
     }
 
+    /**
+     * @return Java property name for to this attribute
+     */
+    @Nonnull
     @Override
-    public int getOrdInEntity() {
-        // we have to select all attributes of given entity
-        var attrs = getManager().getByEntityId(getEntityId());
-        int result = 0;
-        // and calculate how many of them are before our attribute
-        for (var attr : attrs) {
-            if (attr.compareTo(this) < 0) {
-                result++;
-            }
+    public String getcJavaPropertyName() {
+        var properName = getcProperName();
+        if (Character.toLowerCase(properName.charAt(0)) == properName.charAt(0)) {
+            return properName;
         }
-        return result;
+        return Character.toLowerCase(properName.charAt(0)) + properName.substring(1);
+    }
+
+    @Nonnull
+    private String getJavaMethodName() {
+        var properName = getcProperName();
+        if ((properName.length() > 1) && (properName.charAt(1) != Character.toLowerCase(properName.charAt(1)))) {
+            // weird thing in beans specification (Section 8.8)
+            return getcJavaPropertyName();
+        }
+        if (Character.toUpperCase(properName.charAt(0)) == properName.charAt(0)) {
+            return properName;
+        }
+        return Character.toUpperCase(properName.charAt(0)) + properName.substring(1);
+    }
+
+    /**
+     * @return Java getter name for to this attribute
+     */
+    @Nonnull
+    @Override
+    public String getcJavaGetterName() {
+        return (getDomain().getImplementingClass(true).equals(Boolean.class) ? "is" : "get")
+                + getJavaMethodName();
+    }
+
+    /**
+     * @return Java setter name for to this attribute
+     */
+    @Nonnull
+    @Override
+    public String getcJavaSetterName() {
+        return "set" + getJavaMethodName();
     }
 
     private int compareAttrGrp(Attr other) {
