@@ -9,16 +9,12 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
 import javax.annotation.Nonnull;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
-@ApplicationScoped
 public class DomainDbLoader extends DomainLoaderBase {
     @Nonnull
     private final SqlAdmin dbSql;
 
-    @Inject
-    DomainDbLoader(SqlAdmin dbSql) {
+    public DomainDbLoader(SqlAdmin dbSql) {
         this.dbSql = Objects.requireNonNull(dbSql);
     }
 

@@ -3,11 +3,8 @@ package com.provys.catalogue.impl;
 import com.provys.catalogue.api.*;
 
 import javax.annotation.Nonnull;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import java.util.Objects;
 
-@ApplicationScoped
 public class CatalogueRepositoryImpl implements CatalogueRepository {
 
     @Nonnull
@@ -21,9 +18,7 @@ public class CatalogueRepositoryImpl implements CatalogueRepository {
     @Nonnull
     private final DomainManagerImpl domainManager;
 
-    @SuppressWarnings("CdiInjectionPointsInspection")
-    @Inject
-    CatalogueRepositoryImpl(EntityGrpLoader entityGrpLoader, EntityLoader entityLoader, AttrGrpLoader attrGrpLoader,
+    public CatalogueRepositoryImpl(EntityGrpLoader entityGrpLoader, EntityLoader entityLoader, AttrGrpLoader attrGrpLoader,
                             AttrLoader attrLoader, DomainLoader domainLoader) {
         this.entityGrpManager = new EntityGrpManagerImpl(this, Objects.requireNonNull(entityGrpLoader), 10);
         this.entityManager = new EntityManagerImpl(this, Objects.requireNonNull(entityLoader), 100);

@@ -7,111 +7,49 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>catalogue-restapi</artifactId>
-    <packaging>war</packaging>
     <dependencies>
         <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>jaxrs</artifactId>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>cdi</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                     <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>undertow</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>datasources</artifactId>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>microprofile-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jackson2-provider</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.jaxrs</groupId>
-            <artifactId>jackson-jaxrs-xml-provider</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.woodstox</groupId>
-            <artifactId>woodstox-core</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jdk8</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <scope>provided</scope>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-annotations</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.provys.common</groupId>
-            <artifactId>common-jackson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.provys.common</groupId>
-            <artifactId>common-jakarta</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.provys.provysdb</groupId>
-            <artifactId>dbcontext-jakarta</artifactId>
+            <artifactId>common-spring</artifactId>
         </dependency>
         <dependency>
             <groupId>com.provys.catalogue</groupId>
-            <artifactId>catalogue-api</artifactId>
+            <artifactId>catalogue-spring</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.provys.catalogue</groupId>
-            <artifactId>catalogue-impl</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.provys.catalogue</groupId>
-            <artifactId>catalogue-dbloader</artifactId>
+            <artifactId>catalogue-dbloader-spring</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
@@ -119,82 +57,8 @@
         <finalName>catalogue</finalName>
         <plugins>
             <plugin>
-                <groupId>io.thorntail</groupId>
-                <artifactId>thorntail-maven-plugin</artifactId>
-                <version>2.6.0.Final</version>
-                <executions>
-                    <execution>
-                        <id>package</id>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                        <configuration>
-                            <hollow>true</hollow>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>builddocker</id>
-                        <phase>${docker_package_phase}</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>docker</executable>
-                            <workingDirectory>${project.basedir}</workingDirectory>
-                            <arguments>
-                                <argument>build</argument>
-                                <argument>-t</argument>
-                                <argument>${project.groupId}/${project.build.finalName}</argument>
-                                <argument>-f</argument>
-                                <argument>Dockerfile</argument>
-                                <argument>.</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <execution><!-- used in normal docker mode - run container and expose it on port 8086 -->
-                        <id>rundocker</id>
-                        <phase>${docker_run_phase}</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>run</executable>
-                            <workingDirectory>${project.basedir}</workingDirectory>
-                            <arguments>
-                                <argument>${project.groupId}</argument>
-                                <argument>${project.build.finalName}</argument>
-                                <argument>8086</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-maven-plugin</artifactId>
-                <configuration>
-                    <outputFileName>openapi</outputFileName>
-                    <outputPath>${project.basedir}/src/main/webapp/openapi</outputPath>
-                    <outputFormat>JSONANDYAML</outputFormat>
-                    <resourcePackages>
-                        <package>com.provys.catalogue.restapi</package>
-                    </resourcePackages>
-                    <prettyPrint>true</prettyPrint>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>resolve</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

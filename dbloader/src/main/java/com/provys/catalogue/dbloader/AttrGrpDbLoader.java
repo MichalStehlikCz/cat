@@ -8,16 +8,12 @@ import com.provys.provysdb.dbsqlbuilder.SqlAdmin;
 import java.lang.Override;
 import java.util.Objects;
 import javax.annotation.Nonnull;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
-@ApplicationScoped
 public class AttrGrpDbLoader extends AttrGrpLoaderBase {
     @Nonnull
     private final SqlAdmin dbSql;
 
-    @Inject
-    AttrGrpDbLoader(SqlAdmin dbSql) {
+    public AttrGrpDbLoader(SqlAdmin dbSql) {
         this.dbSql = Objects.requireNonNull(dbSql);
     }
 
