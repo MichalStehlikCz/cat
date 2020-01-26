@@ -2,19 +2,11 @@ package com.provys.catalogue.api;
 
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.ProvysObject;
-import java.lang.Boolean;
-import java.lang.Character;
-import java.lang.Double;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T17:18:30.063421300"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 interface GenAttr extends ProvysObject {
     /**
      * @return Entity (object referenced by attribute ENTITY_ID)
@@ -225,7 +217,7 @@ interface GenAttr extends ProvysObject {
      * @return Confirm other (attribute CONFIRMOTHER)
      */
     @Nonnull
-    Optional<Boolean> getConfirmOther();
+    Optional<Boolean> isConfirmOther();
 
     /**
      * @return Change operation (non-default) (attribute SETOTHEROPTYPE_ID)
@@ -330,7 +322,7 @@ interface GenAttr extends ProvysObject {
      * @return Approximate record (attribute APPROXRECORD)
      */
     @Nonnull
-    Optional<Boolean> getApproxRecord();
+    Optional<Boolean> isApproxRecord();
 
     /**
      * @return Value account (attribute VALUEACCOUNT_NM)
@@ -422,13 +414,13 @@ interface GenAttr extends ProvysObject {
      * @return Migration Generator (attribute GENMIGR)
      */
     @Nonnull
-    Optional<Boolean> getGenMigr();
+    Optional<Boolean> isGenMigr();
 
     /**
      * @return Evaluate text (attribute EVALCVALUE)
      */
     @Nonnull
-    Optional<Boolean> getEvalCValue();
+    Optional<Boolean> isEvalCValue();
 
     /**
      * @return Optional lob limit (attribute OPTLOBLIMIT)

@@ -4,11 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectValue;
-import java.lang.Integer;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nonnull;
@@ -22,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T20:18:36.907153600"
+        date = "2020-01-26T16:33:11.979991100"
 )
 @SuppressWarnings("ValidExternallyBoundObject")
 @XmlAccessorType(XmlAccessType.NONE)
@@ -96,15 +91,16 @@ public class GenDomainValue extends ProvysNmObjectValue {
     private final boolean natOrder;
 
     @JsonCreator
-    public GenDomainValue(@JsonProperty("DOMAIN_ID") DtUid id, @JsonProperty("NAME_NM") String nameNm,
-                          @JsonProperty("NAME") String name, @JsonProperty("DATATYPE_NM") @Nullable String dataTypeNm,
-                          @JsonProperty("DATALENGTH") @Nullable Integer dataLength,
-                          @JsonProperty("DATAPRECISION") @Nullable Integer dataPrecision,
-                          @JsonProperty("NOTE") @Nullable String note, @JsonProperty("ALLOWED") boolean allowed,
-                          @JsonProperty("QVISIBLE") boolean qVisible, @JsonProperty("LVISIBLE") boolean lVisible,
-                          @JsonProperty("VALIDATE_CD") @Nullable String validateCd,
-                          @JsonProperty("LFORMAT_CD") @Nullable String lFormatCd,
-                          @JsonProperty("NATORDER") boolean natOrder) {
+    public GenDomainValue(@JsonProperty("DOMAIN_ID") DtUid id,
+            @JsonProperty("NAME_NM") String nameNm, @JsonProperty("NAME") String name,
+            @JsonProperty("DATATYPE_NM") @Nullable String dataTypeNm,
+            @JsonProperty("DATALENGTH") @Nullable Integer dataLength,
+            @JsonProperty("DATAPRECISION") @Nullable Integer dataPrecision,
+            @JsonProperty("NOTE") @Nullable String note, @JsonProperty("ALLOWED") boolean allowed,
+            @JsonProperty("QVISIBLE") boolean qVisible, @JsonProperty("LVISIBLE") boolean lVisible,
+            @JsonProperty("VALIDATE_CD") @Nullable String validateCd,
+            @JsonProperty("LFORMAT_CD") @Nullable String lFormatCd,
+            @JsonProperty("NATORDER") boolean natOrder) {
         super(id, nameNm);
         this.name = Objects.requireNonNull(name);
         this.dataTypeNm = dataTypeNm;

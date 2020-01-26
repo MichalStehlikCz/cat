@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysObjectValue;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nonnull;
@@ -21,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T20:16:13.619280400"
+        date = "2020-01-26T16:33:11.706984600"
 )
 @SuppressWarnings("ValidExternallyBoundObject")
 @XmlAccessorType(XmlAccessType.NONE)
@@ -68,9 +64,9 @@ public class GenAttrGrpValue extends ProvysObjectValue {
 
     @JsonCreator
     public GenAttrGrpValue(@JsonProperty("ATTRGRP_ID") DtUid id,
-                           @JsonProperty("ENTITY_ID") DtUid entityId, @JsonProperty("NAME_NM") String nameNm,
-                           @JsonProperty("NAME") String name, @JsonProperty("ISCUSTOM") boolean isCustom,
-                           @JsonProperty("ORD") int ord, @JsonProperty("NOTE") @Nullable String note) {
+            @JsonProperty("ENTITY_ID") DtUid entityId, @JsonProperty("NAME_NM") String nameNm,
+            @JsonProperty("NAME") String name, @JsonProperty("ISCUSTOM") boolean isCustom,
+            @JsonProperty("ORD") int ord, @JsonProperty("NOTE") @Nullable String note) {
         super(id);
         this.entityId = Objects.requireNonNull(entityId);
         this.nameNm = Objects.requireNonNull(nameNm);

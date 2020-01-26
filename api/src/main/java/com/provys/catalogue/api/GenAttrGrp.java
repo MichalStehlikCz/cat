@@ -2,14 +2,13 @@ package com.provys.catalogue.api;
 
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.ProvysObject;
-import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
 @Generated(
         value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T17:25:18.442322700"
+        date = "2020-01-26T16:33:11.706984600"
 )
 interface GenAttrGrp extends ProvysObject {
     /**

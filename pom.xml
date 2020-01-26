@@ -347,6 +347,7 @@
                             <user>ealoader</user>
                             <pwd>heslo</pwd>
                         </provysdb>
+                        <module>Catalogue</module>
                         <entities>
                             <entity><nameNm>ENTITY</nameNm></entity>
                             <entity><nameNm>ENTITYGRP</nameNm></entity>
