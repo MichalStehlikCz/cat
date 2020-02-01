@@ -1,7 +1,7 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.api.EntityGrpMeta;
 import com.provys.catalogue.api.EntityGrp;
+import com.provys.catalogue.api.EntityGrpMeta;
 import com.provys.catalogue.impl.EntityGrpManagerImpl;
 import com.provys.catalogue.impl.EntityGrpProxy;
 import com.provys.catalogue.impl.GenEntityGrpValue;
@@ -11,7 +11,6 @@ import com.provys.provysdb.dbcontext.DbRowMapper;
 import com.provys.provysdb.dbsqlbuilder.DbSql;
 import com.provys.provysdb.sqlbuilder.Condition;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
-import java.lang.Override;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nonnull;
@@ -26,7 +25,8 @@ class EntityGrpDbLoadRunner extends ProvysObjectLoadRunner<EntityGrp, GenEntityG
     @Nullable
     private final Condition condition;
 
-    EntityGrpDbLoadRunner(EntityGrpManagerImpl manager, DbSql dbSql, @Nullable Condition condition) {
+    EntityGrpDbLoadRunner(EntityGrpManagerImpl manager, DbSql dbSql,
+            @Nullable Condition condition) {
         super(manager);
         this.dbSql = Objects.requireNonNull(dbSql);
         this.condition = condition;
@@ -51,13 +51,13 @@ class EntityGrpDbLoadRunner extends ProvysObjectLoadRunner<EntityGrp, GenEntityG
     private static class EntityGrpDbMapper implements DbRowMapper<GenEntityGrpValue> {
         public GenEntityGrpValue map(DbResultSet dbResultSet, long line) {
             return new GenEntityGrpValueBuilder()
-                    .setId(dbResultSet.getNonnullDtUid(1))
-                    .setParentId(dbResultSet.getNullableDtUid(2))
-                    .setNameNm(dbResultSet.getNonnullString(3))
-                    .setName(dbResultSet.getNonnullString(4))
-                    .setNote(dbResultSet.getNullableString(5))
-                    .setOrd(dbResultSet.getNonnullInteger(6))
-                    .build();
+                .setId(dbResultSet.getNonnullDtUid(1))
+                .setParentId(dbResultSet.getNullableDtUid(2))
+                .setNameNm(dbResultSet.getNonnullString(3))
+                .setName(dbResultSet.getNonnullString(4))
+                .setNote(dbResultSet.getNullableString(5))
+                .setOrd(dbResultSet.getNonnullInteger(6))
+                .build();
         }
     }
 }

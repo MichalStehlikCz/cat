@@ -6,10 +6,7 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-26T16:33:10.698963400"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 interface GenEntityGrp extends ProvysNmObject {
     /**
      * @return Parent (object referenced by attribute PARENT_ID)

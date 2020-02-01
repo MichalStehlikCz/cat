@@ -15,10 +15,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-26T16:33:09.106613700"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 @SuppressWarnings("ValidExternallyBoundObject")
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(
@@ -390,7 +387,8 @@ public class GenEntityValue extends ProvysNmObjectValue {
     @XmlElement(
             name = "X_HASDELROWFLAGDEF"
     )
-    private final boolean xHasDelRowFlagDef;
+    @Nullable
+    private final Boolean xHasDelRowFlagDef;
 
     @JsonCreator
     public GenEntityValue(@JsonProperty("ENTITY_ID") DtUid id,
@@ -459,7 +457,7 @@ public class GenEntityValue extends ProvysNmObjectValue {
             @JsonProperty("X_DELNOTIFYATTR3") double xDelNotifyAttr3,
             @JsonProperty("X_DELNOTIFYATTR4") double xDelNotifyAttr4,
             @JsonProperty("X_DELNOTIFYATTR5") double xDelNotifyAttr5,
-            @JsonProperty("X_HASDELROWFLAGDEF") boolean xHasDelRowFlagDef) {
+            @JsonProperty("X_HASDELROWFLAGDEF") @Nullable Boolean xHasDelRowFlagDef) {
         super(id, nameNm);
         this.name = Objects.requireNonNull(name);
         this.objectClass = objectClass;
@@ -832,8 +830,9 @@ public class GenEntityValue extends ProvysNmObjectValue {
         return xDelNotifyAttr5;
     }
 
-    public boolean isxHasDelRowFlagDef() {
-        return xHasDelRowFlagDef;
+    @Nonnull
+    public Optional<Boolean> isxHasDelRowFlagDef() {
+        return Optional.ofNullable(xHasDelRowFlagDef);
     }
 
     @Override
@@ -909,6 +908,6 @@ public class GenEntityValue extends ProvysNmObjectValue {
                 xDelNotifyAttr3 == that.xDelNotifyAttr3 &&
                 xDelNotifyAttr4 == that.xDelNotifyAttr4 &&
                 xDelNotifyAttr5 == that.xDelNotifyAttr5 &&
-                xHasDelRowFlagDef == that.xHasDelRowFlagDef;
+                Objects.equals(xHasDelRowFlagDef, that.xHasDelRowFlagDef);
     }
 }

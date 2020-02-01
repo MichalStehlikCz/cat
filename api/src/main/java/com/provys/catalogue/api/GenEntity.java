@@ -6,10 +6,7 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-26T16:33:09.106613700"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 interface GenEntity extends ProvysNmObject {
     /**
      * @return Name (attribute NAME)
@@ -385,5 +382,6 @@ interface GenEntity extends ProvysNmObject {
     /**
      * @return Has DELETEROW Flagdef (attribute X_HASDELROWFLAGDEF)
      */
-    boolean isxHasDelRowFlagDef();
+    @Nonnull
+    Optional<Boolean> isxHasDelRowFlagDef();
 }

@@ -11,7 +11,6 @@ import com.provys.provysdb.dbcontext.DbRowMapper;
 import com.provys.provysdb.dbsqlbuilder.DbSql;
 import com.provys.provysdb.sqlbuilder.Condition;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
-import java.lang.Override;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nonnull;
@@ -58,20 +57,20 @@ class DomainDbLoadRunner extends ProvysObjectLoadRunner<Domain, GenDomainValue, 
     private static class DomainDbMapper implements DbRowMapper<GenDomainValue> {
         public GenDomainValue map(DbResultSet dbResultSet, long line) {
             return new GenDomainValueBuilder()
-                    .setId(dbResultSet.getNonnullDtUid(1))
-                    .setNameNm(dbResultSet.getNonnullString(2))
-                    .setName(dbResultSet.getNonnullString(3))
-                    .setDataTypeNm(dbResultSet.getNullableString(4))
-                    .setDataLength(dbResultSet.getNullableInteger(5))
-                    .setDataPrecision(dbResultSet.getNullableInteger(6))
-                    .setNote(dbResultSet.getNullableString(7))
-                    .setAllowed(dbResultSet.getNonnullBoolean(8))
-                    .setqVisible(dbResultSet.getNonnullBoolean(9))
-                    .setlVisible(dbResultSet.getNonnullBoolean(10))
-                    .setValidateCd(dbResultSet.getNullableString(11))
-                    .setlFormatCd(dbResultSet.getNullableString(12))
-                    .setNatOrder(dbResultSet.getNonnullBoolean(13))
-                    .build();
+                .setId(dbResultSet.getNonnullDtUid(1))
+                .setNameNm(dbResultSet.getNonnullString(2))
+                .setName(dbResultSet.getNonnullString(3))
+                .setDataTypeNm(dbResultSet.getNullableString(4))
+                .setDataLength(dbResultSet.getNullableInteger(5))
+                .setDataPrecision(dbResultSet.getNullableInteger(6))
+                .setNote(dbResultSet.getNullableString(7))
+                .setAllowed(dbResultSet.getNonnullBoolean(8))
+                .setqVisible(dbResultSet.getNonnullBoolean(9))
+                .setlVisible(dbResultSet.getNonnullBoolean(10))
+                .setValidateCd(dbResultSet.getNullableString(11))
+                .setlFormatCd(dbResultSet.getNullableString(12))
+                .setNatOrder(dbResultSet.getNonnullBoolean(13))
+                .build();
         }
     }
 }

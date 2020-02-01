@@ -5,10 +5,7 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-26T16:33:11.979991100"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 interface GenDomain extends ProvysNmObject {
     /**
      * @return Name (attribute NAME)
