@@ -4,7 +4,7 @@
     <groupId>com.provys.catalogue</groupId>
     <artifactId>Catalogue</artifactId>
     <packaging>pom</packaging>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.3-SNAPSHOT</version>
     <modules>
         <module>api</module>
         <module>impl</module>
@@ -146,37 +146,37 @@
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbcontext-api</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.3</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbcontext</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.3</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbcontext-spring</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.3</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>sqlbuilder</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.3</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbsqlbuilder</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.3</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbsqlbuilder-jakarta</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.3</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbsqlbuilder-spring</artifactId>
-                <version>1.5.0</version>
+                <version>1.5.3</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
