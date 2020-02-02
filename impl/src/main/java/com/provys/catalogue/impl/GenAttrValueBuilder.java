@@ -4,14 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.provys.common.datatype.DtUid;
 import com.provys.common.exception.InternalException;
 import com.provys.provysobject.impl.ProvysObjectValueBuilder;
-import java.lang.Boolean;
-import java.lang.Character;
-import java.lang.Double;
-import java.lang.Integer;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -21,10 +13,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-14T15:07:00.839981"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 @XmlRootElement(
         name = "ATTR"
 )
@@ -402,7 +391,7 @@ public class GenAttrValueBuilder extends ProvysObjectValueBuilder<GenAttrValueBu
         setGetOpTypeId(value.getGetOpTypeId().orElse(null));
         setSetOpTypeId(value.getSetOpTypeId().orElse(null));
         setResetOpTypeId(value.getResetOpTypeId().orElse(null));
-        setConfirmOther(value.getConfirmOther().orElse(null));
+        setConfirmOther(value.isConfirmOther().orElse(null));
         setSetOtherOpTypeId(value.getSetOtherOpTypeId().orElse(null));
         setMultivalue(value.isMultivalue());
         setLogAllowed(value.isLogAllowed());
@@ -416,7 +405,7 @@ public class GenAttrValueBuilder extends ProvysObjectValueBuilder<GenAttrValueBu
         setOwnerFormulaId(value.getOwnerFormulaId().orElse(null));
         setFromObjectFormulaId(value.getFromObjectFormulaId().orElse(null));
         setToObjectFormulaId(value.getToObjectFormulaId().orElse(null));
-        setApproxRecord(value.getApproxRecord().orElse(null));
+        setApproxRecord(value.isApproxRecord().orElse(null));
         setValueAccountNm(value.getValueAccountNm().orElse(null));
         setValueAmountType(value.getValueAmountType().orElse(null));
         setDefOwner(value.isDefOwner());
@@ -431,8 +420,8 @@ public class GenAttrValueBuilder extends ProvysObjectValueBuilder<GenAttrValueBu
         setImgWidth(value.getImgWidth().orElse(null));
         setImgHeight(value.getImgHeight().orElse(null));
         setFileServerId(value.getFileServerId().orElse(null));
-        setGenMigr(value.getGenMigr().orElse(null));
-        setEvalCValue(value.getEvalCValue().orElse(null));
+        setGenMigr(value.isGenMigr().orElse(null));
+        setEvalCValue(value.isEvalCValue().orElse(null));
         setOptLobLimit(value.getOptLobLimit().orElse(null));
         setManLobLimit(value.getManLobLimit().orElse(null));
     }
@@ -1474,7 +1463,7 @@ public class GenAttrValueBuilder extends ProvysObjectValueBuilder<GenAttrValueBu
             name = "CONFIRMOTHER"
     )
     @Nullable
-    public Boolean getConfirmOther() {
+    public Boolean isConfirmOther() {
         return confirmOther;
     }
 
@@ -1833,7 +1822,7 @@ public class GenAttrValueBuilder extends ProvysObjectValueBuilder<GenAttrValueBu
             name = "APPROXRECORD"
     )
     @Nullable
-    public Boolean getApproxRecord() {
+    public Boolean isApproxRecord() {
         return approxRecord;
     }
 
@@ -2220,7 +2209,7 @@ public class GenAttrValueBuilder extends ProvysObjectValueBuilder<GenAttrValueBu
             name = "GENMIGR"
     )
     @Nullable
-    public Boolean getGenMigr() {
+    public Boolean isGenMigr() {
         return genMigr;
     }
 
@@ -2245,7 +2234,7 @@ public class GenAttrValueBuilder extends ProvysObjectValueBuilder<GenAttrValueBu
             name = "EVALCVALUE"
     )
     @Nullable
-    public Boolean getEvalCValue() {
+    public Boolean isEvalCValue() {
         return evalCValue;
     }
 
@@ -2332,72 +2321,72 @@ public class GenAttrValueBuilder extends ProvysObjectValueBuilder<GenAttrValueBu
     @Nonnull
     public GenAttrValue build() {
         return new GenAttrValue(Objects.requireNonNull(getId(), "ATTR_ID must be specified for build")
-                , Objects.requireNonNull(getEntityId(), "ENTITY_ID must be specified for build")
-                , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
-                , Objects.requireNonNull(getName(), "NAME must be specified for build")
-                , getNote()
-                , Objects.requireNonNull(getAttrType(), "ATTRTYPE must be specified for build")
-                , Objects.requireNonNull(isIsCustom(), "ISCUSTOM must be specified for build")
-                , Objects.requireNonNull(isIsUsed(), "ISUSED must be specified for build")
-                , getAttrGrpId()
-                , Objects.requireNonNull(getOrd(), "ORD must be specified for build")
-                , Objects.requireNonNull(getDomainId(), "DOMAIN_ID must be specified for build")
-                , getSubdomainNm()
-                , getProperNameRoot()
-                , Objects.requireNonNull(isMandatory(), "MANDATORY must be specified for build")
-                , Objects.requireNonNull(isOrdered(), "ORDERED must be specified for build")
-                , getOrdGroup()
-                , getDefValue()
-                , Objects.requireNonNull(isMultiCreate(), "MULTICREATE must be specified for build")
-                , Objects.requireNonNull(isGenCopy(), "GENCOPY must be specified for build")
-                , Objects.requireNonNull(isGenMove(), "GENMOVE must be specified for build")
-                , Objects.requireNonNull(isGenDelete(), "GENDELETE must be specified for build")
-                , getTextSrcId()
-                , Objects.requireNonNull(isHierarchical(), "HIERARCHICAL must be specified for build")
-                , Objects.requireNonNull(isIsInTable(), "ISINTABLE must be specified for build")
-                , Objects.requireNonNull(isIsOwn(), "ISOWN must be specified for build")
-                , Objects.requireNonNull(isValidated(), "VALIDATED must be specified for build")
-                , Objects.requireNonNull(isqVisible(), "QVISIBLE must be specified for build")
-                , getlLength()
-                , Objects.requireNonNull(isIndexed(), "INDEXED must be specified for build")
-                , getUpNameNm()
-                , Objects.requireNonNull(isReadOnly(), "READONLY must be specified for build")
-                , getGetOpTypeId()
-                , getSetOpTypeId()
-                , getResetOpTypeId()
-                , getConfirmOther()
-                , getSetOtherOpTypeId()
-                , Objects.requireNonNull(isMultivalue(), "MULTIVALUE must be specified for build")
-                , Objects.requireNonNull(isLogAllowed(), "LOGALLOWED must be specified for build")
-                , Objects.requireNonNull(getLogLevel(), "LOGLEVEL must be specified for build")
-                , getDictType()
-                , getDictDel1()
-                , getDictDel2()
-                , getTbCodeCd()
-                , getAccountRuleNm()
-                , getAccDocObjectFormulaId()
-                , getOwnerFormulaId()
-                , getFromObjectFormulaId()
-                , getToObjectFormulaId()
-                , getApproxRecord()
-                , getValueAccountNm()
-                , getValueAmountType()
-                , Objects.requireNonNull(isDefOwner(), "DEFOWNER must be specified for build")
-                , getDocumentation()
-                , getBitmapOrd()
-                , Objects.requireNonNull(getxIsFlagDepBind(), "X_ISFLAGDEPBIND must be specified for build")
-                , Objects.requireNonNull(isxIsFlagDefAttr(), "X_ISFLAGDEFATTR must be specified for build")
-                , Objects.requireNonNull(getCopied(), "COPIED must be specified for build")
-                , getKeyOrd()
-                , getOpTypeTypeRf()
-                , getImgSrcId()
-                , getImgWidth()
-                , getImgHeight()
-                , getFileServerId()
-                , getGenMigr()
-                , getEvalCValue()
-                , getOptLobLimit()
-                , getManLobLimit()
+        , Objects.requireNonNull(getEntityId(), "ENTITY_ID must be specified for build")
+        , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
+        , Objects.requireNonNull(getName(), "NAME must be specified for build")
+        , getNote()
+        , Objects.requireNonNull(getAttrType(), "ATTRTYPE must be specified for build")
+        , Objects.requireNonNull(isIsCustom(), "ISCUSTOM must be specified for build")
+        , Objects.requireNonNull(isIsUsed(), "ISUSED must be specified for build")
+        , getAttrGrpId()
+        , Objects.requireNonNull(getOrd(), "ORD must be specified for build")
+        , Objects.requireNonNull(getDomainId(), "DOMAIN_ID must be specified for build")
+        , getSubdomainNm()
+        , getProperNameRoot()
+        , Objects.requireNonNull(isMandatory(), "MANDATORY must be specified for build")
+        , Objects.requireNonNull(isOrdered(), "ORDERED must be specified for build")
+        , getOrdGroup()
+        , getDefValue()
+        , Objects.requireNonNull(isMultiCreate(), "MULTICREATE must be specified for build")
+        , Objects.requireNonNull(isGenCopy(), "GENCOPY must be specified for build")
+        , Objects.requireNonNull(isGenMove(), "GENMOVE must be specified for build")
+        , Objects.requireNonNull(isGenDelete(), "GENDELETE must be specified for build")
+        , getTextSrcId()
+        , Objects.requireNonNull(isHierarchical(), "HIERARCHICAL must be specified for build")
+        , Objects.requireNonNull(isIsInTable(), "ISINTABLE must be specified for build")
+        , Objects.requireNonNull(isIsOwn(), "ISOWN must be specified for build")
+        , Objects.requireNonNull(isValidated(), "VALIDATED must be specified for build")
+        , Objects.requireNonNull(isqVisible(), "QVISIBLE must be specified for build")
+        , getlLength()
+        , Objects.requireNonNull(isIndexed(), "INDEXED must be specified for build")
+        , getUpNameNm()
+        , Objects.requireNonNull(isReadOnly(), "READONLY must be specified for build")
+        , getGetOpTypeId()
+        , getSetOpTypeId()
+        , getResetOpTypeId()
+        , isConfirmOther()
+        , getSetOtherOpTypeId()
+        , Objects.requireNonNull(isMultivalue(), "MULTIVALUE must be specified for build")
+        , Objects.requireNonNull(isLogAllowed(), "LOGALLOWED must be specified for build")
+        , Objects.requireNonNull(getLogLevel(), "LOGLEVEL must be specified for build")
+        , getDictType()
+        , getDictDel1()
+        , getDictDel2()
+        , getTbCodeCd()
+        , getAccountRuleNm()
+        , getAccDocObjectFormulaId()
+        , getOwnerFormulaId()
+        , getFromObjectFormulaId()
+        , getToObjectFormulaId()
+        , isApproxRecord()
+        , getValueAccountNm()
+        , getValueAmountType()
+        , Objects.requireNonNull(isDefOwner(), "DEFOWNER must be specified for build")
+        , getDocumentation()
+        , getBitmapOrd()
+        , Objects.requireNonNull(getxIsFlagDepBind(), "X_ISFLAGDEPBIND must be specified for build")
+        , Objects.requireNonNull(isxIsFlagDefAttr(), "X_ISFLAGDEFATTR must be specified for build")
+        , Objects.requireNonNull(getCopied(), "COPIED must be specified for build")
+        , getKeyOrd()
+        , getOpTypeTypeRf()
+        , getImgSrcId()
+        , getImgWidth()
+        , getImgHeight()
+        , getFileServerId()
+        , isGenMigr()
+        , isEvalCValue()
+        , getOptLobLimit()
+        , getManLobLimit()
         );
     }
 

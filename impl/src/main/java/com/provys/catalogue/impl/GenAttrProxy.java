@@ -6,19 +6,11 @@ import com.provys.catalogue.api.Domain;
 import com.provys.catalogue.api.Entity;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysObjectProxyImpl;
-import java.lang.Boolean;
-import java.lang.Character;
-import java.lang.Double;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-04T08:45:36.344410900"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 abstract class GenAttrProxy extends ProvysObjectProxyImpl<Attr, GenAttrValue, AttrProxy, AttrManagerImpl> {
     GenAttrProxy(AttrManagerImpl manager, DtUid id) {
         super(manager, id);
@@ -193,8 +185,8 @@ abstract class GenAttrProxy extends ProvysObjectProxyImpl<Attr, GenAttrValue, At
     }
 
     @Nonnull
-    public Optional<Boolean> getConfirmOther() {
-        return validateValueObject().getConfirmOther();
+    public Optional<Boolean> isConfirmOther() {
+        return validateValueObject().isConfirmOther();
     }
 
     @Nonnull
@@ -280,8 +272,8 @@ abstract class GenAttrProxy extends ProvysObjectProxyImpl<Attr, GenAttrValue, At
     }
 
     @Nonnull
-    public Optional<Boolean> getApproxRecord() {
-        return validateValueObject().getApproxRecord();
+    public Optional<Boolean> isApproxRecord() {
+        return validateValueObject().isApproxRecord();
     }
 
     @Nonnull
@@ -356,13 +348,13 @@ abstract class GenAttrProxy extends ProvysObjectProxyImpl<Attr, GenAttrValue, At
     }
 
     @Nonnull
-    public Optional<Boolean> getGenMigr() {
-        return validateValueObject().getGenMigr();
+    public Optional<Boolean> isGenMigr() {
+        return validateValueObject().isGenMigr();
     }
 
     @Nonnull
-    public Optional<Boolean> getEvalCValue() {
-        return validateValueObject().getEvalCValue();
+    public Optional<Boolean> isEvalCValue() {
+        return validateValueObject().isEvalCValue();
     }
 
     @Nonnull

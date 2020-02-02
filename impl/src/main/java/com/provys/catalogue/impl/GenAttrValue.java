@@ -4,14 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysObjectValue;
-import java.lang.Boolean;
-import java.lang.Character;
-import java.lang.Double;
-import java.lang.Integer;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nonnull;
@@ -23,10 +15,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T20:14:41.157237800"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 @SuppressWarnings("ValidExternallyBoundObject")
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(
@@ -409,60 +398,64 @@ public class GenAttrValue extends ProvysObjectValue {
     private final Double manLobLimit;
 
     @JsonCreator
-    public GenAttrValue(@JsonProperty("ATTR_ID") DtUid id, @JsonProperty("ENTITY_ID") DtUid entityId,
-                        @JsonProperty("NAME_NM") String nameNm, @JsonProperty("NAME") String name,
-                        @JsonProperty("NOTE") @Nullable String note, @JsonProperty("ATTRTYPE") char attrType,
-                        @JsonProperty("ISCUSTOM") boolean isCustom, @JsonProperty("ISUSED") boolean isUsed,
-                        @JsonProperty("ATTRGRP_ID") @Nullable DtUid attrGrpId, @JsonProperty("ORD") double ord,
-                        @JsonProperty("DOMAIN_ID") DtUid domainId,
-                        @JsonProperty("SUBDOMAIN_NM") @Nullable String subdomainNm,
-                        @JsonProperty("PROPERNAMEROOT") @Nullable String properNameRoot,
-                        @JsonProperty("MANDATORY") boolean mandatory, @JsonProperty("ORDERED") boolean ordered,
-                        @JsonProperty("ORDGROUP") @Nullable String ordGroup,
-                        @JsonProperty("DEFVALUE") @Nullable String defValue,
-                        @JsonProperty("MULTICREATE") boolean multiCreate, @JsonProperty("GENCOPY") boolean genCopy,
-                        @JsonProperty("GENMOVE") boolean genMove, @JsonProperty("GENDELETE") boolean genDelete,
-                        @JsonProperty("TEXTSRC_ID") @Nullable DtUid textSrcId,
-                        @JsonProperty("HIERARCHICAL") boolean hierarchical,
-                        @JsonProperty("ISINTABLE") boolean isInTable, @JsonProperty("ISOWN") boolean isOwn,
-                        @JsonProperty("VALIDATED") boolean validated, @JsonProperty("QVISIBLE") boolean qVisible,
-                        @JsonProperty("LLENGTH") @Nullable Double lLength, @JsonProperty("INDEXED") boolean indexed,
-                        @JsonProperty("UPNAME_NM") @Nullable String upNameNm,
-                        @JsonProperty("READONLY") boolean readOnly,
-                        @JsonProperty("GETOPTYPE_ID") @Nullable DtUid getOpTypeId,
-                        @JsonProperty("SETOPTYPE_ID") @Nullable DtUid setOpTypeId,
-                        @JsonProperty("RESETOPTYPE_ID") @Nullable DtUid resetOpTypeId,
-                        @JsonProperty("CONFIRMOTHER") @Nullable Boolean confirmOther,
-                        @JsonProperty("SETOTHEROPTYPE_ID") @Nullable DtUid setOtherOpTypeId,
-                        @JsonProperty("MULTIVALUE") boolean multivalue,
-                        @JsonProperty("LOGALLOWED") boolean logAllowed, @JsonProperty("LOGLEVEL") char logLevel,
-                        @JsonProperty("DICTTYPE") @Nullable Character dictType,
-                        @JsonProperty("DICTDEL1") @Nullable String dictDel1,
-                        @JsonProperty("DICTDEL2") @Nullable String dictDel2,
-                        @JsonProperty("TBCODE_CD") @Nullable String tbCodeCd,
-                        @JsonProperty("ACCOUNTRULE_NM") @Nullable String accountRuleNm,
-                        @JsonProperty("ACCDOCOBJECTFORMULA_ID") @Nullable DtUid accDocObjectFormulaId,
-                        @JsonProperty("OWNERFORMULA_ID") @Nullable DtUid ownerFormulaId,
-                        @JsonProperty("FROMOBJECTFORMULA_ID") @Nullable DtUid fromObjectFormulaId,
-                        @JsonProperty("TOOBJECTFORMULA_ID") @Nullable DtUid toObjectFormulaId,
-                        @JsonProperty("APPROXRECORD") @Nullable Boolean approxRecord,
-                        @JsonProperty("VALUEACCOUNT_NM") @Nullable String valueAccountNm,
-                        @JsonProperty("VALUEAMOUNTTYPE") @Nullable Character valueAmountType,
-                        @JsonProperty("DEFOWNER") boolean defOwner,
-                        @JsonProperty("DOCUMENTATION") @Nullable String documentation,
-                        @JsonProperty("BITMAPORD") @Nullable Integer bitmapOrd,
-                        @JsonProperty("X_ISFLAGDEPBIND") char xIsFlagDepBind,
-                        @JsonProperty("X_ISFLAGDEFATTR") boolean xIsFlagDefAttr, @JsonProperty("COPIED") char copied,
-                        @JsonProperty("KEYORD") @Nullable Double keyOrd,
-                        @JsonProperty("OPTYPETYPE_RF") @Nullable DtUid opTypeTypeRf,
-                        @JsonProperty("IMGSRC_ID") @Nullable DtUid imgSrcId,
-                        @JsonProperty("IMGWIDTH") @Nullable Double imgWidth,
-                        @JsonProperty("IMGHEIGHT") @Nullable Double imgHeight,
-                        @JsonProperty("FILESERVER_ID") @Nullable DtUid fileServerId,
-                        @JsonProperty("GENMIGR") @Nullable Boolean genMigr,
-                        @JsonProperty("EVALCVALUE") @Nullable Boolean evalCValue,
-                        @JsonProperty("OPTLOBLIMIT") @Nullable Double optLobLimit,
-                        @JsonProperty("MANLOBLIMIT") @Nullable Double manLobLimit) {
+    public GenAttrValue(@JsonProperty("ATTR_ID") DtUid id,
+            @JsonProperty("ENTITY_ID") DtUid entityId, @JsonProperty("NAME_NM") String nameNm,
+            @JsonProperty("NAME") String name, @JsonProperty("NOTE") @Nullable String note,
+            @JsonProperty("ATTRTYPE") char attrType, @JsonProperty("ISCUSTOM") boolean isCustom,
+            @JsonProperty("ISUSED") boolean isUsed,
+            @JsonProperty("ATTRGRP_ID") @Nullable DtUid attrGrpId, @JsonProperty("ORD") double ord,
+            @JsonProperty("DOMAIN_ID") DtUid domainId,
+            @JsonProperty("SUBDOMAIN_NM") @Nullable String subdomainNm,
+            @JsonProperty("PROPERNAMEROOT") @Nullable String properNameRoot,
+            @JsonProperty("MANDATORY") boolean mandatory, @JsonProperty("ORDERED") boolean ordered,
+            @JsonProperty("ORDGROUP") @Nullable String ordGroup,
+            @JsonProperty("DEFVALUE") @Nullable String defValue,
+            @JsonProperty("MULTICREATE") boolean multiCreate,
+            @JsonProperty("GENCOPY") boolean genCopy, @JsonProperty("GENMOVE") boolean genMove,
+            @JsonProperty("GENDELETE") boolean genDelete,
+            @JsonProperty("TEXTSRC_ID") @Nullable DtUid textSrcId,
+            @JsonProperty("HIERARCHICAL") boolean hierarchical,
+            @JsonProperty("ISINTABLE") boolean isInTable, @JsonProperty("ISOWN") boolean isOwn,
+            @JsonProperty("VALIDATED") boolean validated,
+            @JsonProperty("QVISIBLE") boolean qVisible,
+            @JsonProperty("LLENGTH") @Nullable Double lLength,
+            @JsonProperty("INDEXED") boolean indexed,
+            @JsonProperty("UPNAME_NM") @Nullable String upNameNm,
+            @JsonProperty("READONLY") boolean readOnly,
+            @JsonProperty("GETOPTYPE_ID") @Nullable DtUid getOpTypeId,
+            @JsonProperty("SETOPTYPE_ID") @Nullable DtUid setOpTypeId,
+            @JsonProperty("RESETOPTYPE_ID") @Nullable DtUid resetOpTypeId,
+            @JsonProperty("CONFIRMOTHER") @Nullable Boolean confirmOther,
+            @JsonProperty("SETOTHEROPTYPE_ID") @Nullable DtUid setOtherOpTypeId,
+            @JsonProperty("MULTIVALUE") boolean multivalue,
+            @JsonProperty("LOGALLOWED") boolean logAllowed, @JsonProperty("LOGLEVEL") char logLevel,
+            @JsonProperty("DICTTYPE") @Nullable Character dictType,
+            @JsonProperty("DICTDEL1") @Nullable String dictDel1,
+            @JsonProperty("DICTDEL2") @Nullable String dictDel2,
+            @JsonProperty("TBCODE_CD") @Nullable String tbCodeCd,
+            @JsonProperty("ACCOUNTRULE_NM") @Nullable String accountRuleNm,
+            @JsonProperty("ACCDOCOBJECTFORMULA_ID") @Nullable DtUid accDocObjectFormulaId,
+            @JsonProperty("OWNERFORMULA_ID") @Nullable DtUid ownerFormulaId,
+            @JsonProperty("FROMOBJECTFORMULA_ID") @Nullable DtUid fromObjectFormulaId,
+            @JsonProperty("TOOBJECTFORMULA_ID") @Nullable DtUid toObjectFormulaId,
+            @JsonProperty("APPROXRECORD") @Nullable Boolean approxRecord,
+            @JsonProperty("VALUEACCOUNT_NM") @Nullable String valueAccountNm,
+            @JsonProperty("VALUEAMOUNTTYPE") @Nullable Character valueAmountType,
+            @JsonProperty("DEFOWNER") boolean defOwner,
+            @JsonProperty("DOCUMENTATION") @Nullable String documentation,
+            @JsonProperty("BITMAPORD") @Nullable Integer bitmapOrd,
+            @JsonProperty("X_ISFLAGDEPBIND") char xIsFlagDepBind,
+            @JsonProperty("X_ISFLAGDEFATTR") boolean xIsFlagDefAttr,
+            @JsonProperty("COPIED") char copied, @JsonProperty("KEYORD") @Nullable Double keyOrd,
+            @JsonProperty("OPTYPETYPE_RF") @Nullable DtUid opTypeTypeRf,
+            @JsonProperty("IMGSRC_ID") @Nullable DtUid imgSrcId,
+            @JsonProperty("IMGWIDTH") @Nullable Double imgWidth,
+            @JsonProperty("IMGHEIGHT") @Nullable Double imgHeight,
+            @JsonProperty("FILESERVER_ID") @Nullable DtUid fileServerId,
+            @JsonProperty("GENMIGR") @Nullable Boolean genMigr,
+            @JsonProperty("EVALCVALUE") @Nullable Boolean evalCValue,
+            @JsonProperty("OPTLOBLIMIT") @Nullable Double optLobLimit,
+            @JsonProperty("MANLOBLIMIT") @Nullable Double manLobLimit) {
         super(id);
         this.entityId = Objects.requireNonNull(entityId);
         this.nameNm = Objects.requireNonNull(nameNm);
@@ -690,7 +683,7 @@ public class GenAttrValue extends ProvysObjectValue {
     }
 
     @Nonnull
-    public Optional<Boolean> getConfirmOther() {
+    public Optional<Boolean> isConfirmOther() {
         return Optional.ofNullable(confirmOther);
     }
 
@@ -757,7 +750,7 @@ public class GenAttrValue extends ProvysObjectValue {
     }
 
     @Nonnull
-    public Optional<Boolean> getApproxRecord() {
+    public Optional<Boolean> isApproxRecord() {
         return Optional.ofNullable(approxRecord);
     }
 
@@ -828,12 +821,12 @@ public class GenAttrValue extends ProvysObjectValue {
     }
 
     @Nonnull
-    public Optional<Boolean> getGenMigr() {
+    public Optional<Boolean> isGenMigr() {
         return Optional.ofNullable(genMigr);
     }
 
     @Nonnull
-    public Optional<Boolean> getEvalCValue() {
+    public Optional<Boolean> isEvalCValue() {
         return Optional.ofNullable(evalCValue);
     }
 

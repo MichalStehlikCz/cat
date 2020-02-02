@@ -3,15 +3,11 @@ package com.provys.catalogue.impl;
 import com.provys.catalogue.api.EntityGrp;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectProxyImpl;
-import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-04T08:43:12.031809400"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 abstract class GenEntityGrpProxy extends ProvysNmObjectProxyImpl<EntityGrp, GenEntityGrpValue, EntityGrpProxy, EntityGrpManagerImpl> {
     GenEntityGrpProxy(EntityGrpManagerImpl manager, DtUid id) {
         super(manager, id);

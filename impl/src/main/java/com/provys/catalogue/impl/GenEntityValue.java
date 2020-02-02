@@ -4,13 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectValue;
-import java.lang.Boolean;
-import java.lang.Character;
-import java.lang.Integer;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nonnull;
@@ -22,10 +15,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T18:00:14.416763500"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 @SuppressWarnings("ValidExternallyBoundObject")
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(
@@ -397,74 +387,77 @@ public class GenEntityValue extends ProvysNmObjectValue {
     @XmlElement(
             name = "X_HASDELROWFLAGDEF"
     )
-    private final boolean xHasDelRowFlagDef;
+    @Nullable
+    private final Boolean xHasDelRowFlagDef;
 
     @JsonCreator
-    public GenEntityValue(@JsonProperty("ENTITY_ID") DtUid id, @JsonProperty("NAME_NM") String nameNm,
-                          @JsonProperty("NAME") String name, @JsonProperty("OBJECTCLASS") boolean objectClass,
-                          @JsonProperty("ISCUSTOM") boolean isCustom,
-                          @JsonProperty("TABLE_NM") @Nullable String tableNm,
-                          @JsonProperty("VIEW_NM") @Nullable String viewNm,
-                          @JsonProperty("KEY_NM") @Nullable String keyNm,
-                          @JsonProperty("TEXTTABLE_NM") @Nullable String textTableNm,
-                          @JsonProperty("TEXTVIEW_NM") @Nullable String textViewNm,
-                          @JsonProperty("TEXTKEY_NM") @Nullable String textKeyNm,
-                          @JsonProperty("TEXTALL") @Nullable Boolean textAll,
-                          @JsonProperty("PGPACKAGE_NM") @Nullable String pgPackageNm,
-                          @JsonProperty("EPPACKAGE_NM") @Nullable String epPackageNm,
-                          @JsonProperty("CPPACKAGE_NM") @Nullable String cpPackageNm,
-                          @JsonProperty("FPPACKAGE_NM") @Nullable String fpPackageNm,
-                          @JsonProperty("PROPERNAME") @Nullable String properName,
-                          @JsonProperty("MASTER_ID") @Nullable DtUid masterId,
-                          @JsonProperty("MASTERTYPE") char masterType,
-                          @JsonProperty("USERLOCKTYPE") @Nullable Character userLockType,
-                          @JsonProperty("IMPORTTYPE") @Nullable Character importType,
-                          @JsonProperty("CONFOBJ") @Nullable Character confObj,
-                          @JsonProperty("BASEPATH") @Nullable String basePath,
-                          @JsonProperty("INCOMPLETEKEY") boolean incompleteKey,
-                          @JsonProperty("CONFOBJALL") @Nullable Boolean confObjAll,
-                          @JsonProperty("ENTITYGRP_ID") @Nullable DtUid entityGrpId,
-                          @JsonProperty("ANCESTOR_ID") @Nullable DtUid ancestorId,
-                          @JsonProperty("NOTE") @Nullable String note,
-                          @JsonProperty("CUSTOMNOTE") @Nullable String customNote,
-                          @JsonProperty("STRUCTUREDOC") @Nullable String structureDoc,
-                          @JsonProperty("USAGEDOC") @Nullable String usageDoc,
-                          @JsonProperty("BEHAVIOURDOC") @Nullable String behaviourDoc,
-                          @JsonProperty("IMPLDOC") @Nullable String implDoc, @JsonProperty("ISUSED") boolean isUsed,
-                          @JsonProperty("GETRIGHTCUSTOM") boolean getRightCustom,
-                          @JsonProperty("GETRIGHTRESTR_ID") @Nullable DtUid getRightRestrId,
-                          @JsonProperty("GETOPTYPE_ID") @Nullable DtUid getOpTypeId,
-                          @JsonProperty("KEEPDELETED") @Nullable Integer keepDeleted,
-                          @JsonProperty("SHORTDESC") @Nullable String shortDesc,
-                          @JsonProperty("LONGDESC") @Nullable String longDesc,
-                          @JsonProperty("X_COPIEDATTR0") double xCopiedAttr0,
-                          @JsonProperty("X_COPIEDATTR1") double xCopiedAttr1,
-                          @JsonProperty("X_COPIEDATTR2") double xCopiedAttr2,
-                          @JsonProperty("X_COPIEDATTR3") double xCopiedAttr3,
-                          @JsonProperty("X_COPIEDATTR4") double xCopiedAttr4,
-                          @JsonProperty("X_COPIEDATTR5") double xCopiedAttr5,
-                          @JsonProperty("X_HASLIABILITY") boolean xHasLiability,
-                          @JsonProperty("USECONFOBJ") @Nullable Boolean useConfObj,
-                          @JsonProperty("X_USECONFOBJ") @Nullable Boolean xUseConfObj,
-                          @JsonProperty("X_NOTIFYATTR0") double xNotifyAttr0,
-                          @JsonProperty("X_NOTIFYATTR1") double xNotifyAttr1,
-                          @JsonProperty("X_NOTIFYATTR2") double xNotifyAttr2,
-                          @JsonProperty("X_NOTIFYATTR3") double xNotifyAttr3,
-                          @JsonProperty("X_NOTIFYATTR4") double xNotifyAttr4,
-                          @JsonProperty("X_NOTIFYATTR5") double xNotifyAttr5,
-                          @JsonProperty("X_FLAGDEFINTEREST0") double xFlagDefInterest0,
-                          @JsonProperty("X_FLAGDEFINTEREST1") double xFlagDefInterest1,
-                          @JsonProperty("X_FLAGDEFINTEREST2") double xFlagDefInterest2,
-                          @JsonProperty("X_FLAGDEFINTEREST3") double xFlagDefInterest3,
-                          @JsonProperty("X_FLAGDEFINTEREST4") double xFlagDefInterest4,
-                          @JsonProperty("X_FLAGDEFINTEREST5") double xFlagDefInterest5,
-                          @JsonProperty("X_DELNOTIFYATTR0") double xDelNotifyAttr0,
-                          @JsonProperty("X_DELNOTIFYATTR1") double xDelNotifyAttr1,
-                          @JsonProperty("X_DELNOTIFYATTR2") double xDelNotifyAttr2,
-                          @JsonProperty("X_DELNOTIFYATTR3") double xDelNotifyAttr3,
-                          @JsonProperty("X_DELNOTIFYATTR4") double xDelNotifyAttr4,
-                          @JsonProperty("X_DELNOTIFYATTR5") double xDelNotifyAttr5,
-                          @JsonProperty("X_HASDELROWFLAGDEF") boolean xHasDelRowFlagDef) {
+    public GenEntityValue(@JsonProperty("ENTITY_ID") DtUid id,
+            @JsonProperty("NAME_NM") String nameNm, @JsonProperty("NAME") String name,
+            @JsonProperty("OBJECTCLASS") boolean objectClass,
+            @JsonProperty("ISCUSTOM") boolean isCustom,
+            @JsonProperty("TABLE_NM") @Nullable String tableNm,
+            @JsonProperty("VIEW_NM") @Nullable String viewNm,
+            @JsonProperty("KEY_NM") @Nullable String keyNm,
+            @JsonProperty("TEXTTABLE_NM") @Nullable String textTableNm,
+            @JsonProperty("TEXTVIEW_NM") @Nullable String textViewNm,
+            @JsonProperty("TEXTKEY_NM") @Nullable String textKeyNm,
+            @JsonProperty("TEXTALL") @Nullable Boolean textAll,
+            @JsonProperty("PGPACKAGE_NM") @Nullable String pgPackageNm,
+            @JsonProperty("EPPACKAGE_NM") @Nullable String epPackageNm,
+            @JsonProperty("CPPACKAGE_NM") @Nullable String cpPackageNm,
+            @JsonProperty("FPPACKAGE_NM") @Nullable String fpPackageNm,
+            @JsonProperty("PROPERNAME") @Nullable String properName,
+            @JsonProperty("MASTER_ID") @Nullable DtUid masterId,
+            @JsonProperty("MASTERTYPE") char masterType,
+            @JsonProperty("USERLOCKTYPE") @Nullable Character userLockType,
+            @JsonProperty("IMPORTTYPE") @Nullable Character importType,
+            @JsonProperty("CONFOBJ") @Nullable Character confObj,
+            @JsonProperty("BASEPATH") @Nullable String basePath,
+            @JsonProperty("INCOMPLETEKEY") boolean incompleteKey,
+            @JsonProperty("CONFOBJALL") @Nullable Boolean confObjAll,
+            @JsonProperty("ENTITYGRP_ID") @Nullable DtUid entityGrpId,
+            @JsonProperty("ANCESTOR_ID") @Nullable DtUid ancestorId,
+            @JsonProperty("NOTE") @Nullable String note,
+            @JsonProperty("CUSTOMNOTE") @Nullable String customNote,
+            @JsonProperty("STRUCTUREDOC") @Nullable String structureDoc,
+            @JsonProperty("USAGEDOC") @Nullable String usageDoc,
+            @JsonProperty("BEHAVIOURDOC") @Nullable String behaviourDoc,
+            @JsonProperty("IMPLDOC") @Nullable String implDoc,
+            @JsonProperty("ISUSED") boolean isUsed,
+            @JsonProperty("GETRIGHTCUSTOM") boolean getRightCustom,
+            @JsonProperty("GETRIGHTRESTR_ID") @Nullable DtUid getRightRestrId,
+            @JsonProperty("GETOPTYPE_ID") @Nullable DtUid getOpTypeId,
+            @JsonProperty("KEEPDELETED") @Nullable Integer keepDeleted,
+            @JsonProperty("SHORTDESC") @Nullable String shortDesc,
+            @JsonProperty("LONGDESC") @Nullable String longDesc,
+            @JsonProperty("X_COPIEDATTR0") double xCopiedAttr0,
+            @JsonProperty("X_COPIEDATTR1") double xCopiedAttr1,
+            @JsonProperty("X_COPIEDATTR2") double xCopiedAttr2,
+            @JsonProperty("X_COPIEDATTR3") double xCopiedAttr3,
+            @JsonProperty("X_COPIEDATTR4") double xCopiedAttr4,
+            @JsonProperty("X_COPIEDATTR5") double xCopiedAttr5,
+            @JsonProperty("X_HASLIABILITY") boolean xHasLiability,
+            @JsonProperty("USECONFOBJ") @Nullable Boolean useConfObj,
+            @JsonProperty("X_USECONFOBJ") @Nullable Boolean xUseConfObj,
+            @JsonProperty("X_NOTIFYATTR0") double xNotifyAttr0,
+            @JsonProperty("X_NOTIFYATTR1") double xNotifyAttr1,
+            @JsonProperty("X_NOTIFYATTR2") double xNotifyAttr2,
+            @JsonProperty("X_NOTIFYATTR3") double xNotifyAttr3,
+            @JsonProperty("X_NOTIFYATTR4") double xNotifyAttr4,
+            @JsonProperty("X_NOTIFYATTR5") double xNotifyAttr5,
+            @JsonProperty("X_FLAGDEFINTEREST0") double xFlagDefInterest0,
+            @JsonProperty("X_FLAGDEFINTEREST1") double xFlagDefInterest1,
+            @JsonProperty("X_FLAGDEFINTEREST2") double xFlagDefInterest2,
+            @JsonProperty("X_FLAGDEFINTEREST3") double xFlagDefInterest3,
+            @JsonProperty("X_FLAGDEFINTEREST4") double xFlagDefInterest4,
+            @JsonProperty("X_FLAGDEFINTEREST5") double xFlagDefInterest5,
+            @JsonProperty("X_DELNOTIFYATTR0") double xDelNotifyAttr0,
+            @JsonProperty("X_DELNOTIFYATTR1") double xDelNotifyAttr1,
+            @JsonProperty("X_DELNOTIFYATTR2") double xDelNotifyAttr2,
+            @JsonProperty("X_DELNOTIFYATTR3") double xDelNotifyAttr3,
+            @JsonProperty("X_DELNOTIFYATTR4") double xDelNotifyAttr4,
+            @JsonProperty("X_DELNOTIFYATTR5") double xDelNotifyAttr5,
+            @JsonProperty("X_HASDELROWFLAGDEF") @Nullable Boolean xHasDelRowFlagDef) {
         super(id, nameNm);
         this.name = Objects.requireNonNull(name);
         this.objectClass = objectClass;
@@ -587,7 +580,7 @@ public class GenEntityValue extends ProvysNmObjectValue {
     }
 
     @Nonnull
-    public Optional<Boolean> getTextAll() {
+    public Optional<Boolean> isTextAll() {
         return Optional.ofNullable(textAll);
     }
 
@@ -650,7 +643,7 @@ public class GenEntityValue extends ProvysNmObjectValue {
     }
 
     @Nonnull
-    public Optional<Boolean> getConfObjAll() {
+    public Optional<Boolean> isConfObjAll() {
         return Optional.ofNullable(confObjAll);
     }
 
@@ -756,12 +749,12 @@ public class GenEntityValue extends ProvysNmObjectValue {
     }
 
     @Nonnull
-    public Optional<Boolean> getUseConfObj() {
+    public Optional<Boolean> isUseConfObj() {
         return Optional.ofNullable(useConfObj);
     }
 
     @Nonnull
-    public Optional<Boolean> getxUseConfObj() {
+    public Optional<Boolean> isxUseConfObj() {
         return Optional.ofNullable(xUseConfObj);
     }
 
@@ -837,8 +830,9 @@ public class GenEntityValue extends ProvysNmObjectValue {
         return xDelNotifyAttr5;
     }
 
-    public boolean isxHasDelRowFlagDef() {
-        return xHasDelRowFlagDef;
+    @Nonnull
+    public Optional<Boolean> isxHasDelRowFlagDef() {
+        return Optional.ofNullable(xHasDelRowFlagDef);
     }
 
     @Override
@@ -914,6 +908,6 @@ public class GenEntityValue extends ProvysNmObjectValue {
                 xDelNotifyAttr3 == that.xDelNotifyAttr3 &&
                 xDelNotifyAttr4 == that.xDelNotifyAttr4 &&
                 xDelNotifyAttr5 == that.xDelNotifyAttr5 &&
-                xHasDelRowFlagDef == that.xHasDelRowFlagDef;
+                Objects.equals(xHasDelRowFlagDef, that.xHasDelRowFlagDef);
     }
 }

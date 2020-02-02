@@ -4,12 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.provys.common.datatype.DtUid;
 import com.provys.common.exception.InternalException;
 import com.provys.provysobject.impl.ProvysNmObjectValueBuilder;
-import java.lang.Boolean;
-import java.lang.Integer;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -19,10 +13,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-04T08:40:50.228919600"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 @XmlRootElement(
         name = "DOMAIN"
 )
@@ -32,7 +23,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 )
 @SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
 public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainValueBuilder, GenDomainValue> {
-
     @Nullable
     private String name;
 
@@ -447,18 +437,18 @@ public class GenDomainValueBuilder extends ProvysNmObjectValueBuilder<GenDomainV
     @Nonnull
     public GenDomainValue build() {
         return new GenDomainValue(Objects.requireNonNull(getId(), "DOMAIN_ID must be specified for build")
-                , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
-                , Objects.requireNonNull(getName(), "NAME must be specified for build")
-                , getDataTypeNm()
-                , getDataLength()
-                , getDataPrecision()
-                , getNote()
-                , Objects.requireNonNull(isAllowed(), "ALLOWED must be specified for build")
-                , Objects.requireNonNull(isqVisible(), "QVISIBLE must be specified for build")
-                , Objects.requireNonNull(islVisible(), "LVISIBLE must be specified for build")
-                , getValidateCd()
-                , getlFormatCd()
-                , Objects.requireNonNull(isNatOrder(), "NATORDER must be specified for build")
+        , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
+        , Objects.requireNonNull(getName(), "NAME must be specified for build")
+        , getDataTypeNm()
+        , getDataLength()
+        , getDataPrecision()
+        , getNote()
+        , Objects.requireNonNull(isAllowed(), "ALLOWED must be specified for build")
+        , Objects.requireNonNull(isqVisible(), "QVISIBLE must be specified for build")
+        , Objects.requireNonNull(islVisible(), "LVISIBLE must be specified for build")
+        , getValidateCd()
+        , getlFormatCd()
+        , Objects.requireNonNull(isNatOrder(), "NATORDER must be specified for build")
         );
     }
 

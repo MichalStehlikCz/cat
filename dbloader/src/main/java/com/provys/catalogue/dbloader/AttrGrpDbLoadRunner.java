@@ -11,7 +11,6 @@ import com.provys.provysdb.dbcontext.DbRowMapper;
 import com.provys.provysdb.dbsqlbuilder.DbSql;
 import com.provys.provysdb.sqlbuilder.Condition;
 import com.provys.provysobject.impl.ProvysObjectLoadRunner;
-import java.lang.Override;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nonnull;
@@ -52,14 +51,14 @@ class AttrGrpDbLoadRunner extends ProvysObjectLoadRunner<AttrGrp, GenAttrGrpValu
     private static class AttrGrpDbMapper implements DbRowMapper<GenAttrGrpValue> {
         public GenAttrGrpValue map(DbResultSet dbResultSet, long line) {
             return new GenAttrGrpValueBuilder()
-                    .setId(dbResultSet.getNonnullDtUid(1))
-                    .setEntityId(dbResultSet.getNonnullDtUid(2))
-                    .setNameNm(dbResultSet.getNonnullString(3))
-                    .setName(dbResultSet.getNonnullString(4))
-                    .setIsCustom(dbResultSet.getNonnullBoolean(5))
-                    .setOrd(dbResultSet.getNonnullInteger(6))
-                    .setNote(dbResultSet.getNullableString(7))
-                    .build();
+                .setId(dbResultSet.getNonnullDtUid(1))
+                .setEntityId(dbResultSet.getNonnullDtUid(2))
+                .setNameNm(dbResultSet.getNonnullString(3))
+                .setName(dbResultSet.getNonnullString(4))
+                .setIsCustom(dbResultSet.getNonnullBoolean(5))
+                .setOrd(dbResultSet.getNonnullInteger(6))
+                .setNote(dbResultSet.getNullableString(7))
+                .build();
         }
     }
 }

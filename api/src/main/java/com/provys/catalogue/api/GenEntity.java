@@ -2,18 +2,11 @@ package com.provys.catalogue.api;
 
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.ProvysNmObject;
-import java.lang.Boolean;
-import java.lang.Character;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T17:22:49.410015900"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 interface GenEntity extends ProvysNmObject {
     /**
      * @return Name (attribute NAME)
@@ -71,7 +64,7 @@ interface GenEntity extends ProvysNmObject {
      * @return Own translations table (attribute TEXTALL)
      */
     @Nonnull
-    Optional<Boolean> getTextAll();
+    Optional<Boolean> isTextAll();
 
     /**
      * @return PG package (attribute PGPACKAGE_NM)
@@ -147,7 +140,7 @@ interface GenEntity extends ProvysNmObject {
      * @return All masters (attribute CONFOBJALL)
      */
     @Nonnull
-    Optional<Boolean> getConfObjAll();
+    Optional<Boolean> isConfObjAll();
 
     /**
      * @return Entity group (object referenced by attribute ENTITYGRP_ID)
@@ -288,13 +281,13 @@ interface GenEntity extends ProvysNmObject {
      * @return Use version control (attribute USECONFOBJ)
      */
     @Nonnull
-    Optional<Boolean> getUseConfObj();
+    Optional<Boolean> isUseConfObj();
 
     /**
      * @return Use version control (*) (attribute X_USECONFOBJ)
      */
     @Nonnull
-    Optional<Boolean> getxUseConfObj();
+    Optional<Boolean> isxUseConfObj();
 
     /**
      * @return Attr. with notification (1st part) (attribute X_NOTIFYATTR0)
@@ -389,5 +382,6 @@ interface GenEntity extends ProvysNmObject {
     /**
      * @return Has DELETEROW Flagdef (attribute X_HASDELROWFLAGDEF)
      */
-    boolean isxHasDelRowFlagDef();
+    @Nonnull
+    Optional<Boolean> isxHasDelRowFlagDef();
 }

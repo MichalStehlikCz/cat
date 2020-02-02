@@ -4,11 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.provys.common.datatype.DtUid;
 import com.provys.common.exception.InternalException;
 import com.provys.provysobject.impl.ProvysNmObjectValueBuilder;
-import java.lang.Integer;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -18,10 +13,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-14T15:10:29.171722"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 @XmlRootElement(
         name = "ENTITYGRP"
 )
@@ -205,11 +197,11 @@ public class GenEntityGrpValueBuilder extends ProvysNmObjectValueBuilder<GenEnti
     @Nonnull
     public GenEntityGrpValue build() {
         return new GenEntityGrpValue(Objects.requireNonNull(getId(), "ENTITYGRP_ID must be specified for build")
-                , getParentId()
-                , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
-                , Objects.requireNonNull(getName(), "NAME must be specified for build")
-                , getNote()
-                , Objects.requireNonNull(getOrd(), "ORD must be specified for build")
+        , getParentId()
+        , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
+        , Objects.requireNonNull(getName(), "NAME must be specified for build")
+        , getNote()
+        , Objects.requireNonNull(getOrd(), "ORD must be specified for build")
         );
     }
 

@@ -4,19 +4,14 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
-import java.lang.Override;
-import java.lang.SuppressWarnings;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T18:14:29.432167600"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 class GenEntityValueBuilderSerializer extends JsonSerializer<GenEntityValueBuilder> {
     @Override
     @SuppressWarnings("squid:S3776")
     public void serialize(GenEntityValueBuilder builder, JsonGenerator generator,
-                          SerializerProvider serializerProvider) throws IOException {
+            SerializerProvider serializerProvider) throws IOException {
         generator.writeStartObject();
         if (builder.getId() != null) {
             generator.writeFieldName("ENTITY_ID");
@@ -98,7 +93,7 @@ class GenEntityValueBuilderSerializer extends JsonSerializer<GenEntityValueBuild
             }
         }
         if (builder.isUpdTextAll()) {
-            var value = builder.getTextAll();
+            var value = builder.isTextAll();
             if (value == null) {
                 generator.writeNullField("TEXTALL");
             } else {
@@ -203,7 +198,7 @@ class GenEntityValueBuilderSerializer extends JsonSerializer<GenEntityValueBuild
             }
         }
         if (builder.isUpdConfObjAll()) {
-            var value = builder.getConfObjAll();
+            var value = builder.isConfObjAll();
             if (value == null) {
                 generator.writeNullField("CONFOBJALL");
             } else {
@@ -391,7 +386,7 @@ class GenEntityValueBuilderSerializer extends JsonSerializer<GenEntityValueBuild
             }
         }
         if (builder.isUpdUseConfObj()) {
-            var value = builder.getUseConfObj();
+            var value = builder.isUseConfObj();
             if (value == null) {
                 generator.writeNullField("USECONFOBJ");
             } else {
@@ -399,7 +394,7 @@ class GenEntityValueBuilderSerializer extends JsonSerializer<GenEntityValueBuild
             }
         }
         if (builder.isUpdXUseConfObj()) {
-            var value = builder.getxUseConfObj();
+            var value = builder.isxUseConfObj();
             if (value == null) {
                 generator.writeNullField("X_USECONFOBJ");
             } else {

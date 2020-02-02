@@ -4,19 +4,14 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
-import java.lang.Override;
-import java.lang.SuppressWarnings;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T20:19:20.045032100"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 class GenAttrValueBuilderSerializer extends JsonSerializer<GenAttrValueBuilder> {
     @Override
     @SuppressWarnings("squid:S3776")
     public void serialize(GenAttrValueBuilder builder, JsonGenerator generator,
-                          SerializerProvider serializerProvider) throws IOException {
+            SerializerProvider serializerProvider) throws IOException {
         generator.writeStartObject();
         if (builder.getId() != null) {
             generator.writeFieldName("ATTR_ID");
@@ -294,7 +289,7 @@ class GenAttrValueBuilderSerializer extends JsonSerializer<GenAttrValueBuilder> 
             }
         }
         if (builder.isUpdConfirmOther()) {
-            var value = builder.getConfirmOther();
+            var value = builder.isConfirmOther();
             if (value == null) {
                 generator.writeNullField("CONFIRMOTHER");
             } else {
@@ -411,7 +406,7 @@ class GenAttrValueBuilderSerializer extends JsonSerializer<GenAttrValueBuilder> 
             }
         }
         if (builder.isUpdApproxRecord()) {
-            var value = builder.getApproxRecord();
+            var value = builder.isApproxRecord();
             if (value == null) {
                 generator.writeNullField("APPROXRECORD");
             } else {
@@ -534,7 +529,7 @@ class GenAttrValueBuilderSerializer extends JsonSerializer<GenAttrValueBuilder> 
             }
         }
         if (builder.isUpdGenMigr()) {
-            var value = builder.getGenMigr();
+            var value = builder.isGenMigr();
             if (value == null) {
                 generator.writeNullField("GENMIGR");
             } else {
@@ -542,7 +537,7 @@ class GenAttrValueBuilderSerializer extends JsonSerializer<GenAttrValueBuilder> 
             }
         }
         if (builder.isUpdEvalCValue()) {
-            var value = builder.getEvalCValue();
+            var value = builder.isEvalCValue();
             if (value == null) {
                 generator.writeNullField("EVALCVALUE");
             } else {

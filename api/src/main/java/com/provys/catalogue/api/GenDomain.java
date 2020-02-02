@@ -1,16 +1,11 @@
 package com.provys.catalogue.api;
 
 import com.provys.provysobject.ProvysNmObject;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T17:26:29.820997800"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 interface GenDomain extends ProvysNmObject {
     /**
      * @return Name (attribute NAME)

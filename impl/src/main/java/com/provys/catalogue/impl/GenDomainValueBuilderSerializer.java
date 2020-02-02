@@ -4,19 +4,14 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
-import java.lang.Override;
-import java.lang.SuppressWarnings;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T20:22:04.111863400"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 class GenDomainValueBuilderSerializer extends JsonSerializer<GenDomainValueBuilder> {
     @Override
     @SuppressWarnings("squid:S3776")
     public void serialize(GenDomainValueBuilder builder, JsonGenerator generator,
-                          SerializerProvider serializerProvider) throws IOException {
+            SerializerProvider serializerProvider) throws IOException {
         generator.writeStartObject();
         if (builder.getId() != null) {
             generator.writeFieldName("DOMAIN_ID");

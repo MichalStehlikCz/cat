@@ -4,18 +4,11 @@ import com.provys.catalogue.api.Entity;
 import com.provys.catalogue.api.EntityGrp;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectProxyImpl;
-import java.lang.Boolean;
-import java.lang.Character;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-04T08:41:47.302105"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 abstract class GenEntityProxy extends ProvysNmObjectProxyImpl<Entity, GenEntityValue, EntityProxy, EntityManagerImpl> {
     GenEntityProxy(EntityManagerImpl manager, DtUid id) {
         super(manager, id);
@@ -65,8 +58,8 @@ abstract class GenEntityProxy extends ProvysNmObjectProxyImpl<Entity, GenEntityV
     }
 
     @Nonnull
-    public Optional<Boolean> getTextAll() {
-        return validateValueObject().getTextAll();
+    public Optional<Boolean> isTextAll() {
+        return validateValueObject().isTextAll();
     }
 
     @Nonnull
@@ -128,8 +121,8 @@ abstract class GenEntityProxy extends ProvysNmObjectProxyImpl<Entity, GenEntityV
     }
 
     @Nonnull
-    public Optional<Boolean> getConfObjAll() {
-        return validateValueObject().getConfObjAll();
+    public Optional<Boolean> isConfObjAll() {
+        return validateValueObject().isConfObjAll();
     }
 
     @Nonnull
@@ -244,13 +237,13 @@ abstract class GenEntityProxy extends ProvysNmObjectProxyImpl<Entity, GenEntityV
     }
 
     @Nonnull
-    public Optional<Boolean> getUseConfObj() {
-        return validateValueObject().getUseConfObj();
+    public Optional<Boolean> isUseConfObj() {
+        return validateValueObject().isUseConfObj();
     }
 
     @Nonnull
-    public Optional<Boolean> getxUseConfObj() {
-        return validateValueObject().getxUseConfObj();
+    public Optional<Boolean> isxUseConfObj() {
+        return validateValueObject().isxUseConfObj();
     }
 
     public double getxNotifyAttr0() {
@@ -325,7 +318,8 @@ abstract class GenEntityProxy extends ProvysNmObjectProxyImpl<Entity, GenEntityV
         return validateValueObject().getxDelNotifyAttr5();
     }
 
-    public boolean isxHasDelRowFlagDef() {
+    @Nonnull
+    public Optional<Boolean> isxHasDelRowFlagDef() {
         return validateValueObject().isxHasDelRowFlagDef();
     }
 }

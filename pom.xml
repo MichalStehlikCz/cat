@@ -337,6 +337,30 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>com.provys.provysobject</groupId>
+                    <artifactId>provysobjectgen-maven-plugin</artifactId>
+                    <version>1.0.0-SNAPSHOT</version>
+                    <configuration>
+                        <provysdb>
+                            <url>localhost:60002:PVYS</url>
+                            <user>ealoader</user>
+                            <pwd>heslo</pwd>
+                        </provysdb>
+                        <module>Catalogue</module>
+                        <entities>
+                            <entity><nameNm>ENTITY</nameNm></entity>
+                            <entity><nameNm>ENTITYGRP</nameNm></entity>
+                            <entity><nameNm>ATTR</nameNm></entity>
+                            <entity><nameNm>ATTRGRP</nameNm></entity>
+                            <entity><nameNm>DOMAIN</nameNm></entity>
+                        </entities>
+                        <basePackage>com.provys.catalogue</basePackage>
+                        <apiModule>api</apiModule>
+                        <implModule>impl</implModule>
+                        <dbLoaderModule>dbloader</dbLoaderModule>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -351,6 +375,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.provys.provysobject</groupId>
+                <artifactId>provysobjectgen-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

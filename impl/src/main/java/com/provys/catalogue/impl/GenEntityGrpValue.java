@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectValue;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nonnull;
@@ -19,10 +15,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T20:17:37.345459600"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 @SuppressWarnings("ValidExternallyBoundObject")
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(
@@ -57,9 +50,9 @@ public class GenEntityGrpValue extends ProvysNmObjectValue {
 
     @JsonCreator
     public GenEntityGrpValue(@JsonProperty("ENTITYGRP_ID") DtUid id,
-                             @JsonProperty("PARENT_ID") @Nullable DtUid parentId, @JsonProperty("NAME_NM") String nameNm,
-                             @JsonProperty("NAME") String name, @JsonProperty("NOTE") @Nullable String note,
-                             @JsonProperty("ORD") int ord) {
+            @JsonProperty("PARENT_ID") @Nullable DtUid parentId,
+            @JsonProperty("NAME_NM") String nameNm, @JsonProperty("NAME") String name,
+            @JsonProperty("NOTE") @Nullable String note, @JsonProperty("ORD") int ord) {
         super(id, nameNm);
         this.parentId = parentId;
         this.name = Objects.requireNonNull(name);
