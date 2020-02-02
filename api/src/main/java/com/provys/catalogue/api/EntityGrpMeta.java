@@ -7,8 +7,6 @@ import com.provys.provysdb.sqlbuilder.SqlColumnT;
 import com.provys.provysdb.sqlbuilder.SqlFrom;
 import com.provys.provysdb.sqlbuilder.SqlIdentifier;
 import com.provys.provysdb.sqlbuilder.SqlTableAlias;
-import java.lang.Integer;
-import java.lang.String;
 
 public final class EntityGrpMeta {
     public static final SqlIdentifier TABLE = name("ker_entitygrp_tb");

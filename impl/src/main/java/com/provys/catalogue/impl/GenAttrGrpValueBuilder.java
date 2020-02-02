@@ -4,12 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.provys.common.datatype.DtUid;
 import com.provys.common.exception.InternalException;
 import com.provys.provysobject.impl.ProvysObjectValueBuilder;
-import java.lang.Boolean;
-import java.lang.Integer;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -19,10 +13,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-14T15:07:35.170595"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 @XmlRootElement(
         name = "ATTRGRP"
 )
@@ -281,12 +272,12 @@ public class GenAttrGrpValueBuilder extends ProvysObjectValueBuilder<GenAttrGrpV
     @Nonnull
     public GenAttrGrpValue build() {
         return new GenAttrGrpValue(Objects.requireNonNull(getId(), "ATTRGRP_ID must be specified for build")
-                , Objects.requireNonNull(getEntityId(), "ENTITY_ID must be specified for build")
-                , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
-                , Objects.requireNonNull(getName(), "NAME must be specified for build")
-                , Objects.requireNonNull(isIsCustom(), "ISCUSTOM must be specified for build")
-                , Objects.requireNonNull(getOrd(), "ORD must be specified for build")
-                , getNote()
+        , Objects.requireNonNull(getEntityId(), "ENTITY_ID must be specified for build")
+        , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
+        , Objects.requireNonNull(getName(), "NAME must be specified for build")
+        , Objects.requireNonNull(isIsCustom(), "ISCUSTOM must be specified for build")
+        , Objects.requireNonNull(getOrd(), "ORD must be specified for build")
+        , getNote()
         );
     }
 

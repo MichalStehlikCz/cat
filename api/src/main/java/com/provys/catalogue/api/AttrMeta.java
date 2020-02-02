@@ -7,11 +7,6 @@ import com.provys.provysdb.sqlbuilder.SqlColumnT;
 import com.provys.provysdb.sqlbuilder.SqlFrom;
 import com.provys.provysdb.sqlbuilder.SqlIdentifier;
 import com.provys.provysdb.sqlbuilder.SqlTableAlias;
-import java.lang.Boolean;
-import java.lang.Character;
-import java.lang.Double;
-import java.lang.Integer;
-import java.lang.String;
 
 public final class AttrMeta {
     public static final SqlIdentifier TABLE = name("ker_attr_tb");

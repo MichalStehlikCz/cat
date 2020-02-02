@@ -103,7 +103,7 @@ class EntityDbLoadRunner extends ProvysObjectLoadRunner<Entity, GenEntityValue, 
                 .column(EntityMeta.COL_X_DELNOTIFYATTR3)
                 .column(EntityMeta.COL_X_DELNOTIFYATTR4)
                 .column(EntityMeta.COL_X_DELNOTIFYATTR5)
-                .column(dbSql.nvl(EntityMeta.COL_X_HASDELROWFLAGDEF, dbSql.literal(false)), "x_hasdelrowflag")
+                .column(EntityMeta.COL_X_HASDELROWFLAGDEF)
                 .where(condition)
                 .prepare()
                 .fetch(MAPPER);

@@ -4,14 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.provys.common.datatype.DtUid;
 import com.provys.common.exception.InternalException;
 import com.provys.provysobject.impl.ProvysNmObjectValueBuilder;
-import java.lang.Boolean;
-import java.lang.Character;
-import java.lang.Double;
-import java.lang.Integer;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -21,10 +13,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-14T15:05:54.674284"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 @XmlRootElement(
         name = "ENTITY"
 )
@@ -378,7 +367,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
         setTextTableNm(value.getTextTableNm().orElse(null));
         setTextViewNm(value.getTextViewNm().orElse(null));
         setTextKeyNm(value.getTextKeyNm().orElse(null));
-        setTextAll(value.getTextAll().orElse(null));
+        setTextAll(value.isTextAll().orElse(null));
         setPgPackageNm(value.getPgPackageNm().orElse(null));
         setEpPackageNm(value.getEpPackageNm().orElse(null));
         setCpPackageNm(value.getCpPackageNm().orElse(null));
@@ -391,7 +380,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
         setConfObj(value.getConfObj().orElse(null));
         setBasePath(value.getBasePath().orElse(null));
         setIncompleteKey(value.isIncompleteKey());
-        setConfObjAll(value.getConfObjAll().orElse(null));
+        setConfObjAll(value.isConfObjAll().orElse(null));
         setEntityGrpId(value.getEntityGrpId().orElse(null));
         setAncestorId(value.getAncestorId().orElse(null));
         setNote(value.getNote().orElse(null));
@@ -414,8 +403,8 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
         setxCopiedAttr4(value.getxCopiedAttr4());
         setxCopiedAttr5(value.getxCopiedAttr5());
         setxHasLiability(value.isxHasLiability());
-        setUseConfObj(value.getUseConfObj().orElse(null));
-        setxUseConfObj(value.getxUseConfObj().orElse(null));
+        setUseConfObj(value.isUseConfObj().orElse(null));
+        setxUseConfObj(value.isxUseConfObj().orElse(null));
         setxNotifyAttr0(value.getxNotifyAttr0());
         setxNotifyAttr1(value.getxNotifyAttr1());
         setxNotifyAttr2(value.getxNotifyAttr2());
@@ -434,7 +423,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
         setxDelNotifyAttr3(value.getxDelNotifyAttr3());
         setxDelNotifyAttr4(value.getxDelNotifyAttr4());
         setxDelNotifyAttr5(value.getxDelNotifyAttr5());
-        setxHasDelRowFlagDef(value.isxHasDelRowFlagDef());
+        setxHasDelRowFlagDef(value.isxHasDelRowFlagDef().orElse(null));
     }
 
     public GenEntityValueBuilder(GenEntityValueBuilder value) {
@@ -820,7 +809,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
             name = "TEXTALL"
     )
     @Nullable
-    public Boolean getTextAll() {
+    public Boolean isTextAll() {
         return textAll;
     }
 
@@ -1151,7 +1140,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
             name = "CONFOBJALL"
     )
     @Nullable
-    public Boolean getConfObjAll() {
+    public Boolean isConfObjAll() {
         return confObjAll;
     }
 
@@ -1753,7 +1742,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
             name = "USECONFOBJ"
     )
     @Nullable
-    public Boolean getUseConfObj() {
+    public Boolean isUseConfObj() {
         return useConfObj;
     }
 
@@ -1778,7 +1767,7 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
             name = "X_USECONFOBJ"
     )
     @Nullable
-    public Boolean getxUseConfObj() {
+    public Boolean isxUseConfObj() {
         return xUseConfObj;
     }
 
@@ -2311,8 +2300,8 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
         return xHasDelRowFlagDef;
     }
 
-    public GenEntityValueBuilder setxHasDelRowFlagDef(Boolean xHasDelRowFlagDef) {
-        this.xHasDelRowFlagDef = Objects.requireNonNull(xHasDelRowFlagDef);
+    public GenEntityValueBuilder setxHasDelRowFlagDef(@Nullable Boolean xHasDelRowFlagDef) {
+        this.xHasDelRowFlagDef = xHasDelRowFlagDef;
         this.updXHasDelRowFlagDef = true;
         return self();
     }
@@ -2322,9 +2311,6 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
     }
 
     public void setUpdXHasDelRowFlagDef(boolean updXHasDelRowFlagDef) {
-        if (!this.updXHasDelRowFlagDef && updXHasDelRowFlagDef) {
-            throw new InternalException("Cannot directly set update flag updXHasDelRowFlagDef; set value instead");
-        }
         this.updXHasDelRowFlagDef = updXHasDelRowFlagDef;
         if (!updXHasDelRowFlagDef) {
             this.xHasDelRowFlagDef = null;
@@ -2347,73 +2333,73 @@ public class GenEntityValueBuilder extends ProvysNmObjectValueBuilder<GenEntityV
     @Nonnull
     public GenEntityValue build() {
         return new GenEntityValue(Objects.requireNonNull(getId(), "ENTITY_ID must be specified for build")
-                , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
-                , Objects.requireNonNull(getName(), "NAME must be specified for build")
-                , Objects.requireNonNull(isObjectClass(), "OBJECTCLASS must be specified for build")
-                , Objects.requireNonNull(isIsCustom(), "ISCUSTOM must be specified for build")
-                , getTableNm()
-                , getViewNm()
-                , getKeyNm()
-                , getTextTableNm()
-                , getTextViewNm()
-                , getTextKeyNm()
-                , getTextAll()
-                , getPgPackageNm()
-                , getEpPackageNm()
-                , getCpPackageNm()
-                , getFpPackageNm()
-                , getProperName()
-                , getMasterId()
-                , Objects.requireNonNull(getMasterType(), "MASTERTYPE must be specified for build")
-                , getUserLockType()
-                , getImportType()
-                , getConfObj()
-                , getBasePath()
-                , Objects.requireNonNull(isIncompleteKey(), "INCOMPLETEKEY must be specified for build")
-                , getConfObjAll()
-                , getEntityGrpId()
-                , getAncestorId()
-                , getNote()
-                , getCustomNote()
-                , getStructureDoc()
-                , getUsageDoc()
-                , getBehaviourDoc()
-                , getImplDoc()
-                , Objects.requireNonNull(isIsUsed(), "ISUSED must be specified for build")
-                , Objects.requireNonNull(isGetRightCustom(), "GETRIGHTCUSTOM must be specified for build")
-                , getGetRightRestrId()
-                , getGetOpTypeId()
-                , getKeepDeleted()
-                , getShortDesc()
-                , getLongDesc()
-                , Objects.requireNonNull(getxCopiedAttr0(), "X_COPIEDATTR0 must be specified for build")
-                , Objects.requireNonNull(getxCopiedAttr1(), "X_COPIEDATTR1 must be specified for build")
-                , Objects.requireNonNull(getxCopiedAttr2(), "X_COPIEDATTR2 must be specified for build")
-                , Objects.requireNonNull(getxCopiedAttr3(), "X_COPIEDATTR3 must be specified for build")
-                , Objects.requireNonNull(getxCopiedAttr4(), "X_COPIEDATTR4 must be specified for build")
-                , Objects.requireNonNull(getxCopiedAttr5(), "X_COPIEDATTR5 must be specified for build")
-                , Objects.requireNonNull(isxHasLiability(), "X_HASLIABILITY must be specified for build")
-                , getUseConfObj()
-                , getxUseConfObj()
-                , Objects.requireNonNull(getxNotifyAttr0(), "X_NOTIFYATTR0 must be specified for build")
-                , Objects.requireNonNull(getxNotifyAttr1(), "X_NOTIFYATTR1 must be specified for build")
-                , Objects.requireNonNull(getxNotifyAttr2(), "X_NOTIFYATTR2 must be specified for build")
-                , Objects.requireNonNull(getxNotifyAttr3(), "X_NOTIFYATTR3 must be specified for build")
-                , Objects.requireNonNull(getxNotifyAttr4(), "X_NOTIFYATTR4 must be specified for build")
-                , Objects.requireNonNull(getxNotifyAttr5(), "X_NOTIFYATTR5 must be specified for build")
-                , Objects.requireNonNull(getxFlagDefInterest0(), "X_FLAGDEFINTEREST0 must be specified for build")
-                , Objects.requireNonNull(getxFlagDefInterest1(), "X_FLAGDEFINTEREST1 must be specified for build")
-                , Objects.requireNonNull(getxFlagDefInterest2(), "X_FLAGDEFINTEREST2 must be specified for build")
-                , Objects.requireNonNull(getxFlagDefInterest3(), "X_FLAGDEFINTEREST3 must be specified for build")
-                , Objects.requireNonNull(getxFlagDefInterest4(), "X_FLAGDEFINTEREST4 must be specified for build")
-                , Objects.requireNonNull(getxFlagDefInterest5(), "X_FLAGDEFINTEREST5 must be specified for build")
-                , Objects.requireNonNull(getxDelNotifyAttr0(), "X_DELNOTIFYATTR0 must be specified for build")
-                , Objects.requireNonNull(getxDelNotifyAttr1(), "X_DELNOTIFYATTR1 must be specified for build")
-                , Objects.requireNonNull(getxDelNotifyAttr2(), "X_DELNOTIFYATTR2 must be specified for build")
-                , Objects.requireNonNull(getxDelNotifyAttr3(), "X_DELNOTIFYATTR3 must be specified for build")
-                , Objects.requireNonNull(getxDelNotifyAttr4(), "X_DELNOTIFYATTR4 must be specified for build")
-                , Objects.requireNonNull(getxDelNotifyAttr5(), "X_DELNOTIFYATTR5 must be specified for build")
-                , Objects.requireNonNull(isxHasDelRowFlagDef(), "X_HASDELROWFLAGDEF must be specified for build")
+        , Objects.requireNonNull(getNameNm(), "NAME_NM must be specified for build")
+        , Objects.requireNonNull(getName(), "NAME must be specified for build")
+        , Objects.requireNonNull(isObjectClass(), "OBJECTCLASS must be specified for build")
+        , Objects.requireNonNull(isIsCustom(), "ISCUSTOM must be specified for build")
+        , getTableNm()
+        , getViewNm()
+        , getKeyNm()
+        , getTextTableNm()
+        , getTextViewNm()
+        , getTextKeyNm()
+        , isTextAll()
+        , getPgPackageNm()
+        , getEpPackageNm()
+        , getCpPackageNm()
+        , getFpPackageNm()
+        , getProperName()
+        , getMasterId()
+        , Objects.requireNonNull(getMasterType(), "MASTERTYPE must be specified for build")
+        , getUserLockType()
+        , getImportType()
+        , getConfObj()
+        , getBasePath()
+        , Objects.requireNonNull(isIncompleteKey(), "INCOMPLETEKEY must be specified for build")
+        , isConfObjAll()
+        , getEntityGrpId()
+        , getAncestorId()
+        , getNote()
+        , getCustomNote()
+        , getStructureDoc()
+        , getUsageDoc()
+        , getBehaviourDoc()
+        , getImplDoc()
+        , Objects.requireNonNull(isIsUsed(), "ISUSED must be specified for build")
+        , Objects.requireNonNull(isGetRightCustom(), "GETRIGHTCUSTOM must be specified for build")
+        , getGetRightRestrId()
+        , getGetOpTypeId()
+        , getKeepDeleted()
+        , getShortDesc()
+        , getLongDesc()
+        , Objects.requireNonNull(getxCopiedAttr0(), "X_COPIEDATTR0 must be specified for build")
+        , Objects.requireNonNull(getxCopiedAttr1(), "X_COPIEDATTR1 must be specified for build")
+        , Objects.requireNonNull(getxCopiedAttr2(), "X_COPIEDATTR2 must be specified for build")
+        , Objects.requireNonNull(getxCopiedAttr3(), "X_COPIEDATTR3 must be specified for build")
+        , Objects.requireNonNull(getxCopiedAttr4(), "X_COPIEDATTR4 must be specified for build")
+        , Objects.requireNonNull(getxCopiedAttr5(), "X_COPIEDATTR5 must be specified for build")
+        , Objects.requireNonNull(isxHasLiability(), "X_HASLIABILITY must be specified for build")
+        , isUseConfObj()
+        , isxUseConfObj()
+        , Objects.requireNonNull(getxNotifyAttr0(), "X_NOTIFYATTR0 must be specified for build")
+        , Objects.requireNonNull(getxNotifyAttr1(), "X_NOTIFYATTR1 must be specified for build")
+        , Objects.requireNonNull(getxNotifyAttr2(), "X_NOTIFYATTR2 must be specified for build")
+        , Objects.requireNonNull(getxNotifyAttr3(), "X_NOTIFYATTR3 must be specified for build")
+        , Objects.requireNonNull(getxNotifyAttr4(), "X_NOTIFYATTR4 must be specified for build")
+        , Objects.requireNonNull(getxNotifyAttr5(), "X_NOTIFYATTR5 must be specified for build")
+        , Objects.requireNonNull(getxFlagDefInterest0(), "X_FLAGDEFINTEREST0 must be specified for build")
+        , Objects.requireNonNull(getxFlagDefInterest1(), "X_FLAGDEFINTEREST1 must be specified for build")
+        , Objects.requireNonNull(getxFlagDefInterest2(), "X_FLAGDEFINTEREST2 must be specified for build")
+        , Objects.requireNonNull(getxFlagDefInterest3(), "X_FLAGDEFINTEREST3 must be specified for build")
+        , Objects.requireNonNull(getxFlagDefInterest4(), "X_FLAGDEFINTEREST4 must be specified for build")
+        , Objects.requireNonNull(getxFlagDefInterest5(), "X_FLAGDEFINTEREST5 must be specified for build")
+        , Objects.requireNonNull(getxDelNotifyAttr0(), "X_DELNOTIFYATTR0 must be specified for build")
+        , Objects.requireNonNull(getxDelNotifyAttr1(), "X_DELNOTIFYATTR1 must be specified for build")
+        , Objects.requireNonNull(getxDelNotifyAttr2(), "X_DELNOTIFYATTR2 must be specified for build")
+        , Objects.requireNonNull(getxDelNotifyAttr3(), "X_DELNOTIFYATTR3 must be specified for build")
+        , Objects.requireNonNull(getxDelNotifyAttr4(), "X_DELNOTIFYATTR4 must be specified for build")
+        , Objects.requireNonNull(getxDelNotifyAttr5(), "X_DELNOTIFYATTR5 must be specified for build")
+        , isxHasDelRowFlagDef()
         );
     }
 

@@ -4,19 +4,14 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
-import java.lang.Override;
-import java.lang.SuppressWarnings;
 import javax.annotation.processing.Generated;
 
-@Generated(
-        value = "com.provys.provysobject.generator.impl.GeneratorEntity",
-        date = "2020-01-03T20:21:05.208836800"
-)
+@Generated("com.provys.provysobject.generator.impl.GeneratorEntity")
 class GenEntityGrpValueBuilderSerializer extends JsonSerializer<GenEntityGrpValueBuilder> {
     @Override
     @SuppressWarnings("squid:S3776")
     public void serialize(GenEntityGrpValueBuilder builder, JsonGenerator generator,
-                          SerializerProvider serializerProvider) throws IOException {
+            SerializerProvider serializerProvider) throws IOException {
         generator.writeStartObject();
         if (builder.getId() != null) {
             generator.writeFieldName("ENTITYGRP_ID");
