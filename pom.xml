@@ -146,37 +146,37 @@
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbcontext-api</artifactId>
-                <version>1.5.3</version>
+                <version>1.5.4</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbcontext</artifactId>
-                <version>1.5.3</version>
+                <version>1.5.4</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbcontext-spring</artifactId>
-                <version>1.5.3</version>
+                <version>1.5.4</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>sqlbuilder</artifactId>
-                <version>1.5.3</version>
+                <version>1.5.4</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbsqlbuilder</artifactId>
-                <version>1.5.3</version>
+                <version>1.5.4</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbsqlbuilder-jakarta</artifactId>
-                <version>1.5.3</version>
+                <version>1.5.4</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysdb</groupId>
                 <artifactId>dbsqlbuilder-spring</artifactId>
-                <version>1.5.3</version>
+                <version>1.5.4</version>
             </dependency>
             <dependency>
                 <groupId>com.provys.provysobject</groupId>
