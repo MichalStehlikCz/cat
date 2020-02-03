@@ -340,7 +340,7 @@
                 <plugin>
                     <groupId>com.provys.provysobject</groupId>
                     <artifactId>provysobjectgen-maven-plugin</artifactId>
-                    <version>1.0.0-SNAPSHOT</version>
+                    <version>1.0.0</version>
                     <configuration>
                         <provysdb>
                             <url>localhost:60002:PVYS</url>
