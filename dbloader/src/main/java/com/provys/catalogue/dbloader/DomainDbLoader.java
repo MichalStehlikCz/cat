@@ -1,6 +1,6 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.api.DomainMeta;
+import com.provys.catalogue.DomainMeta;
 import com.provys.catalogue.impl.DomainLoaderBase;
 import com.provys.catalogue.impl.DomainManagerImpl;
 import com.provys.common.datatype.DtUid;

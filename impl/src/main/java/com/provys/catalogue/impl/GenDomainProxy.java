@@ -1,6 +1,6 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.Domain;
+import com.provys.catalogue.Domain;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectProxyImpl;
 import java.util.Optional;

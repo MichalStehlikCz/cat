@@ -1,4 +1,4 @@
-package com.provys.catalogue.api;
+package com.provys.catalogue;
 
 import static com.provys.provysdb.sqlbuilder.SqlFactory.*;
 

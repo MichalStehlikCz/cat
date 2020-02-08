@@ -1,7 +1,7 @@
 package com.provys.catalogue.restapi;
 
-import com.provys.catalogue.api.AttrGrp;
-import com.provys.catalogue.api.CatalogueRepository;
+import com.provys.catalogue.AttrGrp;
+import com.provys.catalogue.CatalogueRepository;
 import com.provys.common.datatype.DtUid;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

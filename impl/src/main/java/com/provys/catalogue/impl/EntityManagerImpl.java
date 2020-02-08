@@ -1,13 +1,12 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.Entity;
-import com.provys.catalogue.api.EntityManager;
+import com.provys.catalogue.Entity;
+import com.provys.catalogue.EntityManager;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectManagerImpl;
 import com.provys.provysobject.index.IndexNonUnique;
 
 import javax.annotation.Nonnull;
-import java.math.BigInteger;
 import java.util.*;
 
 public class EntityManagerImpl extends ProvysNmObjectManagerImpl<CatalogueRepositoryImpl, Entity, GenEntityValue,

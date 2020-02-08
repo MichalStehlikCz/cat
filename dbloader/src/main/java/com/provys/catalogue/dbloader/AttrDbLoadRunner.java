@@ -1,7 +1,7 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.api.Attr;
-import com.provys.catalogue.api.AttrMeta;
+import com.provys.catalogue.Attr;
+import com.provys.catalogue.AttrMeta;
 import com.provys.catalogue.impl.AttrManagerImpl;
 import com.provys.catalogue.impl.AttrProxy;
 import com.provys.catalogue.impl.GenAttrValue;

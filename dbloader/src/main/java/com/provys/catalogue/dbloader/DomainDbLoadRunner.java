@@ -1,7 +1,7 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.api.Domain;
-import com.provys.catalogue.api.DomainMeta;
+import com.provys.catalogue.Domain;
+import com.provys.catalogue.DomainMeta;
 import com.provys.catalogue.impl.DomainManagerImpl;
 import com.provys.catalogue.impl.DomainProxy;
 import com.provys.catalogue.impl.GenDomainValue;

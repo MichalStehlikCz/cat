@@ -1,12 +1,11 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.Domain;
-import com.provys.catalogue.api.DomainManager;
+import com.provys.catalogue.Domain;
+import com.provys.catalogue.DomainManager;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectManagerImpl;
 
 import javax.annotation.Nonnull;
-import java.math.BigInteger;
 
 public class DomainManagerImpl extends ProvysNmObjectManagerImpl<CatalogueRepositoryImpl, Domain, GenDomainValue,
         DomainProxy, DomainManagerImpl, DomainLoader> implements DomainManager {

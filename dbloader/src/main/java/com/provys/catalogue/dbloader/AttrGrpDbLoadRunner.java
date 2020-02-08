@@ -1,7 +1,7 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.api.AttrGrp;
-import com.provys.catalogue.api.AttrGrpMeta;
+import com.provys.catalogue.AttrGrp;
+import com.provys.catalogue.AttrGrpMeta;
 import com.provys.catalogue.impl.AttrGrpManagerImpl;
 import com.provys.catalogue.impl.AttrGrpProxy;
 import com.provys.catalogue.impl.GenAttrGrpValue;

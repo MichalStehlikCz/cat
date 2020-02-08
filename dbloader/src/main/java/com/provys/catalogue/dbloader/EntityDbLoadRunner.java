@@ -1,7 +1,7 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.api.Entity;
-import com.provys.catalogue.api.EntityMeta;
+import com.provys.catalogue.Entity;
+import com.provys.catalogue.EntityMeta;
 import com.provys.catalogue.impl.EntityManagerImpl;
 import com.provys.catalogue.impl.EntityProxy;
 import com.provys.catalogue.impl.GenEntityValue;

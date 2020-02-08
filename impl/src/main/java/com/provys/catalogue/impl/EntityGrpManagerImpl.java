@@ -1,13 +1,12 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.EntityGrp;
-import com.provys.catalogue.api.EntityGrpManager;
+import com.provys.catalogue.EntityGrp;
+import com.provys.catalogue.EntityGrpManager;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysNmObjectManagerImpl;
 import com.provys.provysobject.index.IndexNonUnique;
 
 import javax.annotation.Nonnull;
-import java.math.BigInteger;
 import java.util.*;
 
 public class EntityGrpManagerImpl extends ProvysNmObjectManagerImpl<CatalogueRepositoryImpl, EntityGrp, GenEntityGrpValue,

@@ -1,11 +1,10 @@
 package com.provys.catalogue.impl;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.provys.catalogue.api.Attr;
+import com.provys.catalogue.Attr;
 import com.provys.common.datatype.DtUid;
 import java.lang.Override;
 import javax.annotation.Nonnull;
-import javax.json.bind.annotation.JsonbTransient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @JsonSerialize(

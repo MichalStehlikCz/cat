@@ -1,9 +1,9 @@
 package com.provys.catalogue.impl;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.provys.catalogue.api.Attr;
-import com.provys.catalogue.api.AttrGrp;
-import com.provys.catalogue.api.Entity;
+import com.provys.catalogue.Attr;
+import com.provys.catalogue.AttrGrp;
+import com.provys.catalogue.Entity;
 import com.provys.common.datatype.DtUid;
 import java.lang.Override;
 import java.util.Collection;

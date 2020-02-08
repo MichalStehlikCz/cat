@@ -1,7 +1,7 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.Attr;
-import com.provys.catalogue.api.AttrManager;
+import com.provys.catalogue.Attr;
+import com.provys.catalogue.AttrManager;
 import com.provys.common.datatype.DtUid;
 import com.provys.common.exception.RegularException;
 import com.provys.provysobject.impl.ProvysObjectManagerImpl;

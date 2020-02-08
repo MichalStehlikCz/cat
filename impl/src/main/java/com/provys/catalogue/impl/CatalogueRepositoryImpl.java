@@ -1,6 +1,8 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.*;
+import com.provys.catalogue.AttrGrpManager;
+import com.provys.catalogue.CatalogueRepository;
+import com.provys.catalogue.*;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;

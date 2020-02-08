@@ -1,10 +1,9 @@
-package com.provys.catalogue.api;
+package com.provys.catalogue;
 
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.ProvysNmObjectManager;
 
 import javax.annotation.Nonnull;
-import java.math.BigInteger;
 import java.util.Collection;
 
 public interface EntityManager extends ProvysNmObjectManager<Entity> {

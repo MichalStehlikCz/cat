@@ -1,4 +1,4 @@
-package com.provys.catalogue.api;
+package com.provys.catalogue;
 
 import javax.annotation.Nonnull;
 

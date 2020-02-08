@@ -1,6 +1,6 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.api.AttrMeta;
+import com.provys.catalogue.AttrMeta;
 import com.provys.catalogue.impl.AttrLoaderBase;
 import com.provys.catalogue.impl.AttrManagerImpl;
 import com.provys.common.datatype.DtUid;

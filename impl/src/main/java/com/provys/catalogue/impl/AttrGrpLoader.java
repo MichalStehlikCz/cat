@@ -1,6 +1,6 @@
 package com.provys.catalogue.impl;
 
-import com.provys.catalogue.api.AttrGrp;
+import com.provys.catalogue.AttrGrp;
 import com.provys.common.datatype.DtUid;
 import com.provys.provysobject.impl.ProvysObjectLoader;
 

@@ -1,7 +1,7 @@
 package com.provys.catalogue.impl;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.provys.catalogue.api.Domain;
+import com.provys.catalogue.Domain;
 import com.provys.common.datatype.DtDate;
 import com.provys.common.datatype.DtDateTime;
 import com.provys.common.datatype.DtUid;

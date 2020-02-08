@@ -1,6 +1,6 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.api.AttrGrpMeta;
+import com.provys.catalogue.AttrGrpMeta;
 import com.provys.catalogue.impl.AttrGrpLoaderBase;
 import com.provys.catalogue.impl.AttrGrpManagerImpl;
 import com.provys.common.datatype.DtUid;

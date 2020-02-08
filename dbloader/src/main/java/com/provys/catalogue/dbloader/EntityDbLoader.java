@@ -1,6 +1,6 @@
 package com.provys.catalogue.dbloader;
 
-import com.provys.catalogue.api.EntityMeta;
+import com.provys.catalogue.EntityMeta;
 import com.provys.catalogue.impl.EntityLoaderBase;
 import com.provys.catalogue.impl.EntityManagerImpl;
 import com.provys.common.datatype.DtUid;
